@@ -19,6 +19,11 @@ content: ideas, necessary implementations, advice, suggestions, furture outlook
 *noted: content is not necessary to be written in such format. Above format is just a suggestion to show in one way to help everyone who's not in the meeting understand and get invovled.  
 
 ### Formal Meeting Doc  
+https://docs.google.com/document/d/1EdpMUtFfwVJRI3bcIH_M7ZxaFzFEmx-oLJc7CswKQRs/edit?usp=sharing  
+
 
 ## Google Sheet (idea, shcedule, living area, specialties, experties)
 https://docs.google.com/spreadsheets/d/1_zgOO26fDdASQ2vssuoUhXT4bcfoFI67ZZMT4WWnXXs/edit?usp=sharing  
+
+# Git Repository Questions & Issues 
+https://docs.google.com/document/d/1qaYsHiyyciDOIVTPWjbdKJRgYPviDX4PbPk7vc9fulM/edit?usp=sharing  
