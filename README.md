@@ -26,6 +26,7 @@ https://docs.google.com/document/d/1EdpMUtFfwVJRI3bcIH_M7ZxaFzFEmx-oLJc7CswKQRs/
 https://docs.google.com/spreadsheets/d/1_zgOO26fDdASQ2vssuoUhXT4bcfoFI67ZZMT4WWnXXs/edit?usp=sharing 
 ## When2Meet Sheet based on Oct. 6th 2018 responses
 https://www.when2meet.com/?7173164-p7O1n  
+![alt text](Meeting Contents/CSE 110 Proj Meeting TimeStamp Oct 6th 2018.PNG "Description goes here")  
 
 
 # Git Repository Questions & Issues 
