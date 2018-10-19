@@ -21,7 +21,8 @@ content: ideas, necessary implementations, advice, suggestions, furture outlook
 ### Formal Meeting Doc  
 https://docs.google.com/document/d/1EdpMUtFfwVJRI3bcIH_M7ZxaFzFEmx-oLJc7CswKQRs/edit?usp=sharing  
 
-## User Case/Stories and all related documents are in User Files Directory
+## User Case/Stories  
+https://1drv.ms/w/s!An5MZ_DDBL1rhOBPQbSbUguAi8id-g  
 
 ## Google Sheet (idea, shcedule, living area, specialties, experties) please fill up by Oct. 6th 2018
 https://docs.google.com/spreadsheets/d/1_zgOO26fDdASQ2vssuoUhXT4bcfoFI67ZZMT4WWnXXs/edit?usp=sharing 
