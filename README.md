@@ -24,7 +24,7 @@ https://docs.google.com/document/d/1EdpMUtFfwVJRI3bcIH_M7ZxaFzFEmx-oLJc7CswKQRs/
 ## User Case/Stories  
 ### User Case  
 https://1drv.ms/w/s!An5MZ_DDBL1rhOBPQbSbUguAi8id-g  
-### User Stroie  
+### User Stroies  
 https://1drv.ms/w/s!An5MZ_DDBL1rhOBRHXHV8oYHwD_Q3A  
 
 ## Google Sheet (idea, shcedule, living area, specialties, experties) please fill up by Oct. 6th 2018
