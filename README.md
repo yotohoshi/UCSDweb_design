@@ -21,6 +21,9 @@ content: ideas, necessary implementations, advice, suggestions, furture outlook
 ### Formal Meeting Doc  
 https://docs.google.com/document/d/1EdpMUtFfwVJRI3bcIH_M7ZxaFzFEmx-oLJc7CswKQRs/edit?usp=sharing  
 
+### Backend Group Meeting Doc
+https://docs.google.com/document/d/1r8TLXQKnYUeCML_O4ZoL-mBUS-Gd5dsag_gKfqg-1Ok/edit?usp=sharing
+
 ## User Case/Stories  
 ### User Case  
 https://1drv.ms/w/s!An5MZ_DDBL1rhOBPQbSbUguAi8id-g  
