@@ -42,6 +42,5 @@ https://www.when2meet.com/?7173164-p7O1n
 # Git Repository Questions & Issues 
 https://docs.google.com/document/d/1qaYsHiyyciDOIVTPWjbdKJRgYPviDX4PbPk7vc9fulM/edit?usp=sharing 
 
-#TEST
 
 #test Liu
