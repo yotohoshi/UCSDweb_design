@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import ibm_db_django
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Registration.apps.RegistrationConfig',
+    'django.contrib.flatpages',
+    'django.contrib.redirects',
+   #'django.contrib.comments',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -77,9 +82,18 @@ WSGI_APPLICATION = 'Django_UCSD.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'UCSDB',
+        'USER': 'GaryGillespie',
+        'PASSWORD': 'OrdGillespie1!!',
+        'HOST': '129.150.206.167',
+        'PORT': '3306',
+    },
+    'sqlite3Local':{
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'db.sqlite3',
     }
+
 }
 
 
