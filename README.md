@@ -2,10 +2,8 @@
 
 UCSD 2018 CSE110 Team Project. Aim to convince CEO team along with other customers. At best, win the trophy and have a profitable product.
 
-# Important Information
-Project Google Account
-teamucsd110@gmail.com
-Password: GaryOrd111
+# Cloud Accounts And Services
+https://docs.google.com/document/d/1rSOlCkV7owoyQ8BVVRlU1JF3bisRyh5NH-Z5U--Hxkg/edit?usp=sharing
 
 # Google Doc & Sheet
 ## Meeting Doc  
@@ -24,7 +22,7 @@ content: ideas, necessary implementations, advice, suggestions, furture outlook
 ### Formal Meeting Doc  
 https://docs.google.com/document/d/1EdpMUtFfwVJRI3bcIH_M7ZxaFzFEmx-oLJc7CswKQRs/edit?usp=sharing  
 
-### Backend Group Meeting Doc
+### Backend Team Manual
 https://docs.google.com/document/d/1r8TLXQKnYUeCML_O4ZoL-mBUS-Gd5dsag_gKfqg-1Ok/edit?usp=sharing
 
 ## User Case/Stories  
