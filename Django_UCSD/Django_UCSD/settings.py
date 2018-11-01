@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import ibm_db_django
+# import ibm_db_django
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -77,7 +77,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Django_UCSD.wsgi.application'
 
 
-# Database
+# Database DO NOT CHANGE！！
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
