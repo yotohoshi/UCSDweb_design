@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.redirects',
    #'django.contrib.comments',
     'django.contrib.sites',
+    'User',
+    'Company',
+    'Event',
 ]
 
 MIDDLEWARE = [
@@ -81,7 +84,7 @@ WSGI_APPLICATION = 'Django_UCSD.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'sql': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'UCSDB',
         'USER': 'GaryGillespie',
@@ -89,7 +92,7 @@ DATABASES = {
         'HOST': '129.150.206.167',
         'PORT': '3306',
     },
-    'sqlite3Local':{
+    'default':{
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'db.sqlite3',
     }
@@ -128,6 +131,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+SITE_ID = 1
 
 
 # Static files (CSS, JavaScript, Images)
