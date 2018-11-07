@@ -23,5 +23,8 @@ https://zhuanlan.zhihu.com/p/20616464
 ##jQuery:  
 https://contribute.jquery.org/style-guide/js/  
 
+##Code Guide by @AlloyTeam  
+http://alloyteam.github.io/CodeGuide/  
+
 
 
