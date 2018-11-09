@@ -90,4 +90,7 @@ https://www.when2meet.com/?7173164-p7O1n
 https://docs.google.com/document/d/1qaYsHiyyciDOIVTPWjbdKJRgYPviDX4PbPk7vc9fulM/edit?usp=sharing 
 
 
+# UCSD Java Validation API  
+https://developer.ucsd.edu/develop/data-layer/jpa/java-validation-api.html  
+
 >>>>>>> 5cd3c4963f23040bf8fc90e3126925357f3ef592
