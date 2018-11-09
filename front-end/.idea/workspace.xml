@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="193dd147-fd53-479a-b75f-0280a251e8d1" name="Default Changelist" comment="Clean up front end files. Organize them to one directory.">
-      <change afterPath="$PROJECT_DIR$/front-end/Call Back End Case/callback.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/Call Back End Case/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="193dd147-fd53-479a-b75f-0280a251e8d1" name="Default Changelist" comment="Clean up front end files. Organize them to one directory." />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +127,7 @@
       <path value="$PROJECT_DIR$/front-end/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="42" />
     <option name="width" value="1260" />
@@ -166,7 +162,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541729029955" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541730517500" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -312,7 +308,7 @@
       <updated>1541011605280</updated>
       <workItem from="1541011608649" duration="1209000" />
       <workItem from="1541720258256" duration="985000" />
-      <workItem from="1541726756370" duration="2455000" />
+      <workItem from="1541726756370" duration="2827000" />
     </task>
     <task id="LOCAL-00001" summary="Clean up front end files. Organize them to one directory.">
       <created>1541728277516</created>
@@ -332,10 +328,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4649000" />
+    <option name="totallyTimeSpent" value="5021000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1633" height="1053" extended-state="7" />
+    <frame x="-6" y="-6" width="1633" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0952381" />
