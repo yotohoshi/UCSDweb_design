@@ -47,18 +47,19 @@ class User(models.Model):
     major = models.ForeignKey(Major, on_delete=models.PROTECT)
     degree = models.ForeignKey(Degree, on_delete=models.PROTECT)
     contact_email = models.CharField(max_length=60, unique=True, validators=[django.core.validators.EmailValidator
-                                                                             (
-                                                                                 message='Please Use a valid email address!',
-                                                                                 code=None, whitelist=None)])
+        (
+        message='Please Use a valid email address!',
+        code=None, whitelist=None)])
     description = models.CharField(max_length=1000, validators=[django.core.validators.MinLengthValidator
-                                                           (50, message='Description must be at least 50 characters!')])
+                                                                (50,
+                                                                 message='Description must be at least 50 characters!')])
     referral_ability = models.BooleanField
     company = models.ManyToManyField(Company.models.Company, symmetrical=False, blank=True)
     # Originally from registration app
     register_email = models.CharField(max_length=60, unique=True, validators=[django.core.validators.EmailValidator
-                                                                              (
-                                                                                  message='Please Use a valid email address!',
-                                                                                  code=None, whitelist=None)])
+        (
+        message='Please Use a valid email address!',
+        code=None, whitelist=None)])
     password = models.CharField(max_length=20, validators=[django.core.validators.MinLengthValidator
                                                            (8, message='Password must be at least 8 characters!')])
     # Re-implemented favorite table
@@ -82,10 +83,11 @@ def get_user_by_name(fname, lname):
 
 
 def get_user_by_graduation(yr_grad):
-    if type(yr_grad) != int or yr_grad < 1970 or yr_grad >2050:
+    if type(yr_grad) != int or yr_grad < 1970 or yr_grad > 2050:
         return False
     else:
         return User.objects.all.filter(yr_graduation=yr_grad)
+
 
 # get_user_by_major
 
@@ -96,11 +98,12 @@ def get_user_by_major(major):
     else:
         return User.objects.all.filter(Major=major)
 
+
 # get_user_by_degree
 
 
 def get_user_by_degree(degree):
-    if type(degree) != degree:
+    if type(degree) != Degree:
         return False
     else:
         return User.objects.all.filter(Degree=degree)
@@ -109,7 +112,7 @@ def get_user_by_degree(degree):
 # get_user_by_company
 
 def get_user_by_company(company):
-    if type(company) != Company:
+    if type(company) != Company.models.Company:
         return False
     else:
         return User.objects.all.filter(Company=company)
@@ -127,6 +130,7 @@ def set_fname(self, fname):
         self.F_Name = fname
         return True
 
+
 # set_lname
 
 
@@ -137,15 +141,17 @@ def set_lname(self, lname):
         self.L_Name = lname
         return True
 
+
 # set_yr_grad
 
 
 def set_yr_grad(self, yr_grad):
-    if type(yr_grad) != int or yr_grad < 1970 or yr_grad >2050:
+    if type(yr_grad) != int or yr_grad < 1970 or yr_grad > 2050:
         return False
     else:
         self.yr_graduation = yr_grad
         return True
+
 
 # set_major
 
@@ -157,6 +163,7 @@ def set_major(self, majr):
         self.major = majr
         return True
 
+
 # set_degree
 
 
@@ -166,6 +173,7 @@ def set_degree(self, deg):
     else:
         self.degree = deg
         return True
+
 
 # set_email
 
@@ -184,6 +192,7 @@ def set_email(self, email, kind):
     except ValidationError:
         return False
 
+
 # set_description
 
 
@@ -194,21 +203,23 @@ def set_description(self, descrip):
         self.description = descrip
         return True
 
+
 # add_company
 
 
 def add_company(self, comp):
-    if type(comp) != Company:
+    if type(comp) != Company.models.Company:
         return False
     else:
         self.companys.add(comp)
         return True
 
+
 # remove_company
 
 
 def remove_company(self, comp):
-    if type(comp) != Company:
+    if type(comp) != Company.models.Company:
         return False
     else:
         self.companys.remove(comp)
@@ -219,21 +230,24 @@ def remove_company(self, comp):
 
 
 def add_to_favorite(self, favorite):
-    if type(favorite) != Event:
+    if type(favorite) != Event.models.Event:
         return False
     else:
         self.favorite_events.add(favorite)
     return True
 
+
 # remove_from_favorite
 
 
 def remove_from_favorite(self, favorite):
-    if type(favorite) != Event:
+    if type(favorite) != Event.models.Event:
         return False
     else:
         self.favorite_events.remove(favorite)
+        Event.models.Event(favorite).update_num_favorite()
     return True
+
 
 # change_password TODO
 
