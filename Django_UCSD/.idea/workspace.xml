@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45189f75-532d-4092-8c9e-1ed615bccfba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Event/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Event/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/User/models.py" afterDir="false" />
-    </list>
+    <list default="true" id="45189f75-532d-4092-8c9e-1ed615bccfba" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,8 +106,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Event/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="-516">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
                 <marker date="1541919616309" expanded="true" signature="1247:1296" ph="..." />
@@ -233,8 +230,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="359" />
-    <option name="y" value="44" />
+    <option name="x" value="-286" />
+    <option name="y" value="546" />
     <option name="width" value="1400" />
     <option name="height" value="936" />
   </component>
@@ -397,7 +394,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="359" y="44" width="1400" height="936" extended-state="0" />
+    <frame x="622" y="194" width="1400" height="936" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49833888" visible="true" weight="0.26804122" />
@@ -599,8 +596,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Event/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="-516">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
             <marker date="1541919616309" expanded="true" signature="1247:1296" ph="..." />
