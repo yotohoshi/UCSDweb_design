@@ -20,6 +20,13 @@ class Event(models.Model):
     num_favorites = models.IntegerField(default=0, validators=[django.core.validators.MinValueValidator(0)])
     # category = models.IntegerField(max_length=2, null=False),
     # Getters
+    @staticmethod
+    def get_event_by_company(company):
+        if type(company) != Company.models.Company:
+            return
+        else:
+            return list(Event.objects.filter(company=company))
+
 
     # TODO Filter Functions
 

@@ -65,188 +65,144 @@ class User(models.Model):
     # Re-implemented favorite table
     favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
 
+    # Getters
 
-# Getters
-
-
-# get_user_by_name
-
-
-def get_user_by_name(fname, lname):
-    if type(fname) != str or type(lname) != str:
-        return False
-    else:
-        return User.objects.all.filter(F_Name=fname, L_Name=lname)
-
-
-# get_user_by_graduation
-
-
-def get_user_by_graduation(yr_grad):
-    if type(yr_grad) != int or yr_grad < 1970 or yr_grad > 2050:
-        return False
-    else:
-        return User.objects.all.filter(yr_graduation=yr_grad)
-
-
-# get_user_by_major
-
-
-def get_user_by_major(major):
-    if type(major) != Major:
-        return False
-    else:
-        return User.objects.all.filter(Major=major)
-
-
-# get_user_by_degree
-
-
-def get_user_by_degree(degree):
-    if type(degree) != Degree:
-        return False
-    else:
-        return User.objects.all.filter(Degree=degree)
-
-
-# get_user_by_company
-
-def get_user_by_company(company):
-    if type(company) != Company.models.Company:
-        return False
-    else:
-        return User.objects.all.filter(Company=company)
-
-
-# Setter
-
-# set_fame
-
-
-def set_fname(self, fname):
-    if type(fname) != str:
-        return False
-    else:
-        self.F_Name = fname
-        return True
-
-
-# set_lname
-
-
-def set_lname(self, lname):
-    if type(lname) != str:
-        return False
-    else:
-        self.L_Name = lname
-        return True
-
-
-# set_yr_grad
-
-
-def set_yr_grad(self, yr_grad):
-    if type(yr_grad) != int or yr_grad < 1970 or yr_grad > 2050:
-        return False
-    else:
-        self.yr_graduation = yr_grad
-        return True
-
-
-# set_major
-
-
-def set_major(self, majr):
-    if type(majr) != Major:
-        return False
-    else:
-        self.major = majr
-        return True
-
-
-# set_degree
-
-
-def set_degree(self, deg):
-    if type(deg) != Degree:
-        return False
-    else:
-        self.degree = deg
-        return True
-
-
-# set_email
-
-
-def set_email(self, email, kind):
-    try:
-        django.core.validators.validate_email(email)
-        if kind == 0:
-            self.contact_email = email
-            return True
-        elif kind == 1:
-            self.register_email = email
-            return True
-        else:
+    # get_user_by_name
+    @staticmethod
+    def get_user_by_name(fname, lname):
+        if type(fname) != str or type(lname) != str:
             return False
-    except ValidationError:
-        return False
+        else:
+            return User.objects.all.filter(F_Name=fname, L_Name=lname)
 
+    # get_user_by_graduation
+    @staticmethod
+    def get_user_by_graduation(yr_grad):
+        if type(yr_grad) != int or yr_grad < 1970 or yr_grad > 2050:
+            return False
+        else:
+             return User.objects.all.filter(yr_graduation=yr_grad)
 
-# set_description
+    # get_user_by_major
+    @staticmethod
+    def get_user_by_major(major):
+        if type(major) != Major:
+            return False
+        else:
+            return User.objects.all.filter(Major=major)
 
+    # get_user_by_degree
+    @staticmethod
+    def get_user_by_degree(degree):
+        if type(degree) != Degree:
+            return False
+        else:
+            return User.objects.all.filter(Degree=degree)
 
-def set_description(self, descrip):
-    if type(descrip) != str or len(descrip) > 300 or len(descrip) < 50:
-        return False
-    else:
-        self.description = descrip
+    # get_user_by_company
+    @staticmethod
+    def get_user_by_company(company):
+        if type(company) != Company.models.Company:
+            return False
+        else:
+            return User.objects.all.filter(Company=company)
+
+    # Setter
+    # set_fame
+    def set_fname(self, fname):
+        if type(fname) != str:
+            return False
+        else:
+            self.F_Name = fname
+            return True
+
+    # set_lname
+    def set_lname(self, lname):
+        if type(lname) != str:
+            return False
+        else:
+            self.L_Name = lname
+            return True
+
+    # set_yr_grad
+    def set_yr_grad(self, yr_grad):
+        if type(yr_grad) != int or yr_grad < 1970 or yr_grad > 2050:
+            return False
+        else:
+            self.yr_graduation = yr_grad
+            return True
+
+    # set_major
+    def set_major(self, majr):
+        if type(majr) != Major:
+            return False
+        else:
+            self.major = majr
+            return True
+
+    # set_degree
+    def set_degree(self, deg):
+        if type(deg) != Degree:
+            return False
+        else:
+            self.degree = deg
+            return True
+
+    # set_email
+    def set_email(self, email, kind):
+        try:
+            django.core.validators.validate_email(email)
+            if kind == 0:
+                self.contact_email = email
+                return True
+            elif kind == 1:
+                self.register_email = email
+                return True
+            else:
+                return False
+        except ValidationError:
+            return False
+
+    # set_description
+    def set_description(self, descrip):
+        if type(descrip) != str or len(descrip) > 300 or len(descrip) < 50:
+            return False
+        else:
+            self.description = descrip
+            return True
+
+    # add_company
+    def add_company(self, comp):
+        if type(comp) != Company.models.Company:
+            return False
+        else:
+            self.companys.add(comp)
+            return True
+
+    # remove_company
+    def remove_company(self, comp):
+        if type(comp) != Company.models.Company:
+            return False
+        else:
+            self.companys.remove(comp)
+            return True
+
+    # add_to_favorite
+    def add_to_favorite(self, favorite):
+        if type(favorite) != Event.models.Event:
+            return False
+        else:
+            self.favorite_events.add(favorite)
         return True
 
-
-# add_company
-
-
-def add_company(self, comp):
-    if type(comp) != Company.models.Company:
-        return False
-    else:
-        self.companys.add(comp)
+    # remove_from_favorite
+    def remove_from_favorite(self, favorite):
+        if type(favorite) != Event.models.Event:
+            return False
+        else:
+            self.favorite_events.remove(favorite)
+            Event.models.Event(favorite).update_num_favorite()
         return True
-
-
-# remove_company
-
-
-def remove_company(self, comp):
-    if type(comp) != Company.models.Company:
-        return False
-    else:
-        self.companys.remove(comp)
-        return True
-
-
-# add_to_favorite
-
-
-def add_to_favorite(self, favorite):
-    if type(favorite) != Event.models.Event:
-        return False
-    else:
-        self.favorite_events.add(favorite)
-    return True
-
-
-# remove_from_favorite
-
-
-def remove_from_favorite(self, favorite):
-    if type(favorite) != Event.models.Event:
-        return False
-    else:
-        self.favorite_events.remove(favorite)
-        Event.models.Event(favorite).update_num_favorite()
-    return True
 
 
 # change_password TODO
