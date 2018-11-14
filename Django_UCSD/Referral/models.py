@@ -13,7 +13,7 @@ class Referral(models.Model):
     ref_provider = models.ForeignKey(User, on_delete=models.PROTECT)
     referral_job = models.ForeignKey(Job, on_delete=models.PROTECT)
     referral_description = models.CharField(max_length=300)
-    resume_require = models.booleanField
+    resume_require = models.BooleanField
 
 
 # getter
@@ -26,7 +26,7 @@ def get_provider(provider):
     if type(provider) != User.models.User:
         return False
     else:
-        return Referral.object.all.filter(ref_provider=provider)
+        return Referral.objects.all.filter(ref_provider=provider)
 
 
 # setter

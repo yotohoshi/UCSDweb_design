@@ -32,7 +32,7 @@ class Job(models.Model):
 
     # get_Job_Company
 
-
+    @staticmethod
     def get_Job_Company(company):
         if type(company) != Company.models.Company:
             return False
@@ -41,7 +41,7 @@ class Job(models.Model):
 
     # get_Job_Work_Auth
 
-
+    @staticmethod
     def get_Job_Work_Auth(work_auth):
         if type(work_auth) != WorkAuthorization:
             return False
@@ -50,7 +50,7 @@ class Job(models.Model):
 
     # get_Job_Position
 
-
+    @staticmethod
     def get_Job_Position(position):
         if type(position) != str:
             return False
@@ -60,7 +60,7 @@ class Job(models.Model):
 
     # get_Job_URL
 
-
+    @staticmethod
     def get_Job_URL(url):
         if type(url) != str:
             return False
@@ -69,7 +69,7 @@ class Job(models.Model):
 
     # get_Job_Major_Require
 
-
+    @staticmethod
     def get_Job_Major_Require(major):
         if type(major) != User.models.Major:
             return False
@@ -79,7 +79,7 @@ class Job(models.Model):
 
     # get_Job_Degree_Require
 
-
+    @staticmethod
     def get_Job_Degree_Require(degree):
         if type(degree) != User.models.Degree:
             return False
@@ -89,7 +89,7 @@ class Job(models.Model):
 
     # get_Job_Duration
 
-
+    @staticmethod
     def get_Job_Duration(duration):
         if type(duration) != str:
             return False
@@ -98,7 +98,7 @@ class Job(models.Model):
 
     # get_Job_location
 
-
+    @staticmethod
     def get_Job_location(location):
         if type(location) != str:
             return False
@@ -108,7 +108,7 @@ class Job(models.Model):
 
     # get_Job_paid
 
-
+    @staticmethod
     def get_Job_paid(paid):
         if type(paid) != bool:
             return False
@@ -120,7 +120,6 @@ class Job(models.Model):
 
     # set_Job_Position
 
-
     def set_Job_Position(self, position):
         if type(position) != str:
             return False
@@ -129,7 +128,6 @@ class Job(models.Model):
             return True
 
     # set_Job_Company
-
 
     def set_Job_Company(self, company):
         if type(company) != Company.models.Company:
