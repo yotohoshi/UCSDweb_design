@@ -33,7 +33,23 @@ class Event(models.Model):
         else:
             return list(Event.objects.filter(company=company))
 
-    # TODO Filter Functions
+    @staticmethod
+    def get_all():
+        all_events = list(Event.objects.all())
+        return all_events
+
+    @staticmethod
+    def get_top_five():
+        all_events = list(Event.objects.all())
+        all_events.sort(key=Event.rank, reverse=True)
+        toReturn = list()
+        count = 0
+        while count < 5:
+            toReturn.append(all_events[count])
+            count += 1
+        return toReturn
+
+    # Filter Functions
     @staticmethod
     def all_filter_by_today():
         toReturn = list(Event.objects.filter(date=TODAY))
@@ -53,17 +69,6 @@ class Event(models.Model):
         start_week = TODAY - timedelta(TODAY.weekday())
         end_week = start_week + timedelta(7)
         toReturn = list(Event.objects.filter(date__range=[start_week, end_week]))
-        return toReturn
-
-    @staticmethod
-    def get_top_five():
-        all_events = list(Event.objects.all())
-        all_events.sort(key=Event.rank, reverse=True)
-        toReturn = list()
-        count = 0
-        while count < 5:
-            toReturn.append(all_events[count])
-            count += 1
         return toReturn
 
     # Other functions
