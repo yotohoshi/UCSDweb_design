@@ -10,8 +10,8 @@ import django.core.validators
 
 class Referral(models.Model):
     referral_ID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
-    ref_provider = models.ForeignKey(User, on_delete=models.PROTECT)
-    referral_job = models.ForeignKey(Job, on_delete=models.PROTECT)
+    ref_provider = models.ForeignKey(User.models.User, on_delete=models.PROTECT)
+    referral_job = models.ForeignKey(Job.models.Job, on_delete=models.PROTECT)
     referral_description = models.CharField(max_length=300)
     resume_require = models.BooleanField
 
