@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'User',
     'Company',
     'Event',
+    'Job',
+    'Referral',
+    'Registration',
 ]
 
 MIDDLEWARE = [

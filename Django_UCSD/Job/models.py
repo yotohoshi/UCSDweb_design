@@ -5,11 +5,13 @@ import Company.models
 import User.models
 
 # Create your models here.
-
-
-class WorkAuthorization(models.Model):
-    db_table = 'WorkAuthorization'
-    Work_Auth = models.CharField(max_length=100)
+WORKAUTHS=[
+        "U.S Citizen",
+        "Permanent Resident",
+        "F-1",
+        "H1-B",
+        "Otherwise Authorized to Work"
+    ]
 
 
 class Job(models.Model):
@@ -22,7 +24,7 @@ class Job(models.Model):
     job_URL = models.URLField(max_length=300)
     job_duration = models.CharField(max_length=100)
     job_location = models.CharField(max_length=100)
-    job_Work_Auth = models.ForeignKey(WorkAuthorization, on_delete=models.PROTECT)
+    job_Work_Auth = models.CharField(max_length=100, choices=WORKAUTHS)
     job_paid = models.BooleanField
     Major_Require = models.ManyToManyField(User.models.Major, symmetrical=False, blank=True)
     Degree_Require = models.ManyToManyField(User.models.Degree, symmetrical=False, blank=True)
