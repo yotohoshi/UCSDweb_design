@@ -11,26 +11,48 @@
 	<h1 style="color:DodgerBlue; position:absolute; left:36%;">Ur Career Scheduel Daily</h1>
   <a href={% url 'login' %}><button style="color:blue; position:absolute; left:95%; top:12%">Log in</button></a>
   <a href={% url 'index' %}><button style="color:blue; position:absolute; padding: 0; border: none; font-size : 20px; width: 70px; height: 30px; background: none; top:4%">UCSD</button></a>
-    
-  <div style = "color:black; position: absolute; left:40%; top:20%">
-       <ol>Top 5 events
-           {% for event in view.top5  %}
-           <li>{{ event.event_name }}</li>
-           {% endfor %}
-      </ol>
-  </div>
+
+    {# Top 5 #}
+    <div style = "color:black; position: absolute; left:37%; top:20%">
+        <ol><h2>Top 5 events</h2>
+            {% for event in view.top5  %}
+            <li><h3>{{ event.event_name }}</h3></li>
+            {% endfor %}
+        </ol>
+    </div>
     
    {# The actual event list#}
-    <div style="color:black; position: absolute; left:40%; top:40%" >
+    <div style="position:absolute; left:40%; top:50%" >
         <h1>Events</h1>
-        {% block content %}
-
-        {% endblock %}
+        {% for event in events %}
+            <div>
+                <h2>{{ event.event_name }}</h2>
+                <p>Date: {{ event.date|date:"D, d M, Y"}}</p>
+                <br>
+                <p>Location: {{ event.location }}</p>
+            </div>
+        {% endfor%}
     </div>
 
-	<a href="{% url 'event_list_today' %}" style="position:absolute; left:95%; top:40%">By Today</a>
-	<a href="{% url 'event_list_week' %}" style="position:absolute; left:95%; top:45%">This week</a>
-	<a href="{% url 'event_list_month' %}" style="position:absolute; left:95%; top:50%">This month</a>
-    <a href="{% url 'event_list' %}" style="position:absolute; left:95%; top:55%">All</a>
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/event?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/event?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+
+	<a href="{% url 'event_list_today' %}" style="position:absolute; left:95%; top:40%"><button style="background-color:DodgerBlue; position:absolute; left:45%; top:50%">By Today</button></a>
+	<a href="{% url 'event_list_week' %}" style="position:absolute; left:95%; top:45%"><button style="background-color:DodgerBlue; position:absolute; left:45%; top:50%">This Week</button></a>
+	<a href="{% url 'event_list_month' %}" style="position:absolute; left:95%; top:50%"><button style="background-color:DodgerBlue; position:absolute; left:45%; top:50%">This Month</button></a>
+    <a href="{% url 'event' %}" style="position:absolute; left:95%; top:55%"><button style="background-color:DodgerBlue; position:absolute; left:45%; top:50%">All</button></a>
 </body>
 </html>

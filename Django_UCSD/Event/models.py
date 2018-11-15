@@ -35,7 +35,7 @@ class Event(models.Model):
 
     @staticmethod
     def get_all():
-        all_events = list(Event.objects.all())
+        all_events = list(Event.objects.all().order_by('date'))
         return all_events
 
     @staticmethod
