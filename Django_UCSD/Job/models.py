@@ -5,13 +5,13 @@ import Company.models
 import User.models
 
 # Create your models here.
-WORKAUTHS=[
-        "U.S Citizen",
-        "Permanent Resident",
-        "F-1",
-        "H1-B",
-        "Otherwise Authorized to Work"
-    ]
+WORKAUTHS=(
+    ('U.S Citizen','U.S Citizen'),
+    ('Permanent Resident','Permanent Resident'),
+    ('F-1','F-1'),
+    ('H1-B','H1-B'),
+    ('Otherwise','Otherwise Authorized to Work'),
+)
 
 
 class Job(models.Model):
@@ -20,7 +20,7 @@ class Job(models.Model):
     job_position = models.CharField(max_length=200)
     type = models.IntegerField(validators=[django.core.validators.MaxValueValidator(1, message=None),django.core.validators.MinValueValidator(0, message=None)])
     description = models.CharField(max_length=300)
-    company = models.ForeignKey(Company, on_delete=models.PROTECT)
+    company = models.ForeignKey(Company.models.Company, on_delete=models.PROTECT)
     job_URL = models.URLField(max_length=300)
     job_duration = models.CharField(max_length=100)
     job_location = models.CharField(max_length=100)
@@ -176,7 +176,7 @@ class Job(models.Model):
 
 
     def set_Job_Work_Auth(self, work_auth):
-        if type(work_auth) != WorkAuthorization:
+        if type(work_auth) != str:
             return False
         else:
             self.job_Work_Auth = work_auth
