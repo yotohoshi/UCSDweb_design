@@ -2,10 +2,10 @@
 
 {% block content %}
 
-    {% for event in event_list %}
+    {% for event in events %}
         <div>
             <h1>{{ event.event_name }}</h1>
-            <p>Date: {{ event.date|date:"D M Y"}}</p>
+            <p>Date: {{ event.date|date:"D, d M, Y"}}</p>
             <br>
             <p>Location: {{ event.location }}</p>
 
