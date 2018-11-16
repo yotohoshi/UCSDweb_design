@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 
 class event(ListView):
     context_object_name = 'events'
-    template_name = 'events.html'
+    template_name = 'event2.html'
     # template_name = 'event_list.html'
     # all_events = Event.get_all()
     # top5 = Event.get_top_five()
