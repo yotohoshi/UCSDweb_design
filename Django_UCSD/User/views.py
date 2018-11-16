@@ -34,6 +34,12 @@ def user_view(request):
 
         # Getters
 
+def newuser_page(request):
+    index_page = {'insert_index': "Welcome to UCSD !"}
+
+    return render(request, 'user3.html', context=index_page)
+
+
 def users(request):
     form = NewUserForm()
 
@@ -48,11 +54,11 @@ def users(request):
         else:
             print('ERROR FORM INVALID')
 
-    return render(request, 'user.html', {'form': form})
+    return render(request, 'user3.html', {'form': form})
 
 def user_view_page(request):
     form = forms.userform()
-    return render(request, 'user.html', {'form': form})
+    return render(request, 'user3.html', {'form': form})
 
 
 def nick_view_page(request):
@@ -82,4 +88,4 @@ def save(request):
         return user_view_page(request)
     else:
         print('贼你哥，非法输入值！')
-    return render(request, 'user.html', {'form': form})
+    return render(request, 'user3.html', {'form': form})

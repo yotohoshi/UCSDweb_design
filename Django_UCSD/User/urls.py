@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from User import views
-
+from django.urls import path
 
 urlpatterns = [
    # url(r'^$', views.user_view, name='user_view'),
@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^niupi', views.niupi_view_page, name='niupi'),
     url(r'^guapi', views.guapi_view_page, name='guapi'),
     url(r'^pipi', views.pipi_view_page, name='pipi'),
+    path('', views.newuser_page, name='newuser_page'),
     #url(r'^user/create/$', 'User.views.create_user')
 ]

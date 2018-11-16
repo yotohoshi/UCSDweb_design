@@ -13,5 +13,11 @@ class userform(forms.Form):
 class NewUserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = '__all__'
 
+
+        widgets = {
+            'password': forms.PasswordInput(),
+        }
+        fields = ('F_Name', 'L_Name', 'yr_graduation', 'major', 'degree', 'contact_email', "register_email", "password")
+
+        #fields = '__all__'

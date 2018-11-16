@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 import Company.models
 import Event.models
 import uuid
+from django import forms
 
 # Create your models here.
 
@@ -60,8 +61,9 @@ class User(models.Model):
         (
         message='Please Use a valid email address!',
         code=None, whitelist=None)])
-    password = models.CharField(max_length=20, validators=[django.core.validators.MinLengthValidator
-                                                           (8, message='Password must be at least 8 characters!')])
+    password = models.CharField(max_length=20,
+                                validators=[django.core.validators.MinLengthValidator
+                                (8, message='Password must be at least 8 characters!')])
     # Re-implemented favorite table
     favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
 
