@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zei Ni Guo</title>
+</head>
+
+
+    <h1>Do you like what you see?</h1>
+<div class="mdl-card__supporting-text">
+
+
+        <form id="new_user_form"> {% csrf_token %}
+
+           <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="F_Name" />
+            <label class="mdl-textfield__label" for="F_Name">First Name</label>
+            <span class="mdl-textfield__error"></span>
+
+        </div>
+
+
+        <div class="mdl-card__actions mdl-card--border">
+            <input type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" value="Submit">
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="password" id="password" />
+            <label class="mdl-textfield__label" for="password">Password</label>
+            <span class="mdl-textfield__error"></span>
+
+        </div>
+        </form>
+</div>
+
+</body>
+
+<script type ="text/javascript" src="{ static 'js/material.js' %}"></script>
+<script type ="text/javascript" src="{ static 'js/jquery.min.js' %}"></script>
+<script type ="text/javascript">
+
+    $(document).on('submit','#new_user_form',function(e){
+        e.preventDefault();
+         alert("created New user!");
+        $.ajax({
+            type: 'POST',
+            url:'/user/create',
+            data:{
+                F_Name:$('#F_Name').val(),
+                csrfmiddlewaretoken:$('input[F_Name=csrfmiddlewaretoken]').val()
+
+
+            },
+            success:function(){
+
+                alert("created New user!");
+            }
+
+
+            }
+
+
+
+
+        );
+
+
+    });
+
+</script>
+</html>

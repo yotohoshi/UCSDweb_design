@@ -24,5 +24,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('', include('Event.urls')),
     path('', include('Registration.urls')),
-    path('', include('Job.urls'))
+    path('', include('Job.urls')),
+    path('user/', include('User.urls')),
 ]
