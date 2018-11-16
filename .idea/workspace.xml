@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="705b2695-c2c0-43d9-92cc-9df0aadc27d3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Django_UCSD/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Django_UCSD/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Event/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Event/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Event/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Event/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Registration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Registration/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,40 +41,27 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1945408094">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Django_UCSD/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Django_UCSD/Event/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-              <folding>
-                <element signature="e#1#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Django_UCSD/Django_UCSD/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Django_UCSD/Event/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="195">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,10 +83,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="242" />
-    <option name="y" value="70" />
-    <option name="width" value="1400" />
-    <option name="height" value="936" />
+    <option name="x" value="-32" />
+    <option name="y" value="23" />
+    <option name="width" value="970" />
+    <option name="height" value="983" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -114,31 +97,13 @@
         <subPane>
           <expand>
             <path>
-              <item name="TeamUCSD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeamUCSD" type="462c0819:PsiDirectoryNode" />
+              <item name="ucsd-fall-2018-cse110-ravioli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ucsd-fall-2018-cse110-ravioli" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="TeamUCSD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeamUCSD" type="462c0819:PsiDirectoryNode" />
+              <item name="ucsd-fall-2018-cse110-ravioli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ucsd-fall-2018-cse110-ravioli" type="462c0819:PsiDirectoryNode" />
               <item name="Django_UCSD" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TeamUCSD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeamUCSD" type="462c0819:PsiDirectoryNode" />
-              <item name="Django_UCSD" type="462c0819:PsiDirectoryNode" />
-              <item name="Django_UCSD" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TeamUCSD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeamUCSD" type="462c0819:PsiDirectoryNode" />
-              <item name="Django_UCSD" type="462c0819:PsiDirectoryNode" />
-              <item name="Event" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TeamUCSD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeamUCSD" type="462c0819:PsiDirectoryNode" />
-              <item name="Django_UCSD" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -149,7 +114,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Django_UCSD" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -179,12 +144,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="134" y="35" width="2602" height="1789" extended-state="6" />
+    <frame x="0" y="32" width="3840" height="1994" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25377885" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.261126" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -194,9 +158,10 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32938856" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33092225" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="11" />
+      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -218,25 +183,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Django_UCSD/Event/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#1#38#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="216">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Django_UCSD/Django_UCSD/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="781">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Django_UCSD/Event/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="195">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
