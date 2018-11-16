@@ -1,40 +1,56 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
   <html lang="en" dir="ltr">
 
   <head>
     <meta charset="utf-8">
-    <!-- JQuery Bootstrap and relevant CDN -->
+    <!-- JQuery CSS CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="test.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="test.css">
-    <link rel="stylesheet" href="index_circles.css">
-		#include FONT AWESOME for google login button
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-
-    <title>UCSD main page</title>
+    <title>TESTTEST</title>
   </head>
 
-  <body background-image="./UCSD.jpeg">
+  <body>
     <!-- Wrap all content in to a wrapper -->
     <div id="wrapper" class="animate">
       <!-- Top navigation bar -->
       <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark" style=" background-color: #0C1E41;">
+        <!-- Hamburger icon -->
+        <span class="navbar-toggler-icon leftmenutrigger"></span>
 
         <!-- All TODO-ES  -->
-        <a class="navbar-brand" href="./index.html">UCSD LOGO</a>
+
+        <a class="navbar-brand" href="#">LOGO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav animate side-nav">
+            <li class="nav-item">
+              <!-- TODO -->
+              <a class="nav-link" href="#">Item1
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <!-- TODO -->
+              <a class="nav-link" href="#">Side Menu Items</a>
+            </li>
+            <li class="nav-item">
+              <!-- TODO -->
+              <a class="nav-link" href="#">Item2</a>
+            </li>
+          </ul>
           <ul class="navbar-nav ml-md-auto d-md-flex">
             <li class="nav-item">
               <!-- TODO -->
-              <a class="nav-link" href="#">Referral
+              <a class="nav-link" href="#">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -44,14 +60,12 @@
             </li>
             <li class="nav-item">
               <!-- TODO -->
-              <a class="nav-link" href="./signup.html">SignUp</a>
+              <a class="nav-link" href="#">SignUp</a>
             </li>
           </ul>
         </div>
       </nav>
-    </div>
 
-    <!-- TODO Change slide content and linking addresses -->
     <!-- Slides with Capion-->
     <div class="container-fluid">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -59,13 +73,15 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img class="d-block w-100" src="https://kellysbootcamp.net/wp-content/uploads/2017/12/blank-1920x400.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
-              <h5>Real man</h5>
-              <p>Call me</p>
+              <h5>Item 1</h5>
+              <p>Description 1</p>
             </div>
           </div>
           <div class="carousel-item">
@@ -93,75 +109,28 @@
         </a>
       </div>
     </div>
-
-    <!-- Searching and Hero Caption -->
-    <div class="container-fluid">
-      <div class="container hero">
-        <h1 class="text-center">Ur Career Schedule Daily</h1>
-        <p class="text-center">大型同性交友网站:www.github.com</p>
-        <!-- <div class="btn btn-primary">first button</div>
-        <div class="btn btn-primary">Second button</div> -->
-      </div>
-      <div class="row justify-content-center">
-
-
-    <!-- Hover items -->
-    <div class="container-fluid" id="footage">
-      <pre>
-
-      </pre>
-      <div class="row justify-content-center">
-				<a href="./jobs.html">
-        	<div class="col-sm-2">
-          	<div class="do-item do-item-circle do-circle" id="c4">
-            	<img src="http://placehold.it/261x261" class="do-item do-circle">
-            	<div class="do-info-wrap do-circle">
-              	<div class="do-info">
-                	<div class="do-info-front do-circle">Jobs</div>
-                	<div class="do-info-back do-circle" id="c1">
-                  	<h3>Jobs</h3>
-                  	<div>Job Searching
-                    	<br />What is your ideal job?</div>
-                	</div>
-              	</div>
-            	</div>
-          	</div>
-					</a>
+    <!-- blank rows -->
+    <div class="row">
+        <p> <br /><br /><br /><br /><br /></p>
+    </div>
+        
+      <!-- Profile and all other information -->
+        <div class="row">
+          <div class="col">
+            <div class="Box">
+              <div class="Box-body">
+                <h5 class="Box-title">Info</h5>
+                <h6 class="Box-subtitle mb-2 text-muted">Information Box</h6>
+                <p class="Box-text">Profile and all other information goes here</p>
+                <a href="#" class="Box-link">link</a>
+                <a href="#" class="Box-link">Another link</a>
+              </div>
+            </div>
+          </div>   
         </div>
-        <div class="col-sm-2">
-					<a href="./events.html">
-          	<div class="do-item do-item-circle do-circle">
-            	<img src="http://placehold.it/261x261" class="do-item do-circle">
-            	<div class="do-info-wrap do-circle">
-              	<div class="do-info">
-                	<div class="do-info-front do-circle">Events</div>
-                	<div class="do-info-back do-circle" id="c2">
-                  	<h3>Events</h3>
-                  	<div>Workshops News
-                    	<br />Plan to come!</div>
-                	</div>
-              	</div>
-            	</div>
-          	</div>
-					</a>
-        </div>
-        <div class="col-sm-2">
-					<a href="./referrals.html">
-          	<div class="do-item do-item-circle do-circle">
-            	<img src="http://placehold.it/261x261" class="do-item do-circle">
-            	<div class="do-info-wrap do-circle">
-              	<div class="do-info">
-                	<div class="do-info-front do-circle">Referral</div>
-                	<div class="do-info-back do-circle" id="c3">
-                  	<h3>Referral</h3>
-                  	<div>Social Network
-                    	<br />Know Someone? Ask!</div>
-                	</div>
-              	</div>
-            	</div>
-          	</div>
-        	</div>
-				</a>
+        
+        
+      
       </div>
 
   </body>

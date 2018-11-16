@@ -12,21 +12,17 @@
     <link rel="stylesheet" href="sidebar.css">
     <link rel="stylesheet" href="test.css">
     <link rel="stylesheet" href="index_circles.css">
-		#include FONT AWESOME for google login button
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
-
     <title>UCSD main page</title>
   </head>
 
-  <body background-image="./UCSD.jpeg">
+  <body>
     <!-- Wrap all content in to a wrapper -->
     <div id="wrapper" class="animate">
       <!-- Top navigation bar -->
       <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark" style=" background-color: #0C1E41;">
 
         <!-- All TODO-ES  -->
-        <a class="navbar-brand" href="./index.html">UCSD LOGO</a>
+        <a class="navbar-brand" href="file:////Users/Peacheadzlol/CSE110-UCSD-Frontend/front-end/v1.0/index.html">UCSD LOGO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,7 +40,7 @@
             </li>
             <li class="nav-item">
               <!-- TODO -->
-              <a class="nav-link" href="./signup.html">SignUp</a>
+              <a class="nav-link" href="#">SignUp</a>
             </li>
           </ul>
         </div>
@@ -64,8 +60,8 @@
           <div class="carousel-item active">
             <img class="d-block w-100" src="https://kellysbootcamp.net/wp-content/uploads/2017/12/blank-1920x400.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
-              <h5>Real man</h5>
-              <p>Call me</p>
+              <h5>Item 1</h5>
+              <p>Description 1</p>
             </div>
           </div>
           <div class="carousel-item">
@@ -104,6 +100,36 @@
       </div>
       <div class="row justify-content-center">
 
+        <div class="col-lg-6 col-centered">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Title of your job...">
+            <div class="dropdown show">
+              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Location
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">L1</a>
+                <a class="dropdown-item" href="#">L2</a>
+                <a class="dropdown-item" href="#">L3</a>
+              </div>
+            </div>
+            <div class="dropdown show">
+              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Type
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">intern</a>
+                <a class="dropdown-item" href="#">full-time</a>
+                <a class="dropdown-item" href="#">part-time</a>
+              </div>
+            </div>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Search</button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+      </div>
+    </div><!-- /.row -->
 
     <!-- Hover items -->
     <div class="container-fluid" id="footage">
@@ -111,25 +137,23 @@
 
       </pre>
       <div class="row justify-content-center">
-				<a href="./jobs.html">
-        	<div class="col-sm-2">
-          	<div class="do-item do-item-circle do-circle" id="c4">
-            	<img src="http://placehold.it/261x261" class="do-item do-circle">
-            	<div class="do-info-wrap do-circle">
-              	<div class="do-info">
-                	<div class="do-info-front do-circle">Jobs</div>
-                	<div class="do-info-back do-circle" id="c1">
-                  	<h3>Jobs</h3>
-                  	<div>Job Searching
-                    	<br />What is your ideal job?</div>
-                	</div>
-              	</div>
-            	</div>
-          	</div>
-					</a>
+        <div class="col-sm-2">
+          <div class="do-item do-item-circle do-circle" id="c4">
+            <img src="http://placehold.it/261x261" class="do-item do-circle">
+            <div class="do-info-wrap do-circle">
+              <div class="do-info">
+                <div class="do-info-front do-circle">Jobs</div>
+                <div class="do-info-back do-circle" id="c1">
+                  <h3>Jobs</h3>
+                  <div>Job Searching
+                    <br />What is your ideal job?</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-sm-2">
-					<a href="./events.html">
+					<a href="http://justinbieber.com">
           	<div class="do-item do-item-circle do-circle">
             	<img src="http://placehold.it/261x261" class="do-item do-circle">
             	<div class="do-info-wrap do-circle">
@@ -146,22 +170,20 @@
 					</a>
         </div>
         <div class="col-sm-2">
-					<a href="./referrals.html">
-          	<div class="do-item do-item-circle do-circle">
-            	<img src="http://placehold.it/261x261" class="do-item do-circle">
-            	<div class="do-info-wrap do-circle">
-              	<div class="do-info">
-                	<div class="do-info-front do-circle">Referral</div>
-                	<div class="do-info-back do-circle" id="c3">
-                  	<h3>Referral</h3>
-                  	<div>Social Network
-                    	<br />Know Someone? Ask!</div>
-                	</div>
-              	</div>
-            	</div>
-          	</div>
-        	</div>
-				</a>
+          <div class="do-item do-item-circle do-circle">
+            <img src="http://placehold.it/261x261" class="do-item do-circle">
+            <div class="do-info-wrap do-circle">
+              <div class="do-info">
+                <div class="do-info-front do-circle">Referral</div>
+                <div class="do-info-back do-circle" id="c3">
+                  <h3>Referral</h3>
+                  <div>Social Network
+                    <br />Know Someone? Ask!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
   </body>
