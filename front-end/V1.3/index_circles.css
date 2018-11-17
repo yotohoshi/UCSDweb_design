@@ -111,4 +111,22 @@
 
 #c4 {
   background: #000000;
+  top: 150%;
+}
+
+#c5 {
+  background: #000000;
+  top: 150%;
+}
+
+#c6 {
+  heights: 50%;
+}
+
+#divheight {
+  heights: 120px;
+}
+
+.top260 {
+  margin-top:260px;
 }
