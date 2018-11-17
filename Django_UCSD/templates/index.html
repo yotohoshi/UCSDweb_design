@@ -37,11 +37,14 @@
             </li>
             <li class="nav-item">
               <!-- TODO -->
-              <a class="nav-link" href="../accounts/login/">Login</a>
+              <a class="nav-link" href="{% url 'signup' %}">Login</a>
             </li>
             <li class="nav-item">
               <!-- TODO -->
               <a class="nav-link" href="{% url 'newuser_page' %}">SignUp</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'userlogout' %}">Logout</a>
             </li>
           </ul>
         </div>

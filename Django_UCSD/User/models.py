@@ -47,10 +47,7 @@ class User(models.Model):
                                                                                              message='Year of graduation should be more than 1970!')])
     major = models.ForeignKey(Major, on_delete=models.PROTECT)
     degree = models.ForeignKey(Degree, on_delete=models.PROTECT)
-    contact_email = models.CharField(max_length=60, unique=True, validators=[django.core.validators.EmailValidator
-        (
-        message='Please Use a valid email address!',
-        code=None, whitelist=None)])
+    contact_email = models.EmailField( verbose_name='email address', max_length=255, unique=True,)
     description = models.CharField(max_length=1000, validators=[django.core.validators.MinLengthValidator
                                                                 (50,
                                                                  message='Description must be at least 50 characters!')])
@@ -194,7 +191,7 @@ class User(models.Model):
         if type(favorite) != Event.models.Event:
             return False
         else:
-            self.favorite_events.add(favorite)
+            self.favorite_event.add(favorite)
         return True
 
     # remove_from_favorite
@@ -202,7 +199,7 @@ class User(models.Model):
         if type(favorite) != Event.models.Event:
             return False
         else:
-            self.favorite_events.remove(favorite)
+            self.favorite_event.remove(favorite)
             Event.models.Event(favorite).update_num_favorite()
         return True
 

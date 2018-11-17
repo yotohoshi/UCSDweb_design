@@ -64,7 +64,7 @@
         </div>
       </nav>
 
-      <!-- Searching and Hero Caption -->
+      <!-- Job Search Bar -->
       <div class="container-fluid">
         <div class="container hero">
           <!-- <h1 class="text-center">Plan Your Career Daily</h1> -->
@@ -75,8 +75,10 @@
         <div class="row justify-content-center">
 
           <div class="col-lg-6 col-centered">
+            <form action = "{% url "jobsearch" %}" method = "GET">
+                {% csrf_token %}
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Title of your job...">
+              <input type="text" name="keyword" class="form-control" placeholder="Title of your job..." value="{{ keyword }}">
               <div class="dropdown show">
                 <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Location
@@ -98,12 +100,49 @@
                 </div>
               </div>
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Search</button>
+                <button class="btn btn-default" type="submit">Search</button>
               </span>
             </div><!-- /input-group -->
+            </form>
           </div><!-- /.col-lg-6 -->
         </div>
       </div><!-- /.row -->
+
+
+
+      <!-- Job List -->
+      {% for job in jobs %}
+        <div class="row">
+          <div class="col">
+            <div class="Box">
+              <div class="Box-body">
+                <h5 class="Box-title">{{ job.job_position }}</h5>
+                <h6 class="Box-subtitle mb-2 text-muted">{{ job.company.company_name }}</h6>
+                <p class="Box-text">Location: {{ job.job_location}}</p>
+                <a href="#" class="Box-text">Major Requirement: {{job.get_major_str }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+    <!-- Pagination -->
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/job?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/job?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+
     </div>
   </body>
 

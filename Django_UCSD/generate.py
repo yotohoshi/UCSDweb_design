@@ -370,4 +370,5 @@ job10=Job.objects.create(job_position = "pusher",
 )
 job10.save()
 job10.Major_Require.add(major2)
+job10.Major_Require.add(major3)
 job10.Degree_Require.add(degree3)

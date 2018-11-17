@@ -5,7 +5,6 @@ from django.db import models
 
 import Company.models
 import User.models
-
 import string
 from math import ceil
 from nltk.corpus import stopwords
@@ -69,6 +68,10 @@ class Job(models.Model):
     # string representation of Job instances
     def __str__(self):
         return str(self.entry_creation)
+
+    @staticmethod
+    def get_all():
+        return list(Job.objects.all())
 
 
 

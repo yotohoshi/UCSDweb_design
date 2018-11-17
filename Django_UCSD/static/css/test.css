@@ -1,4 +1,14 @@
-body{background:#F9F9F9;}
+
+body {
+    background-image: url(../img/UCSD.jpeg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+    background-color: #003366;
+}
+
+
 #wrapper{padding:90px 15px;}
 .navbar-expand-lg .navbar-nav.side-nav{flex-direction: column;}
 .navbar{color:#0C1E41;}
