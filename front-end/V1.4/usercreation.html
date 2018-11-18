@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <!-- JQuery Bootstrap and relevant CDN -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="sidebar.css">
+  <link rel="stylesheet" href="test.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
+  <title>UCSD user creation page</title>
+</head>
+
+<body background-image="./UCSD.jpeg">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-6 justify-content-center">
+        <!-- Wrap all content in to a wrapper -->
+        <form class="form-horizontal">
+          <fieldset>
+
+            <!-- Form Name -->
+            <div class="jumbotron container-fluid">
+              <h1>User Creation</h1>
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="control-label" for="textinput">First name:</label>
+              <!-- <div class="col-md-4"> -->
+              <input id="textinput" name="textinput" type="text" placeholder="Enter your first name" class="form-control input-md" required="">
+
+              <!-- </div> -->
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="control-label" for="textinput">Last name:</label>
+              <div>
+                <input id="textinput" name="textinput" type="text" placeholder="Enter your last name" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="control-label" for="textinput">Username:</label>
+              <div>
+                <input id="textinput" name="textinput" type="text" placeholder="Enter your username" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+              <label class="control-label" for="passwordinput">Password:</label>
+              <div>
+                <input id="passwordinput" name="passwordinput" type="password" placeholder="Enter password" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+              <label class="control-label" for="passwordinput">Confirm password:</label>
+              <div>
+                <input id="passwordinput" name="passwordinput" type="password" placeholder="Confirm your password" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="control-label" for="textinput">Email:</label>
+              <div>
+                <input id="textinput" name="textinput" type="text" placeholder="Enter your email" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+              <label class="control-label" for="selectbasic">Degree:</label>
+              <div>
+                <select id="selectbasic" name="selectbasic" class="form-control">
+                  <option value="1">BS</option>
+                  <option value="2">BA</option>
+                  <option value="3">MS</option>
+                  <option value="4">MA</option>
+                  <option value="5">Ph.D</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+              <label class="control-label" for="selectbasic">Major:</label>
+              <div>
+                <select id="selectbasic" name="selectbasic" class="form-control">
+                  <option value="1">Computer Science</option>
+                  <option value="2">Computer Engineering</option>
+                  <option value="3">English</option>
+                  <option value="4">Chinese</option>
+                  <option value="5">Free Rider</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Multiple Checkboxes (inline) -->
+            <div class="form-group">
+              <label class="control-label" for="checkboxes">Accept term of conditions?</label>
+              <div>
+                <label class="checkbox-inline" for="checkboxes-0">
+                  <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
+                  Yes
+                </label>
+
+              </div>
+            </div>
+
+            <!-- Button (Double) -->
+            <div class="form-group">
+              <label class="control-label" for="button1id"></label>
+              <di>
+                <button id="button1id" name="button1id" class="btn btn-success">Submit</button>
+                <button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>
+            </div>
+      </div>
+
+      </fieldset>
+      </form>
+    </div>
+    <!-- col-lg-8 first -->
+  </div>
+  <!-- row -->
+  </div>
+  <!-- container-fluid -->
+</body>
+
+</html>
