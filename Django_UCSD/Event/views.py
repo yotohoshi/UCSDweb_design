@@ -16,6 +16,8 @@ class event(ListView):
     paginate_by = 5
 
     def get_queryset(self):
+        # if not self.request.user.is_authenticated:
+
         return Event.get_all()
 
     def get_all(self):
