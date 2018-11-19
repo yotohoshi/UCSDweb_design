@@ -5,12 +5,13 @@ $(document).ready(function () {
     //Load Slides with Capion
     $('#advertisement').load('banner.html');
     // Load SignUp PopUp
-    $('#signup-popup').load('signup.html');
+    $('#signup-popup').load('2.html');
     // Load search bar
     $('#searchbar').load('searchbar.html');
     // Load Footnote Circles
     $('#footnote').load('footnote_circles.html');
     // alert('success!!!');
+    $('#myModal').load('show');
 
     var x = document.getElementById("sign");
     if (x.style.display === "none") {
