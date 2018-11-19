@@ -17,7 +17,7 @@ def UserSignup(request):
     form = SignupForm(request.POST)
     if request.method == 'POST':
         if form.signup(request):
-            redirect('userlogin')
+            return redirect('userlogin')
         else:
             return render(request, 'signup.html', {'form': form})
     else:
@@ -25,15 +25,13 @@ def UserSignup(request):
         return render(request, 'signup.html', {'form': form})
 
 
-
-
 def UserLogin(request):
     if request.user.is_authenticated:
-        redirect('index')
+        return redirect('index')
     form = LoginForm(request.POST)
     if request.method == 'POST':
         if form.login(request):
-            redirect('index')
+            return redirect('index')
         else:
             return render(request, 'redirect_sign_in.html', {'form': form})
     else:
