@@ -12,19 +12,41 @@
 
 
   <li class="nav-item">
-    <!-- TODO -->
-    <button type="button" class="btn btn-outline-success" data-toggle="modal" href="">Referral</button>
-  </li>
-  <li class="nav-item">
-    <!-- TODO -->
-    <div class="col">
-      <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#myModal">Login</button>
-    </div>
-  </li>
-  <li class="nav-item">
-    <!-- TODO -->
-    <button type="button" class="btn btn-outline" data-toggle="modal" href="">SignUp</button>
-  </li>
+              <!-- TODO -->
+              <div class="col">
+              {% if user.is_authenticated %}
+              <a class="nav-link" href="#">Hello, {{ user }}</a>
+              {% else %}
+              <a class="nav-link" href="#">{{ user }}, Please sign in</a>
+              {% endif %}
+              </div>
+            </li>
+            <li class="nav-item">
+              <!-- TODO -->
+              <div class="col">
+              <a class="btn btn-outline-light" href="#">Referral
+                <span class="sr-only">(current)</span>
+              </a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <!-- TODO -->
+              <div class="col">
+              {% if user.is_authenticated %}
+              <a class="btn btn-outline-light" href="{% url 'userlogout' %}">Logout</a>
+              {% else %}
+                  <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#myModal">Sign in </button>
+              {% endif %}
+              </div>
+            </li>
+            {% if not user.is_authenticated %}
+            <li class="nav-item">
+              <!-- TODO -->
+              <div class="col">
+              <a class="btn btn-outline-light" href="{% url 'usersignup' %}">SignUp</a>
+              </div>
+            </li>
+            {% endif %}
 
 
 

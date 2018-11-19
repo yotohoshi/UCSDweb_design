@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.contrib.auth import views
 from . import views
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +27,10 @@ urlpatterns = [
     path('', include('Registration.urls')),
     path('', include('Job.urls')),
     path('user/', include('User.urls')),
+    path('templates/footnote_circles.html', TemplateView.as_view(template_name='footnote_circles.html')),
+    path('templates/banner.html', TemplateView.as_view(template_name='banner.html')),
+    path('templates/login.html', TemplateView.as_view(template_name='login.html')),
+    path('templates/index_top_right.html', TemplateView.as_view(template_name='index_top_right.html')),
+    # path('templates/searchbar.html', TemplateView.as_view(template_name='searchbar.html')),
+
 ]
