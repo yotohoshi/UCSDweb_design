@@ -16,8 +16,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HOME_TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-EVENT_TEMPLATE_DIR = os.path.join(BASE_DIR, 'Event/templates')
-REGISTRATION_TEMPLATE_DIR = os.path.join(BASE_DIR, 'Registration/templates')
 
 
 # Quick-start development settings - unsuitable for production

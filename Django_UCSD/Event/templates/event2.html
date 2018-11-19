@@ -18,7 +18,8 @@
   </head>
   <script>
       {% if not user.is_authenticated %}
-          alert("You must log in to view this page")
+          alert("You must log in to view this page");
+          window.location.replace("{% url 'signup' %}");
       {% endif %}
 
   </script>
@@ -84,7 +85,7 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
         </ol>
-         {% if events %}
+
         <div class="carousel-inner">
 
           <div class="carousel-item active">
@@ -154,9 +155,6 @@
                 {% endif %}
             </span>
         </div>
-    {% endif %}
-    {% else %}
-              <h1>No Events Available</h1>
     {% endif %}
 
     </div>
