@@ -7,6 +7,7 @@ from django.contrib.auth import logout
 urlpatterns = [
     # path('accounts/', include('django.contrib.auth.urls')),
 
-    url(r'^account/signin$', views.signup, name='signup'),
-    url(r'^account/logout/$', views.UserLogout, name='userlogout')
+    url(r'^account/signin$', views.UserLogin, name='userlogin'),
+    url(r'^account/logout/$', views.UserLogout, name='userlogout'),
+    url(r'^account/signup/$', views.UserSignup, name='usersignup'),
 ]

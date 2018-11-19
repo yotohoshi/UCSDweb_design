@@ -21,7 +21,7 @@
 <script>
       {% if not user.is_authenticated %}
           alert("You must log in to view this page");
-          window.location.replace("{% url 'signup' %}");
+          window.location.replace("{% url 'userlogin' %}?returnUrl={{request.path}}");
       {% endif %}
 
   </script>
@@ -30,43 +30,57 @@
   <!-- Wrap all content in to a wrapper -->
   <div id="wrapper" class="animate">
     <!-- Top navigation bar -->
-    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark" style=" background-color: #0C1E41;">
+    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark" style="background-color: #0C1E41;">
+      <!-- All TODO-ES  -->
+      <a class="navbar-brand" href="{% url 'index' %}">UCSD LOGO</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+      <!-- sidebar Content-->
+      <ur class=" navbar-nav animate side-nav" id="sidebarText"></ur>
+        <!-- Only Top Right of Nav Bar Content -->
+        <ul class="navbar-nav ml-md-auto d-md-flex" id="Topright">
 
-        <!-- All TODO-ES  -->
-        <a class="navbar-brand" href="#">LOGO</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav ml-md-auto d-md-flex">
-            <li class="nav-item">
+        <li class="nav-item">
               <!-- TODO -->
+              <div class="col">
               {% if user.is_authenticated %}
               <a class="nav-link" href="#">Hello, {{ user }}</a>
               {% else %}
+              <a class="nav-link" href="#">{{ user }}, Please sign in</a>
               {% endif %}
+              </div>
             </li>
             <li class="nav-item">
               <!-- TODO -->
-              <a class="nav-link" href="#">Referral
+              <div class="col">
+              <a class="btn btn-outline-light" href="#">Referral
                 <span class="sr-only">(current)</span>
               </a>
+              </div>
             </li>
             <li class="nav-item">
               <!-- TODO -->
+              <div class="col">
               {% if user.is_authenticated %}
-              <a class="nav-link" href="{% url 'userlogout' %}">Logout</a>
+              <a class="btn btn-outline-light" href="{% url 'userlogout' %}">Logout</a>
               {% else %}
-              <a class="nav-link" href="{% url 'signup' %}">Login</a>
+              <a class="btn btn-outline-light" href="{% url 'userlogin' %}">Sign in</a>
               {% endif %}
+              </div>
             </li>
+            {% if not user.is_authenticated %}
             <li class="nav-item">
               <!-- TODO -->
-              <a class="nav-link" href="{% url 'newuser_page' %}">SignUp</a>
+              <div class="col">
+              <a class="btn btn-outline-light" href="{% url 'usersignup' %}">SignUp</a>
+              </div>
             </li>
-          </ul>
-        </div>
-      </nav>
+            {% endif %}
+        </ul>
+      </div>
+    </nav>
     <!-- End of Nav Bar and Left Collapse -->
 
 
@@ -91,8 +105,8 @@
             <div class="dropdown-menu" aria-labelledby="filterButton">
                 <a class="dropdown-item" href="{% url 'event' %}">All</a>
                 <a class="dropdown-item" href="{% url 'event_list_today' %}">Today</a>
-                <a class="dropdown-item" href="{% url 'event_list_month' %}">This Week</a>
-                <a class="dropdown-item" href="{% url 'event_list_week' %}">This Month</a>
+                <a class="dropdown-item" href="{% url 'event_list_week' %}">This Week</a>
+                <a class="dropdown-item" href="{% url 'event_list_month' %}">This Month</a>
             </div>
           </div>
       </div>
