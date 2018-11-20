@@ -17,7 +17,7 @@ This link has full content of installation and setup of your surface devices.
 For non-surface devices only do ```sudo ./upug.sh``` then ```sudo ./coding_build_install.sh```.  
 Install your GPU driver from "software & update" of ubuntu.  
 * For all surface devices without dedicated GPU (dGPU: another GPU that serves your devices), only do ```setup.sh```.  
-* For all others, please see Approache1.  
+* For all others, please see Approach1.  
 
 ### Easy realtime coding solution:  
 * Install Atom. After this, install packages as you like.  
