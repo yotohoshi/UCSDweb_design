@@ -135,7 +135,7 @@ def password_reset(request, is_admin_site=False,
 
 
 def password_reset_done(request,
-                        template_name='registration/password_reset_done.html',
+                        template_name='REGHTML/password_reset_done.html',
                         current_app=None, extra_context=None):
     context = {
         'title': ('Password reset sent'),
@@ -153,7 +153,7 @@ def password_reset_done(request,
 @sensitive_post_parameters()
 @never_cache
 def password_reset_confirm(request, uidb64=None, token=None,
-                           template_name='registration/password_reset_confirm.html',
+                           template_name='REGHTML/password_reset_confirm.html',
                            token_generator=default_token_generator,
                            set_password_form=SetPasswordForm,
                            post_reset_redirect=None,

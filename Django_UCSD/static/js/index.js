@@ -7,9 +7,9 @@
     // Load SignUp PopUp
     $('#signin-popup').load('/templates/login.html');
     // Load search bar
-    $('#searchbar').load('localhost:8000/templates/searchbar.html');
+    $('#searchbar').load('/templates/searchbar.html');
     // Load Footnote Circles
-    $('#footnote').load('localhost:8000/templates/footnote_circles.html');
+    $('#footnote').load('/templates/footnote_circles.html');
     // alert('success!!!');
   });
 // End of Loading

@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
             integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>
+    <script src = "{% static 'js/base.js' %}"></script>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -31,7 +32,7 @@
 
         <!-- All TODO-ES  -->
 
-        <a class="navbar-brand" href="{% url 'index' %}">LOGO</a>
+        <a class="navbar-brand" href="{% url 'index' %}">UCSD LOGO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -44,6 +45,10 @@
 </div>
 
 <!-- TODO CONTENT BLOCKS -->
+
+{% block content %}
+
+{% endblock %}
 
 
 

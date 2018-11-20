@@ -32,4 +32,4 @@ def users(request):
 
 def profile(request):
 
-    return render(request, '../templates/profile.html', )
+    return render(request, 'profile.html', )
