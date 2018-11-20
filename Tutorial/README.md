@@ -22,6 +22,6 @@ Install your GPU driver from "software & update" of ubuntu.
 ### Easy realtime coding solution:  
 * Install Atom. After this, install packages as you like.  
 * Install teletype.  
-* Everyone can code one the same document at the SIMULTANEOUSLY like GOOGLE DOC AND WORD! Enjoy!  
+* Everyone can code on the same document SIMULTANEOUSLY like GOOGLE DOC AND WORD! Enjoy!  
 
 
