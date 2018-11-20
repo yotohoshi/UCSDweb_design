@@ -45,4 +45,33 @@ class SignupForm(forms.Form):
             else:
                 return True
 
+    def save(self):
+        email = self.cleaned_data['email']
+        password = self.cleaned_data['password']
+        Account.objects.create_user(email, password)
+
+
+class ChangePasswordForm(forms.Form):
+    old_password = forms.CharField(widget=forms.PasswordInput())
+    new_password = forms.CharField(widget=forms.PasswordInput())
+    confirmed_password = forms.CharField(widget=forms.PasswordInput())
+
+    def changepassword(self, request):
+        if self.is_valid():
+            old_password = self.cleaned_data['old_password']
+            new_password = self.cleaned_data['new_password']
+            confirmed_password = self.cleaned_data['confirmed_password']
+            email = request.user
+            user = authenticate(email=email, password=old_password)
+            if user is not None:
+                if new_password == confirmed_password:
+                    user.set_password(new_password)
+                    user.save()
+                    return True
+                else:
+                    self.add_error('confirmed_password', "confirm password is not the same")
+                    return False
+            else:
+                self.add_error('old_password', "Incorrect password")
+                return False
 

@@ -7,7 +7,7 @@
     // Load SignUp PopUp
     $('#signin-popup').load('templates/login.html');
     // Load search bar
-    $('#searchbar').get('searchbar.html');
+    $('#searchbar').load('templates/searchbar.html');
     // Load Footnote Circles
     $('#footnote').load('templates/footnote_circles.html');
     // alert('success!!!');

@@ -31,6 +31,14 @@ urlpatterns = [
     path('templates/banner.html', TemplateView.as_view(template_name='banner.html')),
     path('templates/login.html', TemplateView.as_view(template_name='login.html')),
     path('templates/index_top_right.html', TemplateView.as_view(template_name='index_top_right.html')),
-    # path('templates/searchbar.html', TemplateView.as_view(template_name='searchbar.html')),
+    path('templates/searchbar.html', TemplateView.as_view(template_name='searchbar.html')),
+    path('templates/sidebar.html', TemplateView.as_view(template_name='sidebar.html')),
+    path('templates/simple_keyword_search.html', TemplateView.as_view(template_name='simple_keyword_search.html')),
+    path('templates/personal_links.html', TemplateView.as_view(template_name='personal_links.html')),
+    path('templates/profile_right_upper.html', TemplateView.as_view(template_name='profile_right_upper.html')),
+    path('templates/profile_right_lower_about.html', TemplateView.as_view(template_name='profile_right_lower_about.html')),
+    path('templates/profile_right_lower_events.html', TemplateView.as_view(template_name='profile_right_lower_events.html')),
+
+
 
 ]
