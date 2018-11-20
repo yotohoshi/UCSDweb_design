@@ -20,9 +20,11 @@ class AccountManager(BaseUserManager):
         return account
 
     def create_superuser(self, email, password):
-        account = self.create_user(
-            email,
+        account = self.model(
+            email=self.normalize_email(email),
+            # password=password
         )
+        account.set_password(password)
         account.is_admin = True
         account.save()
         return account

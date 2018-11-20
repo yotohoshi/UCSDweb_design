@@ -10,7 +10,7 @@ from User.models import User
 def newuser_page(request):
     index_page = {'insert_index': "Welcome to UCSD !"}
 
-    return render(request, 'user3.html', context=index_page)
+    return render(request, 'profile.html', context=index_page)
 
 
 def users(request):
@@ -31,4 +31,5 @@ def users(request):
 
 
 def profile(request):
-    return render(request, 'profile.html')
+
+    return render(request, '../templates/profile.html', )
