@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.core import validators
-
-
+#from User.models import UserProfile
+from django.db.models.signals import post_save
 # This App has no models
 
 
@@ -31,12 +31,13 @@ class AccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser):
+
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
         unique=True,
     )
-
+    #user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     # password = models.CharField(max_length=30, validators=[validators.MinLengthValidator(8, message='Password must be at least 8 characters!')])
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
@@ -64,3 +65,4 @@ class Account(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+

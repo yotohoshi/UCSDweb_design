@@ -5,6 +5,8 @@ from django.core.exceptions import ValidationError
 import Company.models
 import Event.models
 import uuid
+from django.db.models.signals import post_save
+from Registration.models import Account
 from django import forms
 
 # Create your models here.
@@ -37,9 +39,13 @@ class Degree(models.Model):
 
 class User(models.Model):
     db_table = 'user',
+    acc = models.OneToOneField(Account, on_delete=models.CASCADE)
     UID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     F_Name = models.CharField(max_length=20)
     L_Name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.F_Name+""+self.L_Name
     yr_graduation = models.IntegerField(validators=[django.core.validators.MaxValueValidator
                                                     (2050,
                                                      message='Year of graduation should be less than 2050!'),
@@ -63,7 +69,7 @@ class User(models.Model):
                                 (8, message='Password must be at least 8 characters!')])
     # Re-implemented favorite table
     favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
-
+    #acc = models.OneToOneField(Account, on_delete=models.CASCADE)
     # Getters
 
     # get_user_by_name
@@ -204,6 +210,27 @@ class User(models.Model):
         return True
 
 
+class UserProfile(models.Model):
+
+    db_table = 'UserProfiles',
+   # user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = "hahaha"
+
+    #def __str__(self):
+     #   return self.user
+
+
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        user_profile = UserProfile.objects.create(user=kwargs['instance'])
+
+
+def create_ac(sender, **kwargs):
+    if kwargs['created']:
+        account = User.objects.create(acc=kwargs['instance'])
+
+
+post_save.connect(create_ac, sender=Account)
 # change_password TODO
 
 
