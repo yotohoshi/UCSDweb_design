@@ -46,14 +46,14 @@ class User(models.Model):
 
     def __str__(self):
         return self.F_Name+""+self.L_Name
-    yr_graduation = models.IntegerField(validators=[django.core.validators.MaxValueValidator
+    yr_graduation = models.IntegerField(null=True,validators=[django.core.validators.MaxValueValidator
                                                     (2050,
                                                      message='Year of graduation should be less than 2050!'),
                                                     django.core.validators.MinValueValidator(1970,
                                                                                              message='Year of graduation should be more than 1970!')])
-    major = models.ForeignKey(Major, on_delete=models.PROTECT)
-    degree = models.ForeignKey(Degree, on_delete=models.PROTECT)
-    contact_email = models.EmailField( verbose_name='email address', max_length=255, unique=True,)
+    major = models.ForeignKey(Major, null=True, on_delete=models.PROTECT)
+    degree = models.ForeignKey(Degree, null=True, on_delete=models.PROTECT)
+    contact_email = models.EmailField( verbose_name='email address',  null=True, max_length=255, unique=True,)
     description = models.CharField(max_length=1000, validators=[django.core.validators.MinLengthValidator
                                                                 (50,
                                                                  message='Description must be at least 50 characters!')])
