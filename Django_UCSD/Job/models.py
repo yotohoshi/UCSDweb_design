@@ -19,7 +19,15 @@ WORKAUTHS=(
     ('Permanent Resident','Permanent Resident'),
     ('F-1','F-1'),
     ('H1-B','H1-B'),
+    ('OPT', 'OPT'),
+    ('CPT', 'CPT'),
     ('Otherwise','Otherwise Authorized to Work'),
+)
+JOBTYPES=(
+    ('Intern', 'Intern'),
+    ('Full-time', 'Full-time'),
+    ('Part-time', 'Part-time'),
+    ('Free-lance', 'Free-lance'),
 )
 PUNCTUATIONS = set(string.punctuation)
 STOPWORDS = set(stopwords.words('english'))
@@ -49,8 +57,7 @@ class Job(models.Model):
     db_table = 'Job'
     JobID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     job_position = models.CharField(max_length=200)
-    type = models.IntegerField(validators=[django.core.validators.MaxValueValidator(1, message=None),
-                                           django.core.validators.MinValueValidator(0, message=None)])
+    type = models.CharField(max_length=100, choices=JOBTYPES)
     description = models.CharField(max_length=300)
     company = models.ForeignKey(Company.models.Company, on_delete=models.PROTECT)
     job_URL = models.URLField(max_length=300)
@@ -69,7 +76,7 @@ class Job(models.Model):
 
 
     @staticmethod
-    def general_Search(keywords, company_name, work_auth, maj, deg, start_date, end_date, location, pay):
+    def general_Search(keywords, work_auth, maj, deg, start_date, end_date, location, pay):
         result = [job for job in Job.objects.all()]
 
         # perform keyword search if keyword is not none
@@ -91,14 +98,6 @@ class Job(models.Model):
                         counter += 1
 
                 if counter >= threshold:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
-
-        # company name parameter is a string
-        if company_name is not None:
-            relevant_Jobs = []
-            for job in result:
-                if job.company.company_name == company_name:
                     relevant_Jobs.append(job)
             result = relevant_Jobs
 

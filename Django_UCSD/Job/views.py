@@ -6,7 +6,7 @@ from django.views.generic import (TemplateView,ListView,
 from django.core.paginator import Paginator
 from django import template
 from overrides import overrides
-from Job.forms import SearchForm
+from .forms import SearchingForm, FilterForm
 from Job.models import Job
 
 # Create your views here.
@@ -33,13 +33,20 @@ class JobSearch(ListView):
 
     @overrides
     def get_queryset(self):
-        form = SearchForm(self.request.GET or None)
+        form = SearchingForm(self.request.GET or None)
         if form.is_valid() and self.request.method == "GET":
             keyword = form.cleaned_data['keyword']
         else:
-            keyword = ''
+            keyword = 'google'
+            print(form.cleaned_data)
 
-        return Job.general_Search(keyword, None, None, None, None, None, None, None, None)
+        location = self.request.GET['location']
+        start = self.request.GET['start_date']
+        paid = self.request.GET['paid']
+        BS = self.request.GET['BS']
+        print(location, start, paid, BS)
+
+        return Job.general_Search(keyword, None, None, None, None, None, None, None)
 
 
 

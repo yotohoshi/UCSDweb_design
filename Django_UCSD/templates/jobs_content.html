@@ -28,7 +28,7 @@
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingOne">
             <!-- Event Description -->
-            <div class="card">
+            <div class="card shadow p-3 mb-5 bg-white">
               <div class="card-header align-items-center">
                 <div class="row">
                   <div class="col">
@@ -45,16 +45,16 @@
               </div>
               <div class="card-body">
                 <a href="event http">
-                  <h4 class="card-title">{{ job.job_popsition }}</h4>
+                  <h4 class="card-title">{{ job.job_position }}</h4>
                 </a>
-                <p class="card-text">{{ job.company }}</p>
+                <p class="card-text">{{ job.company.company_name }}</p>
+                <p class="card-text">{{ job.description }}</p>
                 <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign / Go</a>
               </div>
             </div>
           </div>
         </div>
           {% endfor %}
-
 
       </div>
     </div>

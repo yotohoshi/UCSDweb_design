@@ -10,10 +10,10 @@
 
 <form action = "{% url "jobsearch" %}" method = "GET">
   <div class="input-group">
-    <input type="text" class="form-control" name="keywords" placeholder="Title of your job...">
+    <input type="text" class="form-control" name="keyword" placeholder="Title of your job..." value="{{ form.keyword }}">
 
     <span class="input-group-btn">
-      <button class="btn btn-primary" type="button">Search</button>
+      <button class="btn btn-primary" type="submit">Search</button>
     </span>
   </div><!-- input-group -->
 </form>

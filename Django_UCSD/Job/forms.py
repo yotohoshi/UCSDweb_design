@@ -1,11 +1,18 @@
 from django import forms
+from .models import WORKAUTHS, JOBTYPES
+from User.models import Degree
+
+class SearchingForm(forms.Form):
+    keyword = forms.CharField(max_length=500)
 
 
-class SearchForm(forms.Form):
-
-    keyword = forms.CharField(label='Keyword', max_length=500)
-    company_name = forms.CharField(label='Company_name', max_length=200)
-    #major = forms.D
-    #degree =
-    #start_time =
-    #end_time =
+class FilterForm(forms.Form):
+    start_time = forms.DateInput
+    end_time = forms.DateInput
+    paid = forms.CheckboxInput
+    degree = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                             choices=Degree.objects.all())
+    work_auth = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                             choices=WORKAUTHS)
+    job_type = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                             choices=JOBTYPES)
