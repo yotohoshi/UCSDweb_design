@@ -30,7 +30,7 @@ def UserSignup(request):
     if request.method == 'POST':
         if form.signup(request):
             form.save()
-            return redirect('newuser_page')
+            return redirect('userlogin')
         else:
             return render(request, 'signup.html', {'form': form})
     else:
@@ -44,7 +44,10 @@ def UserLogin(request):
     form = LoginForm(request.POST)
     if request.method == 'POST':
         if form.login(request):
-            return redirect('index')
+            if request.user.is_new_user:
+                return redirect('new_user')
+            else:
+                return redirect('index')
         else:
             return render(request, 'redirect_sign_in.html', {'form': form})
     else:
@@ -123,7 +126,7 @@ def password_reset(request, is_admin_site=False,
         form = password_reset_form()
     context = {
         'form': form,
-        'title': 'Password reset',
+        'title': ('Password reset'),
     }
     if extra_context is not None:
         context.update(extra_context)
@@ -138,7 +141,7 @@ def password_reset_done(request,
                         template_name='REGHTML/password_reset_done.html',
                         current_app=None, extra_context=None):
     context = {
-        'title': ('Password reset sent'),
+        'title': ('Password reset sent')
     }
     if extra_context is not None:
         context.update(extra_context)
@@ -204,11 +207,11 @@ def password_reset_confirm(request, uidb64=None, token=None,
 
 
 def password_reset_complete(request,
-                            template_name='registration/password_reset_complete.html',
+                            template_name='REGHTML/password_reset_complete.html',
                             current_app=None, extra_context=None):
     context = {
         'login_url': '/account/signin ',
-        'title': 'Password reset complete',
+        'title': ('Password reset complete')
     }
     if extra_context is not None:
         context.update(extra_context)

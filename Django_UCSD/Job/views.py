@@ -17,7 +17,7 @@ register = template.Library()
 class JobDefault(ListView):
 
     context_object_name = 'jobs'
-    template_name = 'jobs.html'
+    template_name = 'jobs_content.html'
     paginate_by = 5
 
     @overrides
@@ -28,7 +28,7 @@ class JobDefault(ListView):
 class JobSearch(ListView):
 
     context_object_name = 'jobs'
-    template_name = 'jobs.html'
+    template_name = 'jobs_content.html'
     paginate_by = 5
 
     @overrides
@@ -37,9 +37,9 @@ class JobSearch(ListView):
         if form.is_valid() and self.request.method == "GET":
             keyword = form.cleaned_data['keyword']
         else:
-            keyword = 'Google'
+            keyword = ''
 
-        return Job.search_By_Keywords(keyword)
+        return Job.general_Search(keyword, None, None, None, None, None, None, None, None)
 
 
 
