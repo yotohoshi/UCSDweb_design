@@ -26,7 +26,7 @@ urlpatterns = [
     path('', include('Event.urls')),
     path('', include('Registration.urls')),
     path('', include('Job.urls')),
-    path('', include('User.urls')),
+    path('usr/', include('User.urls')),
     path('templates/footnote_circles.html', TemplateView.as_view(template_name='footnote_circles.html')),
     path('templates/banner.html', TemplateView.as_view(template_name='banner.html')),
     path('templates/login.html', TemplateView.as_view(template_name='login.html')),
