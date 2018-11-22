@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from . import forms
 from User.forms import NewUserForm
 from Django_UCSD import views
-from User.models import User
+from User.models import User, search_By_Keywords
 # Create your views here.
 
 

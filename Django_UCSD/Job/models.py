@@ -5,7 +5,7 @@ import django.core.validators
 from django.db import models
 
 import Company.models
-import User.models
+from User.models import Major, Degree, User
 import string
 from math import ceil
 from nltk.corpus import stopwords
@@ -60,8 +60,8 @@ class Job(models.Model):
     job_location = models.CharField(max_length=100)
     job_Work_Auth = models.CharField(max_length=100, choices=WORKAUTHS)
     job_paid = models.BooleanField
-    Major_Require = models.ManyToManyField(User.models.Major, symmetrical=False, blank=True)
-    Degree_Require = models.ManyToManyField(User.models.Degree, symmetrical=False, blank=True)
+    Major_Require = models.ManyToManyField(Major, symmetrical=False, blank=True)
+    Degree_Require = models.ManyToManyField(Degree, symmetrical=False, blank=True)
 
     # string representation representation of Job instances
     def __str__(self):
@@ -153,12 +153,12 @@ class Job(models.Model):
 
         return result
 
+
     @staticmethod
     def get_all():
         return list(Job.objects.all())
 
-
-
+    @staticmethod
     def search_By_Keywords(keywords):
         if type(keywords) != str:
             return False
@@ -182,8 +182,6 @@ class Job(models.Model):
                 if counter >= threshold:
                     relavent_Jobs.append(job)
             return relavent_Jobs
-
-
 
     @staticmethod
     def get_Job_Company(company):
@@ -224,7 +222,7 @@ class Job(models.Model):
 
     @staticmethod
     def get_Job_Major_Require(major):
-        if type(major) != User.models.Major:
+        if type(major) != Major:
             return False
         else:
             return Job.objects.filter(Major_Require=major)
@@ -234,7 +232,7 @@ class Job(models.Model):
 
     @staticmethod
     def get_Job_Degree_Require(degree):
-        if type(degree) != User.models.Degree:
+        if type(degree) != Degree:
             return False
         else:
             return Job.objects.filter(Degree_Require=degree)
@@ -247,7 +245,7 @@ class Job(models.Model):
         if type(duration) != str:
             return False
         else:
-            return Job.object.filter(job_duration=duration)
+            return Job.objects.filter(job_duration=duration)
 
     # get_Job_location
 
@@ -256,7 +254,7 @@ class Job(models.Model):
         if type(location) != str:
             return False
         else:
-            return Job.object.filter(job_location=location)
+            return Job.objects.filter(job_location=location)
 
 
     # get_Job_paid
@@ -266,7 +264,7 @@ class Job(models.Model):
         if type(paid) != bool:
             return False
         else:
-            return Job.object.filter(job_paid=paid)
+            return Job.objects.filter(job_paid=paid)
 
 
     # setter
@@ -305,7 +303,7 @@ class Job(models.Model):
 
 
     def set_major(self, major):
-        if type(major) != User.models.Major:
+        if type(major) != Major:
             return False
         else:
             self.Major_Require = major
@@ -316,7 +314,7 @@ class Job(models.Model):
 
 
     def set_degree(self, degree):
-        if type(degree) != User.models.Degree:
+        if type(degree) != Degree:
             return False
         else:
             self.Degree_Require = degree
@@ -343,3 +341,34 @@ class Job(models.Model):
         else:
             self.job_paid = paid
             return True
+
+
+class Referral(models.Model):
+    referral_ID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    ref_provider = models.ForeignKey(User, on_delete=models.PROTECT)
+    referral_job = models.ForeignKey(Job, on_delete=models.PROTECT)
+    referral_description = models.CharField(max_length=300)
+    resume_require = models.BooleanField
+
+
+# getter
+
+
+# get_provider
+
+
+def get_provider(provider):
+    if type(provider) != User:
+        return False
+    else:
+        return Referral.objects.all.filter(ref_provider=provider)
+
+
+# setter
+
+def set_resume_require(self, res_require):
+    if type(res_require) != bool:
+        return False
+    else:
+        self.resume_require = res_require
+        return True

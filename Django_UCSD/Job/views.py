@@ -37,7 +37,7 @@ class JobSearch(ListView):
         if form.is_valid() and self.request.method == "GET":
             keyword = form.cleaned_data['keyword']
         else:
-            keyword = 'Google'
+            keyword = ''
 
         return Job.search_By_Keywords(keyword)
 
