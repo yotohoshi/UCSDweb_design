@@ -51,3 +51,9 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+
+# Django pyc
+*.pyc
+
+# module
+node_module/
