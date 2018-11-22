@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% extends 'jobs.html' %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  </meta>
+  <title></title>
+</head>
+
+<body>
+
+
+
+
+
+  <!-- Events Display template -->
+  {% block jobs %}
+  <pre>
+
+    </pre>
+  <div class="row justify-content-center">
+    <div class="col-9">
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+        <!-- Jobs -->
+        {% for job in jobs %}
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <!-- Event Description -->
+            <div class="card">
+              <div class="card-header align-items-center">
+                <div class="row">
+                  <div class="col">
+                    <h6>Location: {{ job.job_location  }}/Starts:{{ job.job_start }}, Ends:{{ job.job_end }}</h6>
+                  </div>
+                  <div class="col">
+                    <form class="foat-right" action="index.html" method="post">
+                      <button type="button" class="btn btn-default float-right" id="icon1">
+                        <i class="fa fa-star-o" aria-hidden="false"></i>
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <a href="event http">
+                  <h4 class="card-title">{{ job.job_popsition }}</h4>
+                </a>
+                <p class="card-text">{{ job.company }}</p>
+                <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign / Go</a>
+              </div>
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+
+
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+
+
+</body>
+
+</html>
