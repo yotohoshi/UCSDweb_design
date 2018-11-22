@@ -39,6 +39,7 @@ class Account(AbstractBaseUser):
     )
     #user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     # password = models.CharField(max_length=30, validators=[validators.MinLengthValidator(8, message='Password must be at least 8 characters!')])
+    is_new_user = True
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 

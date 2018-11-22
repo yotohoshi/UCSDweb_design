@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
     <title>Sign Up</title>
 </head>
 
@@ -25,7 +26,7 @@
 <!-- Wrap all content in to a wrapper -->
 <div id="wrapper" class="animate">
     <!-- Top navigation bar -->
-    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark" style=" background-color: #0C1E41;">
+    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark">
         <!-- Hamburger icon -->
         <span class="navbar-toggler-icon leftmenutrigger"></span>
 
@@ -67,7 +68,7 @@
                                     <input type="text" class="form-control" name="email" placeholder="Your email"
                                            required="required">
                                     </div>
-                                    <div class="col col-12"><p>{{ form.email.errors }}</p></div>
+                                    <div class="col col-12"><p id="error">{{ form.email.errors }}</p></div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -77,7 +78,7 @@
                                     <input type="password" class="form-control" name="password" placeholder="Password"
                                            required="required">
                                     </div>
-                                    <div class="col col-12"><p>{{ form.password.errors }}</p></div>
+                                    <div class="col col-12"><p id="error">{{ form.password.errors }}</p></div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -87,7 +88,7 @@
                                     <input type="password" class="form-control" name="confirmed_password" placeholder="Confirm Password"
                                            required="required">
                                     </div>
-                                    <div class="col col-12"><p>{{ form.confirmed_password.errors }}</p></div>
+                                    <div class="col col-12"><p id="error">{{ form.confirmed_password.errors }}</p></div>
                                 </div>
                             </div>
                             <div class="form-group">

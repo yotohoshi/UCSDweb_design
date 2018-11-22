@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'Company',
     'Event',
     'Job',
-    'Referral',
     'Registration',
 ]
 

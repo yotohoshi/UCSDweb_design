@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . import forms
 from User.forms import NewUserForm
 from Django_UCSD import views
-from User.models import User
+from User.models import User, search_By_Keywords
 # Create your views here.
 
 
@@ -21,13 +21,15 @@ def users(request):
         print("OK wor")
 
         if form.is_valid():
-            form.save(commit=True)
-
-            return views.index(request)
+            usr = form.save(commit=False)
+            usr.acc = request.user
+            usr.save()
+            return redirect('profile')
         else:
             print('ERROR FORM INVALID')
-
-    return render(request, '../templates/registration/user.html', {'form': form})
+            return render(request, '../templates/registration/user.html', {'form': form})
+    else:
+        return render(request, '../templates/registration/user.html', {'form': form})
 
 
 def profile(request):

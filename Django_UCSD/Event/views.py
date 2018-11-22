@@ -8,18 +8,25 @@ from django.shortcuts import HttpResponse, redirect
 from overrides import overrides
 
 
-class event(ListView):
+class event(TemplateView):
 
     context_object_name = 'events'
     model = Event
-    template_name = 'event_content.html'
-    paginate_by = 5
+    template_name = 'event.html'
+    paginate_by = 9
     # template_name = 'event_list.html'
     # all_events = Event.get_all()
     # top5 = Event.get_top_five()
     # paginator = Paginator(all_events, 5)
 
 
+
+class EventListView(ListView):
+
+    context_object_name = 'events'
+    model = Event
+    template_name = 'event_content.html'
+    paginate_by = 7
     def get_queryset(self):
         return Event.get_all()
 
@@ -28,15 +35,6 @@ class event(ListView):
 
     def top5(self):
         return Event.get_top_five()
-
-    def by_month(self, request):
-        return Event.all_filter_by_month()
-
-    def by_week(self):
-        return Event.all_filter_by_week()
-
-    def by_today(self):
-        return Event.all_filter_by_today()
 
 
 
