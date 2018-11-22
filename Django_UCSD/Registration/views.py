@@ -30,7 +30,7 @@ def UserSignup(request):
     if request.method == 'POST':
         if form.signup(request):
             form.save()
-            return redirect('new_user')
+            return redirect('userlogin')
         else:
             return render(request, 'signup.html', {'form': form})
     else:
@@ -44,7 +44,10 @@ def UserLogin(request):
     form = LoginForm(request.POST)
     if request.method == 'POST':
         if form.login(request):
-            return redirect('index')
+            if request.user.is_new_user:
+                return redirect('new_user')
+            else:
+                return redirect('index')
         else:
             return render(request, 'redirect_sign_in.html', {'form': form})
     else:
