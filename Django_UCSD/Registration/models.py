@@ -39,6 +39,7 @@ class Account(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
+    last_searched_keyword = models.CharField(max_length=1000, default=None, null=True, blank=True)
     #user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     # password = models.CharField(max_length=30, validators=[validators.MinLengthValidator(8, message='Password must be at least 8 characters!')])
     is_new_user = models.BooleanField(default=True)
@@ -72,3 +73,15 @@ class Account(AbstractBaseUser):
     def set_new_user(self):
         self.is_new_user = False
         self.save()
+
+    def save_keyword(self, keyword):
+        self.last_searched_keyword = keyword
+        self.save()
+
+    def erase_keyword(self):
+        self.last_searched_keyword = None
+        self.save()
+
+    def get_keyword(self):
+        return self.last_searched_keyword
+

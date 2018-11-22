@@ -4,7 +4,7 @@ $(document).ready(
     $('#Topright').load("/templates/index_top_right.html");
     $('#keywordsearch').load("/templates/simple_keyword_search.html");
     //$('#contents').load("/templates/jobs_content.html");
-    $('#adfilter').load("/templates/adfilter.html");
+    //$('#adfilter').load("/templates/adfilter.html");
     //  alert("YES");
     $('.leftmenutrigger').on('click', function(e) {
       $('.side-nav').toggleClass("open");

@@ -33,6 +33,7 @@ PUNCTUATIONS = set(string.punctuation)
 STOPWORDS = set(stopwords.words('english'))
 STEMMER = PorterStemmer()
 RELEVANT_COEFFICIENT = 0.5
+INFINITY = 999999
 
 
 ##################################### Helper Methods
@@ -62,8 +63,8 @@ class Job(models.Model):
     company = models.ForeignKey(Company.models.Company, on_delete=models.PROTECT)
     job_URL = models.URLField(max_length=300)
     job_duration = models.CharField(max_length=100)
-    job_start = models.DateField(auto_now=False, auto_created=False, auto_now_add=False)
-    job_end = models.DateField(auto_now=False, auto_created=False, auto_now_add=False)
+    job_start = models.DateField(auto_created=True, auto_now_add=True)
+    job_end = models.DateField(auto_created=True, auto_now_add=True)
     job_location = models.CharField(max_length=100)
     job_Work_Auth = models.CharField(max_length=100, choices=WORKAUTHS)
     job_paid = models.BooleanField
@@ -76,7 +77,7 @@ class Job(models.Model):
 
 
     @staticmethod
-    def general_Search(keywords, work_auth, maj, deg, start_date, end_date, location, pay):
+    def general_Search(keywords, work_auth, degs, start_date, end_date, location, pay, type):
         result = [job for job in Job.objects.all()]
 
         # perform keyword search if keyword is not none
@@ -85,7 +86,10 @@ class Job(models.Model):
             keywords = string_preprocess(keywords)
 
             relevant_Jobs = []
-            threshold = ceil(RELEVANT_COEFFICIENT * len(keywords))
+            if len(keywords) == 0:
+                threshold = INFINITY
+            else:
+                threshold = ceil(RELEVANT_COEFFICIENT * len(keywords))
             for job in result:
                 # description pre-processing
                 full_description = job.description + ' ' + job.job_position + ' ' + job.company.company_name
@@ -105,24 +109,18 @@ class Job(models.Model):
         if work_auth is not None:
             relevant_Jobs = []
             for job in result:
-                if job.job_Work_Auth == work_auth:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
-
-        # major parameter is a string
-        if maj is not None:
-            relevant_Jobs = []
-            for job in result:
-                if maj in [mj.major for mj in job.Major_Require.all()]:
-                    relevant_Jobs.append(job)
+                for auth in work_auth:
+                    if job.job_Work_Auth == auth:
+                        relevant_Jobs.append(job)
             result = relevant_Jobs
 
         # degree parameter is a string
-        if deg is not None:
+        if degs is not None:
             relevant_Jobs = []
             for job in result:
-                if deg in [dg.degree for dg in job.Degree_Require.all()]:
-                    relevant_Jobs.append(job)
+                for deg in degs:
+                    if deg in [dg.degree for dg in job.Degree_Require.all()]:
+                        relevant_Jobs.append(job)
             result = relevant_Jobs
 
         # start_date parameter is a number

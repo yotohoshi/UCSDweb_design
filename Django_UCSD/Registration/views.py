@@ -58,6 +58,7 @@ def UserLogin(request):
 def UserLogout(request):
     if not request.user.is_authenticated:
         return redirect('userlogin')
+    request.user.erase_keyword()
     logout(request)
     return redirect('index')
 

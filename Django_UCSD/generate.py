@@ -56,6 +56,9 @@ major22 = Major.objects.create(major="NO LIMITED")
 major22.save()
 major23 = Major.objects.create(major="ELECTRONIC SPORTS")
 major23.save()
+major24 = Major.objects.create(major="COMMUNICATION")
+major24.save()
+
 
 degree1 = Degree.objects.create(degree="BS")
 degree1.save()
@@ -97,6 +100,18 @@ company12 =Company.objects.create(company_name="dudu",description="Dudu spimds c
 company12.save()
 company13 =Company.objects.create(company_name="Disney",description="The best paradise in the world!")
 company13.save()
+company14 =Company.objects.create(company_name="the national museum of american history",description="Are you interested in learning more about the inner workings of history museums? The Smithsonian's National Museum of American History (NMAH) offers formal internships to qualified applicants who are excited to learn!")
+company14.save()
+company15 =Company.objects.create(company_name="snapchat",description="Snap Inc. is a camera company. We believe that reinventing the camera represents our greatest opportunity to improve the way people live and communicate. Our products empower people to express themselves, live in the moment, learn about the world, and have fun together.")
+company15.save()
+company16 =Company.objects.create(company_name="riot games",description="The world most famous game: league of legends")
+company16.save()
+company17 =Company.objects.create(company_name="student organization",description="UCSD student organization, differnet events and opportunities.")
+company17.save()
+company18 =Company.objects.create(company_name="Nsk Steering Systems America",description="NSK Corporation in Clarinda, Iowa is looking to hire multiple Environmental Health and Safety Interns for our Summer, 2019 program. These are paid positions. The program will run from Mid May through the end of August.")
+company18.save()
+
+
 
 
 
@@ -453,6 +468,391 @@ event30=Event.objects.create(
     num_views = 102385,
     num_favorites=93872)
 event30.save()
+
+event31=Event.objects.create(
+    event_name="lol experience sharing",
+    date = "2018-12-8",
+    time = "21:15",
+    company = company16,
+    location = "UCSD",
+    type = 0,
+    description = "Want to know more people who like to play league of legends, come and share!!",
+    num_views = 3487,
+    num_favorites=2913)
+event31.save()
+
+event32=Event.objects.create(
+    event_name="lol training",
+    date = "2018-11-25",
+    time = "20:10",
+    company = company16,
+    location = "UCSD",
+    type = 0,
+    description = "Practice your lol skill with many pro players!",
+    num_views = 3847,
+    num_favorites=3103)
+event32.save()
+
+event32=Event.objects.create(
+    event_name="china culture sharing",
+    date = "2019-3-22",
+    time = "4:15",
+    company = company17,
+    location = "UCSD",
+    type = 1,
+    description = "Want to learn chinese culture and know people came from China?",
+    num_views = 1238,
+    num_favorites=984)
+event32.save()
+
+
+event33=Event.objects.create(
+    event_name="chinese people study sharing",
+    date = "2018-3-23",
+    time = "3:15",
+    company = company17,
+    location = "UCSD",
+    type = 0,
+    description = "Try to learn how to study fast! And share the tips with others!",
+    num_views = 3487,
+    num_favorites=2913)
+event33.save()
+
+
+event34=Event.objects.create(
+    event_name="cross culture sharing",
+    date = "2018-2-17",
+    time = "5:50",
+    company = company17,
+    location = "UCSD",
+    type = 1,
+    description = "Meet people from different countries and have fun!",
+    num_views = 3328,
+    num_favorites=1845)
+event34.save()
+
+
+event35=Event.objects.create(
+    event_name="cross culture sex party",
+    date = "2018-1-1",
+    time = "23:50",
+    company = company17,
+    location = "UCSD",
+    type = 0,
+    description = "oh yeah, you know what i am talking about!",
+    num_views = 1002392,
+    num_favorites=983647)
+event35.save()
+
+
+event36=Event.objects.create(
+    event_name="Disney global business workshop",
+    date = "2018-12-15",
+    time = "9:50",
+    company = company13,
+    location = "UCSD",
+    type = 1,
+    description = "Study how Disney's business work and change the world!",
+    num_views = 7634,
+    num_favorites=6734)
+event36.save()
+
+
+event37=Event.objects.create(
+    event_name="Disney tech sharing",
+    date = "2018-12-20",
+    time = "11:50",
+    company = company13,
+    location = "UCSD",
+    type = 0,
+    description = "Learn how engineering in Disney support the team and change the world!",
+    num_views = 5285,
+    num_favorites=4828)
+event37.save()
+
+event38=Event.objects.create(
+    event_name="Disney global management workshop",
+    date = "2019-4-3",
+    time = "12:50",
+    company = company13,
+    location = "UCSD",
+    type = 1,
+    description = "Learn how Disney manages all employees logically!",
+    num_views = 4983,
+    num_favorites=4562)
+event38.save()
+
+event39 =Event.objects.create(
+    event_name="snapchat intern sharing",
+    date = "2019-2-21",
+    time = "14:45",
+    company = company15,
+    location = "UCSD",
+    type = 0,
+    description = "Come and hand in your resume to snapchat employees.",
+    num_views = 3726,
+    num_favorites=3469)
+event39.save()
+
+event40 =Event.objects.create(
+    event_name="snapchat tech workshop",
+    date = "2019-2-22",
+    time = "15:45",
+    company = company15,
+    location = "UCSD",
+    type = 1,
+    description = "Learn the newest tech at snapchat.",
+    num_views = 3562,
+    num_favorites=2761)
+event40.save()
+
+event41 =Event.objects.create(
+    event_name="snapchat art workshop",
+    date = "2019-2-23",
+    time = "17:45",
+    company = company15,
+    location = "UCSD",
+    type = 0,
+    description = "Learn how to design beautiful front-end by using PHP and html!",
+    num_views = 3289,
+    num_favorites=2381)
+event41.save()
+
+event42 =Event.objects.create(
+    event_name="snapchat big data workshop",
+    date = "2019-1-28",
+    time = "15:15",
+    company = company15,
+    location = "UCSD",
+    type = 1,
+    description = "Pro engineers in snapchat teach you how to analyze big data!",
+    num_views = 2983,
+    num_favorites=2718)
+event42.save()
+
+event43 =Event.objects.create(
+    event_name="snapchat machine learning workshop",
+    date = "2018-12-27",
+    time = "20:15",
+    company = company15,
+    location = "UCSD",
+    type = 0,
+    description = "Learn how to apply machine learning algorithms in real world!",
+    num_views = 5786,
+    num_favorites=4785)
+event43.save()
+
+event44 =Event.objects.create(
+    event_name="snapchat computer vision workshop",
+    date = "2018-12-7",
+    time = "21:15",
+    company = company15,
+    location = "UCSD",
+    type = 1,
+    description = "Learn how to apply computer vision algorithms in real world!",
+    num_views = 3289,
+    num_favorites=2569)
+event44.save()
+
+event45 =Event.objects.create(
+    event_name="snapchat educational workshop",
+    date = "2018-12-12",
+    time = "10:15",
+    company = company15,
+    location = "UCSD",
+    type = 0,
+    description = "Help student learn more about snapchat, and know the first-hand information about recruiting!",
+    num_views = 2873,
+    num_favorites=2465)
+event45.save()
+
+event46 =Event.objects.create(
+    event_name="snapchat c++ workshop",
+    date = "2019-2-7",
+    time = "9:20",
+    company = company15,
+    location = "UCSD",
+    type = 1,
+    description = "Learn how to correctly program in c++!",
+    num_views = 3265,
+    num_favorites=2983)
+event46.save()
+
+
+event47 =Event.objects.create(
+    event_name="snapchat python workshop",
+    date = "2019-2-8",
+    time = "9:15",
+    company = company15,
+    location = "UCSD",
+    type = 0,
+    description = "Learn how to correctly program in python!",
+    num_views = 1092,
+    num_favorites=982)
+event47.save()
+
+
+event48 =Event.objects.create(
+    event_name="snapchat java workshop",
+    date = "2019-2-9",
+    time = "9:15",
+    company = company15,
+    location = "UCSD",
+    type = 1,
+    description = "Learn how to correctly program in java!",
+    num_views = 893,
+    num_favorites=782)
+event48.save()
+
+event49 =Event.objects.create(
+    event_name="snapchat coding contest",
+    date = "2019-2-15",
+    time = "10:40",
+    company = company15,
+    location = "UCSD",
+    type = 0,
+    description = "Attend the most funny coding contest to prove yourself!",
+    num_views = 1923,
+    num_favorites=1453)
+event49.save()
+
+event50 =Event.objects.create(
+    event_name="snapchat algorithm conference",
+    date = "2019-2-25",
+    time = "11:35",
+    company = company15,
+    location = "UCSD",
+    type = 1,
+    description = "Dicuss the newest algorithm with professional engineerings in snapchat!",
+    num_views = 2156,
+    num_favorites=1839)
+event50.save()
+
+event51 =Event.objects.create(
+    event_name="introduction to oil painting",
+    date = "2019-1-7",
+    time = "9:20",
+    company = company17,
+    location = "UCSD",
+    type = 0,
+    description = "Learn how to draw oil painting, ",
+    num_views = 4829,
+    num_favorites=3129)
+event51.save()
+
+event52 =Event.objects.create(
+    event_name="zoo tour guide training",
+    date = "2019-2-28",
+    time = "8:20",
+    company = company17,
+    location = "UCSD",
+    type = 1,
+    description = "Teach you how to get an intern at zoo, learn different knowledges about animals.",
+    num_views = 3740,
+    num_favorites=1893)
+event52.save()
+
+event53 =Event.objects.create(
+    event_name="botany learning",
+    date = "2019-1-21",
+    time = "9:30",
+    company = company17,
+    location = "UCSD",
+    type = 0,
+    description = "Want to know more about different plants in ucsd, join us and have fun!",
+    num_views = 637,
+    num_favorites=541)
+event53.save()
+
+
+event54 =Event.objects.create(
+    event_name="car selling conference",
+    date = "2019-2-13",
+    time = "10:30",
+    company = company17,
+    location = "UCSD",
+    type = 1,
+    description = "Come and learn how to be the middle man in selling cars.",
+    num_views = 473,
+    num_favorites=382)
+event54.save()
+
+
+event55 =Event.objects.create(
+    event_name="car selling conference",
+    date = "2019-2-13",
+    time = "10:30",
+    company = company17,
+    location = "UCSD",
+    type = 1,
+    description = "Come and learn how to be the middle man in selling cars.",
+    num_views = 473,
+    num_favorites=382)
+event55.save()
+
+event56 =Event.objects.create(
+    event_name="starbuck employee training",
+    date = "2018-12-6",
+    time = "8:45",
+    company = company17,
+    location = "UCSD",
+    type = 0,
+    description = "Learn how to take care of different customers.",
+    num_views = 573,
+    num_favorites=482)
+event56.save()
+
+
+event57 =Event.objects.create(
+    event_name="flower recognition workshop",
+    date = "2019-2-11",
+    time = "9:00",
+    company = company17,
+    location = "UCSD",
+    type = 1,
+    description = "Botany Phd student teaches you how to classify different flowers in the campus!",
+    num_views = 475,
+    num_favorites=452)
+event57.save()
+
+event58 =Event.objects.create(
+    event_name="intro to ucsd environment workshop",
+    date = "2018-12-11",
+    time = "7:15",
+    company = company18,
+    location = "UCSD",
+    type = 0,
+    description = "Pro teaches you to understand the environment and how to improve it in ucsd!",
+    num_views = 573,
+    num_favorites=442)
+event58.save()
+
+event59 =Event.objects.create(
+    event_name="environment protect workshop",
+    date = "2018-12-16",
+    time = "9:45",
+    company = company18,
+    location = "UCSD",
+    type = 1,
+    description = "Teach you how to protect the environment together and save the resources in daily life.",
+    num_views = 374,
+    num_favorites=287)
+event59.save()
+
+event60 =Event.objects.create(
+    event_name="environment clean workshop",
+    date = "2018-12-3",
+    time = "10:10",
+    company = company18,
+    location = "UCSD",
+    type = 0,
+    description = "Learn how to clean and improve our living surroundings every day.",
+    num_views = 548,
+    num_favorites=348)
+event60.save()
+
+
+
 
 
 
@@ -1110,3 +1510,225 @@ job45=Job.objects.create(job_position = "User Experience Designer, Intern",
 job45.save()
 job45.Major_Require.add(major17)
 job45.Degree_Require.add(degree4)
+
+
+job46=Job.objects.create(job_position = "Site Reliability Engineers",
+    type = 0,
+    description = "Fill the mission-critical role of ensuring that our complex, large-scale systems are healthy, monitored, automated, and designed to scale. You'll use your interest in site operations and your experience writing code to work closely with our development teams from the early stages of design all the way through identifying and resolving production issues.",
+    company = company6,
+    job_URL = "https://careers.linkedin.com/students/Internships/Technical",
+    job_duration = "12month",
+    job_location = "US",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job46.save()
+job46.Major_Require.add(major2)
+job46.Degree_Require.add(degree1)
+
+job47=Job.objects.create(job_position = "Systems and Infrastructure Engineer",
+    type = 1,
+    description = "Scale LinkedIn's infrastructure to handle massive growth in membership, traffic, and data as we continue to experience dramatic growth in the usage of our products with a focus in Data Infrastructure, Search, Network and Analytics Platforms, Service Platforms and Systems/Algorithms that generate relevant Content and Community.",
+    company = company6,
+    job_URL = "https://careers.linkedin.com/students/Internships/Technical",
+    job_duration = "12month",
+    job_location = "US",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job47.save()
+job47.Major_Require.add(major15)
+job47.Degree_Require.add(degree1)
+
+
+job48=Job.objects.create(job_position = "Systems and Infrastructure Engineer",
+    type = 0,
+    description = "Manage and drive global product requirements, develop end-to-end project plans, and lead functional and technical delivery of key team-, org-, and company-wide initiatives. Work with the product development team and other cross-functional teams to bring product features live to the site.",
+    company = company6,
+    job_URL = "https://careers.linkedin.com/students/Internships/Technical",
+    job_duration = "12month",
+    job_location = "US",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job48.save()
+job48.Major_Require.add(major1)
+job48.Degree_Require.add(degree1)
+
+
+job49=Job.objects.create(job_position = "Machine Learning and Relevance",
+    type = 1,
+    description = "Work on our massive semi-structured text, graph and user activity data sets. Build highly scalable, highly performant social graph engines, state-of-the-art full-text search engines, and platforms for recommendation and applied data analytics. You will utilize data mining, information retrieval, machine learning and perfect your strong systems orientation skills. ",
+    company = company6,
+    job_URL = "https://careers.linkedin.com/students/Internships/Technical",
+    job_duration = "12month",
+    job_location = "US",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job49.save()
+job49.Major_Require.add(major3)
+job49.Degree_Require.add(degree4)
+
+
+job50=Job.objects.create(job_position = "GM , Global Catalog Business Development, AWS Marketplace & Service Catalog",
+    type = 1,
+    description = "Amazon Web Services (AWS) is a dynamic and rapidly growing business within Amazon and the leader in providing secure, reliable, scalable, and innovative cloud services that help millions of customers across the globe scale and grow! As part of these services, AWS provides innovate ways for customers to modernize and manage their applications as part of migration to cloud. AWS Marketplace & Service Catalog are two services built to enable procurement, provisioning and governance of third party software to be run on AWS. The business works with over 1,300 software vendors, has over 190,000 active customers, and runs globally.",
+    company = company5,
+    job_URL = "https://www.amazon.jobs/en/jobs/724430/gm-global-catalog-business-development-aws-marketplace-service-catalog",
+    job_duration = "12month",
+    job_location = "Seattle, Washington",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job50.save()
+job50.Major_Require.add(major6)
+job50.Degree_Require.add(degree1)
+
+
+job51=Job.objects.create(job_position = "Bus Dev Manager - Amazon Locker / Pick-Up",
+    type = 0,
+    description = "Meet the Amazon Access Points team. We are transforming how quickly and conveniently Amazon delivers to its customers. Amazon Locker & Pickup delight customers by providing safe, secure and convenient pickup and returns options. We leverage these capabilities to delight more customers and create new business. In the same manner in which Amazon Web Services (AWS) leveraged Amazon's IT infrastructure, we leverage our operations and transportation infrastructure to create new startup businesses like Amazon lockers (amazon.com/lockers).",
+    company = company5,
+    job_URL = "https://www.amazon.jobs/en/jobs/749425/bus-dev-manager-amazon-locker-pick-up",
+    job_duration = "1month",
+    job_location = "Seattle, Washington",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job51.save()
+job51.Major_Require.add(major6)
+job51.Degree_Require.add(degree1)
+
+
+job52=Job.objects.create(job_position = "Partner Development Representative",
+    type = 1,
+    description = "Come and join Amazon Web Services (AWS) as we redefine the IT Industry. We are building a business that has the potential to be at least as big as the Amazon.com retail business and are seeking world class candidates to contribute to this effort. As a Partner Development Representative, you will have the exciting opportunity to recruit, enable and grow our ecosystem of Amazon Partner Network (APN) Partners. These partners consist of some of the most innovative Independent Software Vendors (ISVs), SaaS and PaaS providers, as well as trusted Systems Integrators, Managed Service Providers and Consultants.",
+    company = company5,
+    job_URL = "https://www.amazon.jobs/en/jobs/749973/partner-development-representative",
+    job_duration = "2month",
+    job_location = "Seattle, Washington",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job52.save()
+job52.Major_Require.add(major6)
+job52.Degree_Require.add(degree4)
+
+
+job53=Job.objects.create(job_position = "Expansion Transaction Manager",
+    type = 0,
+    description = "A successful candidate will be an exceptional communicator with both vendors and internal customers, have a strong ability to overcome obstacles to deliver the right results, possess a strong sense of ownership, be adept at taking calculated risks in order to act quickly, have strong organizational skills, and be data driven with a passion for continuous improvement. This position involves direct contact with senior leaders and key vendors; you must have a professional demeanor and be able to communicate effectively with people at every level, both internally and externally.",
+    company = company5,
+    job_URL = "https://www.amazon.jobs/en/jobs/749359/expansion-transaction-manager",
+    job_duration = "4month",
+    job_location = "Seattle, Washington",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job53.save()
+job53.Major_Require.add(major6)
+job53.Degree_Require.add(degree1)
+
+
+
+job54=Job.objects.create(job_position = "Art Director, New World",
+    type = 1,
+    description = "At Amazon, we believe the evolution that began with arcade communities a quarter at a time, growing to the massively shared live streams and online experiences of today, will continue to a future where everyone is a gamer, and every gamer can create, compete, collaborate and connect with others at massive scales. If you share our belief that games will produce some of the future's most influential voices in media and art, come join us! We are looking for an Art Director to join our New World team at Amazon Game Studios, Orange County. New World is a Sandbox MMO set in an alternate version of the 17th Century. As New World's Art Director you will guide the artistic vision. You will lead a team of artists to push the aesthetic. You will help define the experience of New World from launch through years of live service enhancements and updates.",
+    company = company5,
+    job_URL = "https://www.amazon.jobs/en/jobs/738955/art-director-new-world",
+    job_duration = "3month",
+    job_location = "Southern California Region, CaliforniaIrvine, CA",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job54.save()
+job54.Major_Require.add(major17)
+job54.Degree_Require.add(degree4)
+
+job55=Job.objects.create(job_position = "Creative Director",
+    type = 0,
+    description = "IMDb is the world's most popular and authoritative source for movie, TV, and celebrity content, reaching an audience of more than 250 million unique visitors per month. IMDbPro, our professional subscription business, is transforming the business of entertainment. Our mission is to inform and connect professionals in the entertainment industry to help them do their jobs better and advance their careers.",
+    company = company5,
+    job_URL = "https://www.amazon.jobs/en/jobs/743110/creative-director",
+    job_duration = "2month",
+    job_location = "Southern California Region, CaliforniaIrvine, CA",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job55.save()
+job55.Major_Require.add(major17)
+job55.Degree_Require.add(degree4)
+
+
+job56=Job.objects.create(job_position = "Environment Artist - New World",
+    type = 1,
+    description = "New World is a massively multiplayer, open-ended sandbox game that allows you to carve your own destiny with other players in a living, hostile, cursed land. How you play, what you do, and whom you work with or against is up to you. Live on your own amidst the supernatural terrors or join with others to build thriving civilizations. In this evolving world that transforms with the changing of the seasons, weather, and time of day, the only limit is your own ambition.",
+    company = company5,
+    job_URL = "https://www.amazon.jobs/en/jobs/746593/environment-artist-new-world",
+    job_duration = "3month",
+    job_location = "Southern California Region, CaliforniaIrvine, CA",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job56.save()
+job56.Major_Require.add(major5)
+job56.Degree_Require.add(degree4)
+
+job57=Job.objects.create(job_position = "history internship",
+    type = 0,
+    description = "All Smithsonian internships are prearranged, structured learning experiences that take place within a specific time period, usually fall, spring and summer each year. Each internship should be relevant both to the intern's academic and professional goals and to the professional disciplines represented at the museum.",
+    company = company14,
+    job_URL = "http://americanhistory.si.edu/getinvolved/internship",
+    job_duration = "2month",
+    job_location = "US",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job57.save()
+job57.Major_Require.add(major19)
+job57.Degree_Require.add(degree4)
+
+
+job58=Job.objects.create(job_position = "Internal Events Coordinator",
+    type = 1,
+    description = "We're looking for an Internal Events Coordinator to join Snap Inc! As part of the Internal Events team, you'll assist with the planning and development of special events that enrich our company culture as we scale. This role is based in our Santa Monica, CA headquarters.",
+    company = company15,
+    job_URL = "https://boards.greenhouse.io/snapchat/jobs/1412691",
+    job_duration = "2month",
+    job_location = "Los Angeles, CA",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job58.save()
+job58.Major_Require.add(major24)
+job58.Degree_Require.add(degree4)
+
+
+job59=Job.objects.create(job_position = "Producer, Creator Stories",
+    type = 0,
+    description = "We're looking for a Producer, Creator Stories to join Team Snapchat! As a member of the Content team, you will help create and execute the programming strategy for creator-led content on Snapchat. Working from our Los Angeles, CA headquarters, you'll collaborate with our Content team to help develop and execute programming strategy.",
+    company = company15,
+    job_URL = "https://boards.greenhouse.io/snapchat/jobs/1418957",
+    job_duration = "3month",
+    job_location = "Los Angeles, CA",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job59.save()
+job59.Major_Require.add(major6)
+job59.Degree_Require.add(degree1)
+
+job60=Job.objects.create(job_position = "Executive Assistant",
+    type = 1,
+    description = "We're looking for an Executive Assistant to join Snap Inc! You'll be responsible for scheduling, coordinating team events, and generally helping us stay ten steps ahead. We are looking for someone who thrives supporting multiple executives in a fast-paced environment. In addition to being organized, analytical, and resourceful, you must possess strong business judgment and communication skills needed to interact with a variety of people and job functions. High enthusiasm, creativity, and resourcefulness are crucial, as is a high level of professional integrity and confidentiality.",
+    company = company15,
+    job_URL = "https://boards.greenhouse.io/snapchat/jobs/1209013",
+    job_duration = "2month",
+    job_location = "Los Angeles, CA",
+    job_Work_Auth = "F-1",
+    #job_paid=True
+)
+job60.save()
+job60.Major_Require.add(major6)
+job60.Degree_Require.add(degree5)

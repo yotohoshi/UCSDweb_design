@@ -15,6 +15,9 @@ def newuser_page(request):
 
 
 def users(request):
+    if not request.user.is_authenticated:
+        return Http404
+
     form = NewUserForm()
 
     if request.method == "POST":
