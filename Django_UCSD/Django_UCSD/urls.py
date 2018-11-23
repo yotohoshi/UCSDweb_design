@@ -26,7 +26,7 @@ urlpatterns = [
     path('', include('Event.urls')),
     path('', include('Registration.urls')),
     path('', include('Job.urls')),
-    path('', include('User.urls')),
+    path('usr/', include('User.urls')),
     path('templates/footnote_circles.html', TemplateView.as_view(template_name='footnote_circles.html')),
     path('templates/banner.html', TemplateView.as_view(template_name='banner.html')),
     path('templates/login.html', TemplateView.as_view(template_name='login.html')),
@@ -40,7 +40,7 @@ urlpatterns = [
     path('templates/profile_right_lower_events.html', TemplateView.as_view(template_name='profile_right_lower_events.html')),
     path('templates/event_content.html', TemplateView.as_view(template_name='event_content.html')),
     path('templates/event_description.html', TemplateView.as_view(template_name='event_description.html')),
-
-
+    path('templates/adfilter.html', TemplateView.as_view(template_name='adfilter.html')),
+    path('templates/jobs_content.html', TemplateView.as_view(template_name='jobs_content.html')),
 
 ]

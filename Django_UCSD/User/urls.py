@@ -10,5 +10,5 @@ urlpatterns = [
     url(r'^user_creation/', views.users, name='new_user'),
     # path('', views.newuser_page, name='newuser_page'),
     # url(r'^user/create/$', 'User.views.create_user'),
-    url(r'^profile/', views.profile, name='profile'),
+    path('profile/u=<uuid:account_id>/', views.profile, name='profile'),
 ]

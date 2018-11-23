@@ -1,10 +1,10 @@
 $(document).ready(
   function() {
-    $('#sidebarText').load("sidebar.html");
-    $('#Topright').load("index_top_right.html");
-    $('#keywordsearch').load("simple_keyword_search.html");
-    $('#contents').load("jobs_content.html");
-    $('#adfilter').load("adfilter.html");
+    $('#sidebarText').load("/templates/sidebar.html");
+    $('#Topright').load("/templates/index_top_right.html");
+    $('#keywordsearch').load("/templates/simple_keyword_search.html");
+    //$('#contents').load("/templates/jobs_content.html");
+    //$('#adfilter').load("/templates/adfilter.html");
     //  alert("YES");
     $('.leftmenutrigger').on('click', function(e) {
       $('.side-nav').toggleClass("open");

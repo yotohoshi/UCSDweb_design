@@ -3,6 +3,7 @@ $(document).ready(
     $('#sidebarText').load("/templates/sidebar.html");
     $('#Topright').load("/templates/index_top_right.html");
     $('#keywordsearch').load("/templates/simple_keyword_search.html");
+    //$('#signin-popup').load("/templates/login.html");
     //$('#contents').load("/templates/event_content.html");
 
     //  alert("YES");

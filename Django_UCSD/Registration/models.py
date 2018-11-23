@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+import uuid
 from django.core import validators
 #from User.models import UserProfile
 from django.db.models.signals import post_save
@@ -32,14 +33,16 @@ class AccountManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
 
+    account_id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
         unique=True,
     )
+    last_searched_keyword = models.CharField(max_length=1000, default=None, null=True, blank=True)
     #user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     # password = models.CharField(max_length=30, validators=[validators.MinLengthValidator(8, message='Password must be at least 8 characters!')])
-    is_new_user = True
+    is_new_user = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
@@ -66,4 +69,19 @@ class Account(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+    def set_new_user(self):
+        self.is_new_user = False
+        self.save()
+
+    def save_keyword(self, keyword):
+        self.last_searched_keyword = keyword
+        self.save()
+
+    def erase_keyword(self):
+        self.last_searched_keyword = None
+        self.save()
+
+    def get_keyword(self):
+        return self.last_searched_keyword
 

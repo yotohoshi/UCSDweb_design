@@ -1,11 +1,22 @@
 from django import forms
 
 
-class SearchForm(forms.Form):
+AUTH = ['U.S Citizen','Permanent Resident','F-1','H1-B','OPT','CPT','Otherwise Authorized to Work',]
+JOBTYPE = ['intern', 'Full Time', 'Part Time', 'Free Lance']
+DEGS = ['BS', 'BA', 'MS', 'MA', 'PHD', 'MBA', 'NO LIMITED']
 
-    keyword = forms.CharField(label='Keyword', max_length=500)
-    company_name = forms.CharField(label='Company_name', max_length=200)
-    #major = forms.D
-    #degree =
-    #start_time =
-    #end_time =
+
+class SearchingForm(forms.Form):
+    keyword = forms.CharField(max_length=500)
+
+
+class FilterForm(forms.Form):
+    start_time = forms.CharField(max_length=100, required=False)
+    end_time = forms.CharField(max_length=100, required=False)
+    paid = forms.BooleanField(required=False)
+    degree = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                             choices=DEGS, required=False)
+    work_auth = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                             choices=AUTH, required=False)
+    job_type = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                             choices=JOBTYPE, required=False)
