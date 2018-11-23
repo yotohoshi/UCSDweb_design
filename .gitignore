@@ -1,5 +1,3 @@
-node_modules/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -52,8 +50,9 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
-# Django pyc
-*.pyc
-
 # module
 node_module/
+node_modules/
+
+# idea folder
+.idea/
