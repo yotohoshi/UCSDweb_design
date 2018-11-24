@@ -56,7 +56,7 @@ def string_preprocess (to_process):
 
 class Job(models.Model):
     db_table = 'Job'
-    JobID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    # JobID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     job_position = models.CharField(max_length=200)
     type = models.CharField(max_length=100, choices=JOBTYPES)
     description = models.CharField(max_length=300)

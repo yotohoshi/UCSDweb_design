@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import custom_anonymous
 # import ibm_db_django
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -31,7 +32,7 @@ ALLOWED_HOSTS = []
 
 # Override default user with account obj
 AUTH_USER_MODEL = 'Registration.Account'
-
+# AUTH_ANONYMOUS_MODEL = 'Registration.models.Anonymous'
 # Application definition
 
 INSTALLED_APPS = [
@@ -59,8 +60,10 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'Registration.auth_backend.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'custom_anonymous.middleware.AuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'Django_UCSD.urls'
@@ -142,3 +145,5 @@ STATIC_URL = '/static/'
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+
