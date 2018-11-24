@@ -21,7 +21,13 @@ function toggleIcon(e) {
 $('.panel-group').on('hidden.bs.collapse', toggleIcon);
 $('.panel-group').on('shown.bs.collapse', toggleIcon);
 
+$(document).ready(function () {
+    alert("cCCC");
+    $('#icon1').on('click',function(){
+        alert("Clicked");
 
-$('#icon1').on('click', function() {
-  $(this).toggleClass('fa-star');
+        $(this).find('#iii').toggleClass("fa-star fa-star-o");
+    });
+
 });
+
