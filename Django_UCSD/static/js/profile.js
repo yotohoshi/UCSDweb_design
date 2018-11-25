@@ -22,8 +22,8 @@
     $('#keywordsearch').load('/templates/simple_keyword_search.html');
     $('#personallinks').load('/templates/personal_links.html');
     $('#right-upper').load('/templates/profile_right_upper.html');
-    $('#personal').load('/templates/profile_right_lower_about.html');
-    $('#event').load('/templates/profile_right_lower_events.html');
+    //$('#personal').load('/templates/profile_right_lower.html');
+    //$('#event').load('/templates/profile_right_lower_events.html');
 
     $('.leftmenutrigger').on('click', function(e) {
       $('.side-nav').toggleClass("open");
