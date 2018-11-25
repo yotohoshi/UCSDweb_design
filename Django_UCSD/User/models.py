@@ -244,17 +244,19 @@ class User(models.Model):
             return True
 
     # update_user_info
-    def update_user_info(self, major, degree, contact_email, description):
+    def update_user_info(self, major, degree, contact_email, description, year_graduation):
         if major:
-            major_obj = Major.objects.filter(major=major)
+            major_obj = list(Major.objects.filter(major=major))[0]
             self.major = major_obj
         if degree:
-            degree_obj = Degree.objects.filter(degree=degree)
+            degree_obj = list(Degree.objects.filter(degree=degree))[0]
             self.degree = degree_obj
         if contact_email:
             self.contact_email = contact_email
         if description:
             self.description = description
+        if year_graduation:
+            self.yr_graduation = year_graduation
         self.save()
         return True
 

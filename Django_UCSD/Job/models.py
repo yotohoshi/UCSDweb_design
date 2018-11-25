@@ -32,7 +32,7 @@ JOBTYPES=(
 PUNCTUATIONS = set(string.punctuation)
 STOPWORDS = set(stopwords.words('english'))
 STEMMER = PorterStemmer()
-RELEVANT_COEFFICIENT = 0.5
+RELEVANT_COEFFICIENT = 0.7
 INFINITY = 999999
 
 
@@ -85,7 +85,7 @@ class Job(models.Model):
                 threshold = ceil(RELEVANT_COEFFICIENT * len(keywords))
             for job in result:
                 # description pre-processing
-                full_description = job.description + ' ' + job.job_position + ' ' + job.company.company_name
+                full_description =job.job_position
                 full_description = string_preprocess(full_description)
 
                 # comparing keywords with job descriptions
