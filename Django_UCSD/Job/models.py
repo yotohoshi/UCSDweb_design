@@ -62,9 +62,13 @@ class Job(models.Model):
     job_position = models.CharField(max_length=200)
     type = models.CharField(max_length=100, choices=JOBTYPES)
     description = models.CharField(max_length=100000)
+    short_description = models.CharField(max_length=2000)
+    degree_required = models.ManyToManyField(Degree, null=True, blank=True)
+    major_required = models.ManyToManyField(Major, null=True, blank=True)
     job_Work_Auth = models.CharField(max_length=100, choices=WORKAUTHS)
     company = models.ForeignKey(Company.models.Company, on_delete=models.PROTECT)
     job_URL = models.URLField(max_length=300)
+
 
 
     @staticmethod
