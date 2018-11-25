@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
-  <link rel="stylesheet" href="{% static 'css/profile.css'%}">
+  <link rel="stylesheet" href="{% static 'css/profiles.css'%}">
   <title>Profile</title>
 </head>
 
@@ -39,7 +39,6 @@
 
     <!-- Profile and all other information -->
     <div class="container" id="wholepage">
-      <form method="post">
 
         <div class="row">
           <!-- Left Part -->
@@ -54,12 +53,8 @@
 
             <!-- Right Lower -->
             <div class="row" id="profile_right_lower">
-              <div class="col">
-                <div class="tab-content event-tab" id="myTabContent">
-                  <div class="tab-pane active show fade" id="personal" role="tabpanel" aria-labelledby="personal-data-tab"></div>
-                  <div class="tab-pane fade" id="event" role="tabpanel" aria-labelledby="event-tab"></div>
-                </div>
-              </div>
+             {% block right_lower %}
+             {% endblock %}
             </div>
             <!-- end of profile right low -->
           </div>
@@ -69,7 +64,6 @@
           <!-- end of padding -->
         </div>
         <!-- end of low out row -->
-      </form>
 
     </div>
     <!-- end of whole display data container -->
