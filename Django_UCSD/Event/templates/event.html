@@ -21,7 +21,7 @@
 <script>
       {% if not user.is_authenticated %}
           alert("You must log in to view this page");
-          window.location.replace("{% url 'userlogin' %}?returnUrl={{request.path}}");
+          window.location.replace("{% url 'userlogin' %}?next={{request.path}}");
       {% endif %}
 
   </script>

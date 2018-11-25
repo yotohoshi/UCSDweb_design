@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+{% extends 'profile.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+{% block right_lower %}
+    <div class="col">
+        <div class="tab-content event-tab" id="myTabContent">
+            <div class="tab-pane active show fade" id="personal" role="tabpanel" aria-labelledby="personal-data-tab">
+                <!-- personal profile content -->
+                <div class="container profile-tab personal-data-tab ">
+                     <form action="{% url 'edit_profile' %}" method="POST">
+                        {% csrf_token %}
+
+                        <div class="row">
+                        </div>
+                        <fieldset disabled>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>First Name</label>
+                                </div>
+                                <div class="col-md-6" id="F_Name">
+                                    <p>{{ user.user.F_Name }}</p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Last Name</label>
+                                </div>
+                                <div class="col-md-6" id="lname">
+                                    <p>{{ user.user.L_Name }}</p>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Contact Email</label>
+                            </div>
+                            <div class="col-md-6" id="contact_email">
+                                <p>{{ user.user.contact_email }}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Major</label>
+                            </div>
+                            <div class="col-md-6" id="major">
+                                <p>{{ user.user.major.major }}</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Degree</label>
+                            </div>
+                            <div class="col-md-6" id="degree">
+
+                                {% csrf_token %}
+                                {{ form_e.as_p}}
+                                <p>{{ user.user.degree.degree }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Graduation Year</label>
+                            </div>
+
+                            <div class="col-md-6" id="yr_graduation">
+                                <p>{{ user.user.yr_graduation }}</p>
+                            </div>
+
+                        </div>
+                    <div class="row">
+                            <div class="col-md-6">
+                                <label>Company</label>
+                            </div>
+
+                            <div class="col-md-6" id="company">
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Description</label>
+
+                            </div>
+                            <div class="col-md-6" id="description">
+                                <p>{{ user.user.description }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="container-fluid justify-content-right" id="edit-cancel-button">
+                                <div id="editprofile">
+                                    <button class="btn btn-secondary btn-sm float-right" onclick="Render()">Edit
+                                        Profile
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="cancel"></div>
+                </div>
+
+                <!-- SCRIPT -->
+                <script>
+                    const buttonSubmit = " <button type = 'submit' class='btn btn-secondary btn-sm float-right'>Save Changes</button>";
+                    const buttonCancel = " <button class='btn btn-secondary btn-sm float-right' onclick='Cancel()'>Cancel</button>";
+                    const toRenderFName = "<input class=\"form-control\" type='text' name='F_Name' id='F_Name' value = '{{ user.user.F_Name }}'>";
+                    const toRenderLName = "<input class=\"form-control\"type='text' name='lname' id='lname' value = '{{ user.user.L_Name }}'>";
+                    const toRenderEmail = "<input class=\"form-control\"type='text' name='contact_email' id='contact_email' value = '{{ user.user.contact_email }}'>";
+                    const toRenderGyear = "<input class=\"form-control\"type='text' name='yr_graduation' id='yr_graduation' value = '{{ user.user.yr_graduation }}'>";
+                    const toRenderMajor = "<select class=\"form-control\" id=\"exampleFormControlSelect1\" name=\"major\">\n" +
+                        "                                {% for major in view.get_majors %}\n"+
+                            "                                <option>{{ major.major }}</option>\n"+
+                            "                                {% endfor %}\n" +
+                        "                            </select>";
+
+
+                    const toRenderDegree = "<select class=\"form-control\" id=\"exampleFormControlSelect1\" name=\"location\">\n" +
+                        "    {% for degree in view.get_degrees %}\n"+
+                        "        <option>{{ degree.degree }}</option>\n" +
+                            " {% endfor %}\n"+
+                        "      </select>";
+
+                    const toRenderDes = "<input class=\"form-control\"type='text' name='description' id='description' value = '{{ user.user.description }}'>";
+
+                    function Render() {
+                        //Change button appearance
+                        document.getElementById('editprofile').innerHTML = buttonSubmit;
+                        document.getElementById('cancel').innerHTML = buttonCancel;
+                        //Change content to form
+                 //       document.getElementById('major').innerHTML = toRenderMajor;
+                        document.getElementById('F_Name').innerHTML = toRenderFName;
+                        document.getElementById('lname').innerHTML = toRenderLName;
+                        document.getElementById('yr_graduation').innerHTML = toRenderGyear;
+                        document.getElementById('contact_email').innerHTML = toRenderEmail;
+                        document.getElementById('description').innerHTML = toRenderDes;
+                        document.getElementById('degree').innerHTML = toRenderDegree;
+                    }
+
+                    function Cancel() {
+                        window.location.reload()
+
+                    }
+                </script>
+            </div>
+            <!--End of personal info-->
+
+
+            <div class="tab-pane fade" id="event" role="tabpanel" aria-labelledby="event-tab">
+                <!-- Added Fav Events in Profile Page -->
+                <div class="container profile-tab event-tab">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                        <!-- Events -->
+                        {% if not events %}
+                            <div class="panel panel-default">
+                                <h5>You have not added any favorite event yet.</h5>
+                            </div>
+                        {% else %}
+                        {% for event in events %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <!-- Event Description -->
+                                <div class="card">
+                                    <div class="card-header align-items-center">
+                                        <div class="row">
+                                            <h6>Location: {{ event.location }} / Date: {{ event.date }}</h6>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="event http">
+                                            <h4 class="card-title">{{ event.event_name }}</h4>
+                                        </a>
+                                        <p class="card-text">{{ event.company }}<br>{{ event.description }}</p>
+                                        <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign / Go</a>
+                                        <a href="#" class="btn btn-danger btn-sm float-right">delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            <!--End of favorite event-->
+
+        </div>
+    </div>
+{% endblock %}
+
+</body>
+</html>

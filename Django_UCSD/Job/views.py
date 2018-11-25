@@ -91,17 +91,15 @@ class JobSearch(ListView):
         print(keyword, auths, degs, start_time, end_time, paid, types)
 
         # store last-searched keyword to account
-        if self.request.user.is_authenticated:
 
-            if not keyword:
-                if auths or degs or start_time or end_time or paid or types:
-                    keyword = self.request.user.get_keyword()
-                else:
-                    keyword = ' '
-                    self.request.user.save_keyword(keyword)
+        if not keyword:
+            if auths or degs or start_time or end_time or paid or types:
+                keyword = self.request.user.get_keyword()
             else:
+                keyword = ' '
                 self.request.user.save_keyword(keyword)
-
+        else:
+            self.request.user.save_keyword(keyword)
 
         print(keyword, auths, degs, start_time, end_time, paid, types)
         return Job.general_Search(keyword, auths, degs, start_time, end_time, None, paid, types)

@@ -47,7 +47,9 @@
 
 
     <!-- Event Content -->
+
     <div class="col col-2 container-fluid justify-content-center" id="adfilter">
+    {% if user.is_authenticated %}
     <form action="{% url 'jobsearch' %}" method="GET">
     <!-- Location Dropdown Menu -->
     <div class="form-group">
@@ -106,7 +108,9 @@
     </div>
   </div>
   </form>
+  {% endif %}
   </div>
+
 
     <!-- Event Content -->
     <div class="col col-8 container justify-content-center">
@@ -125,6 +129,9 @@
       </div>
 
     </div>
+
+      <!-- Login PopUp -->
+    <div id="signin-popup"></div>
 
 
     <!-- Padding-Left -->

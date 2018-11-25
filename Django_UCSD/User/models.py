@@ -243,37 +243,22 @@ class User(models.Model):
             request.delete()
             return True
 
-
-class UserProfile(models.Model):
-
-    db_table = 'UserProfiles',
-   # user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = "hahaha"
-
-    #def __str__(self):
-     #   return self.user
-
-
-def create_profile(sender, **kwargs):
-    if kwargs['created']:
-        user_profile = UserProfile.objects.create(user=kwargs['instance'])
-
-
-'''
-def create_ac(sender, **kwargs):
-    if kwargs['created']:
-        account = User.objects.create(acc=kwargs['instance'])
-post_save.connect(create_ac, sender=Account)
-'''
-
-
-# Deleted favorite table, using many-to-many relationship instead
-'''
-    class Favorite(models.Model):
-    db_table = 'Favorite',
-    Usr = models.ForeignKey(User, on_delete=models.PROTECT)
-    Event = models.ForeignKey(Event.models.Events, on_delete=models.PROTECT)
-'''
+    # update_user_info
+    def update_user_info(self, major, degree, contact_email, description, year_graduation):
+        if major:
+            major_obj = list(Major.objects.filter(major=major))[0]
+            self.major = major_obj
+        if degree:
+            degree_obj = list(Degree.objects.filter(degree=degree))[0]
+            self.degree = degree_obj
+        if contact_email:
+            self.contact_email = contact_email
+        if description:
+            self.description = description
+        if year_graduation:
+            self.yr_graduation = year_graduation
+        self.save()
+        return True
 
 
 class Request(models.Model):
@@ -285,6 +270,7 @@ RELEVANT_COEFFICIENT = 0.5
 PUNCTUATIONS = set(string.punctuation)
 STOPWORDS = set(stopwords.words('english'))
 STEMMER = PorterStemmer()
+INFINITY = 999999
 
 
 # helper method - string pre-processing
@@ -310,8 +296,12 @@ def search_By_Keywords(keywords):
         # keywords pre-processing:
         keywords = string_preprocess(keywords)
 
-        relavent_usr = []
-        threshold = ceil(RELEVANT_COEFFICIENT * len(keywords))
+        relevant_usr = []
+        if len(keywords) == 0:
+            threshold = INFINITY
+        else:
+            threshold = ceil(RELEVANT_COEFFICIENT * len(keywords))
+
         for usr in User.objects.all():
 
             # description pre-processing
@@ -325,5 +315,5 @@ def search_By_Keywords(keywords):
                     counter += 1
 
                 if counter >= threshold:
-                    relavent_usr.append(usr)
-        return relavent_usr
+                    relevant_usr.append(usr)
+        return relevant_usr

@@ -44,10 +44,10 @@ def UserLogin(request):
     form = LoginForm(request.POST)
     if request.method == 'POST':
         if form.login(request):
-            if request.user.is_new_user:
-                return redirect('new_user')
+            if request.POST.get('next'):
+                return redirect(request.POST.get('next'))
             else:
-                return redirect('index')
+                return render(request, 'REGHTML/successful.html')
         else:
             return render(request, 'redirect_sign_in.html', {'form': form})
     else:
@@ -60,7 +60,7 @@ def UserLogout(request):
         return redirect('userlogin')
     request.user.erase_keyword()
     logout(request)
-    return redirect('index')
+    return render(request, 'REGHTML/successful.html')
 
 
 def PasswordRetrievalEmail(request):

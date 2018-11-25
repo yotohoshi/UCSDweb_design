@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+<div class="row justify-content-left">
+<h3>{% if user.is_authenticated %}
+    Sign in
+    {% else %}
+    Log out
+{% endif %}
+    successful</h3>
+</div>
+<hr>
+<div class="row justify content-left">
+<p>You will be redirected shortly</p>
+</div>
+</div>
+<script>
+    {% if user.is_authenticated %}
+       // alert('Hello')
+    {% endif %}
+    function leave() {
+        {% if user.is_authenticated %}
+            {% if user.is_new_user %}
+                window.location.replace("{% url 'new_user' %}");
+            {% else %}
+                window.location.replace("{% url 'index' %}");
+            {% endif %}
+        {% else %}
+            window.location.replace("{% url 'index' %}");
+    {% endif %}
+    }
+
+    setTimeout("leave()", 1500);
+</script>
+{% endblock %}

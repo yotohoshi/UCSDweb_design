@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect, Http404, HttpResponseRedirect
 from django.urls import reverse
 from django.http import HttpResponse
 from . import forms
+from django.views.generic import ListView
 from User.forms import NewUserForm
-from Django_UCSD import views
-from User.models import User, search_By_Keywords
+from django.views.generic import ListView
+from User.models import User, search_By_Keywords, Major, Degree
+from Event.models import Event
 # Create your views here.
 
 
@@ -41,3 +43,58 @@ def profile(request, account_id):
     if request.user.account_id != account_id:
         return Http404
     return render(request, 'profile.html')
+
+
+class Profile(ListView):
+    model = Event
+    context_object_name = 'events'
+    template_name = 'profile_right_lower.html'
+
+    def get_queryset(self):
+        return list(self.request.user.user.favorite_event.all())
+
+    def get_majors(self):
+        return list(Major.objects.all())
+
+    def get_degrees(self):
+        return list(Degree.objects.all())
+
+    def get_favjobs(self):
+        return list()
+
+
+def edit_profile(request):
+
+    user = request.user.user
+    if request.method == 'POST':
+
+        if request.POST.getlist('contact_email'):
+            contact_email = request.POST.getlist('contact_email')[0]
+        else:
+            contact_email = None
+
+        if request.POST.getlist('yr_graduation'):
+            yr_graduation = request.POST.getlist('yr_graduation')[0]
+        else:
+            yr_graduation = None
+
+        if request.POST.getlist('degree'):
+            degree = request.POST.getlist('degree')[0]
+        else:
+            degree = None
+
+        if request.POST.getlist('major'):
+            major = request.POST.getlist('major')[0]
+        else:
+            major = None
+
+        if request.POST.getlist('description'):
+            description = request.POST.getlist('description')[0]
+        else:
+            description = None
+
+        print(contact_email, description, degree, yr_graduation, major)
+
+        user.update_user_info(major, degree, contact_email, description, yr_graduation)
+
+    return redirect('profile', account_id=request.user.account_id)
