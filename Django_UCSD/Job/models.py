@@ -15,19 +15,18 @@ from nltk.stem.porter import *
 ##################################### Constants
 
 WORKAUTHS=(
-    ('U.S Citizen','U.S Citizen'),
-    ('Permanent Resident','Permanent Resident'),
-    ('F-1','F-1'),
-    ('H1-B','H1-B'),
-    ('OPT', 'OPT'),
-    ('CPT', 'CPT'),
-    ('Otherwise','Otherwise Authorized to Work'),
+    ('U.S. Citizens','U.S. Citizens Or U.S. Permanent Residents Only'),
+    ('Other','All Legal Citizens'),
 )
+
 JOBTYPES=(
-    ('Intern', 'Intern'),
     ('Full-time', 'Full-time'),
     ('Part-time', 'Part-time'),
-    ('Free-lance', 'Free-lance'),
+    ('Contract', 'Contract'),
+    ('Temporary', 'Temporary'),
+    ('Commission', 'Commission'),
+    ('Internship', 'Internship'),
+    ('Not Available', 'Not Available')
 )
 PUNCTUATIONS = set(string.punctuation)
 STOPWORDS = set(stopwords.words('english'))
@@ -56,31 +55,23 @@ def string_preprocess (to_process):
 
 class Job(models.Model):
     db_table = 'Job'
-    # JobID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    JobID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    post_time = models.DateTimeField(auto_now_add=True)
+
+    # from data
     job_position = models.CharField(max_length=200)
     type = models.CharField(max_length=100, choices=JOBTYPES)
-    description = models.CharField(max_length=300)
+    description = models.CharField(max_length=100000)
+    job_Work_Auth = models.CharField(max_length=100, choices=WORKAUTHS)
     company = models.ForeignKey(Company.models.Company, on_delete=models.PROTECT)
     job_URL = models.URLField(max_length=300)
-    job_duration = models.CharField(max_length=100)
-    job_start = models.DateField(auto_created=True, auto_now_add=True)
-    job_end = models.DateField(auto_created=True, auto_now_add=True)
-    job_location = models.CharField(max_length=100)
-    job_Work_Auth = models.CharField(max_length=100, choices=WORKAUTHS)
-    job_paid = models.BooleanField
-    Major_Require = models.ManyToManyField(Major, symmetrical=False, blank=True)
-    Degree_Require = models.ManyToManyField(Degree, symmetrical=False, blank=True)
-
-    # string representation representation of Job instances
-    def __str__(self):
-        return str(self.job_end)
 
 
     @staticmethod
     def general_Search(keywords, work_auth, degs, start_date, end_date, location, pay, type):
         result = [job for job in Job.objects.all()]
 
-        # perform keyword search if keyword is not none
+        #     def _perform keyword search if keyword is not none
         if keywords is not None:
             # keywords pre-processing:
             keywords = string_preprocess(keywords)
