@@ -1,5 +1,5 @@
 import uuid
-import datetime
+from datetime import datetime
 
 import django.core.validators
 from django.db import models
@@ -10,6 +10,7 @@ import string
 from math import ceil
 from nltk.corpus import stopwords
 from nltk.stem.porter import *
+from django.utils import timezone
 
 
 ##################################### Constants
@@ -55,8 +56,7 @@ def string_preprocess (to_process):
 
 class Job(models.Model):
     db_table = 'Job'
-    # JobID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
-    post_time = models.DateTimeField(auto_now_add=True)
+    post_time = models.DateTimeField(default=datetime.now, blank=True)
 
     # from data
     job_position = models.CharField(max_length=200)
@@ -105,47 +105,47 @@ class Job(models.Model):
                         relevant_Jobs.append(job)
             result = relevant_Jobs
 
-        # degree parameter is a string
-        if degs is not None:
-            relevant_Jobs = []
-            for job in result:
-                for deg in degs:
-                    if deg in [dg.degree for dg in job.Degree_Require.all()]:
-                        relevant_Jobs.append(job)
-            result = relevant_Jobs
+        # # degree parameter is a string
+        # if degs is not None:
+        #     relevant_Jobs = []
+        #     for job in result:
+        #         for deg in degs:
+        #             if deg in [dg.degree for dg in job.Degree_Require.all()]:
+        #                 relevant_Jobs.append(job)
+        #     result = relevant_Jobs
 
-        # start_date parameter is a number
-        if start_date is not None:
-            relevant_Jobs = []
-            for job in result:
-                if job.job_start == start_date:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
+        # # start_date parameter is a number
+        # if start_date is not None:
+        #     relevant_Jobs = []
+        #     for job in result:
+        #         if job.job_start == start_date:
+        #             relevant_Jobs.append(job)
+        #     result = relevant_Jobs
 
-        # start_date parameter is a number
-        if end_date is not None:
-            relevant_Jobs = []
-            for job in result:
-                if job.job_end == end_date:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
+        # # start_date parameter is a number
+        # if end_date is not None:
+        #     relevant_Jobs = []
+        #     for job in result:
+        #         if job.job_end == end_date:
+        #             relevant_Jobs.append(job)
+        #     result = relevant_Jobs
 
-        # location parameter is a string
-        if location is not None:
-            relevant_Jobs = []
-            location = location.lower()
-            for job in result:
-                if location in job.job_location:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
+        # # location parameter is a string
+        # if location is not None:
+        #     relevant_Jobs = []
+        #     location = location.lower()
+        #     for job in result:
+        #         if location in job.job_location:
+        #             relevant_Jobs.append(job)
+        #     result = relevant_Jobs
 
-        # paid parameter is a boolean
-        if pay is not None:
-            relevant_Jobs = []
-            for job in result:
-                if job.job_paid == pay:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
+        # # paid parameter is a boolean
+        #         # if pay is not None:
+        #         #     relevant_Jobs = []
+        #         #     for job in result:
+        #         #         if job.job_paid == pay:
+        #         #             relevant_Jobs.append(job)
+        #         #     result = relevant_Jobs
 
         return result
 
@@ -339,32 +339,32 @@ class Job(models.Model):
             return True
 
 
-class Referral(models.Model):
-    referral_ID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
-    ref_provider = models.ForeignKey(User, on_delete=models.PROTECT)
-    referral_job = models.ForeignKey(Job, on_delete=models.PROTECT)
-    referral_description = models.CharField(max_length=300)
-    resume_require = models.BooleanField
-
-
-# getter
-
-
-# get_provider
-
-
-def get_provider(provider):
-    if type(provider) != User:
-        return False
-    else:
-        return Referral.objects.all.filter(ref_provider=provider)
-
-
-# setter
-
-def set_resume_require(self, res_require):
-    if type(res_require) != bool:
-        return False
-    else:
-        self.resume_require = res_require
-        return True
+# class Referral(models.Model):
+#     referral_ID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+#     ref_provider = models.ForeignKey(User, on_delete=models.PROTECT)
+#     referral_job = models.ForeignKey(Job, on_delete=models.PROTECT)
+#     referral_description = models.CharField(max_length=300)
+#     resume_require = models.BooleanField
+#
+#
+# # getter
+#
+#
+# # get_provider
+#
+#
+# def get_provider(provider):
+#     if type(provider) != User:
+#         return False
+#     else:
+#         return Referral.objects.all.filter(ref_provider=provider)
+#
+#
+# # setter
+#
+# def set_resume_require(self, res_require):
+#     if type(res_require) != bool:
+#         return False
+#     else:
+#         self.resume_require = res_require
+#         return True
