@@ -4,9 +4,9 @@ from django.http import HttpResponse
 from . import forms
 from django.views.generic import ListView
 from User.forms import NewUserForm
-from django.views.generic import ListView
-from User.models import User, search_By_Keywords, Major, Degree
-from Event.models import Event
+from User.models import Degree,Major,Event
+from Django_UCSD import views
+from User.models import User, search_By_Keywords
 # Create your views here.
 
 
@@ -39,10 +39,6 @@ def users(request):
         return render(request, '../templates/registration/user.html', {'form': form})
 
 
-def profile(request, account_id):
-    if request.user.account_id != account_id:
-        return Http404
-    return render(request, 'profile.html')
 
 
 class Profile(ListView):
@@ -70,31 +66,18 @@ def edit_profile(request):
 
         if request.POST.getlist('contact_email'):
             contact_email = request.POST.getlist('contact_email')[0]
+            user.contact_email = contact_email
+            user.save()
+
         else:
             contact_email = None
 
         if request.POST.getlist('yr_graduation'):
             yr_graduation = request.POST.getlist('yr_graduation')[0]
-        else:
-            yr_graduation = None
+            user.yr_graduation = yr_graduation
+            user.save()
 
         if request.POST.getlist('degree'):
             degree = request.POST.getlist('degree')[0]
-        else:
-            degree = None
-
-        if request.POST.getlist('major'):
-            major = request.POST.getlist('major')[0]
-        else:
-            major = None
-
-        if request.POST.getlist('description'):
-            description = request.POST.getlist('description')[0]
-        else:
-            description = None
-
-        print(contact_email, description, degree, yr_graduation, major)
-
-        user.update_user_info(major, degree, contact_email, description, yr_graduation)
 
     return redirect('profile', account_id=request.user.account_id)

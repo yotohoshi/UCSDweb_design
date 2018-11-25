@@ -61,6 +61,9 @@
                                 <label>Degree</label>
                             </div>
                             <div class="col-md-6" id="degree">
+
+                                {% csrf_token %}
+                                {{ form_e.as_p}}
                                 <p>{{ user.user.degree.degree }}</p>
                             </div>
                         </div>
@@ -68,17 +71,21 @@
                             <div class="col-md-6">
                                 <label>Graduation Year</label>
                             </div>
+
                             <div class="col-md-6" id="yr_graduation">
                                 <p>{{ user.user.yr_graduation }}</p>
                             </div>
 
                         </div>
-                        <div class="row">
+                    <div class="row">
                             <div class="col-md-6">
                                 <label>Company</label>
                             </div>
+
                             <div class="col-md-6" id="company">
+
                             </div>
+
                         </div>
                         <div class="row">
                             <div class="col-md-6">
@@ -117,11 +124,12 @@
                         "                            </select>";
 
 
-                    const toRenderDegree = "<select class=\"form-control\" id=\"exampleFormControlSelect1\" name=\"degree\">\n" +
+                    const toRenderDegree = "<select class=\"form-control\" id=\"exampleFormControlSelect1\" name=\"location\">\n" +
                         "    {% for degree in view.get_degrees %}\n"+
                         "        <option>{{ degree.degree }}</option>\n" +
                             " {% endfor %}\n"+
                         "      </select>";
+
                     const toRenderDes = "<input class=\"form-control\"type='text' name='description' id='description' value = '{{ user.user.description }}'>";
 
                     function Render() {
@@ -129,7 +137,7 @@
                         document.getElementById('editprofile').innerHTML = buttonSubmit;
                         document.getElementById('cancel').innerHTML = buttonCancel;
                         //Change content to form
-                        document.getElementById('major').innerHTML = toRenderMajor;
+                 //       document.getElementById('major').innerHTML = toRenderMajor;
                         document.getElementById('F_Name').innerHTML = toRenderFName;
                         document.getElementById('lname').innerHTML = toRenderLName;
                         document.getElementById('yr_graduation').innerHTML = toRenderGyear;
