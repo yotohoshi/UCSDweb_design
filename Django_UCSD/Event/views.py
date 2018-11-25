@@ -24,7 +24,7 @@ class event(TemplateView):
 class EventListView(ListView):
 
     context_object_name = 'events'
-    model = Event
+    # model = Event
     template_name = 'event_content.html'
     paginate_by = 7
     def get_queryset(self):
