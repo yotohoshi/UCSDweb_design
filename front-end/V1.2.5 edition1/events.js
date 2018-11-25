@@ -21,7 +21,27 @@ function toggleIcon(e) {
 $('.panel-group').on('hidden.bs.collapse', toggleIcon);
 $('.panel-group').on('shown.bs.collapse', toggleIcon);
 
+$(document).ready(function () {
+    alert("cCCC");
+    $('#icon1').on('click',function(){
+        alert("Clicked");
 
-$('#icon1').on('click', function() {
-  $(this).toggleClass('fa-star');
+        $(this).find('#ii').toggleClass("fa-star fa-star-o");
+    });
+
+});
+
+
+$(document).ready(function () {
+    $('#icon2').on('click',function(){
+        $(this).find('#iii').toggleClass("fa-star fa-star-o");
+    });
+
+});
+
+$(document).ready(function () {
+    $('#icon3').on('click',function(){
+        $(this).find('#iiii').toggleClass("fa-star fa-star-o");
+    });
+
 });
