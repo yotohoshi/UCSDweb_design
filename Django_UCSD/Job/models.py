@@ -56,7 +56,6 @@ def string_preprocess (to_process):
 
 class Job(models.Model):
     db_table = 'Job'
-    JobID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     post_time = models.DateTimeField(default=datetime.now, blank=True)
 
     # from data

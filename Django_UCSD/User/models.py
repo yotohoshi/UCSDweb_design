@@ -243,6 +243,21 @@ class User(models.Model):
             request.delete()
             return True
 
+    # update_user_info
+    def update_user_info(self, major, degree, contact_email, description):
+        if major:
+            major_obj = Major.objects.filter(major=major)
+            self.major = major_obj
+        if degree:
+            degree_obj = Degree.objects.filter(degree=degree)
+            self.degree = degree_obj
+        if contact_email:
+            self.contact_email = contact_email
+        if description:
+            self.description = description
+        self.save()
+        return True
+
 
 class Request(models.Model):
     from_user = models.OneToOneField(User, on_delete=models.CASCADE,  related_name='+')
