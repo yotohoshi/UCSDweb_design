@@ -31,3 +31,17 @@ $(document).ready(function () {
 
 });
 
+
+$(document).ready(function () {
+    $('#icon2').on('click',function(){
+        $(this).find('#iiii').toggleClass("fa-star fa-star-o");
+    });
+
+});
+
+$(document).ready(function () {
+    $('#icon3').on('click',function(){
+        $(this).find('#iiiii').toggleClass("fa-star fa-star-o");
+    });
+
+});
