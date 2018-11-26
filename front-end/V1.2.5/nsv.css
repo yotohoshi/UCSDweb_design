@@ -161,10 +161,10 @@ svg {
   transition-delay: 0.2s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
-.cloned.removed {
+/* .cloned.removed {
   transition: opacity 0.2s 0;
   opacity: 0;
-}
+} */
 
 .chat {
   display: none;
@@ -294,11 +294,11 @@ svg {
 .chat__input {
   position: absolute;
   bottom: 0;
-  left: 0;
+  right: 0;
   width: 100%;
   height: 5.5rem;
   padding: 1rem 1rem 1rem 4rem;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/elastic-search.png");
+  /* background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/elastic-search.png"); */
   background-repeat: no-repeat;
   background-position: 1rem 1.5rem;
   background-color: #E9EAF3;
@@ -306,7 +306,7 @@ svg {
   font-size: 1.4rem;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
-
+/*
 .ripple {
   position: absolute;
   width: 10rem;
@@ -319,7 +319,7 @@ svg {
   -webkit-animation: animRipple 0.3s;
           animation: animRipple 0.3s;
   border-radius: 50%;
-}
+} */
 
 @-webkit-keyframes animRipple {
   to {
@@ -331,8 +331,8 @@ svg {
 
 @keyframes animRipple {
   to {
-    -webkit-transform: scale(2.5);
-            transform: scale(2.5);
+    -webkit-transform: scale(100);
+            transform: scale(100);
     opacity: 0;
   }
 }
@@ -345,8 +345,8 @@ svg {
 }
 @keyframes arrows {
   to {
-    -webkit-transform: translateX(100%) rotate(45deg);
-            transform: translateX(100%) rotate(45deg);
+    -webkit-transform: translateX(-0.3rem) rotate(-45deg);
+            transform: translateX(-0.3rem) rotate(-455deg);
     opacity: 0;
   }
 }
