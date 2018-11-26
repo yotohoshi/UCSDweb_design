@@ -118,12 +118,12 @@ class JobSearch(ListView):
         return JOBTYPE
 
 
-def add_favorite(request):
+def add_to_favorite(request):
     user = request.user.user
     job_id = request.GET.get('job_id', None)
-    job_obj = Job.objects.filter(id=job_id)
+    job_obj = list(Job.objects.filter(id=job_id))[0]
     data = {
-        'success': job_obj.add_to_favorite(user)
+        'successful': job_obj.add_to_favorite(user)
     }
     return JsonResponse(data)
 

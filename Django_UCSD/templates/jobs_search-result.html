@@ -32,12 +32,12 @@
                                             <h6>Post Time: {{ job.post_time }}</h6>
                                         </div>
                                         <div class="col">
-                                            <form class="foat-right" action="index.html" method="post">
-                                                <button type="button" class="btn btn-default float-right"
-                                                        id="icon{{ job.id }}">
-                                                    <i id="{{ job.id }}" class="fa fa-star-o" aria-hidden="false"></i>
-                                                </button>
-                                            </form>
+                                            {% if not job.favorited_useruser.user %}
+                                            <button type="button" class="btn btn-default float-right"
+                                                    id="icon{{ job.id }}">
+                                            <i id="{{ job.id }}" class="fa fa-star-o" aria-hidden="false"></i>
+                                            </button>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -73,8 +73,21 @@
                                     //alert("lll");
                                     $(this).find('#{{ job.id }}').toggleClass("fa-star fa-star-o");
                                     $.ajax({
-                                        url:
-                                    })
+                                        url:"{% url 'add_to_favorite'%}",
+                                        data:{
+                                            'job_id':{{job.id }},
+                                        },
+                                        dataType: 'json',
+                                        success:function(data){
+                                            if(data.successful){
+                                                alert("success!");
+                                            }
+                                            else{
+                                                alert("failed");
+                                            }
+                                        }
+                                    });
+                                    alert("hallo");
                                 });
                             });
                     </script>

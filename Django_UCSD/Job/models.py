@@ -358,7 +358,10 @@ class Job(models.Model):
         if type(user) != User:
             return False
         else:
-            user.favorite_job.add(self)
+            if self.favorited_user.filter(id=user.id):
+                return False
+            else:
+                self.favorited_user.add(user)
         return True
 
 

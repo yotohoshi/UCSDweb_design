@@ -44,7 +44,7 @@ class Degree(models.Model):
 class User(models.Model):
     db_table = 'user',
     acc = models.OneToOneField(Account, on_delete=models.CASCADE)
-    UID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    # UID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     F_Name = models.CharField(max_length=20)
     L_Name = models.CharField(max_length=20)
 
