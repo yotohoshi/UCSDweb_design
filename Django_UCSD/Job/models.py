@@ -68,9 +68,9 @@ class Job(models.Model):
     job_Work_Auth = models.CharField(max_length=100, choices=WORKAUTHS)
     company = models.ForeignKey(Company.models.Company, on_delete=models.PROTECT)
     job_URL = models.URLField(max_length=300)
-    degree_required = models.ManyToManyField(Degree, null=True, blank=True)
-    major_required = models.ManyToManyField(Major, null=True, blank=True)
-
+    degree_required = models.ManyToManyField(Degree, blank=True ,symmetrical=False)
+    major_required = models.ManyToManyField(Major, blank=True, symmetrical=False)
+    favorited_user = models.ManyToManyField(User, blank=True, symmetrical=False)
 
 
     @staticmethod
@@ -108,6 +108,15 @@ class Job(models.Model):
             for job in result:
                 for auth in work_auth:
                     if job.job_Work_Auth == auth:
+                        relevant_Jobs.append(job)
+            result = relevant_Jobs
+
+        # job type parameter
+        if type is not None:
+            relevant_Jobs = []
+            for job in result:
+                for job_type in type:
+                    if job.type == job_type:
                         relevant_Jobs.append(job)
             result = relevant_Jobs
 
@@ -343,6 +352,14 @@ class Job(models.Model):
         else:
             self.job_paid = paid
             return True
+
+    # add_to_favorite
+    def add_to_favorite(self, user):
+        if type(user) != User:
+            return False
+        else:
+            user.favorite_job.add(self)
+        return True
 
 
 # class Referral(models.Model):

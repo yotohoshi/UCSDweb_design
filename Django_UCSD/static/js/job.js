@@ -13,7 +13,7 @@ $(document).ready(
     });
   });
 
-function toggleIcon(e) {
+/*function toggleIcon(e) {
   $(e.target)
     .prev('.panel-heading')
     .find(".more-less")
@@ -24,6 +24,7 @@ $('.panel-group').on('shown.bs.collapse', toggleIcon);
 
 // Toggle start icon to like and dislike
 $(document).ready(function() {
+    for (i=0; i<)
   $('#icon1').on('click', function() {
     //alert("lll");
     $(this).find('#1').toggleClass("fa-star fa-star-o");
@@ -37,3 +38,4 @@ $(document).ready(function() {
     $(this).find('#3').toggleClass("fa-star fa-star-o");
   });
 });
+*/

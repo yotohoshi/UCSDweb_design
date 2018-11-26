@@ -65,6 +65,7 @@ class User(models.Model):
     referral_ability = models.BooleanField
     company = models.ManyToManyField(Company.models.Company, symmetrical=False, blank=True)
     favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
+    # favorite_job = models.ManyToManyField(Job.models.Job, symmetrical=False, blank=True)
     friend = models.ManyToManyField('User', symmetrical=True, blank=True)
     # Getters
 
@@ -185,7 +186,7 @@ class User(models.Model):
 
     # add_to_favorite
     def add_to_favorite(self, favorite):
-        if type(favorite) != Event.models.Event:
+        if type(favorite) != Event.models.Event or type(favorite) != Job:
             return False
         else:
             self.favorite_event.add(favorite)

@@ -7,5 +7,5 @@ from Job import views
 urlpatterns = [
 
     url(r'^job/$', views.JobDefault.as_view(), name='job'),
-    url(r'^job&search$', views.JobSearch.as_view(), name='jobsearch'),
+    url(r'^job&search/$', views.JobSearch.as_view(), name='jobsearch'),
 ]
