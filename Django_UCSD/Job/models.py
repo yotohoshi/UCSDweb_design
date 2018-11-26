@@ -3,7 +3,7 @@ from datetime import datetime
 
 import django.core.validators
 from django.db import models
-
+from Category.models import Category
 import Company.models
 from User.models import Major, Degree, User
 import string
@@ -71,6 +71,7 @@ class Job(models.Model):
     degree_required = models.ManyToManyField(Degree, blank=True ,symmetrical=False)
     major_required = models.ManyToManyField(Major, blank=True, symmetrical=False)
     favorited_user = models.ManyToManyField(User, blank=True, symmetrical=False)
+    category = models.ManyToManyField(Category, blank=True, symmetrical=False)
 
 
     @staticmethod
