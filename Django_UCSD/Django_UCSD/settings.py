@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'Event',
     'Job',
     'Registration',
+    'Category',
 ]
 
 MIDDLEWARE = [

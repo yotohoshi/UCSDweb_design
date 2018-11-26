@@ -44,7 +44,7 @@ class Degree(models.Model):
 class User(models.Model):
     db_table = 'user',
     acc = models.OneToOneField(Account, on_delete=models.CASCADE)
-    UID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    # UID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     F_Name = models.CharField(max_length=20)
     L_Name = models.CharField(max_length=20)
 
@@ -65,6 +65,7 @@ class User(models.Model):
     referral_ability = models.BooleanField
     company = models.ManyToManyField(Company.models.Company, symmetrical=False, blank=True)
     favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
+    # favorite_job = models.ManyToManyField(Job.models.Job, symmetrical=False, blank=True)
     friend = models.ManyToManyField('User', symmetrical=True, blank=True)
     # Getters
 
@@ -185,7 +186,7 @@ class User(models.Model):
 
     # add_to_favorite
     def add_to_favorite(self, favorite):
-        if type(favorite) != Event.models.Event:
+        if type(favorite) != Event.models.Event or type(favorite) != Job:
             return False
         else:
             self.favorite_event.add(favorite)

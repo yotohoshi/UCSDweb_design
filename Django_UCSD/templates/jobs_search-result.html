@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+{% extends 'jobs.html' %}
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    </meta>
+    <title></title>
+</head>
+
+<body>
+
+
+<!-- Events Display template -->
+{% block jobs %}
+    <pre>
+
+    </pre>
+    <div class="row justify-content-center">
+        <div class="col-9">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                <!-- Jobs -->
+                {% for job in jobs %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <!-- Event Description -->
+                            <div class="card shadow p-3 mb-5 bg-white">
+                                <div class="card-header align-items-center">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h6>Post Time: {{ job.post_time }}</h6>
+                                        </div>
+                                        <div class="col">
+                                            {% if not job.favorited_useruser.user %}
+                                            <button type="button" class="btn btn-default float-right"
+                                                    id="icon{{ job.id }}">
+                                            <i id="{{ job.id }}" class="fa fa-star-o" aria-hidden="false"></i>
+                                            </button>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <a href="event http">
+                                        <h4 class="card-title">{{ job.job_position }}</h4>
+                                    </a>
+                                    <p class="card-text">{{ job.company.company_name }}</p>
+                                    <p class="card-text">{{ job.description }}</p>
+                                    <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign / Go</a>
+                                    {% if user.is_authenticated and user.user.major not in job.Major_Require.all %}
+                                        <p style="color:indianred">Your major is not compatible with this job offer</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        function toggleIcon(e) {
+                            $(e.target)
+                                .prev('.panel-heading')
+                                .find(".more-less")
+                                .toggleClass('glyphicon-plus glyphicon-minus');
+                        }
+
+                        $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+                        $('.panel-group').on('shown.bs.collapse', toggleIcon);
+
+                        // Toggle start icon to like and dislike
+                        $(document).ready(function () {
+                                $('#icon{{ job.id }}').on('click', function () {
+                                    //alert("lll");
+                                    $(this).find('#{{ job.id }}').toggleClass("fa-star fa-star-o");
+                                    $.ajax({
+                                        url:"{% url 'add_to_favorite'%}",
+                                        data:{
+                                            'job_id':{{job.id }},
+                                        },
+                                        dataType: 'json',
+                                        success:function(data){
+                                            if(data.successful){
+                                                alert("success!");
+                                            }
+                                            else{
+                                                alert("failed");
+                                            }
+                                        }
+                                    });
+                                    alert("hallo");
+                                });
+                            });
+                    </script>
+                {% endfor %}
+
+                <!-- Pagination TODO: Need Styling!-->
+                {% if is_paginated %}
+                    <div class="row justify-content-center">
+                        <div class="pagination">
+                    <span class="page-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+                        <span class="page-current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        {% endif %}
+                    </span>
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+</body>
+
+</html>
