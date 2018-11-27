@@ -11,14 +11,14 @@ $(document).ready(function () {
     // Load Footnote Circles
     $('#footnote').load('footnote_circles.html');
     // alert('success!!!');
-
-    var x = document.getElementById("sign");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-
+    // 
+    // var x = document.getElementById("sign");
+    // if (x.style.display === "none") {
+    //     x.style.display = "block";
+    // } else {
+    //     x.style.display = "none";
+    // }
+    //
 
 });
 // End of Loading

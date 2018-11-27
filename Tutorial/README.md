@@ -24,4 +24,8 @@ Install your GPU driver from "software & update" of ubuntu.
 * Install teletype.  
 * Everyone can code on the same document SIMULTANEOUSLY like GOOGLE DOC AND WORD! Enjoy!  
 
+## Front end Graph and Relation / Scientific Display:  
+Tool http://js.cytoscape.org/  
+### Same Tool used locally:  
+https://cytoscape.org/index.html  
 
