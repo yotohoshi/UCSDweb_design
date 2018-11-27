@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#new-friends-content').load('network_content.html');
+  $('#new-friends-content').load('network_contentV1.html');
   $('#sidebarText').load("sidebar.html");
   $('#Topright').load("index_top_right.html");
   $('#keywordsearch').load("simple_keyword_search.html");
