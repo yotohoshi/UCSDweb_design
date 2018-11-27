@@ -68,8 +68,6 @@ class Job(models.Model):
     job_Work_Auth = models.CharField(max_length=100, choices=WORKAUTHS)
     company = models.ForeignKey(Company.models.Company, on_delete=models.PROTECT)
     job_URL = models.URLField(max_length=300)
-    degree_required = models.ManyToManyField(Degree, blank=True ,symmetrical=False)
-    major_required = models.ManyToManyField(Major, blank=True, symmetrical=False)
     favorited_user = models.ManyToManyField(User, blank=True, symmetrical=False)
     category = models.ManyToManyField(Category, blank=True, symmetrical=False)
 

@@ -3,7 +3,7 @@ from django.db import models
 import django.core.validators
 from django.core.exceptions import ValidationError
 import Company.models
-import Event.models
+# import Event.models
 import uuid
 from django.db.models.signals import post_save
 from Registration.models import Account
@@ -64,7 +64,7 @@ class User(models.Model):
                                                                  message='Description must be at least 50 characters!')])
     referral_ability = models.BooleanField
     company = models.ManyToManyField(Company.models.Company, symmetrical=False, blank=True)
-    favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
+    # favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
     # favorite_job = models.ManyToManyField(Job.models.Job, symmetrical=False, blank=True)
     friend = models.ManyToManyField('User', symmetrical=True, blank=True)
     # Getters

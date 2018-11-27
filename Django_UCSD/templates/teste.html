@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/teste.css'%}">
+</head>
+<body>
+<div id="modal-container">
+    <div class="modal-background">
+        <div class="modal">
+            <h2>I'm a Modal</h2>
+            <p>Hear me roar.</p>
+            <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+                 preserveAspectRatio="none">
+                <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+            </svg>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-left">
+    <h1>Modal Animations</h1>
+    {% for job in jobs %}
+        <div class="col col-7">
+        <div class="card shadow p-3 mb-5 bg-white">
+            <p>{{ job.job_position }}</p>
+            <hr>
+            <button id="two" class="button">button</button>
+        </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    $('.button').click(function () {
+        var buttonId = $(this).attr('id');
+        $('#modal-container').removeAttr('class').addClass(buttonId);
+        $('body').addClass('modal-active');
+    });
+
+    $('#modal-container').click(function () {
+        $(this).addClass('out');
+        $('body').removeClass('modal-active');
+    });
+</script>
+</body>
+</html>

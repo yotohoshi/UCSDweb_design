@@ -149,20 +149,22 @@
             <!--Favorite Event section-->
             <div class="tab-pane fade" id="event" role="tabpanel" aria-labelledby="event-tab">
                 <!-- Added Fav Events in Profile Page -->
-                <div class="container profile-tab event-tab">
+                <div class="container profile-tab event-tab job_tab referral_tab">
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
                         <!-- Events -->
                         {% if not events %}
                             <div class="panel panel-default">
-                                <h5>You have not added any favorite event yet.</h5>
+                                <h6>You have not added any favorite event yet.</h6>
                             </div>
                         {% else %}
                             {% for event in events %}
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <!-- Event Description -->
-                                        <div class="card">
+                                        <div class="row justify-content-center">
+                                        <div class="col-12">
+                                        <div class="card shadow p-3 mb-4 bg-white">
                                             <div class="card-header align-items-center">
                                                 <div class="row">
                                                     <h6>Location: {{ event.location }} / Date: {{ event.date }}</h6>
@@ -178,6 +180,8 @@
                                                 <a href="#" class="btn btn-danger btn-sm float-right">delete</a>
                                             </div>
                                         </div>
+                                        </div>
+                                        </div>
                                     </div>
                                 </div>
                             {% endfor %}
@@ -189,32 +193,32 @@
             <!--End of favorite event-->
 
             <!--Favorite Job section-->
-            <div class="tab-pane fade" id="event" role="tabpanel" aria-labelledby="event-tab">
+            <div class="tab-pane fade" id="job" role="tabpanel" aria-labelledby="job-tab">
                 <!-- Added Fav Events in Profile Page -->
-                <div class="container profile-tab event-tab">
+                <div class="container profile-tab event-tab job_tab referral_tab">
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
                         <!-- Events -->
-                        {% if not events %}
+                        {% if not view.favorite_jobs %}
                             <div class="panel panel-default">
-                                <h5>You have not added any favorite event yet.</h5>
+                                <h6>You have not added any favorite job yet.</h6>
                             </div>
                         {% else %}
-                            {% for event in events %}
+                            {% for job in view.favorite_jobs %}
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <!-- Event Description -->
-                                        <div class="card">
+                                        <div class="card shadow p-3 mb-4 bg-white">
                                             <div class="card-header align-items-center">
                                                 <div class="row">
-                                                    <h6>Location: {{ event.location }} / Date: {{ event.date }}</h6>
+                                                    <h6>Post Date: {{ job.post_date }}</h6>
                                                 </div>
                                             </div>
                                             <div class="card-body">
                                                 <a href="event http">
-                                                    <h4 class="card-title">{{ event.event_name }}</h4>
+                                                    <h4 class="card-title">{{ job.job_position }}</h4>
                                                 </a>
-                                                <p class="card-text">{{ event.company }}<br>{{ event.description }}</p>
+                                                <p class="card-text">{{ job.company }}<br>{{ job.description }}</p>
                                                 <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign /
                                                     Go</a>
                                                 <a href="#" class="btn btn-danger btn-sm float-right">delete</a>
@@ -232,22 +236,24 @@
 
 
             <!--My referrals section-->
-            <div class="tab-pane fade" id="event" role="tabpanel" aria-labelledby="event-tab">
+            <div class="tab-pane fade" id="referral" role="tabpanel" aria-labelledby="referral-tab">
                 <!-- Added Fav Events in Profile Page -->
-                <div class="container profile-tab event-tab">
+                <div class="container profile-tab event-tab job_tab referral_tab">
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
                         <!-- Events -->
-                        {% if not events %}
+                        {% if not view.get_referrals %}
                             <div class="panel panel-default">
-                                <h5>You have not added any favorite event yet.</h5>
+                                <h6>Have job to offer? Everyone's expecting you!</h6>
                             </div>
                         {% else %}
-                            {% for event in events %}
+                            {% for referral in view.get_referrals %}
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <!-- Event Description -->
-                                        <div class="card">
+                                        <div class="row justify-content-center">
+                                        <div class="col-12">
+                                        <div class="card shadow p-3 mb-4 bg-white">
                                             <div class="card-header align-items-center">
                                                 <div class="row">
                                                     <h6>Location: {{ event.location }} / Date: {{ event.date }}</h6>
@@ -263,6 +269,8 @@
                                                 <a href="#" class="btn btn-danger btn-sm float-right">delete</a>
                                             </div>
                                         </div>
+                                        </div>
+                                        </div>
                                     </div>
                                 </div>
                             {% endfor %}
@@ -271,7 +279,7 @@
                     </div>
                 </div>
             </div>
-            <!--End of favorite event-->
+            <!--End of my referralt-->
 
 
         </div>

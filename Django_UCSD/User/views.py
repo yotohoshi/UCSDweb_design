@@ -51,7 +51,7 @@ class Profile(ListView):
     template_name = 'profile_right_lower.html'
 
     def get_queryset(self):
-        return list(self.request.user.user.favorite_event.all())
+        return list(self.request.user.user.event_set.all())
 
     def get_majors(self):
         return list(Major.objects.all())

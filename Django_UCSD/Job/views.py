@@ -103,7 +103,8 @@ class JobSearch(ListView):
                     keyword = ' '
                     self.request.user.save_keyword(keyword)
         else:
-            self.request.user.save_keyword(keyword)
+            if self.request.user.is_authenticated:
+                self.request.user.save_keyword(keyword)
 
         print(keyword, auths, degs, start_time, end_time, paid, types)
         return Job.general_Search(keyword, auths, degs, start_time, end_time, None, paid, types)
@@ -126,9 +127,6 @@ def add_to_favorite(request):
         'successful': job_obj.add_to_favorite(user)
     }
     return JsonResponse(data)
-
-
-
 
 '''
 def search(request):

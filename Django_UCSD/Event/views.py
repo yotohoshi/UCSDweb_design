@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from Event.models import Event
 from django.views.generic import (TemplateView,ListView,
@@ -87,3 +88,27 @@ class EventDetailView(DetailView):
     context_object_name = 'event_detail'
     model = Event
     # template_name = "event_list.html"
+
+
+class List(ListView):
+    model = Event
+    context_object_name = 'jobs'
+    template_name = 'teste.html'
+
+    def get_queryset(self):
+        return list(Event.objects.all())[:10]
+
+
+def add_to_favorite(request):
+    user = request.user.user
+    event_id = request.GET.get('event_id', None)
+    try:
+        event_obj = list(Event.objects.filter(id=event_id))[0]
+        data = {
+            'successful': event_obj.add_to_favorite(user)
+        }
+    except:
+        data = {
+            'successful': False
+        }
+    return JsonResponse(data)

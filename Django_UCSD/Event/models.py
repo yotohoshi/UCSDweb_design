@@ -1,6 +1,7 @@
 from django.db import models
 import Company.models
 import django.core.validators
+from User.models import User
 import uuid
 from datetime import date, datetime, timedelta
 
@@ -23,7 +24,7 @@ class Event(models.Model):
     description = models.CharField(max_length=1000, default="This event have no descriptions yet.")
     num_views = models.IntegerField(default=0, validators=[django.core.validators.MinValueValidator(0)])
     num_favorites = models.IntegerField(default=0, validators=[django.core.validators.MinValueValidator(0)])
-
+    favorited_user = models.ManyToManyField(User, blank=True, symmetrical=False)
     # category = models.IntegerField(max_length=2, null=False),
     # Getters
     @staticmethod
@@ -76,7 +77,7 @@ class Event(models.Model):
         return int(self.num_favorites * 10 + self.num_views)
 
     def update_num_favorite(self):
-        self.num_favorites = self.user_set.all().count()
+        self.num_favorites = self.favorited_user.all().count()
         return
 
     def increment_num_views(self):
@@ -127,6 +128,14 @@ class Event(models.Model):
             self.description = descrip
             return True
 
-
-
+    # add_to_favorite
+    def add_to_favorite(self, user):
+        if type(user) != User:
+            return False
+        else:
+            if self.favorited_user.filter(id=user.id):
+                return False
+            else:
+                self.favorited_user.add(user)
+        return True
 

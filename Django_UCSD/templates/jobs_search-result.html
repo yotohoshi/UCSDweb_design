@@ -71,9 +71,10 @@
                         $(document).ready(function () {
                                 $('#icon{{ job.id }}').on('click', function () {
                                     //alert("lll");
+                                    {% if user.is_authenticated %}
                                     $(this).find('#{{ job.id }}').toggleClass("fa-star fa-star-o");
                                     $.ajax({
-                                        url:"{% url 'add_to_favorite'%}",
+                                        url:"{% url 'job_add_to_favorite'%}",
                                         data:{
                                             'job_id':{{job.id }},
                                         },
@@ -87,7 +88,9 @@
                                             }
                                         }
                                     });
-                                    alert("hallo");
+                                    {% else %}
+                                    alert("You must sign in before adding any job to favorite!");
+                                    {% endif %}
                                 });
                             });
                     </script>

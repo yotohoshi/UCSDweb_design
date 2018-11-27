@@ -3,51 +3,89 @@
 {% load staticfiles %}
 <html lang="en" dir="ltr">
 
-  <!-- Events Display template -->
-  {% block event %}
+<!-- Events Display template -->
+{% block event %}
 
-  <div class="row justify-content-center">
-    <div class="col-9">
-      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        {% if events %}
-        {% for event in events%}
-        <!-- Events -->
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingOne">
-            <!-- Event Description -->
-            <div class="card">
-              <div class="card-header align-items-center">
-                <div class="row">
-                  <div class="col">
-                    <h6>{{ event.location }} / {{ event.date }}</h6>
-                  </div>
-                  <div class="col">
-                    <form class="foat-right" action="index.html" method="post">
-                      <button type="button" class="btn btn-default float-right" id="icon1">
-                        <i class="fa fa-star-o" aria-hidden="false"></i>
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <a href="event http">
-                  <h4 class="card-title">{{ event.event_name }}</h4>
-                </a>
-                <p class="card-text">{{ event.description }}</p>
-                <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign / Go</a>
-              </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                {% if events %}
+                    {% for event in events %}
+                        <!-- Events -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <!-- Event Description -->
+                                <div class="card shadow p-3 mb-5 bg-white">
+                                    <div class="card-header align-items-center">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6>{{ event.location }} / {{ event.date }}</h6>
+                                            </div>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-default float-right"
+                                                        id="icon{{ event.id }}">
+                                                    <i id="{{ event.id }}" class="fa fa-star-o" aria-hidden="false"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="event http">
+                                            <h4 class="card-title">{{ event.event_name }}</h4>
+                                        </a>
+                                        <p class="card-text">{{ event.description }}</p>
+                                        <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign / Go</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            function toggleIcon(e) {
+                                $(e.target)
+                                    .prev('.panel-heading')
+                                    .find(".more-less")
+                                    .toggleClass('glyphicon-plus glyphicon-minus');
+                            }
+
+                            $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+                            $('.panel-group').on('shown.bs.collapse', toggleIcon);
+
+                            // Toggle start icon to like and dislike
+                            $(document).ready(function () {
+
+                                $('#icon{{ event.id }}').on('click', function () {
+                                    //alert("lll");
+                                    $(this).find('#{{ event.id }}').toggleClass("fa-star fa-star-o");
+                                    $.ajax({
+                                        url: "{% url 'event_add_to_favorite'%}",
+                                        data: {
+                                            'event_id':{{event.id }},
+                                        },
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            if (data.successful) {
+                                                alert("success!");
+                                            }
+                                            else {
+                                                alert("failed");
+                                            }
+                                        }
+                                    });
+                                    alert("hallo");
+                                });
+                            });
+                        </script>
+
+
+                    {% endfor %}
+                {% else %}
+                    <h2>No Events Found</h2>
+                {% endif %}
+
+
             </div>
-          </div>
         </div>
-        {% endfor %}
-        {% else %}
-            <h2>No Events Found</h2>
-      {% endif %}
-
-
-      </div>
     </div>
-  </div>
-  {% endblock %}
+{% endblock %}
 </html>
