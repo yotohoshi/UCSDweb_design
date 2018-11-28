@@ -16,8 +16,11 @@ $(document).ready(function() {
 
   var easings = {
     smallElastic: function(t,b,c,d) {
+      console.log("t="+t+", b="+b+", c="+c+", d="+d);
       var ts = (t/=d)*t;
+      console.log("ts="+ts);
       var tc = ts*t;
+      console.log("tc="+tc);
       return b+c*(33*tc*ts + -106*ts*ts + 126*tc + -67*ts + 15*t);
     },
     inCubic: function(t,b,c,d) {
@@ -27,6 +30,7 @@ $(document).ready(function() {
   };
 
   function createD(top, ax, dir) {
+    console.log("top="+top+", ax="+ax+", dir="+dir);
     return "M0,0 "+top+",0 a"+ax+",250 0 1,"+dir+" 0,500 L0,500";
   }
 
@@ -42,6 +46,7 @@ $(document).ready(function() {
     var d = $path.attr("d"),
         num2 = num2 || 250,
         nd = d.replace(/\ba(\d+),(\d+)\b/gi, "a" + num1 + "," + num2);
+        console.log("nd returns: " + nd);
     return nd;
   }
 
@@ -56,8 +61,12 @@ $(document).ready(function() {
         topDiff = +newArr[1].split(",")[0] - oldTop,
         nextTop,
         nextX,
+        log1 = console.log("easing top now"),
         easingTop = easings[easingTop] || easings.smallElastic,
-        easingX = easings[easingX] || easingTop;
+        log2 = console.log("easing top is" + easingTop),
+        log3 = console.log("easing X now"),
+        easingX = easings[easingX] || easingTop,
+        log4 = console.log("easing X is " + easingX);
 
     $(document).off("mousedown mouseup");
 
