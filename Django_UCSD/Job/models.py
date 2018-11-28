@@ -70,6 +70,7 @@ class Job(models.Model):
     job_URL = models.URLField(max_length=300)
     favorited_user = models.ManyToManyField(User, blank=True, symmetrical=False)
     category = models.ManyToManyField(Category, blank=True, symmetrical=False)
+    num_views = models.IntegerField(default=0, validators=[django.core.validators.MinValueValidator(0)])
 
 
     @staticmethod
@@ -344,7 +345,6 @@ class Job(models.Model):
 
     # set_Job_paid
 
-
     def set_Job_paid(self, paid):
         if type(paid) != bool:
             return False
@@ -352,16 +352,35 @@ class Job(models.Model):
             self.job_paid = paid
             return True
 
+    def update_num_favorite(self):
+        self.num_favorites = self.favorited_user.all().count()
+        return
+
+    def increment_num_views(self):
+        self.num_views += 1
+        return
+
     # add_to_favorite
     def add_to_favorite(self, user):
         if type(user) != User:
             return False
         else:
             if self.favorited_user.filter(id=user.id):
-                return False
+                self.favorited_user.remove(user)
             else:
                 self.favorited_user.add(user)
+        self.update_num_favorite()
         return True
+
+    # get_favorite_status
+    def get_favorite_status(self, user):
+        if type(user) != User:
+            return False
+        else:
+            if self.favorited_user.filter(id=user.id):
+                return True
+            else:
+                return False
 
 
 # class Referral(models.Model):

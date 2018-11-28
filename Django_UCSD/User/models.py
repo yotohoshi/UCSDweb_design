@@ -59,7 +59,7 @@ class User(models.Model):
     major = models.ForeignKey(Major, null=True, on_delete=models.PROTECT)
     degree = models.ForeignKey(Degree, null=True, on_delete=models.PROTECT)
     contact_email = models.EmailField( verbose_name='email address',  null=True, max_length=255, unique=True,)
-    description = models.CharField(max_length=1000, validators=[django.core.validators.MinLengthValidator
+    description = models.CharField(max_length=1500, validators=[django.core.validators.MinLengthValidator
                                                                 (50,
                                                                  message='Description must be at least 50 characters!')])
     referral_ability = models.BooleanField

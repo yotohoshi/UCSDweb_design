@@ -60,7 +60,7 @@ class Profile(ListView):
         return list(Degree.objects.all())
 
     def get_favjobs(self):
-        return list()
+        return list(self.request.user.user.job_set.all())
 
 
 def edit_profile(request):

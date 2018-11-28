@@ -163,27 +163,54 @@
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <!-- Event Description -->
                                         <div class="row justify-content-center">
-                                        <div class="col-12">
-                                        <div class="card shadow p-3 mb-4 bg-white">
-                                            <div class="card-header align-items-center">
-                                                <div class="row">
-                                                    <h6>Location: {{ event.location }} / Date: {{ event.date }}</h6>
+                                            <div class="col-12">
+                                                <div class="card shadow p-3 mb-4 bg-white"
+                                                     id="event_card{{ event.id }}">
+                                                    <div class="card-header align-items-center">
+                                                        <div class="row">
+                                                            <h6>Location: {{ event.location }} /
+                                                                Date: {{ event.date }}</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <a href="event http">
+                                                            <h4 class="card-title">{{ event.event_name }}</h4>
+                                                        </a>
+                                                        <p class="card-text">{{ event.company }}<br>{{ event.description }}
+                                                        </p>
+                                                        <a href="#" class="btn btn-primary btn-sm float-right">Apply /
+                                                            Sign /
+                                                            Go</a>
+                                                        <a href="#" class="btn btn-danger btn-sm float-right"
+                                                           id="{{ event.id }}">remove</a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="card-body">
-                                                <a href="event http">
-                                                    <h4 class="card-title">{{ event.event_name }}</h4>
-                                                </a>
-                                                <p class="card-text">{{ event.company }}<br>{{ event.description }}</p>
-                                                <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign /
-                                                    Go</a>
-                                                <a href="#" class="btn btn-danger btn-sm float-right">delete</a>
-                                            </div>
-                                        </div>
-                                        </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <script>
+                                    $('#{{ event.id }}').on('click', function () {
+                                        $.ajax({
+                                            url: "{% url 'event_add_to_favorite'%}",
+                                            data: {
+                                                'event_id':{{event.id }},
+                                            },
+                                            dataType: 'json',
+                                            success: function (data) {
+                                                if (data.successful) {
+                                                    alert("remove success!");
+                                                }
+                                                else {
+                                                    alert("failed");
+                                                }
+                                            }
+                                        });
+                                        $('#event_card{{ event.id }}').remove();
+                                    });
+
+                                </script>
                             {% endfor %}
                         {% endif %}
 
@@ -199,19 +226,19 @@
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
                         <!-- Events -->
-                        {% if not view.favorite_jobs %}
+                        {% if not view.get_favjobs %}
                             <div class="panel panel-default">
                                 <h6>You have not added any favorite job yet.</h6>
                             </div>
                         {% else %}
-                            {% for job in view.favorite_jobs %}
+                            {% for job in view.get_favjobs %}
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <!-- Event Description -->
-                                        <div class="card shadow p-3 mb-4 bg-white">
+                                        <div class="card shadow p-3 mb-4 bg-white" id="job_card{{ job.id }}">
                                             <div class="card-header align-items-center">
                                                 <div class="row">
-                                                    <h6>Post Date: {{ job.post_date }}</h6>
+                                                    <h6>Post Date: {{ job.post_time }}</h6>
                                                 </div>
                                             </div>
                                             <div class="card-body">
@@ -221,11 +248,34 @@
                                                 <p class="card-text">{{ job.company }}<br>{{ job.description }}</p>
                                                 <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign /
                                                     Go</a>
-                                                <a href="#" class="btn btn-danger btn-sm float-right">delete</a>
+                                                <a href="#" class="btn btn-danger btn-sm float-right" id="{{ job.id }}">delete</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <script>
+                                    $('#{{ job.id }}').on('click', function () {
+                                        $.ajax({
+                                            url: "{% url 'job_add_to_favorite'%}",
+                                            data: {
+                                                'job_id':{{job.id }},
+                                            },
+                                            dataType: 'json',
+                                            success: function (data) {
+                                                if (data.successful) {
+                                                    alert("remove success!");
+                                                }
+                                                else {
+                                                    alert("failed");
+                                                }
+                                                $('#job_card{{ job.id }}').remove();
+                                            }
+                                        });
+                                    });
+
+                                </script>
+
                             {% endfor %}
                         {% endif %}
 
@@ -252,24 +302,27 @@
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <!-- Event Description -->
                                         <div class="row justify-content-center">
-                                        <div class="col-12">
-                                        <div class="card shadow p-3 mb-4 bg-white">
-                                            <div class="card-header align-items-center">
-                                                <div class="row">
-                                                    <h6>Location: {{ event.location }} / Date: {{ event.date }}</h6>
+                                            <div class="col-12">
+                                                <div class="card shadow p-3 mb-4 bg-white">
+                                                    <div class="card-header align-items-center">
+                                                        <div class="row">
+                                                            <h6>Location: {{ event.location }} /
+                                                                Date: {{ event.date }}</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <a href="event http">
+                                                            <h4 class="card-title">{{ event.event_name }}</h4>
+                                                        </a>
+                                                        <p class="card-text">{{ event.company }}<br>{{ event.description }}
+                                                        </p>
+                                                        <a href="#" class="btn btn-primary btn-sm float-right">Apply /
+                                                            Sign /
+                                                            Go</a>
+                                                        <a href="#" class="btn btn-danger btn-sm float-right">delete</a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="card-body">
-                                                <a href="event http">
-                                                    <h4 class="card-title">{{ event.event_name }}</h4>
-                                                </a>
-                                                <p class="card-text">{{ event.company }}<br>{{ event.description }}</p>
-                                                <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign /
-                                                    Go</a>
-                                                <a href="#" class="btn btn-danger btn-sm float-right">delete</a>
-                                            </div>
-                                        </div>
-                                        </div>
                                         </div>
                                     </div>
                                 </div>

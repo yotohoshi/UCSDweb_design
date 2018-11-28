@@ -112,3 +112,13 @@ def add_to_favorite(request):
             'successful': False
         }
     return JsonResponse(data)
+
+
+def event_get_favorite_status(request):
+    user = request.user.user
+    event_id = request.GET.get('event_id', None)
+    event_obj = list(Event.objects.filter(id=event_id))[0]
+    data = {
+        'event_status': event_obj.get_favorite_status(user)
+    }
+    return JsonResponse(data)

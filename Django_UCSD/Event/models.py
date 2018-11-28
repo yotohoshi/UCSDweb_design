@@ -134,8 +134,18 @@ class Event(models.Model):
             return False
         else:
             if self.favorited_user.filter(id=user.id):
-                return False
+                self.favorited_user.remove(user)
             else:
                 self.favorited_user.add(user)
+        self.update_num_favorite()
         return True
 
+    # get_favorite_status
+    def get_favorite_status(self, user):
+        if type(user) != User:
+            return False
+        else:
+            if self.favorited_user.filter(id=user.id):
+                return True
+            else:
+                return False

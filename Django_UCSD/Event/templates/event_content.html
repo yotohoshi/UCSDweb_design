@@ -53,7 +53,22 @@
 
                             // Toggle start icon to like and dislike
                             $(document).ready(function () {
+                                {% if user.is_authenticated %}
+                                    //Retrieve ajax data from server on initialization
+                                    $.ajax({
+                                        url: "{% url 'event_get_favorite_status' %}",
+                                        data: {
+                                            'event_id':{{ event.id }},
+                                        },
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            if (data.event_status) {
+                                                $('#{{ event.id }}').removeClass("fa-star-o").addClass("fa-star");
+                                            }
+                                        }
 
+                                    });
+                                {% endif %}
                                 $('#icon{{ event.id }}').on('click', function () {
                                     //alert("lll");
                                     $(this).find('#{{ event.id }}').toggleClass("fa-star fa-star-o");
@@ -72,7 +87,7 @@
                                             }
                                         }
                                     });
-                                    alert("hallo");
+                                    //alert("hallo");
                                 });
                             });
                         </script>

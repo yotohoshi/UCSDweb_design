@@ -33,10 +33,10 @@
                                         </div>
                                         <div class="col">
                                             {% if not job.favorited_useruser.user %}
-                                            <button type="button" class="btn btn-default float-right"
-                                                    id="icon{{ job.id }}">
-                                            <i id="{{ job.id }}" class="fa fa-star-o" aria-hidden="false"></i>
-                                            </button>
+                                                <button type="button" class="btn btn-default float-right"
+                                                        id="icon{{ job.id }}">
+                                                    <i id="{{ job.id }}" class="fa fa-star-o" aria-hidden="false"></i>
+                                                </button>
                                             {% endif %}
                                         </div>
                                     </div>
@@ -68,31 +68,50 @@
                         $('.panel-group').on('shown.bs.collapse', toggleIcon);
 
                         // Toggle start icon to like and dislike
+                        //var favorited = false;
                         $(document).ready(function () {
-                                $('#icon{{ job.id }}').on('click', function () {
-                                    //alert("lll");
-                                    {% if user.is_authenticated %}
+                            {% if user.is_authenticated %}
+                            //Retrieve ajax data from server on initialization
+                            $.ajax({
+                                url: "{% url 'job_get_favorite_status' %}",
+                                data: {
+                                    'job_id':{{ job.id }},
+                                },
+                                dataType: 'json',
+                                success: function (data) {
+                                    if (data.job_status){
+                                        $('#{{ job.id }}').removeClass("fa-star-o").addClass("fa-star");
+                                        favorited = true;
+                                    }
+                                }
+
+                            });
+                            {% endif %}
+                            //Set class based on if this contend has already been favorited by the current user
+                            $('#icon{{ job.id }}').on('click', function () {
+                                //alert("lll");
+                                {% if user.is_authenticated %}
                                     $(this).find('#{{ job.id }}').toggleClass("fa-star fa-star-o");
                                     $.ajax({
-                                        url:"{% url 'job_add_to_favorite'%}",
-                                        data:{
+                                        url: "{% url 'job_add_to_favorite'%}",
+                                        data: {
                                             'job_id':{{job.id }},
                                         },
                                         dataType: 'json',
-                                        success:function(data){
-                                            if(data.successful){
+                                        success: function (data) {
+                                            if (data.successful) {
                                                 alert("success!");
                                             }
-                                            else{
+                                            else {
                                                 alert("failed");
                                             }
                                         }
                                     });
-                                    {% else %}
+                                {% else %}
                                     alert("You must sign in before adding any job to favorite!");
-                                    {% endif %}
-                                });
+                                {% endif %}
                             });
+                        });
                     </script>
                 {% endfor %}
 

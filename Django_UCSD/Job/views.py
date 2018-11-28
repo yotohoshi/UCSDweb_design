@@ -128,6 +128,15 @@ def add_to_favorite(request):
     }
     return JsonResponse(data)
 
+
+def job_get_favorite_status(request):
+    user = request.user.user
+    job_id = request.GET.get('job_id', None)
+    job_obj = list(Job.objects.filter(id=job_id))[0]
+    data = {
+        'job_status': job_obj.get_favorite_status(user)
+    }
+    return JsonResponse(data)
 '''
 def search(request):
     form = SearchForm()
