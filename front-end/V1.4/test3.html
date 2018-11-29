@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class=''>
+<head>
+  <script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/MarcMalignan/pen/xlAgJ?depth=everything&order=popularity&page=62&q=box&show_forks=false" />
+  <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+  <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+  <!--<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>-->
+  <!--<script src="network.js"></script>-->
+  <link rel="stylesheet" href="network.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+<style class="cp-pen-styles">@import url(https://fonts.googleapis.com/css?family=Oswald:400,300,700);
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(#eee, #ccc);
+  overflow: hidden;
+}
+
+.selector {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 140px;
+  height: 140px;
+  margin-top: -70px;
+  margin-left: -70px;
+}
+
+.selector, .selector button {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+}
+
+.selector button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background: #428bca;
+  border-radius: 50%;
+  border: 0;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  transition: all .1s;
+}
+
+.selector button:hover {
+  background: #3071a9;
+}
+
+.selector button:focus {
+  outline: none;
+}
+
+.selector ul {
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  top: -20px;
+  right: -20px;
+  bottom: -20px;
+  left: -20px;
+}
+
+.selector li {
+  position: absolute;
+  width: 0;
+  height: 100%;
+  margin: 0 50%;
+  -webkit-transform: rotate(-360deg);
+  transition: all 0.8s ease-in-out;
+}
+
+.selector li input {
+  display: none;
+}
+
+.selector li input + label {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  line-height: 1px;
+  margin-left: 0;
+  background: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: none;
+  transition: all 0.8s ease-in-out, color 0.1s, background 0.1s;
+  background-color: #004A7F;
+  color: #FFFFFF;
+  display: inline-block;
+  -webkit-animation: glowing 1500ms infinite;
+  -moz-animation: glowing 1500ms infinite;
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}
+
+.selector li input + label:hover {
+  background: #f0f0f0;
+}
+
+.selector li input:checked + label {
+  background: #5cb85c;
+  color: white;
+}
+
+.selector li input:checked + label:hover {
+  background: #449d44;
+}
+
+.selector.open li input + label {
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  margin-left: -40px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+}
+
+
+@-webkit-keyframes glowing {
+  0% { background-color: #00E500; -webkit-box-shadow: 0 0 3px #00E500; }
+  50% { background-color: #00FF00; -webkit-box-shadow: 0 0 40px #00FF00; }
+  100% { background-color: #00E500; -webkit-box-shadow: 0 0 3px #00E500; }
+}
+
+@-moz-keyframes glowing {
+  0% { background-color: #00E500; -moz-box-shadow: 0 0 3px #00E500; }
+  50% { background-color: #00FF00; -moz-box-shadow: 0 0 40px #00FF00; }
+  100% { background-color: #00E500; -moz-box-shadow: 0 0 3px #00E500; }
+}
+
+@-o-keyframes glowing {
+  0% { background-color: #00E500; box-shadow: 0 0 3px #00E500; }
+  50% { background-color: #00FF00; box-shadow: 0 0 40px #00FF00; }
+  100% { background-color: #00E500; box-shadow: 0 0 3px #00E500; }
+}
+
+@keyframes glowing {
+  0% { background-color: #00E500; box-shadow: 0 0 3px #00E500; }
+  50% { background-color: #00FF00; box-shadow: 0 0 40px #00FF00; }
+  100% { background-color: #00E500; box-shadow: 0 0 3px #00E500; }
+}
+</style>
+</head>
+<body>
+  <div class='selector'>
+    <ul>
+      <li>
+        <input id='1' type='button'>
+        <label for='1'>Friend 1</label>
+      </li>
+      <li>
+        <input id='2' type='button'>
+        <label for='2'>Friend 2</label>
+      </li>
+      <li>
+        <input id='3' type='button'>
+        <label for='3'>Friend 3</label>
+      </li>
+      <li>
+        <input id='4' type='button'>
+        <label for='4'>Friend 4</label>
+      </li>
+      <li>
+        <input id='5' type='button'>
+        <label for='5'>Friend 5</label>
+      </li>
+      <li>
+        <input id='6' type='button'>
+        <label for='6'>Friend 6</label>
+      </li>
+      <li>
+        <input id='7' type='button'>
+        <label for='7'>Friend 7</label>
+      </li>
+      <li>
+        <input id='8' type='button'>
+        <label for='8'>Friend 8</label>
+      </li>
+      <li>
+        <input id='9' type='button'>
+        <label for='9'>Friend 9</label>
+      </li>
+      <li>
+        <input id='10' type='button'>
+        <label for='10'>Friend 10</label>
+      </li>
+    </ul>
+    <button>User</button>
+  </div>
+
+<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+<!-- <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
+<script >var angleStart = -360;
+
+// jquery rotate animation
+function rotate(li,d) {
+    $({d:angleStart}).animate({d:d}, {
+        step: function(now) {
+            $(li)
+               .css({ transform: 'rotate('+now+'deg)' })
+               .find('label')
+                  .css({ transform: 'rotate('+(-now)+'deg)' });
+        }, duration: 0
+    });
+}
+
+// show / hide the options
+function toggleOptions(s) {
+    $(s).toggleClass('open');
+    var li = $(s).find('li');
+    var deg = $(s).hasClass('half') ? 180/(li.length-1) : 360/li.length;
+    for(var i=0; i<li.length; i++) {
+        if (window.CP.shouldStopExecution(1)){break;}
+        var d = $(s).hasClass('half') ? (i*deg)-90 : i*deg;
+        $(s).hasClass('open') ? rotate(li[i],d) : rotate(li[i],angleStart);
+    }
+window.CP.exitedLoop(1);
+
+}
+
+$('.selector button').click(function(e) {
+    toggleOptions($(this).parent());
+});
+
+setTimeout(function() { toggleOptions('.selector'); }, 100);
+//# sourceURL=pen.js
+</script>
+</body>
+</html>

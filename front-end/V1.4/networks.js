@@ -8,12 +8,9 @@ $(document).ready(
     });
     $('#networksBar').load("network_sidebar.html");
     $('#networksTree').load("network.html");
-    
-    
-    
-    
-    
-    function toggleIcon(e) {
+  });
+
+function toggleIcon(e) {
   $(e.target)
     .prev('.panel-heading')
     .find(".more-less")
@@ -23,36 +20,5 @@ $(document).ready(
 $( function() {
   $( "#networksTree" ).draggable();
 } );
-    
-    
-    
-    
-      var angleStart = -360;
-
-  // jquery rotate animation
-  function rotate(li,d) {
-      $({d:angleStart}).animate({d:d}, {
-          step: function(now) {
-              $(li)
-                 .css({ transform: 'rotate('+now+'deg)' })
-                 .find('label')
-                    .css({ transform: 'rotate('+(-now)+'deg)' });
-          }, duration: 0
-      });
-  }
-
-
-
-  $('.selector button').click(function(e) {
-      toggleOptions($(this).parent());
-  });
-
-  setTimeout(function() { toggleOptions('.selector'); }, 100);
-    
-    
-    
-  });
-
-
 // $('.panel-group').on('hidden.bs.collapse', toggleIcon);
 // $('.panel-group').on('shown.bs.collapse', toggleIcon);

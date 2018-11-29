@@ -1,5 +1,17 @@
 // Loading Page
 $(document).ready(function() {
+  function start() {
+    var submit = document.getElementById('submit');
+    submit.addEventListener('click', toggle);
+  };
+
+  function toggle() {
+    var color = document.getElementById('submit');
+    color.classList.toggle('black');
+  };
+
+
+  start();
   var angleStart = -360;
 
   // jquery rotate animation
@@ -33,8 +45,17 @@ $(document).ready(function() {
 
   setTimeout(function() { toggleOptions('.selector'); }, 100);
   //# sourceURL=pen.js
+
+  // $('.selector2 selector button').click(function(e) {
+  //     toggleOptions($(this).parent());
+  // });
+  //
+  // setTimeout(function() { toggleOptions('.selector2'); }, 100);
+  // # sourceURL=pen.js
+
+
 });
 
-//$( function() {
-//  $( "#draggable" ).draggable();
-//} );
+$( function() {
+  $( "#draggable" ).draggable();
+} );
