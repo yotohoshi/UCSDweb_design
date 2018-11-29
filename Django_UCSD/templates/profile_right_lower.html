@@ -14,9 +14,11 @@
                 <!-- personal profile content -->
                 <div class="container profile-tab personal-data-tab ">
 
-                    <div class="card bg-white shadow" style="padding-left: 20px; padding-top: 20px; padding-bottom: 20px; margin-bottom: 20px;">
+                    <div class="card bg-white shadow"
+                         style="padding-left: 20px; padding-top: 20px; padding-bottom: 20px; margin-bottom: 20px;">
                         <div class="row">
                         </div>
+                        <form name="form">
                         <fieldset disabled>
                             <div class="row">
                                 <div class="col-md-6">
@@ -88,36 +90,37 @@
                                 <p>{{ user.user.description }}</p>
                             </div>
                         </div>
+                        </form>
                     </div>
-                        <div class="row">
-                            <div class="container-fluid justify-content-right" id="edit-cancel-button">
-                                <div id="editprofile">
-                                    <button class="btn btn-secondary btn-sm float-right" onclick="Render()">Edit
-                                        Profile
-                                    </button>
-                                </div>
+                    <div class="row">
+                        <div class="container-fluid justify-content-right" id="edit-cancel-button">
+                            <div id="editprofile">
+                                <button class="btn btn-secondary btn-sm float-right" onclick="Render()">Edit
+                                    Profile
+                                </button>
                             </div>
                         </div>
+                    </div>
 
                     <div id="cancel"></div>
                 </div>
 
                 <!-- SCRIPT -->
                 <script>
-                    const buttonSubmit = " <button type = 'submit' class='btn btn-secondary btn-sm float-right'>Save Changes</button>";
+                    const buttonSubmit = " <button type = 'submit' class='btn btn-secondary btn-sm float-right' onclick='test()'>Save Changes</button>";
                     const buttonCancel = " <button class='btn btn-secondary btn-sm float-right' onclick='Cancel()'>Cancel</button>";
                     const toRenderFName = "<input class=\"form-control\" type='text' name='F_Name' id='F_Name' value = '{{ user.user.F_Name }}'>";
                     const toRenderLName = "<input class=\"form-control\"type='text' name='lname' id='lname' value = '{{ user.user.L_Name }}'>";
                     const toRenderEmail = "<input class=\"form-control\"type='text' name='contact_email' id='contact_email' value = '{{ user.user.contact_email }}'>";
                     const toRenderGyear = "<input class=\"form-control\"type='text' name='yr_graduation' id='yr_graduation' value = '{{ user.user.yr_graduation }}'>";
-                    const toRenderMajor = "<select class=\"form-control\" id=\"exampleFormControlSelect1\" name=\"major\">\n" +
+                    const toRenderMajor = "<select class=\"form-control\" id=\"major\" name=\"major\">\n" +
                         "                                {% for major in view.get_majors %}\n"+
                             "                                <option>{{ major.major }}</option>\n"+
                             "                                {% endfor %}\n" +
                         "                            </select>";
 
 
-                    const toRenderDegree = "<select class=\"form-control\" id=\"exampleFormControlSelect1\" name=\"degree\">\n" +
+                    const toRenderDegree = "<select class=\"form-control\" id=\"degree\" name=\"degree\">\n" +
                         "    {% for degree in view.get_degrees %}\n"+
                             "        <option>{{ degree.degree }}</option>\n" +
                             " {% endfor %}\n" +
@@ -140,7 +143,37 @@
 
                     function Cancel() {
                         window.location.reload()
+                    }
 
+                    function test() {
+                        var major = document.forms["form"]["major"].value;
+                        var degree = document.forms["form"]["degree"].value;
+                        var yr_graduation = document.forms["form"]["yr_graduation"].value;
+                        var description = document.forms["form"]["description"].value;
+                        var contact_email = document.forms["form"]["contact_email"].value;
+                        $.ajax({
+                            type: "POST",
+                            url: '{% url 'edit_profile' %}',
+                            data: {
+                                csrfmiddlewaretoken: '{{ csrf_token }}',
+                                'contact_email': contact_email,
+                                'major': major,
+                                'degree': degree,
+                                'yr_graduation': yr_graduation,
+                                'description': description,
+                            },
+                            dataType: 'json',
+                            success: function (data) {
+                                if (data.successful) {
+                                    alert("success!");
+                                    window.location.reload();
+                                }
+                                else {
+                                    alert("failed!");
+                                    window.location.reload(true);
+                                }
+                            }
+                        });
                     }
                 </script>
             </div>
