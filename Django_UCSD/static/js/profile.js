@@ -22,6 +22,7 @@ $(document).ready(function() {
     $('#keywordsearch').load('/templates/simple_keyword_search.html');
     $('#personallinks').load('/templates/personal_links.html');
     $('#right-upper').load('/templates/profile_right_upper.html');
+    $('#calendar').load('/templates/calendar.html');
     //$('#personal').load('/templates/profile_right_lower.html');
     //$('#event').load('/templates/profile_right_lower_events.html');
 

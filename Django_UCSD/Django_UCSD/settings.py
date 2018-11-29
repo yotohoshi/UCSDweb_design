@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'Job',
     'Registration',
     'Category',
+    'Network',
 ]
 
 MIDDLEWARE = [

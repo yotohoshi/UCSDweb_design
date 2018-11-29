@@ -2,39 +2,46 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  </meta>
-  <title></title>
+    <meta charset="utf-8">
+    </meta>
+    <title></title>
 </head>
 
 <body>
 
 
-  <!-- upper right content and upper right nv bar -->
-  <span class="profile-head">
-    <h5>
-      {{ user.user.F_Name }} {{ user.user.L_Name }}
-    </h5>
-    <p>
-      Signature? delete if don't need
-    </p>
-      <p class="proile-rating">Number of Friends : {{ user.user.friend.count }}</p>
+<!-- upper right content and upper right nv bar -->
+<div class="profile-head">
+    <div class="card bg-white shadow" style="margin-bottom: 20px;">
+        <div class="profile-upper-content" style="padding: 20px;">
+        <h5>
+            {{ user.user.F_Name }} {{ user.user.L_Name }}
+        </h5>
+        <p>
+            Signature? delete if don't need
+        </p>
+        <p class="proile-rating">Number of Friends : {{ user.user.friend.count }}</p>
+        </div>
+    </div>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" id="personal-data-tab" data-toggle="tab" href="#personal" role="tab" aria-controls="personal" aria-selected="true">About</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="event-tab" data-toggle="tab" href="#event" role="tab" aria-controls="event" aria-selected="false">Favorite Events</a>
-      </li>
         <li class="nav-item">
-        <a class="nav-link" id="job-tab" data-toggle="tab" href="#job" role="tab" aria-controls="job" aria-selected="false">Favorite Jobs</a>
-      </li>
+            <a class="nav-link active" id="personal-data-tab" data-toggle="tab" href="#personal" role="tab"
+               aria-controls="personal" aria-selected="true">About</a>
+        </li>
         <li class="nav-item">
-        <a class="nav-link" id="referral-tab" data-toggle="tab" href="#referral" role="tab" aria-controls="referral" aria-selected="false">My Referrals</a>
-      </li>
+            <a class="nav-link" id="event-tab" data-toggle="tab" href="#event" role="tab" aria-controls="event"
+               aria-selected="false">Favorite Events</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="job-tab" data-toggle="tab" href="#job" role="tab" aria-controls="job"
+               aria-selected="false">Favorite Jobs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="referral-tab" data-toggle="tab" href="#referral" role="tab" aria-controls="referral"
+               aria-selected="false">My Referrals</a>
+        </li>
     </ul>
-  </div>
-
+</div>
 
 
 </body>

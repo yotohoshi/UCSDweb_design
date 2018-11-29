@@ -75,3 +75,12 @@ class SearchResult(ListView):
 
         result = search_By_Keywords(name)
         return result
+
+
+class List(ListView):
+    template_name = 'friend_recommandation.html'
+    model = User
+    context_object_name = 'users'
+
+    def get_queryset(self):
+        return User.objects.all()

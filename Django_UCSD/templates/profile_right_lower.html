@@ -13,9 +13,8 @@
             <div class="tab-pane active show fade" id="personal" role="tabpanel" aria-labelledby="personal-data-tab">
                 <!-- personal profile content -->
                 <div class="container profile-tab personal-data-tab ">
-                    <form action="{% url 'edit_profile' %}" method="POST">
-                        {% csrf_token %}
 
+                    <div class="card bg-white shadow" style="padding-left: 20px; padding-top: 20px; padding-bottom: 20px; margin-bottom: 20px;">
                         <div class="row">
                         </div>
                         <fieldset disabled>
@@ -89,6 +88,7 @@
                                 <p>{{ user.user.description }}</p>
                             </div>
                         </div>
+                    </div>
                         <div class="row">
                             <div class="container-fluid justify-content-right" id="edit-cancel-button">
                                 <div id="editprofile">
@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+
                     <div id="cancel"></div>
                 </div>
 
