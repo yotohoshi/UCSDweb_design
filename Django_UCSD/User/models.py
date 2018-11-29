@@ -3,7 +3,7 @@ from django.db import models
 import django.core.validators
 from django.core.exceptions import ValidationError
 import Company.models
-import Event.models
+# import Event.models
 import uuid
 from django.db.models.signals import post_save
 from Registration.models import Account
@@ -44,7 +44,7 @@ class Degree(models.Model):
 class User(models.Model):
     db_table = 'user',
     acc = models.OneToOneField(Account, on_delete=models.CASCADE)
-    UID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    # UID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     F_Name = models.CharField(max_length=20)
     L_Name = models.CharField(max_length=20)
 
@@ -59,12 +59,13 @@ class User(models.Model):
     major = models.ForeignKey(Major, null=True, on_delete=models.PROTECT)
     degree = models.ForeignKey(Degree, null=True, on_delete=models.PROTECT)
     contact_email = models.EmailField( verbose_name='email address',  null=True, max_length=255, unique=True,)
-    description = models.CharField(max_length=1000, validators=[django.core.validators.MinLengthValidator
+    description = models.CharField(max_length=1500, validators=[django.core.validators.MinLengthValidator
                                                                 (50,
                                                                  message='Description must be at least 50 characters!')])
     referral_ability = models.BooleanField
     company = models.ManyToManyField(Company.models.Company, symmetrical=False, blank=True)
-    favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
+    # favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
+    # favorite_job = models.ManyToManyField(Job.models.Job, symmetrical=False, blank=True)
     friend = models.ManyToManyField('User', symmetrical=True, blank=True)
     # Getters
 
@@ -185,7 +186,7 @@ class User(models.Model):
 
     # add_to_favorite
     def add_to_favorite(self, favorite):
-        if type(favorite) != Event.models.Event:
+        if type(favorite) != Event.models.Event or type(favorite) != Job:
             return False
         else:
             self.favorite_event.add(favorite)

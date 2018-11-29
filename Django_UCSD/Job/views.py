@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from Job.models import Job
 from django.views.generic import (TemplateView,ListView,
@@ -14,7 +15,7 @@ from User.models import Degree
 
 register = template.Library()
 AUTH = ['U.S Citizen','Permanent Resident','F-1','H1-B','OPT','CPT','Otherwise Authorized to Work',]
-JOBTYPE = ['intern', 'Full Time', 'Part Time', 'Free Lance']
+JOBTYPE = ['Full-time', 'Part-time', 'Contract', 'Temporary', 'Commission', 'Internship', 'Not Available']
 DEGS = ['BS', 'BA', 'MS', 'MA', 'PHD', 'MBA', 'NO LIMITED']
 
 class JobDefault(ListView):
@@ -40,7 +41,7 @@ class JobDefault(ListView):
 class JobSearch(ListView):
 
     context_object_name = 'jobs'
-    template_name = 'jobs_content.html'
+    template_name = 'jobs_search-result.html'
     paginate_by = 5
 
     @overrides
@@ -96,10 +97,14 @@ class JobSearch(ListView):
             if auths or degs or start_time or end_time or paid or types:
                 keyword = self.request.user.get_keyword()
             else:
-                keyword = ' '
-                self.request.user.save_keyword(keyword)
+                if self.request.GET.getlist('page') and self.request.GET.getlist('page') != 1:
+                    keyword = self.request.user.get_keyword()
+                else:
+                    keyword = ' '
+                    self.request.user.save_keyword(keyword)
         else:
-            self.request.user.save_keyword(keyword)
+            if self.request.user.is_authenticated:
+                self.request.user.save_keyword(keyword)
 
         print(keyword, auths, degs, start_time, end_time, paid, types)
         return Job.general_Search(keyword, auths, degs, start_time, end_time, None, paid, types)
@@ -114,11 +119,24 @@ class JobSearch(ListView):
         return JOBTYPE
 
 
+def add_to_favorite(request):
+    user = request.user.user
+    job_id = request.GET.get('job_id', None)
+    job_obj = list(Job.objects.filter(id=job_id))[0]
+    data = {
+        'successful': job_obj.add_to_favorite(user)
+    }
+    return JsonResponse(data)
 
 
-
-
-
+def job_get_favorite_status(request):
+    user = request.user.user
+    job_id = request.GET.get('job_id', None)
+    job_obj = list(Job.objects.filter(id=job_id))[0]
+    data = {
+        'job_status': job_obj.get_favorite_status(user)
+    }
+    return JsonResponse(data)
 '''
 def search(request):
     form = SearchForm()

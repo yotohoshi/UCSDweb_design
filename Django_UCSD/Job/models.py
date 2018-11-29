@@ -3,7 +3,7 @@ from datetime import datetime
 
 import django.core.validators
 from django.db import models
-
+from Category.models import Category
 import Company.models
 from User.models import Major, Degree, User
 import string
@@ -68,9 +68,9 @@ class Job(models.Model):
     job_Work_Auth = models.CharField(max_length=100, choices=WORKAUTHS)
     company = models.ForeignKey(Company.models.Company, on_delete=models.PROTECT)
     job_URL = models.URLField(max_length=300)
-    degree_required = models.ManyToManyField(Degree, null=True, blank=True)
-    major_required = models.ManyToManyField(Major, null=True, blank=True)
-
+    favorited_user = models.ManyToManyField(User, blank=True, symmetrical=False)
+    category = models.ManyToManyField(Category, blank=True, symmetrical=False)
+    num_views = models.IntegerField(default=0, validators=[django.core.validators.MinValueValidator(0)])
 
 
     @staticmethod
@@ -108,6 +108,15 @@ class Job(models.Model):
             for job in result:
                 for auth in work_auth:
                     if job.job_Work_Auth == auth:
+                        relevant_Jobs.append(job)
+            result = relevant_Jobs
+
+        # job type parameter
+        if type is not None:
+            relevant_Jobs = []
+            for job in result:
+                for job_type in type:
+                    if job.type == job_type:
                         relevant_Jobs.append(job)
             result = relevant_Jobs
 
@@ -336,13 +345,42 @@ class Job(models.Model):
 
     # set_Job_paid
 
-
     def set_Job_paid(self, paid):
         if type(paid) != bool:
             return False
         else:
             self.job_paid = paid
             return True
+
+    def update_num_favorite(self):
+        self.num_favorites = self.favorited_user.all().count()
+        return
+
+    def increment_num_views(self):
+        self.num_views += 1
+        return
+
+    # add_to_favorite
+    def add_to_favorite(self, user):
+        if type(user) != User:
+            return False
+        else:
+            if self.favorited_user.filter(id=user.id):
+                self.favorited_user.remove(user)
+            else:
+                self.favorited_user.add(user)
+        self.update_num_favorite()
+        return True
+
+    # get_favorite_status
+    def get_favorite_status(self, user):
+        if type(user) != User:
+            return False
+        else:
+            if self.favorited_user.filter(id=user.id):
+                return True
+            else:
+                return False
 
 
 # class Referral(models.Model):

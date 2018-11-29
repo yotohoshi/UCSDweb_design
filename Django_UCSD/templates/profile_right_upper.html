@@ -11,23 +11,26 @@
 
 
   <!-- upper right content and upper right nv bar -->
-  <div class="profile-head">
+  <span class="profile-head">
     <h5>
-      Name Goes Here
+      {{ user.user.F_Name }} {{ user.user.L_Name }}
     </h5>
-    <h6>
+    <p>
       Signature? delete if don't need
-    </h6>
-    <div class="col-md-2 float-right">
-      <button type="button" class="btn btn-secondary" name="button" id="edprofile">Edit Profile</button>
-    </div>
-    <p class="proile-rating">Friends : <span>Here is the friends number delete if need</span></p>
+    </p>
+      <p class="proile-rating">Number of Friends : {{ user.user.friend.count }}</p>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="personal-data-tab" data-toggle="tab" href="#personal" role="tab" aria-controls="personal" aria-selected="true">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="event-tab" data-toggle="tab" href="#event" role="tab" aria-controls="event" aria-selected="false">Timeline</a>
+        <a class="nav-link" id="event-tab" data-toggle="tab" href="#event" role="tab" aria-controls="event" aria-selected="false">Favorite Events</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" id="job-tab" data-toggle="tab" href="#job" role="tab" aria-controls="job" aria-selected="false">Favorite Jobs</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" id="referral-tab" data-toggle="tab" href="#referral" role="tab" aria-controls="referral" aria-selected="false">My Referrals</a>
       </li>
     </ul>
   </div>
