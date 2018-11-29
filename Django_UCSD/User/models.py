@@ -7,6 +7,10 @@ import Event.models
 import uuid
 from django.db.models.signals import post_save
 from Registration.models import Account
+from math import ceil
+import string
+from nltk.corpus import stopwords
+from nltk.stem.porter import *
 from django import forms
 
 # Create your models here.
@@ -45,12 +49,13 @@ class User(models.Model):
     L_Name = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.F_Name+""+self.L_Name
-    yr_graduation = models.IntegerField(null=True,validators=[django.core.validators.MaxValueValidator
+        return self.F_Name+" "+self.L_Name
+
+    yr_graduation = models.IntegerField(validators=[django.core.validators.MaxValueValidator
                                                     (2050,
                                                      message='Year of graduation should be less than 2050!'),
                                                     django.core.validators.MinValueValidator(1970,
-                                                                                             message='Year of graduation should be more than 1970!')])
+                                                    message='Year of graduation should be more than 1970!')])
     major = models.ForeignKey(Major, null=True, on_delete=models.PROTECT)
     degree = models.ForeignKey(Degree, null=True, on_delete=models.PROTECT)
     contact_email = models.EmailField( verbose_name='email address',  null=True, max_length=255, unique=True,)
@@ -59,17 +64,8 @@ class User(models.Model):
                                                                  message='Description must be at least 50 characters!')])
     referral_ability = models.BooleanField
     company = models.ManyToManyField(Company.models.Company, symmetrical=False, blank=True)
-    # Originally from registration app
-    register_email = models.CharField(max_length=60, unique=True, validators=[django.core.validators.EmailValidator
-        (
-        message='Please Use a valid email address!',
-        code=None, whitelist=None)])
-    password = models.CharField(max_length=20,
-                                validators=[django.core.validators.MinLengthValidator
-                                (8, message='Password must be at least 8 characters!')])
-    # Re-implemented favorite table
     favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
-    #acc = models.OneToOneField(Account, on_delete=models.CASCADE)
+    friend = models.ManyToManyField('User', symmetrical=True, blank=True)
     # Getters
 
     # get_user_by_name
@@ -154,19 +150,14 @@ class User(models.Model):
             return True
 
     # set_email
-    def set_email(self, email, kind):
+    def set_email(self, email):
         try:
             django.core.validators.validate_email(email)
-            if kind == 0:
-                self.contact_email = email
-                return True
-            elif kind == 1:
-                self.register_email = email
-                return True
-            else:
-                return False
+            self.contact_email = email
+
         except ValidationError:
             return False
+        return True
 
     # set_description
     def set_description(self, descrip):
@@ -181,7 +172,7 @@ class User(models.Model):
         if type(comp) != Company.models.Company:
             return False
         else:
-            self.companys.add(comp)
+            self.company.add(comp)
             return True
 
     # remove_company
@@ -189,7 +180,7 @@ class User(models.Model):
         if type(comp) != Company.models.Company:
             return False
         else:
-            self.companys.remove(comp)
+            self.company.remove(comp)
             return True
 
     # add_to_favorite
@@ -209,35 +200,120 @@ class User(models.Model):
             Event.models.Event(favorite).update_num_favorite()
         return True
 
+    # rend_request
+    def send_request(self, target):
+        if type(target) != User:
+            return False
+        else:
+            Request.objects.create(from_user=self, to_user=target)
+            return True
 
-class UserProfile(models.Model):
+    # accept_request
+    def accept_request(self, request):
+        if type(request) != Request:
+            return False
+        else:
+            self.friend.add(request.from_user)
+            request.delete()
+            return True
 
-    db_table = 'UserProfiles',
-   # user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = "hahaha"
+    # deny_request
+    def deny_request(self, request):
+        if type(request) != Request:
+            return False
+        else:
+            request.delete()
+            return True
 
-    #def __str__(self):
-     #   return self.user
+    # remove_friend
+    def remove_friend(self, todelete):
+        if type(todelete) != User:
+            return False
+        elif todelete in self.friend.all():
+            self.friend.remove(todelete)
+            return True
+        else:
+            return False
+
+    # undo_request
+    def undo_request(self, request):
+        if type(request) != Request:
+            return False
+        else:
+            request.delete()
+            return True
+
+    # update_user_info
+    def update_user_info(self, major, degree, contact_email, description, year_graduation):
+        if major:
+            major_obj = list(Major.objects.filter(major=major))[0]
+            self.major = major_obj
+        if degree:
+            degree_obj = list(Degree.objects.filter(degree=degree))[0]
+            self.degree = degree_obj
+        if contact_email:
+            self.contact_email = contact_email
+        if description:
+            self.description = description
+        if year_graduation:
+            self.yr_graduation = year_graduation
+        self.save()
+        return True
 
 
-def create_profile(sender, **kwargs):
-    if kwargs['created']:
-        user_profile = UserProfile.objects.create(user=kwargs['instance'])
+class Request(models.Model):
+    from_user = models.OneToOneField(User, on_delete=models.CASCADE,  related_name='+')
+    to_user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
-def create_ac(sender, **kwargs):
-    if kwargs['created']:
-        account = User.objects.create(acc=kwargs['instance'])
+RELEVANT_COEFFICIENT = 0.5
+PUNCTUATIONS = set(string.punctuation)
+STOPWORDS = set(stopwords.words('english'))
+STEMMER = PorterStemmer()
+INFINITY = 999999
 
 
-post_save.connect(create_ac, sender=Account)
-# change_password TODO
+# helper method - string pre-processing
+# return a list of stemmed words in the string in lowercase without punctuations, stop words, or repeated words
+def string_preprocess (to_process):
+    if type(to_process) != str:
+        return []
+    else:
+        to_process = ''.join([char for char in to_process.lower() if char not in PUNCTUATIONS])
+        processed = set()
+        for word in to_process.split():
+            if word not in STOPWORDS:
+                word = STEMMER.stem(word)
+                processed.add(word)
+        return processed
 
 
-# Deleted favorite table, using many-to-many relationship instead
-'''
-    class Favorite(models.Model):
-    db_table = 'Favorite',
-    Usr = models.ForeignKey(User, on_delete=models.PROTECT)
-    Event = models.ForeignKey(Event.models.Events, on_delete=models.PROTECT)
-'''
+# search_by_Keywords
+def search_By_Keywords(keywords):
+    if type(keywords) != str:
+        return False
+    else:
+        # keywords pre-processing:
+        keywords = string_preprocess(keywords)
+
+        relevant_usr = []
+        if len(keywords) == 0:
+            threshold = INFINITY
+        else:
+            threshold = ceil(RELEVANT_COEFFICIENT * len(keywords))
+
+        for usr in User.objects.all():
+
+            # description pre-processing
+            full_name = usr.__str__()
+            full_name = string_preprocess(full_name)
+
+            # comparing keywords with job descriptions
+            counter = 0
+            for word in keywords:
+                if word in full_name:
+                    counter += 1
+
+                if counter >= threshold:
+                    relevant_usr.append(usr)
+        return relevant_usr

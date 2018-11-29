@@ -46,6 +46,13 @@ $(document).ready(function() {
   setTimeout(function() { toggleOptions('.selector'); }, 100);
   //# sourceURL=pen.js
 
+  // $('.selector2 selector button').click(function(e) {
+  //     toggleOptions($(this).parent());
+  // });
+  //
+  // setTimeout(function() { toggleOptions('.selector2'); }, 100);
+  // # sourceURL=pen.js
+
 
 });
 

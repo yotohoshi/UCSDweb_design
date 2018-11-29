@@ -1,30 +1,39 @@
 import uuid
-import datetime
+from datetime import datetime
 
 import django.core.validators
 from django.db import models
 
 import Company.models
-import User.models
+from User.models import Major, Degree, User
 import string
 from math import ceil
 from nltk.corpus import stopwords
 from nltk.stem.porter import *
+from django.utils import timezone
 
 
 ##################################### Constants
 
 WORKAUTHS=(
-    ('U.S Citizen','U.S Citizen'),
-    ('Permanent Resident','Permanent Resident'),
-    ('F-1','F-1'),
-    ('H1-B','H1-B'),
-    ('Otherwise','Otherwise Authorized to Work'),
+    ('U.S. Citizens','U.S. Citizens Or U.S. Permanent Residents Only'),
+    ('Other','All Legal Citizens'),
+)
+
+JOBTYPES=(
+    ('Full-time', 'Full-time'),
+    ('Part-time', 'Part-time'),
+    ('Contract', 'Contract'),
+    ('Temporary', 'Temporary'),
+    ('Commission', 'Commission'),
+    ('Internship', 'Internship'),
+    ('Not Available', 'Not Available')
 )
 PUNCTUATIONS = set(string.punctuation)
 STOPWORDS = set(stopwords.words('english'))
 STEMMER = PorterStemmer()
-RELEVANT_COEFFICIENT = 0.5
+RELEVANT_COEFFICIENT = 0.7
+INFINITY = 999999
 
 
 ##################################### Helper Methods
@@ -47,41 +56,40 @@ def string_preprocess (to_process):
 
 class Job(models.Model):
     db_table = 'Job'
-    JobID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    post_time = models.DateTimeField(default=datetime.now, blank=True)
+
+    # from data
     job_position = models.CharField(max_length=200)
-    type = models.IntegerField(validators=[django.core.validators.MaxValueValidator(1, message=None),
-                                           django.core.validators.MinValueValidator(0, message=None)])
-    description = models.CharField(max_length=300)
+    type = models.CharField(max_length=100, choices=JOBTYPES)
+    description = models.CharField(max_length=100000)
+    short_description = models.CharField(max_length=2000)
+    degree_required = models.ManyToManyField(Degree, null=True, blank=True)
+    major_required = models.ManyToManyField(Major, null=True, blank=True)
+    job_Work_Auth = models.CharField(max_length=100, choices=WORKAUTHS)
     company = models.ForeignKey(Company.models.Company, on_delete=models.PROTECT)
     job_URL = models.URLField(max_length=300)
-    job_duration = models.CharField(max_length=100)
-    job_start = models.DateField(default=datetime.date.today)
-    job_end = models.DateField(default=datetime.date.today)
-    job_location = models.CharField(max_length=100)
-    job_Work_Auth = models.CharField(max_length=100, choices=WORKAUTHS)
-    job_paid = models.BooleanField
-    Major_Require = models.ManyToManyField(User.models.Major, symmetrical=False, blank=True)
-    Degree_Require = models.ManyToManyField(User.models.Degree, symmetrical=False, blank=True)
+    degree_required = models.ManyToManyField(Degree, null=True, blank=True)
+    major_required = models.ManyToManyField(Major, null=True, blank=True)
 
-    # string representation representation of Job instances
-    def __str__(self):
-        return str(self.job_end)
 
 
     @staticmethod
-    def general_Search(keywords, company_name, work_auth, maj, deg, duration, location, pay):
+    def general_Search(keywords, work_auth, degs, start_date, end_date, location, pay, type):
         result = [job for job in Job.objects.all()]
 
-        # perform keyword search if keyword is not none
+        #     def _perform keyword search if keyword is not none
         if keywords is not None:
             # keywords pre-processing:
             keywords = string_preprocess(keywords)
 
             relevant_Jobs = []
-            threshold = ceil(RELEVANT_COEFFICIENT * len(keywords))
+            if len(keywords) == 0:
+                threshold = INFINITY
+            else:
+                threshold = ceil(RELEVANT_COEFFICIENT * len(keywords))
             for job in result:
                 # description pre-processing
-                full_description = job.description + ' ' + job.job_position + ' ' + job.company.company_name
+                full_description =job.job_position
                 full_description = string_preprocess(full_description)
 
                 # comparing keywords with job descriptions
@@ -94,71 +102,65 @@ class Job(models.Model):
                     relevant_Jobs.append(job)
             result = relevant_Jobs
 
-        # company name parameter is a string
-        if company_name is not None:
-            relevant_Jobs = []
-            for job in result:
-                if job.company.company_name == company_name:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
-
         # work authorization parameter is a string
         if work_auth is not None:
             relevant_Jobs = []
             for job in result:
-                if job.job_Work_Auth == work_auth:
-                    relevant_Jobs.append(job)
+                for auth in work_auth:
+                    if job.job_Work_Auth == auth:
+                        relevant_Jobs.append(job)
             result = relevant_Jobs
 
-        # major parameter is a string
-        if maj is not None:
-            relevant_Jobs = []
-            for job in result:
-                if maj in [mj.major for mj in job.Major_Require.all()]:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
+        # # degree parameter is a string
+        # if degs is not None:
+        #     relevant_Jobs = []
+        #     for job in result:
+        #         for deg in degs:
+        #             if deg in [dg.degree for dg in job.Degree_Require.all()]:
+        #                 relevant_Jobs.append(job)
+        #     result = relevant_Jobs
 
-        # degree parameter is a string
-        if deg is not None:
-            relevant_Jobs = []
-            for job in result:
-                if deg in [dg.degree for dg in job.Degree_Require.all()]:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
+        # # start_date parameter is a number
+        # if start_date is not None:
+        #     relevant_Jobs = []
+        #     for job in result:
+        #         if job.job_start == start_date:
+        #             relevant_Jobs.append(job)
+        #     result = relevant_Jobs
 
-        # duration parameter is a number
-        if duration is not None:
-            relevant_Jobs = []
-            for job in result:
-                if (job.job_end - job.job_start) == duration:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
+        # # start_date parameter is a number
+        # if end_date is not None:
+        #     relevant_Jobs = []
+        #     for job in result:
+        #         if job.job_end == end_date:
+        #             relevant_Jobs.append(job)
+        #     result = relevant_Jobs
 
-        # location parameter is a string
-        if location is not None:
-            relevant_Jobs = []
-            location = location.lower()
-            for job in result:
-                if location in job.job_location:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
+        # # location parameter is a string
+        # if location is not None:
+        #     relevant_Jobs = []
+        #     location = location.lower()
+        #     for job in result:
+        #         if location in job.job_location:
+        #             relevant_Jobs.append(job)
+        #     result = relevant_Jobs
 
-        # paid parameter is a boolean
-        if pay is not None:
-            relevant_Jobs = []
-            for job in result:
-                if job.job_paid == pay:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
+        # # paid parameter is a boolean
+        #         # if pay is not None:
+        #         #     relevant_Jobs = []
+        #         #     for job in result:
+        #         #         if job.job_paid == pay:
+        #         #             relevant_Jobs.append(job)
+        #         #     result = relevant_Jobs
 
         return result
+
 
     @staticmethod
     def get_all():
         return list(Job.objects.all())
 
-
-
+    @staticmethod
     def search_By_Keywords(keywords):
         if type(keywords) != str:
             return False
@@ -182,8 +184,6 @@ class Job(models.Model):
                 if counter >= threshold:
                     relavent_Jobs.append(job)
             return relavent_Jobs
-
-
 
     @staticmethod
     def get_Job_Company(company):
@@ -224,7 +224,7 @@ class Job(models.Model):
 
     @staticmethod
     def get_Job_Major_Require(major):
-        if type(major) != User.models.Major:
+        if type(major) != Major:
             return False
         else:
             return Job.objects.filter(Major_Require=major)
@@ -234,7 +234,7 @@ class Job(models.Model):
 
     @staticmethod
     def get_Job_Degree_Require(degree):
-        if type(degree) != User.models.Degree:
+        if type(degree) != Degree:
             return False
         else:
             return Job.objects.filter(Degree_Require=degree)
@@ -247,7 +247,7 @@ class Job(models.Model):
         if type(duration) != str:
             return False
         else:
-            return Job.object.filter(job_duration=duration)
+            return Job.objects.filter(job_duration=duration)
 
     # get_Job_location
 
@@ -256,7 +256,7 @@ class Job(models.Model):
         if type(location) != str:
             return False
         else:
-            return Job.object.filter(job_location=location)
+            return Job.objects.filter(job_location=location)
 
 
     # get_Job_paid
@@ -266,7 +266,7 @@ class Job(models.Model):
         if type(paid) != bool:
             return False
         else:
-            return Job.object.filter(job_paid=paid)
+            return Job.objects.filter(job_paid=paid)
 
 
     # setter
@@ -305,7 +305,7 @@ class Job(models.Model):
 
 
     def set_major(self, major):
-        if type(major) != User.models.Major:
+        if type(major) != Major:
             return False
         else:
             self.Major_Require = major
@@ -316,7 +316,7 @@ class Job(models.Model):
 
 
     def set_degree(self, degree):
-        if type(degree) != User.models.Degree:
+        if type(degree) != Degree:
             return False
         else:
             self.Degree_Require = degree
@@ -343,3 +343,34 @@ class Job(models.Model):
         else:
             self.job_paid = paid
             return True
+
+
+# class Referral(models.Model):
+#     referral_ID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+#     ref_provider = models.ForeignKey(User, on_delete=models.PROTECT)
+#     referral_job = models.ForeignKey(Job, on_delete=models.PROTECT)
+#     referral_description = models.CharField(max_length=300)
+#     resume_require = models.BooleanField
+#
+#
+# # getter
+#
+#
+# # get_provider
+#
+#
+# def get_provider(provider):
+#     if type(provider) != User:
+#         return False
+#     else:
+#         return Referral.objects.all.filter(ref_provider=provider)
+#
+#
+# # setter
+#
+# def set_resume_require(self, res_require):
+#     if type(res_require) != bool:
+#         return False
+#     else:
+#         self.resume_require = res_require
+#         return True

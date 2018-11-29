@@ -32,6 +32,11 @@ https://1drv.ms/w/s!An5MZ_DDBL1rhOBPQbSbUguAi8id-g
 https://1drv.ms/w/s!An5MZ_DDBL1rhOBRHXHV8oYHwD_Q3A  
 ### Requirements  
 https://1drv.ms/w/s!An5MZ_DDBL1rhOBb3H0mwjhpL0BERA  
+### Testcases  
+https://1drv.ms/w/s!Aogc8iOpDyu5nR5-hHygJDKQXW44
+### User Story Acceptance Tests  
+https://1drv.ms/w/s!Aogc8iOpDyu5nSDgvzoJpVpUFWaH
+
 
 ## Google Sheet (idea, shcedule, living area, specialties, experties) please fill up by Oct. 6th 2018
 https://docs.google.com/spreadsheets/d/1_zgOO26fDdASQ2vssuoUhXT4bcfoFI67ZZMT4WWnXXs/edit?usp=sharing 

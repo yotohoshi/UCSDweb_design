@@ -21,7 +21,18 @@ function toggleIcon(e) {
 $('.panel-group').on('hidden.bs.collapse', toggleIcon);
 $('.panel-group').on('shown.bs.collapse', toggleIcon);
 
-
-$('#icon1').on('click', function() {
-  $(this).toggleClass('fa-star');
+// Toggle start icon to like and dislike
+$(document).ready(function() {
+  $('#icon1').on('click', function() {
+    //alert("lll");
+    $(this).find('#ii').toggleClass("fa-star fa-star-o");
+  });
+  $('#icon2').on('click', function() {
+    //alert("lll");
+    $(this).find('#iii').toggleClass("fa-star fa-star-o");
+  });
+  $('#icon3').on('click', function() {
+    //alert("lll");
+    $(this).find('#iiii').toggleClass("fa-star fa-star-o");
+  });
 });

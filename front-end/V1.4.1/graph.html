@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8"></meta>
+    <title>Graph</title>
+    <script src="cytoscape.js"></script>
+    <link rel="stylesheet" href="graph.css">
+</head>
+
+<body>
+    <div id="cy"></div>
+    <script>
+        var cy = cytoscape({
+          container: document.getElementById('cy'),
+          elements: [
+            { data: { id: 'Mie Ba' } },
+            { data: { id: 'Shaoyuan Xu' } },
+            {
+              data: {
+                id: 'Mie BaShaoyuan Xu',
+                source: 'Mie Ba',
+                target: 'Shaoyuan Xu'
+              }
+            }],
+          style: [
+            {
+              selector: 'node',
+              style: {
+                // shape: 'hexagon',
+                'background-color': 'red',
+                label: 'data(id)'
+              }
+            }]
+        });
+        for (var i = 0; i < 50; i++) {
+            cy.add({
+                data: { id: 'node' + i }
+                }
+            );
+            var source = 'node' + i;
+            cy.add({
+                data: {
+                    id: 'edge' + i,
+                    source: source,
+                    target: (i % 2 == 0 ? 'Mie Ba' : 'Shaoyuan Xu')
+                }
+            });
+        }
+        cy.layout({
+            name: 'circle'
+        });
+    </script>
+</body>

@@ -1,8 +1,7 @@
-node_modules/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*.pyc
 
 # C extensions
 *.so
@@ -50,3 +49,13 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+
+# module
+node_module/
+node_modules/
+
+# idea folder
+.idea/
+
+# migrations
+0001_initial.py
