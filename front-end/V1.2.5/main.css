@@ -19,7 +19,9 @@ body {
 }
 
 .navbar {
-  color: #0C1E41;
+  /* color: #0C1E41; */
+
+  background-color: #3b5998;
 }
 
 .Box {
