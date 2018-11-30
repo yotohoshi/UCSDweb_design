@@ -248,12 +248,12 @@ class User(models.Model):
 
     # get_go_events
     def get_go_events_today(self):
-        return self.event_set.filter(date=date.today()).order_by('time')
+        return self.go.filter(date=date.today()).order_by('time')
 
 
 class Request(models.Model):
-    from_user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='+')
-    to_user = models.OneToOneField(User, on_delete=models.CASCADE)
+    from_user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='sent_request')
+    to_user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='received_request')
 
 
 RELEVANT_COEFFICIENT = 0.5
