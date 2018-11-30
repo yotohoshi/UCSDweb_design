@@ -19,77 +19,77 @@
                         <div class="row">
                         </div>
                         <form name="form">
-                        <fieldset disabled>
+                            <fieldset disabled>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>First Name</label>
+                                    </div>
+                                    <div class="col-md-6" id="F_Name">
+                                        <p>{{ user.user.F_Name }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Last Name</label>
+                                    </div>
+                                    <div class="col-md-6" id="lname">
+                                        <p>{{ user.user.L_Name }}</p>
+                                    </div>
+                                </div>
+                            </fieldset>
+
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>First Name</label>
+                                    <label>Contact Email</label>
                                 </div>
-                                <div class="col-md-6" id="F_Name">
-                                    <p>{{ user.user.F_Name }}</p>
+                                <div class="col-md-6" id="contact_email">
+                                    <p>{{ user.user.contact_email }}</p>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Last Name</label>
+                                    <label>Major</label>
                                 </div>
-                                <div class="col-md-6" id="lname">
-                                    <p>{{ user.user.L_Name }}</p>
+                                <div class="col-md-6" id="major">
+                                    <p>{{ user.user.major.major }}</p>
                                 </div>
                             </div>
-                        </fieldset>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Contact Email</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Degree</label>
+                                </div>
+                                <div class="col-md-6" id="degree">
+                                    <p>{{ user.user.degree.degree }}</p>
+                                </div>
                             </div>
-                            <div class="col-md-6" id="contact_email">
-                                <p>{{ user.user.contact_email }}</p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Major</label>
-                            </div>
-                            <div class="col-md-6" id="major">
-                                <p>{{ user.user.major.major }}</p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Degree</label>
-                            </div>
-                            <div class="col-md-6" id="degree">
-                                <p>{{ user.user.degree.degree }}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Graduation Year</label>
-                            </div>
-                            <div class="col-md-6" id="yr_graduation">
-                                <p>{{ user.user.yr_graduation }}</p>
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Company</label>
-                            </div>
-                            <div class="col-md-6" id="company">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Description</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Graduation Year</label>
+                                </div>
+                                <div class="col-md-6" id="yr_graduation">
+                                    <p>{{ user.user.yr_graduation }}</p>
+                                </div>
 
                             </div>
-                            <div class="col-md-6" id="description">
-                                <p>{{ user.user.description }}</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Company</label>
+                                </div>
+                                <div class="col-md-6" id="company">
+                                </div>
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Description</label>
+
+                                </div>
+                                <div class="col-md-6" id="description">
+                                    <p>{{ user.user.description }}</p>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="row">
@@ -107,6 +107,8 @@
 
                 <!-- SCRIPT -->
                 <script>
+
+                    //edit profile filed and buttons
                     const buttonSubmit = " <button type = 'submit' class='btn btn-secondary btn-sm float-right' onclick='test()'>Save Changes</button>";
                     const buttonCancel = " <button class='btn btn-secondary btn-sm float-right' onclick='Cancel()'>Cancel</button>";
                     const toRenderFName = "<input class=\"form-control\" type='text' name='F_Name' id='F_Name' value = '{{ user.user.F_Name }}'>";
@@ -211,11 +213,17 @@
                                                         </a>
                                                         <p class="card-text">{{ event.company }}<br>{{ event.description }}
                                                         </p>
-                                                        <a href="#" class="btn btn-primary btn-sm float-right">Apply /
-                                                            Sign /
-                                                            Go</a>
-                                                        <a href="#" class="btn btn-danger btn-sm float-right"
-                                                           id="{{ event.id }}">remove</a>
+                                                        <div class="row justify-content-right">
+                                                            <div class="col-7"></div>
+                                                            <div class="col-2" id="go-button{{ event.id }}">
+                                                            <!--button goes here-->
+                                                            </div>
+                                                            <div class="col-1"></div>
+                                                            <div class="col-2" id="remove-button{{ event.id }}">
+                                                            <button href="#" class="btn btn-danger btn-sm float-right"
+                                                           id="{{ event.id }}">remove</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -224,6 +232,38 @@
                                 </div>
 
                                 <script>
+                                    //go button
+                                    const go_button{{ event.id }} = " <button class=\"btn btn-primary btn-sm float-right\" id=\"go{{ event.id }}\" onclick='go_{{ event.id }}()'>Go</button>";
+                                    const not_go_button{{ event.id }} = " <button class=\"btn btn-danger btn-sm float-right\" id=\"go{{ event.id }}\" onclick='go_{{ event.id }}()'>Not Going</button>";
+
+                                    //go to button click function
+                                    function go_{{ event.id }}() {
+                                        //alert("lll");
+                                        //toggleButton();
+                                        $.ajax({
+                                            url: "{% url 'go_to_event'%}",
+                                            data: {
+                                                'event_id':{{event.id }},
+                                            },
+                                            dataType: 'json',
+                                            success: function (data) {
+                                                if (data.successful) {
+                                                    //alert("success!");
+                                                    if (data.go_status) {
+                                                        document.getElementById('go-button{{ event.id }}').innerHTML = not_go_button{{ event.id }};
+                                                    }
+                                                    else {
+                                                        document.getElementById('go-button{{ event.id }}').innerHTML = go_button{{ event.id }};
+                                                    }
+                                                }
+                                                else {
+                                                    alert("failed");
+                                                }
+                                            }
+                                        });
+                                        //alert("hallo");
+                                    }
+
                                     $('#{{ event.id }}').on('click', function () {
                                         $.ajax({
                                             url: "{% url 'event_add_to_favorite'%}",
@@ -242,6 +282,26 @@
                                         });
                                         $('#event_card{{ event.id }}').remove();
                                     });
+
+                                    $(document).ready(function () {
+                                        $.ajax({
+                                            url: "{% url 'event_get_go_status' %}",
+                                            data: {
+                                                'event_id':{{ event.id }},
+                                            },
+                                            dataType: 'json',
+                                            success: function (data) {
+                                                if (data.event_status) {
+                                                    document.getElementById('go-button{{ event.id }}').innerHTML = not_go_button{{ event.id }};
+                                                }
+                                                else {
+                                                    document.getElementById('go-button{{ event.id }}').innerHTML = go_button{{ event.id }};
+                                                }
+
+                                            }
+
+                                        });
+                                    })
 
                                 </script>
                             {% endfor %}

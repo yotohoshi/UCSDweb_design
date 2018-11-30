@@ -5,7 +5,6 @@
 
 <!-- Events Display template -->
 {% block event %}
-
     <div class="row justify-content-center">
         <div class="col-6">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -34,13 +33,20 @@
                                             <h4 class="card-title">{{ event.event_name }}</h4>
                                         </a>
                                         <p class="card-text">{{ event.description }}</p>
-                                        <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign / Go</a>
+                                        <div id="go-button{{ event.id }}">
+                                            <!--button goes here-->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <script>
+
+                            //go button
+                            const go_button{{ event.id }} = " <button class=\"btn btn-primary btn-sm float-right\" id=\"go{{ event.id }}\" onclick='go_{{ event.id }}()'>Go</button>";
+                            const not_go_button{{ event.id }} = " <button class=\"btn btn-danger btn-sm float-right\" id=\"go{{ event.id }}\" onclick='go_{{ event.id }}()'>Not Going</button>";
+
                             function toggleIcon(e) {
                                 $(e.target)
                                     .prev('.panel-heading')
@@ -50,6 +56,40 @@
 
                             $('.panel-group').on('hidden.bs.collapse', toggleIcon);
                             $('.panel-group').on('shown.bs.collapse', toggleIcon);
+
+                            //go to button click function
+                            function go_{{ event.id }}() {
+                                //alert("lll");
+                                //toggleButton();
+                                $.ajax({
+                                    url: "{% url 'go_to_event'%}",
+                                    data: {
+                                        'event_id':{{event.id }},
+                                    },
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        if (data.successful) {
+                                            //alert("success!");
+                                            if (data.go_status) {
+                                                document.getElementById('go-button{{ event.id }}').innerHTML = not_go_button{{ event.id }};
+                                                if(data.favorite_status) {
+                                                    $('#{{ event.id }}').removeClass("fa-star-o").addClass("fa-star");
+                                                }
+                                                else{
+                                                    $('#{{ event.id }}').removeClass("fa-star").addClass("fa-star-o");
+                                                }
+                                            }
+                                            else {
+                                                document.getElementById('go-button{{ event.id }}').innerHTML = go_button{{ event.id }};
+                                            }
+                                        }
+                                        else {
+                                            alert("failed");
+                                        }
+                                    }
+                                });
+                                //alert("hallo");
+                            }
 
                             // Toggle start icon to like and dislike
                             $(document).ready(function () {
@@ -63,12 +103,36 @@
                                         dataType: 'json',
                                         success: function (data) {
                                             if (data.event_status) {
-                                                $('#{{ event.id }}').removeClass("fa-star-o").addClass("fa-star");
+                                                //$('#go{{ event.id }}').innerHTML = "Not Going";
+                                                if (data.event_status) {
+                                                    $('#{{ event.id }}').removeClass("fa-star-o").addClass("fa-star");
+                                                }
+                                                else {
+                                                    $('#{{ event.id }}').removeClass("fa-star").addClass("fa-star-o");
+                                                }
                                             }
+                                        }
+                                    });
+
+                                    $.ajax({
+                                        url: "{% url 'event_get_go_status' %}",
+                                        data: {
+                                            'event_id':{{ event.id }},
+                                        },
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            if (data.event_status) {
+                                                document.getElementById('go-button{{ event.id }}').innerHTML = not_go_button{{ event.id }};
+                                            }
+                                            else {
+                                                document.getElementById('go-button{{ event.id }}').innerHTML = go_button{{ event.id }};
+                                            }
+
                                         }
 
                                     });
                                 {% endif %}
+                                //favorite icon click function
                                 $('#icon{{ event.id }}').on('click', function () {
                                     //alert("lll");
                                     $(this).find('#{{ event.id }}').toggleClass("fa-star fa-star-o");
@@ -89,7 +153,8 @@
                                     });
                                     //alert("hallo");
                                 });
-                            });
+
+                            })
                         </script>
 
 

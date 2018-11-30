@@ -18,4 +18,7 @@ urlpatterns = [
     path('test', views.List.as_view(), name='test'),
     path('event_add_to_favorite', views.add_to_favorite, name='event_add_to_favorite'),
     path('event_get_favorite_status', views.event_get_favorite_status, name='event_get_favorite_status'),
+    path('event_get_go_status', views.event_get_go_status, name='event_get_go_status'),
+    path('go_to_event', views.go_to_event, name='go_to_event'),
+
 ]

@@ -122,3 +122,30 @@ def event_get_favorite_status(request):
         'event_status': event_obj.get_favorite_status(user)
     }
     return JsonResponse(data)
+
+
+def go_to_event(request):
+    user = request.user.user
+    event_id = request.GET.get('event_id', None)
+    try:
+        event_obj = list(Event.objects.filter(id=event_id))[0]
+        data = {
+            'successful': event_obj.go_to_event(user),
+            'go_status': event_obj.get_go_status(user),
+            'favorite_status': event_obj.get_favorite_status(user)
+        }
+    except:
+        data = {
+            'successful': False
+        }
+    return JsonResponse(data)
+
+
+def event_get_go_status(request):
+    user = request.user.user
+    event_id = request.GET.get('event_id', None)
+    event_obj = list(Event.objects.filter(id=event_id))[0]
+    data = {
+        'event_status': event_obj.get_go_status(user)
+    }
+    return JsonResponse(data)

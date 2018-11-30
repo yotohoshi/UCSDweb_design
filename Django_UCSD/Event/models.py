@@ -5,7 +5,6 @@ from User.models import User
 import uuid
 from datetime import date, datetime, timedelta
 
-
 # Create your models here.
 # Global Variables
 TODAY = date.today()
@@ -25,6 +24,8 @@ class Event(models.Model):
     num_views = models.IntegerField(default=0, validators=[django.core.validators.MinValueValidator(0)])
     num_favorites = models.IntegerField(default=0, validators=[django.core.validators.MinValueValidator(0)])
     favorited_user = models.ManyToManyField(User, blank=True, symmetrical=False)
+    go_user = models.ManyToManyField(User, blank=True, symmetrical=False, related_name='go')
+
     # category = models.IntegerField(max_length=2, null=False),
     # Getters
     @staticmethod
@@ -85,7 +86,7 @@ class Event(models.Model):
         return
 
     def __str__(self):
-        return self.event_name+str(self.time)+self.company.company_name
+        return self.event_name + str(self.time) + self.company.company_name
 
     def set_event_name(self, name):
         if type(name) != str:
@@ -146,6 +147,28 @@ class Event(models.Model):
             return False
         else:
             if self.favorited_user.filter(id=user.id):
+                return True
+            else:
+                return False
+
+    # go_to_event
+    def go_to_event(self, user):
+        if type(user) != User:
+            return False
+        else:
+            if self.go_user.filter(id=user.id):
+                self.go_user.remove(user)
+            else:
+                self.go_user.add(user)
+                self.favorited_user.add(user)
+        return True
+
+    # get_favorite_status
+    def get_go_status(self, user):
+        if type(user) != User:
+            return False
+        else:
+            if self.go_user.filter(id=user.id):
                 return True
             else:
                 return False
