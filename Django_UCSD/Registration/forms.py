@@ -15,7 +15,7 @@ class LoginForm(forms.Form):
             email = self.cleaned_data['email']
             raw_password = self.cleaned_data['password']
             if not Account.objects.filter(email=email):
-                self.add_error(None, "you have not been registered yet.")
+                self.add_error(None, "Please Register an Account.")
             user = authenticate(email=email, password=raw_password)
             if user is not None:
                 login(request, user)
