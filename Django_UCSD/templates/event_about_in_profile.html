@@ -1,0 +1,32 @@
+
+    <link rel="stylesheet" href="{% static 'css/event_aboute.css' %}">
+    <div class="modal fade bd-example-modal-lg" id="about{{ event.id }}" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                    <header>
+                        <div class="header-content">
+                            <h3 class='header-title animate-pop-in'>{{ event.event_name }}</h3>
+                            <h3 class='header-subtitle animate-pop-in'>Best Website Designer &amp; Developer Club</h3>
+                            <h3 class='header-info animate-pop-in'> Meeting at Room: 200 </h3>
+                            <p></p>
+                        </div>
+                    </header>
+
+                    <div>
+                        <p>
+                            {{ event.description }}
+                        </p>
+                        <br>
+                    </div>
+                <hr>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+

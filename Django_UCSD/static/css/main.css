@@ -1,4 +1,4 @@
-#body{background:#F9F9F9i}
+
 
 body {
     /* background-image: url(./realMan.jpg); */
@@ -13,8 +13,8 @@ body {
 #wrapper{padding:90px 15px;}
 .navbar-expand-lg .navbar-nav.side-nav{flex-direction: column;}
 .navbar{
-  background-color: #003262;
-  color: #003262;}
+  background-color: #141414;
+  color: #141414;}
 .Box{
   margin-bottom: 15px;
   border-radius:0;
@@ -68,3 +68,24 @@ body {
 /* #searchingbar{
     align-items: center;
   } */
+
+.button{
+    padding: 5px;
+    border: 1px solid #000000;
+    color: #fbfdff;
+    background-color: #141414;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    margin: 10px 0;
+    display: inline-block;
+    opacity: 0.95;
+    width: 47%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.button:hover {
+    opacity: 1;
+}

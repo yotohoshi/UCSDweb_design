@@ -46,6 +46,6 @@ urlpatterns = [
     path('templates/jobs_content.html', TemplateView.as_view(template_name='jobs_content.html')),
     path('templates/profile_right_lower.html', TemplateView.as_view(template_name='profile_right_lower.html')),
     path('templates/calendar.html', TemplateView.as_view(template_name='calendar.html')),
-
+    path('event_about', TemplateView.as_view(template_name='event_about.html')),
 
 ]

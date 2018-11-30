@@ -26,7 +26,7 @@ class EventListView(ListView):
 
     context_object_name = 'events'
     # model = Event
-    template_name = 'event_content.html'
+    template_name = 'event_about.html'
     paginate_by = 7
     def get_queryset(self):
         return Event.get_all()
@@ -42,7 +42,7 @@ class EventListView(ListView):
 class EventListViewMonth(ListView):
     context_object_name = 'events'
     model = Event
-    template_name = 'event_content.html'
+    template_name = 'event_about.html'
 
     def get_queryset(self):
         return Event.all_filter_by_month()
@@ -57,7 +57,7 @@ class EventListViewMonth(ListView):
 class EventListViewWeek(ListView):
     context_object_name = 'events'
     model = Event
-    template_name = 'event_content.html'
+    template_name = 'event_about.html'
 
     def get_queryset(self):
         return Event.all_filter_by_week()
@@ -72,7 +72,7 @@ class EventListViewWeek(ListView):
 class EventListViewToday(ListView):
     context_object_name = 'events'
     model = Event
-    template_name = 'event_content.html'
+    template_name = 'event_about.html'
 
     def get_queryset(self):
         return Event.all_filter_by_today()

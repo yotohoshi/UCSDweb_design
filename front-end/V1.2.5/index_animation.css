@@ -1,0 +1,59 @@
+@font-face {
+  font-family: Biko;
+  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/biko-black.woff");
+}
+
+/* body {
+  background: white;
+  margin: 2rem;
+} */
+#animations {
+  margin-top: 0px;
+}
+
+header {
+  width: 100%;
+  margin: 0 auto;
+  /* position: relative; */
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}
+
+header video {
+  width: 100%;
+}
+
+svg {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0; // needed for FF, Safari, Edge
+  height: 100%;
+}
+
+svg text {
+  font-family: Biko, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 38px;
+}
+
+svg rect {
+  fill: white;
+}
+
+svg>rect {
+  -webkit-mask: url(#mask);
+  mask: url(#mask);
+}
+
+/* #signup-popup{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 0;
+} */

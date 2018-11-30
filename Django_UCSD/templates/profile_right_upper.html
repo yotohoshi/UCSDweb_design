@@ -14,13 +14,28 @@
 <div class="profile-head">
     <div class="card bg-white shadow" style="margin-bottom: 20px;">
         <div class="profile-upper-content" style="padding: 20px;">
-        <h5>
-            {{ user.user.F_Name }} {{ user.user.L_Name }}
-        </h5>
-        <p>
-            Signature? delete if don't need
-        </p>
-        <p class="proile-rating">Number of Friends : {{ user.user.friend.count }}</p>
+        <div class="row">
+            {# Profile upper left info #}
+            <div class="col col-7">
+                <h5>
+                    {{ user.user.F_Name }} {{ user.user.L_Name }}
+                </h5>
+                <p>
+                    Signature? delete if don't need
+                </p>
+                <p class="proile-rating">Number of Friends : {{ user.user.friend.count }}</p>
+            </div>
+            {# Profile Image #}
+            <div class="col col-5">
+                <div class="profile-img">
+                    <img style="max-width: 100%; max-height: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                    <div class="file btn btn-lg btn-primary" id="change_button">
+                        Change Photo
+                        <input type="file" name="file"/>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
     <ul class="nav nav-tabs" id="myTab" role="tablist">

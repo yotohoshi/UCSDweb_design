@@ -25,11 +25,16 @@
                                                         id="icon{{ event.id }}">
                                                     <i id="{{ event.id }}" class="fa fa-star-o" aria-hidden="false"></i>
                                                 </button>
+                                                <div id="about-popup">
+                                                    {% block content %}
+                                                    {% endblock %}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <a href="event http">
+                                        <a data-toggle="modal"
+                                           data-target="#about{{ event.id }}" class="event_name">
                                             <h4 class="card-title">{{ event.event_name }}</h4>
                                         </a>
                                         <p class="card-text">{{ event.description }}</p>
@@ -40,11 +45,10 @@
                                 </div>
                             </div>
                         </div>
-
                         <script>
 
                             //go button
-                            const go_button{{ event.id }} = " <button class=\"btn btn-primary btn-sm float-right\" id=\"go{{ event.id }}\" onclick='go_{{ event.id }}()'>Go</button>";
+                            const go_button{{ event.id }} = " <button class='btn btn-dark btn-sm float-right' id=\"go{{ event.id }}\" onclick='go_{{ event.id }}()'>Go</button>";
                             const not_go_button{{ event.id }} = " <button class=\"btn btn-danger btn-sm float-right\" id=\"go{{ event.id }}\" onclick='go_{{ event.id }}()'>Not Going</button>";
 
                             function toggleIcon(e) {
@@ -72,10 +76,10 @@
                                             //alert("success!");
                                             if (data.go_status) {
                                                 document.getElementById('go-button{{ event.id }}').innerHTML = not_go_button{{ event.id }};
-                                                if(data.favorite_status) {
+                                                if (data.favorite_status) {
                                                     $('#{{ event.id }}').removeClass("fa-star-o").addClass("fa-star");
                                                 }
-                                                else{
+                                                else {
                                                     $('#{{ event.id }}').removeClass("fa-star").addClass("fa-star-o");
                                                 }
                                             }
@@ -162,7 +166,6 @@
                 {% else %}
                     <h2>No Events Found</h2>
                 {% endif %}
-
 
             </div>
         </div>

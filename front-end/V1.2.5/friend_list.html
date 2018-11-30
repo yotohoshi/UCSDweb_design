@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="friend_list.js">
+
+    </script>
+    <link rel="stylesheet" href="friend_list.css">
+    <title></title>
+  </head>
+  <!-- <body> -->
+    <body ng-app="mdApp">
+
+  <section ng-controller="mdController as Ctrl">
+    <ul>
+      <li ng-repeat="user in Ctrl.users">
+        <a ng-click="Ctrl.showProfile($event, $index)">
+          <div class="imageWrapper">
+            <img src="{{user.avatar}}" >
+          </div>
+
+          <div class="info">
+            <h3>ABC</h3>
+            <p>ABC</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+
+    <div class="profile">
+      <header ng-style="{backgroundColor:Ctrl.user.color}">
+        <h3>ABV</h3>
+        <small>ABV</small>
+      </header>
+
+      <ul>
+        <li>
+          <quote>ABV</quote>
+        </li>
+
+        <li>
+          <h4>Address:</h4>
+          <p>ABV</p>
+        </li>
+
+        <li>
+          <h4>Phone:</h4>
+          <p>ABV</p>
+        </li>
+
+        <li>
+          <h4>Email:</h4>
+          <p>ABV</p>
+        </li>
+      </ul>
+
+      <a class="close-button"
+         ng-style="{backgroundColor:Ctrl.user.color}"
+         ng-click="Ctrl.closeProfile($event)">&#10005;</a>
+    </div>
+  </section>
+</body>
+  <!-- </body> -->
+</html>
