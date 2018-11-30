@@ -8,19 +8,22 @@ import Company.models
 from User.models import Major, Degree, User
 import string
 from math import ceil
+import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import *
-from django.utils import timezone
+from nltk.stem import WordNetLemmatizer
+import time
 
 
-##################################### Constants
+#################################### Constants #######################################################
 
-WORKAUTHS=(
-    ('U.S. Citizens','U.S. Citizens Or U.S. Permanent Residents Only'),
-    ('Other','All Legal Citizens'),
+
+WORKAUTHS = (
+    ('U.S. Citizens', 'U.S. Citizens Or U.S. Permanent Residents Only'),
+    ('Other', 'All Legal Citizens'),
 )
 
-JOBTYPES=(
+JOBTYPES = (
     ('Full-time', 'Full-time'),
     ('Part-time', 'Part-time'),
     ('Contract', 'Contract'),
@@ -32,27 +35,89 @@ JOBTYPES=(
 PUNCTUATIONS = set(string.punctuation)
 STOPWORDS = set(stopwords.words('english'))
 STEMMER = PorterStemmer()
+LEMMATIZER = WordNetLemmatizer()
 RELEVANT_COEFFICIENT = 0.7
 INFINITY = 999999
+# CATEGORYKEYWORDS = {'software': 'S',
+#                     'hardware': 'H',
+#                     'embedded': 'EM',
+#                     'art': 'AR',
+#                     'business': 'B',
+#                     'math': 'M',
+#                     'accounting': 'AC',
+#                     'physics': 'PHY',
+#                     'communication': 'COMM',
+#                     'computer': 'C',
+#                     'science': 'SC',
+#                     'music': 'MUS',
+#                     'biology': 'BIO',
+#                     'bioengineering': 'BE',
+#                     'chemistry': 'CHEM',
+#                     'electrical': 'ELE',
+#                     'biochemistry': 'BC',
+#                     'laborer': 'L',
+#                     'labor': 'L'}
+
+CATEGORYKEYWORDS = {'softwar': 'S',
+                    'hardwar': 'H',
+                    'embed': 'EM',
+                    'art': 'AR',
+                    'busi': 'B',
+                    'math': 'M',
+                    'account': 'AC',
+                    'physic': 'PHY',
+                    'commun': 'COMM',
+                    'comput': 'C',
+                    'scienc': 'SC',
+                    'music': 'MUS',
+                    'biolog': 'BIO',
+                    'bioengin': 'BE',
+                    'chemistri': 'CHEM',
+                    'electr': 'ELE',
+                    'biochemistri': 'BC',
+                    'labor': 'L'}
 
 
-##################################### Helper Methods
+TABLE = {9: 32, 33: 32, 34: 32, 35: 32, 36: 32, 37: 32, 38: 32, 39: 32, 40: 32, 41: 32, 42: 32,
+         43: 32, 44: 32, 45: 32, 46: 32, 47: 32, 58: 32, 59: 32, 60: 32, 61: 32, 62: 32, 63: 32,
+         64: 32, 91: 32, 92: 32, 93: 32, 94: 32, 95: 32, 96: 32, 123: 32, 124: 32, 125: 32, 126: 32}
+
+
+##################################### Helper Methods ######################################################
+
+
 # helper method - string pre-processing
-# return a list of stemmed words in the string in lowercase without punctuations, stop words, or repeated words
+# return a set of stemmed words in the string in lowercase without punctuations, stop words, or repeated words
 def string_preprocess (to_process):
     if type(to_process) != str:
         return []
     else:
-        to_process = ''.join([char for char in to_process.lower() if char not in PUNCTUATIONS])
+        #to_process = to_process.lower().translate(TABLE).split()
+        to_process = ''.join([char for char in to_process.lower() if char not in PUNCTUATIONS]).split()
         processed = set()
-        for word in to_process.split():
+        for word in to_process:
             if word not in STOPWORDS:
                 word = STEMMER.stem(word)
+                #LEMMATIZER.lemmatize(word)
                 processed.add(word)
         return processed
 
 
-#################################### Models
+def performance(to_run):
+    start = time.time()
+    to_run
+    end = time.time()
+    print(end - start)
+
+##################################### Models ################################################################
+
+
+class Location(models.Model):
+    place = models.CharField(primary_key=True, max_length=100)
+
+    def __str__(self):
+        return self.place
+
 
 class Job(models.Model):
     db_table = 'Job'
@@ -63,62 +128,86 @@ class Job(models.Model):
     type = models.CharField(max_length=100, choices=JOBTYPES)
     description = models.CharField(max_length=100000)
     short_description = models.CharField(max_length=2000)
-    degree_required = models.ManyToManyField(Degree, null=True, blank=True)
-    major_required = models.ManyToManyField(Major, null=True, blank=True)
+    degree_required = models.ManyToManyField(Degree, blank=True)
+    major_required = models.ManyToManyField(Major, blank=True)
     job_Work_Auth = models.CharField(max_length=100, choices=WORKAUTHS)
     company = models.ForeignKey(Company.models.Company, on_delete=models.PROTECT)
     job_URL = models.URLField(max_length=300)
     favorited_user = models.ManyToManyField(User, blank=True, symmetrical=False)
-    category = models.ManyToManyField(Category, blank=True, symmetrical=False)
+    category = models.ManyToManyField(Category, blank=True)
     num_views = models.IntegerField(default=0, validators=[django.core.validators.MinValueValidator(0)])
-
+    location = models.ForeignKey(Location, on_delete=models.PROTECT)
+    paid = models.BooleanField(default=True)
 
     @staticmethod
-    def general_Search(keywords, work_auth, degs, start_date, end_date, location, pay, type):
-        result = [job for job in Job.objects.all()]
+    def general_Search(keywords, work_auth, degs, location, pay, tp):
 
-        #     def _perform keyword search if keyword is not none
+        # parameter keywords is a string. detect implied categories in the keywords and filter by category
         if keywords is not None:
             # keywords pre-processing:
-            keywords = string_preprocess(keywords)
+            keywords = list(string_preprocess(keywords))
 
-            relevant_Jobs = []
+            # category detection
+            categories = set()
+            for word in keywords:
+                if word in CATEGORYKEYWORDS:
+                    categories.add(CATEGORYKEYWORDS[word])
+            categories = list(categories)
+            if len(categories) == 0:
+                result = Job.objects.all()
+            else:
+                result = Job.objects.filter(category__in=list(categories))
+
+        # parameter work_auth is an array of strings
+        if work_auth is not None:
+            result = result.filter(job_Work_Auth__in=work_auth)
+
+        # parameter degs is an array of strings
+        if degs is not None:
+            result = result.filter(degree_required__in=degs)
+
+        # parameter location is a string
+        if location is not None:
+            result = result.filter(location__in=[location])
+
+        # parameter pay is a boolean
+        if pay is not None:
+            result = result.filter(paid=pay)
+
+        # parameter type is an array of strings
+        if tp is not None:
+            result = result.filter(type__in=type)
+
+        # perform keyword search
+        if isinstance(keywords, (list,)):
             if len(keywords) == 0:
                 threshold = INFINITY
             else:
                 threshold = ceil(RELEVANT_COEFFICIENT * len(keywords))
+
             for job in result:
                 # description pre-processing
-                full_description =job.job_position
+                full_description = job.job_position + ' ' + job.company.company_name
                 full_description = string_preprocess(full_description)
 
                 # comparing keywords with job descriptions
-                counter = 0
+                matched = 0
                 for word in keywords:
                     if word in full_description:
-                        counter += 1
+                        matched += 1
 
-                if counter >= threshold:
-                    relevant_Jobs.append(job)
-            result = relevant_Jobs
+                result = set(result)
+                if matched < threshold:
+                    result.discard(job)
 
-        # work authorization parameter is a string
-        if work_auth is not None:
-            relevant_Jobs = []
-            for job in result:
-                for auth in work_auth:
-                    if job.job_Work_Auth == auth:
-                        relevant_Jobs.append(job)
-            result = relevant_Jobs
+        return list(result)
 
-        # job type parameter
-        if type is not None:
-            relevant_Jobs = []
-            for job in result:
-                for job_type in type:
-                    if job.type == job_type:
-                        relevant_Jobs.append(job)
-            result = relevant_Jobs
+        # # job type parameter
+        # if type is not None:
+        #     for job in list(result):
+        #         for job_type in type:
+        #             if job.type != job_type:
+        #                 result.remove(job)
 
         # # degree parameter is a string
         # if degs is not None:
@@ -161,8 +250,6 @@ class Job(models.Model):
         #         #         if job.job_paid == pay:
         #         #             relevant_Jobs.append(job)
         #         #     result = relevant_Jobs
-
-        return result
 
 
     @staticmethod

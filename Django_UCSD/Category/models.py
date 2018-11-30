@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-OFFER_POSITION = (
+CATEGORYKEYWORDS = (
     ('S', 'Software'),
     ('E', 'Engineering'),
     ('H', 'Hardware'),
@@ -11,22 +11,22 @@ OFFER_POSITION = (
     ('B', 'Business'),
     ('M', 'Math'),
     ('AC', 'Accounting'),
-    ('Phy', 'Physics'),
+    ('PHY', 'Physics'),
     ('COMM', 'Communication'),
     ('C', 'Computer'),
-    ('S', 'Science'),
+    ('SC', 'Science'),
     ('MUS', 'Music'),
     ('BIO', 'Biology'),
-    ('BIOL', 'Biological'),
     ('BE', 'BioEngineering'),
-    ('Che', 'Chemistry'),
+    ('CHEM', 'Chemistry'),
     ('ELE', 'Electrical'),
     ('BC', 'BioChemistry'),
-
+    ('L', 'Laborer')
 )
 
 
 class Category(models.Model):
-    category = models.CharField(max_length=100, choices=OFFER_POSITION, null=True, blank=True)
+    category_name = models.CharField(primary_key=True, max_length=100, choices=CATEGORYKEYWORDS)
+
     def __str__(self):
-        return self.category
+        return self.category_name

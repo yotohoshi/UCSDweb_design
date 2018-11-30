@@ -8,13 +8,9 @@
 from User.models import Major, Degree, User
 from Company.models import Company
 from Event.models import Event
-from Job.models import Job
+from Job.models import Job, Location
+from Category.models import Category
 import json
-
-##########################################################################
-# print('creating degree objects')
-# degree1 = Degree.objects.create(degree="BS")
-# degree1.save()
 
 ##########################################################################
 print('creating degree objects')
@@ -81,10 +77,34 @@ major24 = Major.objects.create(major="COMMUNICATION")
 major24.save()
 major24 = Major.objects.create(major="ECONOMICS")
 major24.save()
-#########################################################################
-print('creating company objects')
+
+#####################################################################
+print('creating category objects')
 with open('Jobs Data.json') as file:
     data = json.load(file)
+
+categories = set()
+for job in data:
+    for category in job['category']:
+        categories.add(category)
+
+categories = list(categories)
+for category in categories:
+    Category.objects.create(category_name=category)
+
+#####################################################################
+print('creating location objects')
+
+locations = set()
+for job in data:
+    locations.add(job['location'].split(',')[0])
+
+locations = list(locations)
+for location in locations:
+    Location.objects.create(place=location)
+
+#########################################################################
+print('creating company objects')
 
 companies = set()
 for job in data:
@@ -118,10 +138,13 @@ for job in data:
                                 short_description=job['summary'],
                                 job_Work_Auth=job['authorization'],
                                 company=Company.objects.get(company_name=(job['company'].lower())),
-                                job_URL=job['url']
+                                job_URL=job['url'],
                                 # job_location = job['location'],
+                                location=Location.objects.get(place=job['location'].split(',')[0])
                                 )
     for majorName in job['major']:
         curJob.major_required.add(Major.objects.get(major=majorName))
+    for categoryName in job['category']:
+        curJob.category.add(Category.objects.get(category_name=categoryName))
     curJob.degree_required.add(Degree.objects.get(degree=job['degree']))
     curJob.save()

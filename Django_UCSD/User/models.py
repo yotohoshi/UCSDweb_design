@@ -39,7 +39,7 @@ class Degree(models.Model):
         ('MA', 'MA'),
         ('Ph.D', 'Ph.D'),
     )'''
-    degree = models.CharField(max_length=3, primary_key=True)
+    degree = models.CharField(max_length=15, primary_key=True)
 
 
 class User(models.Model):
