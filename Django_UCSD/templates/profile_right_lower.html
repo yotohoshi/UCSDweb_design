@@ -15,7 +15,7 @@
                 <div class="container profile-tab personal-data-tab ">
 
                     <div class="card bg-white shadow"
-                         style="padding-left: 20px; padding-top: 20px; padding-bottom: 20px; margin-bottom: 20px;">
+                         style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; margin-bottom: 20px;">
                         <div class="row">
                         </div>
                         <form name="form">
@@ -91,20 +91,21 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <div class="row">
-                        <div class="container-fluid justify-content-right" id="edit-cancel-button">
-                            <div id="editprofile">
-                                <button class="btn btn-secondary btn-sm float-right" onclick="Render()">Edit
-                                    Profile
-                                </button>
+                        <div class="row" style="margin-top: 15px">
+                            <div class="col-9"></div>
+                            <div class="col-1" id="cancel-button">
+                                <div id="save-changes"></div>
                             </div>
+                            <div class="col-1"></div>
+                            <div class="col-1" id="editprofile">
+                                    <button class="btn btn-secondary btn-sm float-right" style="margin-left: 50px" onclick="Render()">Edit
+                                        Profile
+                                    </button>
+                            </div>
+                            <div class="col-1" id="cancel"></div>
                         </div>
                     </div>
-
-                    <div id="cancel"></div>
                 </div>
-
                 <!-- SCRIPT -->
                 <script>
 
@@ -131,7 +132,8 @@
 
                     function Render() {
                         //Change button appearance
-                        document.getElementById('editprofile').innerHTML = buttonSubmit;
+                        document.getElementById('editprofile').remove();
+                        document.getElementById('save-changes').innerHTML = buttonSubmit;
                         document.getElementById('cancel').innerHTML = buttonCancel;
                         //Change content to form
                         document.getElementById('major').innerHTML = toRenderMajor;
@@ -211,17 +213,18 @@
                                                         <a href="event http">
                                                             <h4 class="card-title">{{ event.event_name }}</h4>
                                                         </a>
-                                                        <p class="card-text">{{ event.company }}<br>{{ event.description }}
+                                                        <p class="card-text">{{ event.company.company_name }}<br>{{ event.description }}
                                                         </p>
                                                         <div class="row justify-content-right">
-                                                            <div class="col-7"></div>
-                                                            <div class="col-2" id="go-button{{ event.id }}">
-                                                            <!--button goes here-->
+                                                            <div class="col-9"></div>
+                                                            <div class="col-1" id="go-button{{ event.id }}">
+                                                                <!--button goes here-->
                                                             </div>
-                                                            <div class="col-1"></div>
-                                                            <div class="col-2" id="remove-button{{ event.id }}">
-                                                            <button href="#" class="btn btn-danger btn-sm float-right"
-                                                           id="{{ event.id }}">remove</button>
+                                                            <div class="col-1" id="remove-button{{ event.id }}" style="margin-left: 35px">
+                                                                <button href="#"
+                                                                        class="btn btn-danger btn-sm float-right"
+                                                                        id="{{ event.id }}">remove
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -338,7 +341,8 @@
                                                 <a href="event http">
                                                     <h4 class="card-title">{{ job.job_position }}</h4>
                                                 </a>
-                                                <p class="card-text">{{ job.company }}<br>{{ job.description }}</p>
+                                                <p class="card-text">{{ job.company.company_name }}<br>{{ job.description }}
+                                                </p>
                                                 <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign /
                                                     Go</a>
                                                 <a href="#" class="btn btn-danger btn-sm float-right" id="{{ job.id }}">delete</a>

@@ -11,6 +11,7 @@ from math import ceil
 import string
 from nltk.corpus import stopwords
 from nltk.stem.porter import *
+from datetime import date
 from django import forms
 
 # Create your models here.
@@ -49,16 +50,16 @@ class User(models.Model):
     L_Name = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.F_Name+" "+self.L_Name
+        return self.F_Name + " " + self.L_Name
 
     yr_graduation = models.IntegerField(validators=[django.core.validators.MaxValueValidator
                                                     (2050,
                                                      message='Year of graduation should be less than 2050!'),
                                                     django.core.validators.MinValueValidator(1970,
-                                                    message='Year of graduation should be more than 1970!')])
+                                                                                             message='Year of graduation should be more than 1970!')])
     major = models.ForeignKey(Major, null=True, on_delete=models.PROTECT)
     degree = models.ForeignKey(Degree, null=True, on_delete=models.PROTECT)
-    contact_email = models.EmailField( verbose_name='email address',  null=True, max_length=255, unique=True,)
+    contact_email = models.EmailField(verbose_name='email address', null=True, max_length=255, unique=True, )
     description = models.CharField(max_length=1500, validators=[django.core.validators.MinLengthValidator
                                                                 (50,
                                                                  message='Description must be at least 50 characters!')])
@@ -67,6 +68,7 @@ class User(models.Model):
     # favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
     # favorite_job = models.ManyToManyField(Job.models.Job, symmetrical=False, blank=True)
     friend = models.ManyToManyField('User', symmetrical=True, blank=True)
+
     # Getters
 
     # get_user_by_name
@@ -83,7 +85,7 @@ class User(models.Model):
         if type(yr_grad) != int or yr_grad < 1970 or yr_grad > 2050:
             return False
         else:
-             return User.objects.all.filter(yr_graduation=yr_grad)
+            return User.objects.all.filter(yr_graduation=yr_grad)
 
     # get_user_by_major
     @staticmethod
@@ -184,23 +186,6 @@ class User(models.Model):
             self.company.remove(comp)
             return True
 
-    # add_to_favorite
-    def add_to_favorite(self, favorite):
-        if type(favorite) != Event.models.Event or type(favorite) != Job:
-            return False
-        else:
-            self.favorite_event.add(favorite)
-        return True
-
-    # remove_from_favorite
-    def remove_from_favorite(self, favorite):
-        if type(favorite) != Event.models.Event:
-            return False
-        else:
-            self.favorite_event.remove(favorite)
-            Event.models.Event(favorite).update_num_favorite()
-        return True
-
     # rend_request
     def send_request(self, target):
         if type(target) != User:
@@ -261,9 +246,13 @@ class User(models.Model):
         self.save()
         return True
 
+    # get_go_events
+    def get_go_events_today(self):
+        return self.event_set.filter(date=date.today()).order_by('time')
+
 
 class Request(models.Model):
-    from_user = models.OneToOneField(User, on_delete=models.CASCADE,  related_name='+')
+    from_user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='+')
     to_user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
@@ -276,7 +265,7 @@ INFINITY = 999999
 
 # helper method - string pre-processing
 # return a list of stemmed words in the string in lowercase without punctuations, stop words, or repeated words
-def string_preprocess (to_process):
+def string_preprocess(to_process):
     if type(to_process) != str:
         return []
     else:
