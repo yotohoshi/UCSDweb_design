@@ -3,13 +3,16 @@
 ## What is DOM?  
 https://www.zhihu.com/question/34219998  
 
-### ReactJS  
+## ReactJS  
 https://juejin.im/post/599156cc6fb9a03c3a25db08  
 
-### Udemy Django Course 
+## Udemy Django Course 
 https://www.udemy.com/python-and-django-full-stack-web-developer-bootcamp/  
 user:johnliu0523@gmail.com  
 Password: 123123123a  
+
+### Django Form handling  
+https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html  
 
 ## System Installation and Settings: (Ubuntu)  
 https://github.com/jonnyr2008/Surface-Book-2-15-Ubuntu-Settings  
