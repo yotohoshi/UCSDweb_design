@@ -48,4 +48,11 @@ https://stackoverflow.com/questions/21071164/how-do-i-do-infinite-scrolling-with
 ## Side Bar  
 https://ourcodeworld.com/articles/read/325/top-10-best-slide-sidebar-menu-drawer-javascript-and-jquery-plugins  
 
+# UI Design:  
+
+## Art Design UI  
+https://www.slant.co/options/18340/alternatives/~artdesignui-alternatives  
+
+## Page UI  
+https://bashooka.com/coding/svg-animation-ideas-2017/  
 
