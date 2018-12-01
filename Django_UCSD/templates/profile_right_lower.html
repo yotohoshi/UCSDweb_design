@@ -48,7 +48,10 @@
                                     <p>{{ user.user.contact_email }}</p>
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6" id="contact_email_error" style="color: indianred"></div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Major</label>
@@ -73,7 +76,10 @@
                                 <div class="col-md-6" id="yr_graduation">
                                     <p>{{ user.user.yr_graduation }}</p>
                                 </div>
-
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6" id="yr_graduation_error" style="color: indianred"></div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -85,11 +91,14 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Description</label>
-
                                 </div>
                                 <div class="col-md-6" id="description">
                                     <p>{{ user.user.description }}</p>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6" id="description_error" style="color: indianred"></div>
                             </div>
                         </form>
                         <div class="row" style="margin-top: 15px">
@@ -157,6 +166,31 @@
                         var yr_graduation = document.forms["form"]["yr_graduation"].value;
                         var description = document.forms["form"]["description"].value;
                         var contact_email = document.forms["form"]["contact_email"].value;
+
+                        var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                        var email_error = false, description_error = false, yr_error = false;
+
+                        if (description.length < 50) {
+                            document.getElementById('description_error').innerText = "Description should be at least 50 characters";
+                            description_error = true;
+                        }
+                        else if (description.length > 1500) {
+                            document.getElementById('description_error').innerText = "Description should be at most 140 characters";
+                            description_error = true;
+                        }
+                        if (!pattern.test(contact_email)) {
+                            document.getElementById('contact_email_error').innerText = "You have entered an invalid email address!";
+                            email_error = true;
+                        }
+                        if (yr_graduation < 1970 || yr_graduation > 2050) {
+                            document.getElementById('yr_graduation_error').textContent = "Graduate year Should be between 1970 and 2050";
+                            yr_error = true;
+                        }
+
+                        if(email_error || description_error || yr_error){
+                            return;
+                        }
+
                         $.ajax({
                             type: "POST",
                             url: '{% url 'edit_profile' %}',
@@ -379,7 +413,7 @@
 
                                                 <p class="card-text">{{ job.company.company_name }}<br>{{ job.description }}
                                                 </p>
-                                                <a href="#" class="btn btn-dark btn-sm float-right">Apply</a>
+                                                <a href="{{ job.job_URL }}" class="btn btn-dark btn-sm float-right">Apply</a>
                                             </div>
                                         </div>
                                     </div>
