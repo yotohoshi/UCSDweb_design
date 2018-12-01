@@ -16,7 +16,10 @@ https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-fo
 
 ### Django Automatically Redirect  
 https://stackoverflow.com/questions/37439141/redirect-automatically-in-a-view-django  
-* This can be used for redirect from user sign up successfully to a "Sign up Successfully" page and redirect from there to log in page.   
+* This can be used for redirect from user sign up successfully to a "Sign up Successfully" page and redirect from there to log in page.  
+
+### Django Time Based Page  
+https://www.julienphalip.com/blog/testing-time-based-views-in-django/  
 
 ## System Installation and Settings: (Ubuntu)  
 https://github.com/jonnyr2008/Surface-Book-2-15-Ubuntu-Settings  
