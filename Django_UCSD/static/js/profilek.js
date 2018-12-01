@@ -23,6 +23,7 @@ $(document).ready(function() {
     $('#personallinks').load('/templates/personal_links.html');
     $('#right-upper').load('/templates/profile_right_upper.html');
     $('#calendar').load('/templates/calendar.html');
+    $('#add_referral').load('/templates/add_referral.html');
     //$('#personal').load('/templates/profile_right_lower.html');
     //$('#event').load('/templates/profile_right_lower_events.html');
 
