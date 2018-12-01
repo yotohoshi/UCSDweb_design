@@ -55,11 +55,11 @@ https://www.slant.co/options/18340/alternatives/~artdesignui-alternatives
 
 ## Page UI  
 https://bashooka.com/coding/svg-animation-ideas-2017/  
-<<<<<<< HEAD
+
 
 ## Step by Step login/signup UI  
 https://freefrontend.com/css-forms/  
 
 =======
 htttps://www.codepen.io
->>>>>>> master
+
