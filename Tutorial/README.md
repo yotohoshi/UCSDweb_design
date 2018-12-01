@@ -45,3 +45,7 @@ https://material.io/
 ## Infinite Scrolling  
 https://stackoverflow.com/questions/21071164/how-do-i-do-infinite-scrolling-with-just-html-and-javascript  
 
+## Side Bar  
+https://ourcodeworld.com/articles/read/325/top-10-best-slide-sidebar-menu-drawer-javascript-and-jquery-plugins  
+
+
