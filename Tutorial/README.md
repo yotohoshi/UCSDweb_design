@@ -14,6 +14,10 @@ Password: 123123123a
 ### Django Form handling  
 https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html  
 
+### Django Automatically Redirect  
+https://stackoverflow.com/questions/37439141/redirect-automatically-in-a-view-django  
+* This can be used for redirect from user sign up successfully to a "Sign up Successfully" page and redirect from there to log in page.   
+
 ## System Installation and Settings: (Ubuntu)  
 https://github.com/jonnyr2008/Surface-Book-2-15-Ubuntu-Settings  
 This link has full content of installation and setup of your surface devices.  
