@@ -21,6 +21,9 @@ https://stackoverflow.com/questions/37439141/redirect-automatically-in-a-view-dj
 ### Django Time Based Page  
 https://www.julienphalip.com/blog/testing-time-based-views-in-django/  
 
+### Django Form Validation and Errors  
+https://overiq.com/django-1-10/django-rendering-fields-manually/  
+
 ## System Installation and Settings: (Ubuntu)  
 https://github.com/jonnyr2008/Surface-Book-2-15-Ubuntu-Settings  
 This link has full content of installation and setup of your surface devices.  
