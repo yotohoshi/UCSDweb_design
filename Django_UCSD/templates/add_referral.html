@@ -1,34 +1,86 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/add_referral.css' %}">
-
+<link rel="stylesheet" href="{% static 'css/add_referal.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
+      rel='stylesheet' type='text/css'>
 <div class="modal fade bd-example-modal-lg" id="add-referral" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <div class="modal-body">
-                <div class="container">
-                    <div class="comment-box">
-                        <div class="comment-form">
-                            <div class="header">New Post</div>
-                            <div>
-                                <input type="text" id="name" placeholder="Job Title"/>
-                            </div>
-                            <div>
-                                <textarea id="comment" rows="3" cols="30" placeholder="Job Position"></textarea>
-                            </div>
-                            <div>
-                                <input type="text" id="tags" placeholder="Add Tags (Seperate by comma)"/>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary addCommentBtn" data-dismiss="modal"
-                                        disabled>Post
-                                </button>
-                            </div>
+            <div class="modal-body referral">
+                <div class="row justify-content-center">
+                    <h1>Offer Your Referral</h1>
+                </div>
+                <!--checkbox-->
+                <div class="container_ref">
+                    <form>
+                        <div class="row">
+                            <input type="text" name="fancy-text" id="fancy-text"/>
+                            <label for="fancy-text">Title</label>
                         </div>
-                    </div>
+                        <div class="row justify-content-center">
+                            <ul class="ks-cboxtags">
+                                <li class="li_box"><input type="checkbox" id="checkboxOne" value="Software"><label
+                                        for="checkboxOne">Software</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkboxTwo" value="Engineering"><label
+                                        for="checkboxTwo">Engineering</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkboxThree" value="Hardware"><label
+                                        for="checkboxThree">Hardware</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkboxFour" value="Embedded"><label
+                                        for="checkboxFour">Embedded</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkboxFive" value="Aerospace"><label
+                                        for="checkboxFive">Aerospace</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkboxSix" value="Art"><label
+                                        for="checkboxSix">Art
+                                    Sparkle</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkboxSeven" value="Business"><label
+                                        for="checkboxSeven">Business</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkboxEight" value="Math"><label
+                                        for="checkboxEight">Math</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkboxNine" value="Accounting"><label
+                                        for="checkboxNine">Accounting</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkboxTen" value="Physics"><label
+                                        for="checkboxTen">Physics</label>
+                                </li>
+                                <li class="li_box"><input type="checkbox" id="checkboxTwelve"
+                                                          value="Communication"><label
+                                        for="checkboxTwelve">Communication</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkboxThirteen"
+                                                          value="Computer"><label
+                                        for="checkboxThirteen">Computer</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkbox14" value="Science"><label
+                                        for="checkbox14">Science</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkbox15" value="Biology"><label
+                                        for="checkbox15">Biology</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkbox16" value="BioEngineering"><label
+                                        for="checkbox16">BioEngineering</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkbox17" value="Chemistry"><label
+                                        for="checkbox17">Chemistry</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkbox18" value="Electrical"><label
+                                        for="checkbox18">Electrical</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkbox19" value="BioChemistry"><label
+                                        for="checkbox19">BioChemistry</label></li>
+                                <li class="li_box"><input type="checkbox" id="checkbox20" value="Laborer"><label
+                                        for="checkbox20">Laborer</label></li>
+                            </ul>
+                        </div>
+                        <div class="row justify-content-center">
+                            <textarea name="fancy-textarea" id="fancy-textarea"></textarea>
+                            <label for="fancy-textarea">Description</label>
+                        </div>
+                        <div class="row justify-content-center">
+                                <h6 class="referral">Do you require a resume?</h6>
+                                <input type="radio" name="fancy-radio" id="fancy-radio-2"/>
+                                <label for="fancy-radio-2">Radio</label>
+
+                        </div>
+                        <div class="row justify-content-right">
+                            <button type="submit" tabindex="0" style="margin-left: auto;">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+

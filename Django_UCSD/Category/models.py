@@ -25,6 +25,7 @@ CATEGORYKEYWORDS = (
 )
 
 
+
 class Category(models.Model):
     category_name = models.CharField(primary_key=True, max_length=100, choices=CATEGORYKEYWORDS)
 
