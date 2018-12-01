@@ -13,6 +13,8 @@ Password: 123123123a
 
 ### Django Form handling  
 https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html  
+### Django Form Validation and handling  
+https://docs.djangoproject.com/en/2.1/ref/forms/validation/  
 
 ### Django Automatically Redirect  
 https://stackoverflow.com/questions/37439141/redirect-automatically-in-a-view-django  
