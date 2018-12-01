@@ -431,7 +431,7 @@ img::-moz-selection {
 
 #main_page_content {
   /* font-size: 72px; */
-  background: -webkit-linear-gradient(#eee, #333);
+  background: -webkit-linear-gradient(#ccc, #333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
