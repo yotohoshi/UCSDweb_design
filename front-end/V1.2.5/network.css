@@ -30,7 +30,7 @@ html, body {
 
  body {
   margin: 0;
-  background: linear-gradient(#eee, #ccc);
+  background: #eee;
   overflow: hidden;
 }
 
