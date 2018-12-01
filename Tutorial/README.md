@@ -14,6 +14,13 @@ Password: 123123123a
 ### Django Form handling  
 https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html  
 
+### Django Automatically Redirect  
+https://stackoverflow.com/questions/37439141/redirect-automatically-in-a-view-django  
+* This can be used for redirect from user sign up successfully to a "Sign up Successfully" page and redirect from there to log in page.  
+
+### Django Time Based Page  
+https://www.julienphalip.com/blog/testing-time-based-views-in-django/  
+
 ## System Installation and Settings: (Ubuntu)  
 https://github.com/jonnyr2008/Surface-Book-2-15-Ubuntu-Settings  
 This link has full content of installation and setup of your surface devices.  
@@ -34,4 +41,18 @@ https://cytoscape.org/index.html
 
 ## Front end Material Design:  
 https://material.io/  
+
+## Infinite Scrolling  
+https://stackoverflow.com/questions/21071164/how-do-i-do-infinite-scrolling-with-just-html-and-javascript  
+
+## Side Bar  
+https://ourcodeworld.com/articles/read/325/top-10-best-slide-sidebar-menu-drawer-javascript-and-jquery-plugins  
+
+# UI Design:  
+
+## Art Design UI  
+https://www.slant.co/options/18340/alternatives/~artdesignui-alternatives  
+
+## Page UI  
+https://bashooka.com/coding/svg-animation-ideas-2017/  
 

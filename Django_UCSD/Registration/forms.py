@@ -38,10 +38,10 @@ class SignupForm(forms.Form):
             raw_password = self.cleaned_data['password']
             confirm_password = self.cleaned_data['confirmed_password']
             if Account.objects.filter(email=email):
-                self.add_error(None, "this email address has already been registered.")
+                self.add_error(None, "This email address has already been registered.")
                 return False
             if raw_password != confirm_password:
-                self.add_error('confirmed_password', "confirm password is not the same")
+                self.add_error('confirmed_password', "Confirm password is not the same")
             else:
                 return True
 
@@ -72,6 +72,6 @@ class ChangePasswordForm(forms.Form):
                     self.add_error('confirmed_password', "confirm password is not the same")
                     return False
             else:
-                self.add_error('old_password', "Incorrect password")
+                self.add_error('Old_password', "Incorrect password")
                 return False
 

@@ -30,6 +30,7 @@ def UserSignup(request):
     if request.method == 'POST':
         if form.signup(request):
             form.save()
+            # redirect('userlogin')
             return redirect('userlogin')
         else:
             return render(request, 'signup.html', {'form': form})
