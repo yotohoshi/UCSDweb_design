@@ -209,6 +209,10 @@
                                                         <div class="row">
                                                             <h6>Location: {{ event.location }} /
                                                                 Date: {{ event.date }}</h6>
+                                                            <div class="x" id="{{ event.id }}">
+                                                                <div class="line1"></div>
+                                                                <div class="line2"></div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="card-body">
@@ -219,16 +223,9 @@
                                                         <p class="card-text">{{ event.company.company_name }}<br>{{ event.description }}
                                                         </p>
                                                         <div class="row justify-content-right">
-                                                            <div class="col-9"></div>
+                                                            <div class="col-11"></div>
                                                             <div class="col-1" id="go-button{{ event.id }}">
                                                                 <!--button goes here-->
-                                                            </div>
-                                                            <div class="col-1" id="remove-button{{ event.id }}"
-                                                                 style="margin-left: 35px">
-                                                                <button href="#"
-                                                                        class="btn btn-danger btn-sm float-right"
-                                                                        id="{{ event.id }}">remove
-                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -271,8 +268,8 @@
 
                                 <script>
                                     //go button
-                                    const go_button{{ event.id }} = " <button class=\"btn btn-primary btn-sm float-right\" id=\"go{{ event.id }}\" onclick='go_{{ event.id }}()'>Go</button>";
-                                    const not_go_button{{ event.id }} = " <button class=\"btn btn-danger btn-sm float-right\" id=\"go{{ event.id }}\" onclick='go_{{ event.id }}()'>Not Going</button>";
+                                    const go_button{{ event.id }} = " <button class=\"btn btn-dark btn-sm float-right\" id=\"go{{ event.id }}\" onclick='go_{{ event.id }}()'>Go</button>";
+                                    const not_go_button{{ event.id }} = " <button class=\"btn btn-dark btn-sm float-right\" id=\"go{{ event.id }}\" onclick='go_{{ event.id }}()'>Not Going</button>";
 
                                     //go to button click function
                                     function go_{{ event.id }}() {
@@ -370,17 +367,19 @@
                                             <div class="card-header align-items-center">
                                                 <div class="row">
                                                     <h6>Post Date: {{ job.post_time }}</h6>
+                                                    <div class="x" id="{{ job.id }}">
+                                                        <div class="line1"></div>
+                                                        <div class="line2"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <a href="event http">
-                                                    <h4 class="card-title">{{ job.job_position }}</h4>
-                                                </a>
+
+                                                <h4 class="card-title">{{ job.job_position }}</h4>
+
                                                 <p class="card-text">{{ job.company.company_name }}<br>{{ job.description }}
                                                 </p>
-                                                <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign /
-                                                    Go</a>
-                                                <a href="#" class="btn btn-danger btn-sm float-right" id="{{ job.id }}">delete</a>
+                                                <a href="#" class="btn btn-dark btn-sm float-right">Apply</a>
                                             </div>
                                         </div>
                                     </div>
@@ -460,7 +459,12 @@
                                 </div>
                             {% endfor %}
                         {% endif %}
+                        <div class="float-button">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </div>
+                        <div id="add-referral">
 
+                        </div>
                     </div>
                 </div>
             </div>
