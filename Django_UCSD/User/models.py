@@ -26,6 +26,10 @@ class Major(models.Model):
     db_table = 'Majors',
     major = models.CharField(max_length=50, primary_key=True)
 
+    @staticmethod
+    def getMajorList():
+        return [dic['major'] for dic in Major.objects.values('major')]
+
 
 class Degree(models.Model):
     db_table = 'Degrees'
@@ -40,6 +44,10 @@ class Degree(models.Model):
         ('Ph.D', 'Ph.D'),
     )'''
     degree = models.CharField(max_length=15, primary_key=True)
+
+    @staticmethod
+    def getDegreeList():
+        return [dic['degree'] for dic in Degree.objects.values('degree')]
 
 
 class User(models.Model):

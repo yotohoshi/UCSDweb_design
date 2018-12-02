@@ -8,8 +8,8 @@ from django.core.paginator import Paginator
 from django import template
 from overrides import overrides
 from .forms import SearchingForm
-from Job.models import Job
-from User.models import Degree
+from Job.models import Job, Location
+from User.models import Degree, Major
 
 # Create your views here.
 
@@ -131,5 +131,15 @@ def search(request):
     keyword = form.keyword
 '''
 
+
 def add_referral(request):
     return
+
+
+def fetch_data(request):
+    data = {
+        'locations': Location.getLocationList(),
+        'degrees': Major.getMajorList(),
+        'majors': Degree.getDegreeList(),
+    }
+    return JsonResponse(data)

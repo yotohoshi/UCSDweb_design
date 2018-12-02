@@ -117,6 +117,10 @@ class Location(models.Model):
     def __str__(self):
         return self.place
 
+    @staticmethod
+    def getLocationList():
+        return [dic['place'] for dic in Location.objects.values('place')]
+
 
 class Job(models.Model):
     db_table = 'Job'

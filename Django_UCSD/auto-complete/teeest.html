@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <style>
+        .MasterContainer {
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          min-height: 100vh;
+          margin-top: 50px;
+        }
+        .title {test
+          margin-bottom: 22px;
+        }
+    </style>
+
+    <script>
+        var locations = [];
+
+        $.ajax({
+                type: "POST",
+                url: '{% url 'job_send_locations' %}',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                },
+                dataType: 'json',
+                success: function (data) {
+                    console.log('Got location list!');
+                    locations = data.locations;
+                }
+            });
+
+        function matchPeople(input) {
+            var reg = new
+            RegExp(input.split("").join("\\w*").replace(/\W/, ""), "i");
+            var res = [];
+            if (input.trim().length === 0) {
+                return res;
+            }
+            for (var i = 0, len = locations.length; i < len; i++) {
+                if (locations[i].match(reg)) {
+                  res.push(locations[i]);
+                }
+            }
+            return res;
+        }
+
+        function changeInput(val) {
+            var autoCompleteResult = matchPeople(val);
+            document.getElementById("result").innerHTML = "";
+            for (var i = 0, limit = 10, len = autoCompleteResult.length; i < len  && i < limit; i++) {
+                document.getElementById("result").innerHTML += "<a class='list-group-item list-group-item-action' href='#' onclick='setSearch(\"" + autoCompleteResult[i] + "\")'>" + autoCompleteResult[i] + "</a>";
+            }
+        }
+
+        function setSearch(value) {
+            document.getElementById('search').value = value;
+            document.getElementById("result").innerHTML = "";
+        }
+    </script>
+
+
+<body>
+    <div class="MasterContainer">
+      <div>
+        <h1 class="title">Auto Complete Search</h1>
+        <form class="form">
+          <div class="form-group">
+            <input type="text" id="search" onkeyup="changeInput(this.value)" class="form-control form-control-lg" placeholder="Search">
+            <div>
+              <div id="result" class="list-group">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</body>
+{% endblock %}
+</html>
