@@ -30,9 +30,9 @@ https://overiq.com/django-1-10/django-rendering-fields-manually/
 
 ## Front end Graph and Relation / Scientific Display:  
 Tool http://js.cytoscape.org/  
+
 ### Same Tool used locally:  
 https://cytoscape.org/index.html  
-
 
 ## Infinite Scrolling  
 https://stackoverflow.com/questions/21071164/how-do-i-do-infinite-scrolling-with-just-html-and-javascript  
@@ -44,6 +44,15 @@ https://ourcodeworld.com/articles/read/325/top-10-best-slide-sidebar-menu-drawer
 
 ## Art Design UI  
 https://www.slant.co/options/18340/alternatives/~artdesignui-alternatives  
+
+## Semantic UI  
+https://semantic-ui.com/  
+
+## Code My UI  
+https://codemyui.com/  
+
+## Collect UI  
+http://collectui.com/  
 
 ## Page UI  
 https://bashooka.com/coding/svg-animation-ideas-2017/  
@@ -62,7 +71,7 @@ https://freefrontend.com/css-forms/
 
 htttps://www.codepen.io  
 
-## System Installation and Settings: (Ubuntu)  
+# System Installation and Settings: (Ubuntu)  
 https://github.com/jonnyr2008/Surface-Book-2-15-Ubuntu-Settings  
 This link has full content of installation and setup of your surface devices.  
 For non-surface devices only do ```sudo ./upug.sh``` then ```sudo ./coding_build_install.sh```.  
@@ -70,7 +79,7 @@ Install your GPU driver from "software & update" of ubuntu.
 * For all surface devices without dedicated GPU (dGPU: another GPU that serves your devices), only do ```setup.sh```.  
 * For all others, please see Approach1.  
 
-### Easy realtime coding solution:  
+# Easy realtime coding solution:  
 * Install Atom. After this, install packages as you like.  
 * Install teletype.  
 * Everyone can code on the same document SIMULTANEOUSLY like GOOGLE DOC AND WORD! Enjoy!  
