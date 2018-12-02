@@ -28,10 +28,12 @@ https://www.julienphalip.com/blog/testing-time-based-views-in-django/
 ### Django Form Validation and Errors  
 https://overiq.com/django-1-10/django-rendering-fields-manually/  
 
+### Simple Django Communication  
+https://www.geeksforgeeks.org/handling-ajax-request-in-django/  
+
 ## Front end Graph and Relation / Scientific Display:  
 Tool http://js.cytoscape.org/  
-
-### Same Tool used locally:  
+### * Same Tool used locally:  
 https://cytoscape.org/index.html  
 
 ## Infinite Scrolling  
