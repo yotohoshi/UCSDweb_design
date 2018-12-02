@@ -38,6 +38,8 @@ https://cytoscape.org/index.html
 
 ## Infinite Scrolling  
 https://stackoverflow.com/questions/21071164/how-do-i-do-infinite-scrolling-with-just-html-and-javascript  
+* infinite scrolling with Django  
+https://simpleisbetterthancomplex.com/tutorial/2017/03/13/how-to-create-infinite-scroll-with-django.html  
 
 ## Side Bar  
 https://ourcodeworld.com/articles/read/325/top-10-best-slide-sidebar-menu-drawer-javascript-and-jquery-plugins  
