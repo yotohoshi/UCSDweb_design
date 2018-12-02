@@ -33,11 +33,6 @@ Tool http://js.cytoscape.org/
 ### Same Tool used locally:  
 https://cytoscape.org/index.html  
 
-## Front end Material Design:  
-https://material.io/  
-
-## Side Bar Design UI  
-https://codemyui.com/tag/sidebar/page/2/  
 
 ## Infinite Scrolling  
 https://stackoverflow.com/questions/21071164/how-do-i-do-infinite-scrolling-with-just-html-and-javascript  
@@ -53,6 +48,14 @@ https://www.slant.co/options/18340/alternatives/~artdesignui-alternatives
 ## Page UI  
 https://bashooka.com/coding/svg-animation-ideas-2017/  
 
+## Search Bar UI  
+https://freefrontend.com/css-search-boxes/  
+
+## Front end Material Design:  
+https://material.io/  
+
+## Side Bar Design UI  
+https://codemyui.com/tag/sidebar/page/2/  
 
 ## Step by Step login/signup UI  
 https://freefrontend.com/css-forms/  

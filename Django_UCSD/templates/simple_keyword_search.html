@@ -2,23 +2,47 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <title></title>
+    <meta charset="utf-8">
+    <title></title>
 </head>
+<style>
+    .col{
+        padding:1px; margin:0px;
+    }
+    .form-control{
+        border-radius: 5px;
+        border-color: #141414;
+    }
+    #search_button{
+        border-radius: 5px;
+        background-color: #141414;
+    }
 
+</style>
 <body>
+<form action="{% url "jobsearch" %}" method="GET">
+    <div class="row">
+    <div class="input-group">
 
-<form action = "{% url "jobsearch" %}" method = "GET">
-  <div class="input-group">
-    <input type="text" class="form-control" name="keyword" placeholder="{% if not user.get_keyword or user.get_keyword == ' ' %} Title of your job {%else%}{{ user.get_keyword }}{% endif %}">
-
-    <span class="input-group-btn">
-      <button class="btn btn-primary" type="submit">Search</button>
+            <div class="col col-7">
+                <input type="text" class="form-control" name="keyword"
+                       placeholder="{% if not user.get_keyword or user.get_keyword == ' ' %} Title {% else %}{{ user.get_keyword }}{% endif %}">
+            </div>
+            <div class="col col-3">
+                <input type="text" class="form-control" name="keyword"
+                       placeholder="{% if not user.get_keyword or user.get_keyword == ' ' %} Location {% else %}{{ user.get_keyword }}{% endif %}">
+            </div>
+            <span class="input-group-btn">
+                <div class="col col-2">
+      <button class="btn btn-primary" type="submit" id="search_button">Search</button>
+                    </div>
     </span>
-  </div><!-- input-group -->
+        </div><!-- end of row -->
+    </div><!-- input-group -->
 </form>
 
 
 </body>
 
 </html>
+
