@@ -18,7 +18,12 @@
   <!-- Bootstrap CSS CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <script type="text/javascript" src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <script type="text/javascript">
+    const MDCSnackbar = mdc.snackbar.MDCSnackbar;
+    const MDCSnackbarFoundation = mdc.snackbar.MDCSnackbarFoundation;
+  </script>
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="network.css">
   <title>NetWork</title>
@@ -28,7 +33,7 @@
   <!-- Wrap all content in to a wrapper -->
   <div id="wrapper" class="animate">
     <!-- Top navigation bar -->
-    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark" style=" background-color: #0C1E41;">
+    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark">
       <!-- Hamburger icon -->
       <span class="navbar-toggler-icon leftmenutrigger"></span>
 
@@ -65,7 +70,7 @@
               <div class="card">
                 <div class="card-header align-items-center">
                   <div class="container-fluid content-justify-center">
-                    <h6>Referrals: 100 </h6>
+                    <h6>Referrals: 100</h6>
                   </div>
                 </div>
                 <!-- <div class="card-body">
@@ -74,128 +79,127 @@
               </div>
             </div>
           </div>
-          <!-- End of Requests number -->
-
-          <!-- Friends and Requests Body Row -->
+          <!-- <div class="row">
+            <ul class="mdc-list">
+              <li class="mdc-list-item" tabindex="0">
+                <span class="mdc-list-item__text">Single-line item</span>
+              </li>
+              <li class="mdc-list-item">
+                <span class="mdc-list-item__text">Single-line item</span>
+              </li>
+              <li class="mdc-list-item">
+                <span class="mdc-list-item__text">Single-line item</span>
+              </li>
+            </ul>
+          </div> -->
           <div class="row">
-            <!-- Info container adjuster -->
-            <div class="container-fluid">
-              <!-- Using Bootstrap card to display all friends and requests -->
-              <div class="card">
-                <!-- Tags -->
-                <div class="card-header" id="right-card-header">
-                  <!--Card head is here -->
-                  <div class="row">
-                    <!-- tags -->
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="friends-tab" data-toggle="tab" href="#friends" role="tab" aria-controls="friends" aria-selected="true">Friends</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="requests-tab" data-toggle="tab" href="#requests" role="tab" aria-controls="requests" aria-selected="false">Requests</a>
-                      </li>
-                    </ul>
-                    <!-- end of tags -->
-                  </div>
-                </div>
-                <!-- Friends and Requests body -->
-                <div class="tab-content" id="nav-tabContent">
-                  <!-- Friends tab -->
-                  <div class="tab-pane fade show active" id="friends" aria-labelledby="friends-tab">
-                    <!-- Col of friends -->
-                    <div class="col">
-                      <!-- Start of ONE friend -->
-                      <!-- Row of avatar and name -->
-                      <div class="row">
-                        <!-- Avatar -->
-                        <div class="col">
-                          <h6>Avatar</h6>
-                        </div>
-                        <!-- Name -->
-                        <div class="col">
-                          <h6>Name</h6>
-                        </div>
+            <div class="mdc-list-group">
+              <h3 class="mdc-list-group__subheader">Requests</h3>
+              <ul class="mdc-list" aria-orientation="vertical">
+                <li class="mdc-list-item">
+                  <span class="mdc-list-item__text">
+                    <div class="row">
+                      <div class="col">
+                        Avatar
                       </div>
-                      <!-- Row of button -->
-                      <div class="row d-flex justify-content-end" id="rr">
-                        <button id="bb" class="btn btn-primary" type="button" name="button"><small>delete</small></button>
+                      <div class="col">
+                        Name
                       </div>
-                      <!-- End of ONE friend -->
-
-
-                      <!-- Start of ONE friend -->
-                      <!-- Row of avatar and name -->
-                      <div class="row" id="rr">
-                        <!-- Avatar -->
-                        <div class="col">
-                          <h6>Avatar</h6>
-                        </div>
-                        <!-- Name -->
-                        <div class="col">
-                          <h6>Name</h6>
-                        </div>
-                      </div>
-                      <!-- Row of button -->
-                      <div class="row d-flex justify-content-end" id="rr">
-                        <button id="bb" class="btn btn-primary right-side-button" type="button" name="button"><small>delete</small></button>
-                      </div>
-                      <!-- End of ONE friend -->
-                    </div>
-                    <!-- End of friend col -->
-                  </div>
-                  <!-- End of friends tab -->
-
-                  <!-- Requests tab -->
-                  <div class="tab-pane fade show" id="requests" aria-labelledby="requests-tab">
-                    <!-- Col of Requests -->
-                    <div class="col">
-                      <!-- Start of ONE request -->
-                      <!-- Row of avatar and name -->
-                      <div class="row">
-                        <!-- Avatar -->
-                        <div class="col">
-                          <h6>AvatarR</h6>
-                        </div>
-                        <!-- Name -->
-                        <div class="col">
-                          <h6>NameR</h6>
-                        </div>
-                      </div>
-                      <!-- Row of button -->
-                      <div class="row d-flex justify-content-end" id="rr">
-                        <button id="bb" class="btn btn-primary right-side-button" type="button" name="button"><small>ignore</small></button>
-                      </div>
-                      <!-- End of ONE requeset -->
-                      <!-- Start of ONE request -->
-                      <!-- Row of avatar and name -->
-                      <div class="row">
-                        <!-- Avatar -->
-                        <div class="col">
-                          <h6>AvatarR</h6>
-                        </div>
-                        <!-- Name -->
-                        <div class="col">
-                          <h6>NameR</h6>
-                        </div>
-                      </div>
-                      <!-- Row of button -->
-                      <div class="row d-flex justify-content-end" id="rr">
-                        <button id="bb" class="btn btn-primary right-side-button" type="button" name="button"><small>ignore</small></button>
+                      <div class="col">
+                        onLine
                       </div>
                     </div>
-                    <!-- End of ONE request -->
-                  </div>
-                  <!-- End of request col -->
-                </div>
-                <!-- End of request tab -->
-              </div>
+                  </span>
+                </li>
+                <li class="mdc-list-item">
+                  <span class="mdc-list-item__text">
+                    <div class="row">
+                      <div class="col">
+                        Avatar
+                      </div>
+                      <div class="col">
+                        Name
+                      </div>
+                      <div class="col">
+                        onLine
+                      </div>
+                    </div>
+                  </span>
+                </li>
+                <li class="mdc-list-item">
+                  <span class="mdc-list-item__text">
+                    <div class="row">
+                      <div class="col">
+                        Avatar
+                      </div>
+                      <div class="col">
+                        Name
+                      </div>
+                      <div class="col">
+                        onLine
+                      </div>
+                    </div>
+                  </span>
+                </li>
+              </ul>
+              <h3 class="mdc-list-group__subheader">Friends</h3>
+              <ul class="mdc-list" aria-orientation="vertical">
+                <li class="mdc-list-item">
+                  <span class="mdc-list-item__text">
+                    <div class="row">
+                      <div class="col">
+                        Avatar
+                      </div>
+                      <div class="col">
+                        Name
+                      </div>
+                      <div class="col">
+                        onLine
+                      </div>
+                    </div>
+                  </span>
+                </li>
+                <li class="mdc-list-item">
+                  <span class="mdc-list-item__text">
+                    <div class="row">
+                      <div class="col">
+                        Avatar
+                      </div>
+                      <div class="col">
+                        Name
+                      </div>
+                      <div class="col">
+                        onLine
+                      </div>
+                    </div>
+                  </span>
+                </li>
+                <li class="mdc-list-item">
+                  <span class="mdc-list-item__text">
+                    <div class="row">
+                      <div class="col">
+                        Avatar
+                      </div>
+                      <div class="col">
+                        Name
+                      </div>
+                      <div class="col">
+                        onLine
+                      </div>
+                    </div>
+                  </span>
+                </li>
+              </ul>
             </div>
-            <!-- End of right side display Card class -->
-            <!--  -->
           </div>
-          <!-- End of right side row of card info -->
+
         </div>
-        <!-- End of right side card container -->
+
+
+
+
+
+
       </div>
       <!-- End of right side col -->
     </div>
