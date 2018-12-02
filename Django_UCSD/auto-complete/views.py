@@ -9,7 +9,7 @@ from django import template
 from overrides import overrides
 from .forms import SearchingForm
 from Job.models import Job, Location
-from User.models import Degree, Major
+from User.models import Degree
 
 # Create your views here.
 
@@ -125,6 +125,17 @@ def job_get_favorite_status(request):
     }
     return JsonResponse(data)
 
+
+def send_locations (request):
+    data = {
+        'locationList': Location.getLocationList()
+    }
+    return JsonResponse(data)
+
+
+def runTest (request):
+    return render(request, 'teeest.html')
+
 '''
 def search(request):
     form = SearchForm()
@@ -132,14 +143,3 @@ def search(request):
 '''
 
 
-def add_referral(request):
-    return
-
-
-def fetch_data(request):
-    data = {
-        'locations': Location.getLocationList(),
-        'degrees': Major.getMajorList(),
-        'majors': Degree.getDegreeList(),
-    }
-    return JsonResponse(data)

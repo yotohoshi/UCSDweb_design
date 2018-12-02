@@ -14,6 +14,7 @@ from nltk.stem.porter import *
 from nltk.stem import WordNetLemmatizer
 import time
 
+
 #################################### Constants #######################################################
 
 
@@ -76,6 +77,7 @@ CATEGORYKEYWORDS = {'softwar': 'S',
                     'biochemistri': 'BC',
                     'labor': 'L'}
 
+
 TABLE = {9: 32, 33: 32, 34: 32, 35: 32, 36: 32, 37: 32, 38: 32, 39: 32, 40: 32, 41: 32, 42: 32,
          43: 32, 44: 32, 45: 32, 46: 32, 47: 32, 58: 32, 59: 32, 60: 32, 61: 32, 62: 32, 63: 32,
          64: 32, 91: 32, 92: 32, 93: 32, 94: 32, 95: 32, 96: 32, 123: 32, 124: 32, 125: 32, 126: 32}
@@ -86,17 +88,17 @@ TABLE = {9: 32, 33: 32, 34: 32, 35: 32, 36: 32, 37: 32, 38: 32, 39: 32, 40: 32, 
 
 # helper method - string pre-processing
 # return a set of stemmed words in the string in lowercase without punctuations, stop words, or repeated words
-def string_preprocess(to_process):
+def string_preprocess (to_process):
     if type(to_process) != str:
         return []
     else:
-        # to_process = to_process.lower().translate(TABLE).split()
+        #to_process = to_process.lower().translate(TABLE).split()
         to_process = ''.join([char for char in to_process.lower() if char not in PUNCTUATIONS]).split()
         processed = set()
         for word in to_process:
             if word not in STOPWORDS:
                 word = STEMMER.stem(word)
-                # LEMMATIZER.lemmatize(word)
+                #LEMMATIZER.lemmatize(word)
                 processed.add(word)
         return processed
 
@@ -106,7 +108,6 @@ def performance(to_run):
     to_run
     end = time.time()
     print(end - start)
-
 
 ##################################### Models ################################################################
 
@@ -254,6 +255,7 @@ class Job(models.Model):
         #         #             relevant_Jobs.append(job)
         #         #     result = relevant_Jobs
 
+
     @staticmethod
     def get_all():
         return list(Job.objects.all())
@@ -308,6 +310,7 @@ class Job(models.Model):
         else:
             return Job.objects.filter(job_position=position)
 
+
     # get_Job_URL
 
     @staticmethod
@@ -326,6 +329,7 @@ class Job(models.Model):
         else:
             return Job.objects.filter(Major_Require=major)
 
+
     # get_Job_Degree_Require
 
     @staticmethod
@@ -334,6 +338,7 @@ class Job(models.Model):
             return False
         else:
             return Job.objects.filter(Degree_Require=degree)
+
 
     # get_Job_Duration
 
@@ -353,6 +358,7 @@ class Job(models.Model):
         else:
             return Job.objects.filter(job_location=location)
 
+
     # get_Job_paid
 
     @staticmethod
@@ -361,6 +367,7 @@ class Job(models.Model):
             return False
         else:
             return Job.objects.filter(job_paid=paid)
+
 
     # setter
 
@@ -382,7 +389,9 @@ class Job(models.Model):
             self.company = company
             return True
 
+
     # set_Job_Duration
+
 
     def set_Job_Duration(self, duration):
         if type(duration) != str:
@@ -391,7 +400,9 @@ class Job(models.Model):
             self.job_duration = duration
             return True
 
+
     # set_Job_Major_Require
+
 
     def set_major(self, major):
         if type(major) != Major:
@@ -400,7 +411,9 @@ class Job(models.Model):
             self.Major_Require = major
             return True
 
+
     # set_Job_Degree_Require
+
 
     def set_degree(self, degree):
         if type(degree) != Degree:
@@ -409,7 +422,9 @@ class Job(models.Model):
             self.Degree_Require = degree
             return True
 
+
     # set_Job_Work_Auth
+
 
     def set_Job_Work_Auth(self, work_auth):
         if type(work_auth) != str:
@@ -417,6 +432,7 @@ class Job(models.Model):
         else:
             self.job_Work_Auth = work_auth
             return True
+
 
     # set_Job_paid
 
@@ -458,60 +474,32 @@ class Job(models.Model):
                 return False
 
 
-class Referral(models.Model):
-    ref_provider = models.ForeignKey(User, on_delete=models.PROTECT)
-    referral_job = models.ForeignKey(Job, on_delete=models.PROTECT)
-    referral_description = models.CharField(max_length=300)
-    resume_require = models.BooleanField
-
-    # getter
-
-    # get_provider
-    def get_provider(provider):
-
-        if type(provider) != User:
-            return False
-        else:
-            return Referral.objects.all.filter(ref_provider=provider)
-
-    # setter
-
-    def set_resume_require(self, res_require):
-        if type(res_require) != bool:
-            return False
-        else:
-            self.resume_require = res_require
-            return True
-
-    # save_referral
-    @staticmethod
-    def save_referral(position, description, majors, degrees, type, work_auth, company, url,
-                      categories, location, paid, provider, referral_description, resume_required):
-
-        # generate short description
-
-        short_description = description[:600]+'...'
-
-        company_obj = Company.models.Company.objects.filter(company_name=company)
-        location_obj = Location.objects.filter(place=location)
-        job = Job.objects.create(job_position=position, description=description, short_description=short_description,
-                                 type=type, job_Work_Auth=work_auth, company=company_obj, job_URL=url,
-                                 location=location_obj, paid=paid)
-
-        for major in majors:
-            major_obj = Major.objects.filter(major=major)
-            job.major_required.add(major_obj)
-
-        for degree in degrees:
-            degree_obj = Degree.objects.filter(degree=degree)
-            job.degree_required.add(degree_obj)
-
-        for category in categories:
-            category_obj = Category.objects.filter(category_name=category)
-            job.category.add(category_obj)
-
-        job.save()
-
-        referral = Referral.objects.create(ref_provider=provider, referral_job=job, referral_description=referral_description,
-                                           resume_required=resume_required)
-        referral.save()
+# class Referral(models.Model):
+#     referral_ID = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+#     ref_provider = models.ForeignKey(User, on_delete=models.PROTECT)
+#     referral_job = models.ForeignKey(Job, on_delete=models.PROTECT)
+#     referral_description = models.CharField(max_length=300)
+#     resume_require = models.BooleanField
+#
+#
+# # getter
+#
+#
+# # get_provider
+#
+#
+# def get_provider(provider):
+#     if type(provider) != User:
+#         return False
+#     else:
+#         return Referral.objects.all.filter(ref_provider=provider)
+#
+#
+# # setter
+#
+# def set_resume_require(self, res_require):
+#     if type(res_require) != bool:
+#         return False
+#     else:
+#         self.resume_require = res_require
+#         return True

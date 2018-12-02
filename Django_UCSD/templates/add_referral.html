@@ -1,34 +1,227 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/add_referral.css' %}">
-
+<script src="{% static 'js/add_referral.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/add_referal.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
+      rel='stylesheet' type='text/css'>
 <div class="modal fade bd-example-modal-lg" id="add-referral" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <div class="modal-body">
-                <div class="container">
-                    <div class="comment-box">
-                        <div class="comment-form">
-                            <div class="header">New Post</div>
-                            <div>
-                                <input type="text" id="name" placeholder="Job Title"/>
+            <div class="modal-body referral">
+                <div class="row justify-content-center">
+                    <h1>Offer Your Referral</h1>
+                </div>
+                <!-- show steps-->
+                <ul class="steps">
+                    <li class="is-active"><h5>Step 1</h5></li>
+                    <li><h5>Step 2</h5></li>
+                    <li><h5>Step 3</h5></li>
+                </ul>
+                <!-- container -->
+                <div class="container_ref">
+                    <form class="form-wrapper">
+                        <div class="section is-active">
+                            <div class="row">
+                                <input type="text" name="fancy-text" id="title" placeholder="title of your job"/>
+                                <label for="title">Title</label>
                             </div>
-                            <div>
-                                <textarea id="comment" rows="3" cols="30" placeholder="Job Position"></textarea>
+
+                            <div class="row">
+                                <input type="text" id="search" onkeyup="changeInput(this.value)"
+                                       placeholder="Loaction of your job">
+                                <label for="search">Location</label>
+                                <div id="result" class="list-group"></div>
                             </div>
-                            <div>
-                                <input type="text" id="tags" placeholder="Add Tags (Seperate by comma)"/>
+
+                            <div class="row two-search">
+                                <div class="col-6">
+                                    <div class="row">
+                                        <input type="text" id="company" onkeyup="changeInput(this.value)"
+                                               placeholder="Your company">
+                                        <label for="company">Company</label>
+                                        <div id="result" class="list-group"></div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="row">
+                                        <input type="text" id="major" onkeyup="changeInput(this.value)"
+                                               placeholder="Major requirement">
+                                        <label for="major">Major</label>
+                                        <div id="result" class="list-group"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary addCommentBtn" data-dismiss="modal"
-                                        disabled>Post
+                            <div class="row justify-content-right">
+                                <button type="button" class="next-button" tabindex="0" style="margin-left: auto;">Next
                                 </button>
                             </div>
                         </div>
-                    </div>
+                        <div class="section">
+                            <div class="row justify-content-center">
+                                <h4>Pick Some Categories</h4>
+                                <ul class="ks-cboxtags">
+                                    <li class="li_box"><input type="checkbox" id="checkboxOne"
+                                                              value="Software"><label
+                                            for="checkboxOne">Software</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkboxTwo"
+                                                              value="Engineering"><label
+                                            for="checkboxTwo">Engineering</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkboxThree"
+                                                              value="Hardware"><label
+                                            for="checkboxThree">Hardware</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkboxFour"
+                                                              value="Embedded"><label
+                                            for="checkboxFour">Embedded</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkboxFive"
+                                                              value="Aerospace"><label
+                                            for="checkboxFive">Aerospace</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkboxSix" value="Art"><label
+                                            for="checkboxSix">Art
+                                        Sparkle</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkboxSeven"
+                                                              value="Business"><label
+                                            for="checkboxSeven">Business</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkboxEight" value="Math"><label
+                                            for="checkboxEight">Math</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkboxNine"
+                                                              value="Accounting"><label
+                                            for="checkboxNine">Accounting</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkboxTen"
+                                                              value="Physics"><label
+                                            for="checkboxTen">Physics</label>
+                                    </li>
+                                    <li class="li_box"><input type="checkbox" id="checkboxTwelve"
+                                                              value="Communication"><label
+                                            for="checkboxTwelve">Communication</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkboxThirteen"
+                                                              value="Computer"><label
+                                            for="checkboxThirteen">Computer</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkbox14" value="Science"><label
+                                            for="checkbox14">Science</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkbox15" value="Biology"><label
+                                            for="checkbox15">Biology</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkbox16"
+                                                              value="BioEngineering"><label
+                                            for="checkbox16">BioEngineering</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkbox17"
+                                                              value="Chemistry"><label
+                                            for="checkbox17">Chemistry</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkbox18"
+                                                              value="Electrical"><label
+                                            for="checkbox18">Electrical</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkbox19"
+                                                              value="BioChemistry"><label
+                                            for="checkbox19">BioChemistry</label></li>
+                                    <li class="li_box"><input type="checkbox" id="checkbox20" value="Laborer"><label
+                                            for="checkbox20">Laborer</label></li>
+                                </ul>
+                            </div>
+                            <div class="row justify-content-center">
+                                <textarea name="fancy-textarea" id="fancy-textarea"></textarea>
+                                <label for="fancy-textarea">Job Description</label>
+                            </div>
+                            <div class="row justify-content-right">
+                                <button type="button" class="next-button" tabindex="0" style="margin-left: auto;">Next
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="row justify-content-center referral_check">
+                                <h6 class="referral">Do you require a resume?</h6>
+                                <input type="checkbox" name="fancy-checkbox" id="fancy-checkbox"/>
+                                <label for="fancy-checkbox">Checkbox</label>
+                            </div>
+                            <div class="row justify-content-center">
+                                <textarea name="fancy-textarea" id="fancy-textarea" placeholder="Tell us more abour you"></textarea>
+                                <label for="fancy-textarea">Additional Description</label>
+                            </div>
+                            <div class="row justify-content-right">
+                                <button class="next-button" tabindex="0" style="margin-left: auto;">Submit</button>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="row justify-content-center">
+                                <h3>
+                                    Congratulations
+                                </h3>
+                            </div>
+                            <div class="row justify-content-center">
+                                <h4>
+                                    You have successfully offered a job position!
+                                </h4>
+                            </div>
+                            <div class="row blank"><br></div>
+                            <div class="row justify-content-center">
+                                <button class="next-button" tabindex="0">Offer Another Referral</button>
+                            </div>
+                            <div class="row justify-content-center">
+                                <button class="exit-button" tabindex="0" data-dismiss="modal">No Thanks</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<script>
+
+   /* //Search Control
+    var people = ['Jamila', 'Lakenya', 'Eulalia', 'Jules', 'Li', 'Titus', 'Marybelle', 'Loan', 'Rolland', 'Leisa', 'Noe', 'Elin', 'Bernice', 'Karly', 'Barton', 'IndiaIndiaIndiaIndiaIndiaIndiaIndiaIndia', 'Bradley', 'Rudolph', 'Cassandra', 'Vita', 'Justin', 'Edna', 'Scarlett', 'Rasheeda', 'Essie', 'Sabra', 'Eleanore', 'Christal', 'Moses', 'Rachelle', 'Shakira', 'Jona', 'Christa', 'Elaina', 'Frederica', 'Lashawn', 'Jody', 'Amanda', 'Marcellus', 'Rodney', 'Kenyatta', 'Maybell', 'Christel', 'Angle', 'Harris', 'Talia', 'Brendon', 'Reginald', 'Celestine', 'Etta'];
+
+    function matchPeople(input) {
+        var reg = new RegExp(input.split("").join("\\w*").replace(/\W/, ""), "i");
+        var res = [];
+        if (input.trim().length === 0) {
+            return res;
+        }
+        for (var i = 0, len = people.length; i < len; i++) {
+            if (people[i].match(reg)) {
+                res.push(people[i]);
+            }
+        }
+        return res;
+    }
+
+    function changeInput(val) {
+        var autoCompleteResult = matchPeople(val);
+        document.getElementById("result").innerHTML = "";
+        for (var i = 0, limit = 10, len = autoCompleteResult.length; i < len && i < limit; i++) {
+            document.getElementById("result").innerHTML += "<a class='list-group-item list-group-item-action' href='#' onclick='setSearch(\"" + autoCompleteResult[i] + "\")'>" + autoCompleteResult[i] + "</a>";
+        }
+    }
+
+
+    function setSearch(value) {
+        document.getElementById('search').value = value;
+        document.getElementById("result").innerHTML = "";
+    }
+
+
+    //Step Control
+    $(document).ready(function () {
+        $(".form-wrapper .next-button").click(function () {
+            var button = $(this);
+            var currentSection = button.parents(".section");
+            var currentSectionIndex = currentSection.index();
+            var headerSection = $('.steps li').eq(currentSectionIndex);
+            currentSection.removeClass("is-active").next().addClass("is-active");
+            headerSection.removeClass("is-active").next().addClass("is-active");
+
+            $(".form-wrapper").submit(function (e) {
+                e.preventDefault();
+            });
+
+            if (currentSectionIndex === 3) {
+                $(document).find(".form-wrapper .section").first().addClass("is-active");
+                $(document).find(".steps li").first().addClass("is-active");
+            }
+        });
+    });
+
+*/
+</script>
