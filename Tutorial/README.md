@@ -36,6 +36,9 @@ https://cytoscape.org/index.html
 ## Front end Material Design:  
 https://material.io/  
 
+## Side Bar Design UI  
+https://codemyui.com/tag/sidebar/page/2/  
+
 ## Infinite Scrolling  
 https://stackoverflow.com/questions/21071164/how-do-i-do-infinite-scrolling-with-just-html-and-javascript  
 
