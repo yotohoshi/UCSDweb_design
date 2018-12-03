@@ -120,5 +120,11 @@
 <script src="../../assets/js/vendor/popper.min.js"></script>
 <script src="../../dist/js/bootstrap.min.js"></script>-->
 </body>
+<script>
+    {% if user.is_new_user %}
+        window.location.rplace('{% url 'new_user' %}');
+        alert('Please finish sign up' );
+    {% endif %}
+</script>
 
 </html>

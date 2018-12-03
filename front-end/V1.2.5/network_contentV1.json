@@ -14,7 +14,7 @@
     "font-size": "12px",
     "text-valign": "center",
     "text-halign": "center",
-    "background-color": "#555",
+    "background-color": "#ccc",
     "text-outline-color": "#555",
     "text-outline-width": "2px",
     "color": "#fff",
@@ -25,7 +25,7 @@
   "selector": "node[?attr]",
   "style": {
     "shape": "rectangle",
-    "background-color": "#aaa",
+    "background-color": "#ccc",
     "text-outline-color": "#aaa",
     "width": "16px",
     "height": "16px",
@@ -78,7 +78,7 @@
     "border-width": "6px",
     "border-color": "#AAD8FF",
     "border-opacity": "0.5",
-    "background-color": "#394855",
+    "background-color": "#ffffff",
     "text-outline-color": "#394855"
   }
 }, {

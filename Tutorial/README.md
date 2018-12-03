@@ -41,6 +41,9 @@ https://stackoverflow.com/questions/21071164/how-do-i-do-infinite-scrolling-with
 * infinite scrolling with Django  
 https://simpleisbetterthancomplex.com/tutorial/2017/03/13/how-to-create-infinite-scroll-with-django.html  
 
+## Card flipping  
+https://3dtransforms.desandro.com/card-flip  
+
 ## Side Bar  
 https://ourcodeworld.com/articles/read/325/top-10-best-slide-sidebar-menu-drawer-javascript-and-jquery-plugins  
 
@@ -74,6 +77,9 @@ https://codemyui.com/tag/sidebar/page/2/
 https://freefrontend.com/css-forms/  
 
 htttps://www.codepen.io  
+
+## Front end (css card)   
+https://freefrontend.com/css-cards/
 
 # System Installation and Settings: (Ubuntu)  
 https://github.com/jonnyr2008/Surface-Book-2-15-Ubuntu-Settings  
