@@ -6,4 +6,5 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('list', views.List.as_view(), name='list'),
+    path('network', views.network, name='network'),
 ]

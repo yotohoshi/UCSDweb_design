@@ -49,5 +49,14 @@ urlpatterns = [
     path('templates/calendar.html', TemplateView.as_view(template_name='calendar.html')),
     path('templates/add_referral.html', TemplateView.as_view(template_name='add_referral.html')),
     path('event_about', TemplateView.as_view(template_name='event_about.html')),
-
+    path('view_referral', TemplateView.as_view(template_name='view_referral.html')),
+    path('templates/m1.html', TemplateView.as_view(template_name='m1.html')),
+    path('templates/m2.html', TemplateView.as_view(template_name='m2.html')),
+    path('templates/m3.html', TemplateView.as_view(template_name='m3.html')),
+    path('templates/m4.html', TemplateView.as_view(template_name='m4.html')),
+    path('templates/m5.html', TemplateView.as_view(template_name='m5.html')),
+    path('templates/m6.html', TemplateView.as_view(template_name='m6.html')),
+    path('templates/simple_keyword_search1.html', TemplateView.as_view(template_name='simple_keyword_search1.html')),
+    path('templates/referrals.html', TemplateView.as_view(template_name='referrals.html')),
+    path('view_referral', TemplateView.as_view(template_name='view_referral.html'), name = 'view_referral'),
 ]

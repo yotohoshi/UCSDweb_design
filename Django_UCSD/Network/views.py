@@ -84,3 +84,7 @@ class List(ListView):
 
     def get_queryset(self):
         return User.objects.all()
+
+
+def network(request):
+    return render(request, 'network.html')

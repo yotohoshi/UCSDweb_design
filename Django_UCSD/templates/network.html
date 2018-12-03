@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <!-- JQuery CSS CDN -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="{% static 'js/profile.js' %}"></script>
+  <script src="{% static 'js/netwok.js' %}"></script>
+  <script src="https://production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/network.css' %}">
+  <title>NetWork</title>
+</head>
+
+<body>
+  <!-- Wrap all content in to a wrapper -->
+  <div id="wrapper" class="animate">
+    <!-- Top navigation bar -->
+    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark">
+      <!-- Hamburger icon -->
+      <span class="navbar-toggler-icon leftmenutrigger"></span>
+
+      <!-- All TODO-ES  -->
+
+      <a class="navbar-brand" href="{%  url 'index' %}">UCSD LOGO</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav animate side-nav" id="sidebarText"></ul>
+        <ul class="navbar-nav ml-md-auto d-md-flex" id="Topright"></ul>
+      </div>
+    </nav>
+
+    <!-- Profile and all other information -->
+    <div class="container-fluid" id="wholepage">
+      <!-- Whole page section -->
+      <div class="row">
+        <!-- Padding Left -->
+        <div class="col col-2">
+
+        </div>
+        <!-- Main content: Searching New Friends, Requests -->
+        <div class="col col-8">
+          <!-- Searching -->
+          <div class="row justify-content-center">
+            <div class="col col-8">
+              <div class="row" id="keywordsearch" style="padding-bottom: 15px;"></div>
+            </div>
+            <div class="card col col-10 scroll">
+              <div class="card-body row justify-content-center">
+                <div id="new-friends-content1"></div>
+                <div id="new-friends-content2"></div>
+                <div id="new-friends-content3"></div>
+
+                <div id="new-friends-content4"></div>
+                <div id="new-friends-content5"></div>
+
+                <div id="new-friends-content6"></div>
+              </div>
+            </div>
+            <!-- recommandations -->
+            <div class="card col col-10" id="racommanding" style="margin-top: 20px;">
+              <div class="card-body row justify-content-center">
+                <div class="container-fluid">
+                  <h2>You may also know:</h2>
+                  <div class="row flex-row flex-nowrap">
+                    <div class="col-3">
+                      <div class="card card-block"> Prof. Gary</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block" id="new-friends-content7">Chen Xu</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Shaoyuan Xu</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Yunshu Gao</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Jingsong Chen</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Hank Zhan</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Maria Deng</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Lu Yu</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Liu Liu</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Yunhang Jiang</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Cong Li</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Jiarong Liu</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Tags of Friends and Requests -->
+        <div class="col col-2">
+          <!-- Requests Number -->
+          <div class="row">
+            <div class="container-fluid">
+              <div class="card">
+                <div class="card-header align-items-center">
+                  <div class="container-fluid content-justify-center">
+                    <button type="button" name="button" class="btn" data-toggle="modal" data-target="#myModal" id="referralbtn">Referrals: 100</button>
+                    <!-- <h6 >Referrals: 100</h6> -->
+                  </div>
+                </div>
+                <!-- <div class="card-body">
+                <h6>Requests: 100</h6>
+              </div> -->
+              </div>
+            </div>
+          </div>
+          <!-- Friends and Requests tab -->
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="friend-tab" data-toggle="tab" href="#friend" role="tab" aria-controls="friend" aria-selected="true">Friends</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="request-tab" data-toggle="tab" href="#request" role="tab" aria-controls="request" aria-selected="false">Requests</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent" style="height:100px;">
+            <div class="tab-pane fade show active" id="friend" role="tabpanel" aria-labelledby="friend-tab">
+              <ul>
+                <li>Prof. Gary</li>
+                <!-- <li>Vince Xu</li>
+                <li>Johnny Xu</li>
+                <li>Lu Yu</li>
+                <li>Yuhang Jiang</li>
+                <li>Jiarong Liu</li>
+                <li>Maria Deng</li>
+                <li>Liu Liu</li>
+                <li>Hank Huang</li>
+                <li>Jiangsong Chen</li>
+                <li>David Gao</li>
+                <li>Charlie Li</li> -->
+              </ul>
+            </div>
+            <div class="tab-pane fade" id="request" role="tabpanel" aria-labelledby="request-tab">
+              <ul>
+                <!-- <li>Prof. Gary</li> -->
+                <li>Vince Xu</li>
+                <li>Johnny Xu</li>
+                <li>Lu Yu</li>
+                <li>Yuhang Jiang</li>
+                <li>Jiarong Liu</li>
+                <li>Maria Deng</li>
+                <li>Liu Liu</li>
+                <li>Hank Huang</li>
+                <li>Jiangsong Chen</li>
+                <li>David Gao</li>
+                <li>Charlie Li</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of whole page as a row -->
+    </div>
+    <!-- end of whole display data container -->
+  </div>
+  <!-- end of wrapper of whole page -->
+<div class="" id="reff">
+
+</div>
+</body>
+
+</html>
