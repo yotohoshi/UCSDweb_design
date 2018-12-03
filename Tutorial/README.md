@@ -100,4 +100,9 @@ Install your GPU driver from "software & update" of ubuntu.
 * Install teletype.  
 * Everyone can code on the same document SIMULTANEOUSLY like GOOGLE DOC AND WORD! Enjoy!  
 
+# Terminal Color Scheme:  
+https://github.com/Mayccoll/Gogh  
+http://mayccoll.github.io/Gogh/  
+
+
 
