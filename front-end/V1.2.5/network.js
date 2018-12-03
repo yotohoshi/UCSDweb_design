@@ -33,4 +33,12 @@ $(document).ready(function() {
 
   $('.panel-group').on('hidden.bs.collapse', toggleIcon);
   $('.panel-group').on('shown.bs.collapse', toggleIcon);
+
+
+  $("#request").click(function(){
+      var color = clicked ? 'red' : 'black';
+      $(this).css('background-color', color);
+      clicked = !clicked;
+  });
+
 });
