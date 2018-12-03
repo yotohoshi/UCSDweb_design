@@ -28,6 +28,12 @@
 </head>
 
 <body class="text-center">
+<script>
+    {% if user.is_new_user %}
+        window.location.rplace('{% url 'new_user' %}');
+        alert('Please finish sign up');
+    {% endif %}
+</script>
 
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto">
@@ -66,25 +72,25 @@
         <p class="lead">
         <div>
             <a href="{% url 'job' %}">
-            <button class="button type1" >
-                <div class="" >
-                    Job
-                </div>
-                <div class="">
-                    Click in!
-                </div>
-            </button>
+                <button class="button type1">
+                    <div class="">
+                        Job
+                    </div>
+                    <div class="">
+                        Click in!
+                    </div>
+                </button>
             </a>
 
             <a href="{% url 'event' %}">
-            <button class="button type2">
-                <div class="">
-                    Event
-                </div>
-                <div class="">
-                    Click in!
-                </div>
-            </button>
+                <button class="button type2">
+                    <div class="">
+                        Event
+                    </div>
+                    <div class="">
+                        Click in!
+                    </div>
+                </button>
             </a>
 
             <button class="button type3">
@@ -120,11 +126,5 @@
 <script src="../../assets/js/vendor/popper.min.js"></script>
 <script src="../../dist/js/bootstrap.min.js"></script>-->
 </body>
-<script>
-    {% if user.is_new_user %}
-        window.location.rplace('{% url 'new_user' %}');
-        alert('Please finish sign up' );
-    {% endif %}
-</script>
 
 </html>
