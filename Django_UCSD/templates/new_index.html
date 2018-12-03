@@ -28,14 +28,14 @@
 </head>
 
 <body class="text-center">
-<script>
-    {% if user.is_new_user %}
         window.location.rplace('{% url 'new_user' %}');
         alert('Please finish sign up');
     {% endif %}
 </script>
 
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-co
+<script>
+    {% if user.is_new_user %}lumn">
     <header class="masthead mb-auto">
         <div class="inner">
             <h3 class="masthead-brand">UCSD</h3>
