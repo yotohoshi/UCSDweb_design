@@ -11,6 +11,10 @@ $(document).ready(function() {
   $('#sidebarText').load("sidebar.html");
   $('#Topright').load("index_top_right.html");
   $('#keywordsearch').load("simple_keyword_search.html");
+  $('#reff').load("referrals.html");
+
+  // $('#referr').load("network_content_Vfinal.html");
+
   // $('#friend_request').load("friend_request.html");
   //  alert("YES");
   $('.scroll').css('height', $(window).height()*0.6);
@@ -40,5 +44,9 @@ $(document).ready(function() {
       $(this).css('background-color', color);
       clicked = !clicked;
   });
+
+  // $('#referralbtn').on('click', function{
+  //   $('body').css('background-color', #000);
+  // });
 
 });
