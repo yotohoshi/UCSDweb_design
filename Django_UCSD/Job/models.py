@@ -144,12 +144,11 @@ class Job(models.Model):
 
     @staticmethod
     def general_Search(keywords, work_auth, degs, location, pay, tp):
-
+        result = []
         # parameter keywords is a string. detect implied categories in the keywords and filter by category
         if keywords is not None:
             # keywords pre-processing:
             keywords = list(string_preprocess(keywords))
-
             # category detection
             categories = set()
             for word in keywords:
@@ -515,3 +514,4 @@ class Referral(models.Model):
         referral = Referral.objects.create(ref_provider=provider, referral_job=job, referral_description=referral_description,
                                            resume_required=resume_required)
         referral.save()
+        return True

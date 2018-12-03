@@ -1,5 +1,5 @@
 {% load static %}
-<script src="{% static 'js/add_referral.js' %}"></script>
+<!--<script src="{% static 'js/add_referral.js' %}"></script>-->
 <link rel="stylesheet" href="{% static 'css/add_referral.css' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
@@ -20,17 +20,18 @@
                 </ul>
                 <!-- container -->
                 <div class="container_ref">
-                    <form class="form-wrapper">
+                    <form class="form-wrapper" name="form">
                         <div class="section is-active">
                             <div class="row">
-                                <input type="text" name="position" id="title" placeholder="title of your job"/>
-                                <label for="title">Title</label>
+                                <input type="text" name="position" id="position" placeholder="title of your job">
+                                <label for="position">Title</label>
                             </div>
 
                             <div class="row">
                                 <div class="col-6">
                                     <div class="row">
-                                        <input type="text" name="location" id="search-L" onkeyup="changeInputL(this.value)"
+                                        <input type="text" name="location" id="search-L"
+                                               onkeyup="changeInputL(this.value)"
                                                placeholder="Loaction of your job">
                                         <label for="search-L">Location</label>
                                         <div id="result-L" class="list-group"></div>
@@ -38,7 +39,8 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="row">
-                                        <input type="text" name="company" id="search-C" onkeyup="changeInputC(this.value)"
+                                        <input type="text" name="company" id="search-C"
+                                               onkeyup="changeInputC(this.value)"
                                                placeholder="Your company">
                                         <label for="search-C">Company</label>
                                         <div id="result-C" class="list-group"></div>
@@ -54,7 +56,8 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="row">
-                                        <input type="text" name="degree" id="search-D" onkeyup="changeInputD(this.value)"
+                                        <input type="text" name="degree" id="search-D"
+                                               onkeyup="changeInputD(this.value)"
                                                placeholder="Degree requirement">
                                         <label for="search-D">Degree</label>
                                         <div id="result-D" class="list-group"></div>
@@ -62,76 +65,82 @@
                                 </div>
                             </div>
                             <div class="row justify-content-right">
-                                <button type="button" class="next-button" tabindex="0" style="margin-left: auto;">Next
+                                <button class="next-button" tabindex="0" style="margin-left: auto;">Next
                                 </button>
                             </div>
                         </div>
+
                         <div class="section">
                             <div class="row justify-content-center">
                                 <h4>Pick Some Categories</h4>
                                 <ul class="ks-cboxtags">
-                                    <li class="li_box"><input type="checkbox" name="S" id="checkboxOne"
-                                                              value="S"><label
-                                            for="checkboxOne">Software</label></li>
-                                    <li class="li_box"><input type="checkbox" name="E" id="checkboxTwo"
-                                                              value="E"><label
-                                            for="checkboxTwo">Engineering</label></li>
-                                    <li class="li_box"><input type="checkbox" name="H" id="checkboxThree"
-                                                              value="H"><label
-                                            for="checkboxThree">Hardware</label></li>
-                                    <li class="li_box"><input type="checkbox" name="EM" id="checkboxFour"
-                                                              value="EM"><label
-                                            for="checkboxFour">Embedded</label></li>
-                                    <li class="li_box"><input type="checkbox" name="A" id="checkboxFive"
-                                                              value="A"><label
-                                            for="checkboxFive">Aerospace</label></li>
-                                    <li class="li_box"><input type="checkbox" name="AR" id="checkboxSix" value="AR"><label
-                                            for="checkboxSix">Art
+                                    <li class="li_box"><input type="checkbox" name="S" id="S"
+                                                              value=""><label
+                                            for="S">Software</label></li>
+                                    <li class="li_box"><input type="checkbox" name="E" id="E"
+                                                              value=""><label
+                                            for="E">Engineering</label></li>
+                                    <li class="li_box"><input type="checkbox" name="H" id="H"
+                                                              value=""><label
+                                            for="H">Hardware</label></li>
+                                    <li class="li_box"><input type="checkbox" name="EM" id="EM"
+                                                              value=""><label
+                                            for="EM">Embedded</label></li>
+                                    <li class="li_box"><input type="checkbox" name="A" id="A"
+                                                              value=""><label
+                                            for="A">Aerospace</label></li>
+                                    <li class="li_box"><input type="checkbox" name="AR" id="AR"
+                                                              value=""><label
+                                            for="AR">Art
                                         Sparkle</label></li>
-                                    <li class="li_box"><input type="checkbox" name="B" id="checkboxSeven"
-                                                              value="B"><label
-                                            for="checkboxSeven">Business</label></li>
-                                    <li class="li_box"><input type="checkbox" name="M" id="checkboxEight" value="M"><label
-                                            for="checkboxEight">Math</label></li>
-                                    <li class="li_box"><input type="checkbox" name="AC" id="checkboxNine"
-                                                              value="AC"><label
-                                            for="checkboxNine">Accounting</label></li>
-                                    <li class="li_box"><input type="checkbox" name="PHY" id="checkboxTen"
-                                                              value="PHY"><label
-                                            for="checkboxTen">Physics</label>
+                                    <li class="li_box"><input type="checkbox" name="B" id="B"
+                                                              value=""><label
+                                            for="B">Business</label></li>
+                                    <li class="li_box"><input type="checkbox" name="M" id="M"
+                                                              value=""><label
+                                            for="M">Math</label></li>
+                                    <li class="li_box"><input type="checkbox" name="AC" id="AC"
+                                                              value=""><label
+                                            for="AC">Accounting</label></li>
+                                    <li class="li_box"><input type="checkbox" name="PHY" id="PHY"
+                                                              value=""><label
+                                            for="PHY">Physics</label>
                                     </li>
-                                    <li class="li_box"><input type="checkbox" name="COMM" id="checkboxTwelve"
-                                                              value="COMM"><label
-                                            for="checkboxTwelve">Communication</label></li>
-                                    <li class="li_box"><input type="checkbox" name="C" id="checkboxThirteen"
-                                                              value="C"><label
-                                            for="checkboxThirteen">Computer</label></li>
-                                    <li class="li_box"><input type="checkbox" name="SC" id="checkbox14" value="SC"><label
-                                            for="checkbox14">Science</label></li>
-                                    <li class="li_box"><input type="checkbox" name="BIO" id="checkbox15" value="BIO"><label
-                                            for="checkbox15">Biology</label></li>
-                                    <li class="li_box"><input type="checkbox" name="BE" id="checkbox16"
-                                                              value="BE"><label
-                                            for="checkbox16">BioEngineering</label></li>
-                                    <li class="li_box"><input type="checkbox" name="MUS" id="checkbox21"
-                                                              value="MUS"><label
-                                            for="checkbox21">Music</label></li>
-                                    <li class="li_box"><input type="checkbox" name="CHEM" id="checkbox17"
-                                                              value="CHEM"><label
-                                            for="checkbox17">Chemistry</label></li>
-                                    <li class="li_box"><input type="checkbox" name="ELE" id="checkbox18"
-                                                              value="ELE"><label
-                                            for="checkbox18">Electrical</label></li>
-                                    <li class="li_box"><input type="checkbox" name="BC" id="checkbox19"
-                                                              value="BC"><label
-                                            for="checkbox19">BioChemistry</label></li>
-                                    <li class="li_box"><input type="checkbox" name="L" id="checkbox20" value="L"><label
-                                            for="checkbox20">Laborer</label></li>
+                                    <li class="li_box"><input type="checkbox" name="COMM" id="COMM"
+                                                              value=""><label
+                                            for="COMM">Communication</label></li>
+                                    <li class="li_box"><input type="checkbox" name="C" id="C"
+                                                              value=""><label
+                                            for="C">Computer</label></li>
+                                    <li class="li_box"><input type="checkbox" name="SC" id="SC"
+                                                              value=""><label
+                                            for="SC">Science</label></li>
+                                    <li class="li_box"><input type="checkbox" name="BIO" id="BIO"
+                                                              value=""><label
+                                            for="BIO">Biology</label></li>
+                                    <li class="li_box"><input type="checkbox" name="BE" id="BE"
+                                                              value=""><label
+                                            for="BE">BioEngineering</label></li>
+                                    <li class="li_box"><input type="checkbox" name="MUS" id="MUS"
+                                                              value=""><label
+                                            for="MUS">Music</label></li>
+                                    <li class="li_box"><input type="checkbox" name="CHEM" id="CHEM"
+                                                              value=""><label
+                                            for="CHEM">Chemistry</label></li>
+                                    <li class="li_box"><input type="checkbox" name="ELE" id="ELE"
+                                                              value=""><label
+                                            for="ELE">Electrical</label></li>
+                                    <li class="li_box"><input type="checkbox" name="BC" id="BC"
+                                                              value=""><label
+                                            for="BC">BioChemistry</label></li>
+                                    <li class="li_box"><input type="checkbox" name="L" id="L" value=""><label
+                                            for="L">Laborer</label></li>
                                 </ul>
                             </div>
                             <div class="row justify-content-center">
-                                <textarea name="description" id="description"></textarea>
-                                <label for="description">Job Description</label>
+                                <textarea name="referral_description" id="_description"
+                                          placeholder="Tell us more about you"></textarea>
+                                <label for="_description">Job Description</label>
                             </div>
                             <div class="row justify-content-right">
                                 <button type="button" class="next-button" tabindex="0" style="margin-left: auto;">Next
@@ -142,7 +151,7 @@
                         <div class="section">
                             <div class="row justify-content-center referral_check">
                                 <h6 class="referral">Do you require a resume?</h6>
-                                <input type="checkbox" name="resume_required" id="resume_required"/>
+                                <input type="checkbox" name="resume_required" id="resume_required" value="False">
                                 <label for="resume_required">Checkbox</label>
                             </div>
                             <div class="row justify-content-center">
@@ -151,7 +160,9 @@
                                 <label for="referral_description">Additional Information</label>
                             </div>
                             <div class="row justify-content-right">
-                                <button class="next-button" tabindex="0" style="margin-left: auto;">Submit</button>
+                                <button class="next-button" type="submit" tabindex="0" style="margin-left: auto;">
+                                    Submit
+                                </button>
                             </div>
                         </div>
                         <div class="section">
@@ -180,61 +191,203 @@
     </div>
 </div>
 
-
 <script>
+    //Search Control
+    var majors, locations, degrees, companies;
+    var SUCCESS = false;
 
-    /* //Search Control
-     var people = ['Jamila', 'Lakenya', 'Eulalia', 'Jules', 'Li', 'Titus', 'Marybelle', 'Loan', 'Rolland', 'Leisa', 'Noe', 'Elin', 'Bernice', 'Karly', 'Barton', 'IndiaIndiaIndiaIndiaIndiaIndiaIndiaIndia', 'Bradley', 'Rudolph', 'Cassandra', 'Vita', 'Justin', 'Edna', 'Scarlett', 'Rasheeda', 'Essie', 'Sabra', 'Eleanore', 'Christal', 'Moses', 'Rachelle', 'Shakira', 'Jona', 'Christa', 'Elaina', 'Frederica', 'Lashawn', 'Jody', 'Amanda', 'Marcellus', 'Rodney', 'Kenyatta', 'Maybell', 'Christel', 'Angle', 'Harris', 'Talia', 'Brendon', 'Reginald', 'Celestine', 'Etta'];
-
-     function matchPeople(input) {
-         var reg = new RegExp(input.split("").join("\\w*").replace(/\W/, ""), "i");
-         var res = [];
-         if (input.trim().length === 0) {
-             return res;
-         }
-         for (var i = 0, len = people.length; i < len; i++) {
-             if (people[i].match(reg)) {
-                 res.push(people[i]);
-             }
-         }
-         return res;
-     }
-
-     function changeInput(val) {
-         var autoCompleteResult = matchPeople(val);
-         document.getElementById("result").innerHTML = "";
-         for (var i = 0, limit = 10, len = autoCompleteResult.length; i < len && i < limit; i++) {
-             document.getElementById("result").innerHTML += "<a class='list-group-item list-group-item-action' href='#' onclick='setSearch(\"" + autoCompleteResult[i] + "\")'>" + autoCompleteResult[i] + "</a>";
-         }
-     }
+    $.ajax({
+        url: "/job_fetch_data",
+        dataType: 'json',
+        success: function (data) {
+            console.log('Got location list!');
+            locations = data.locations;
+            majors = data.majors;
+            degrees = data.degrees;
+            companies = data.companies;
+        }
+    });
 
 
-     function setSearch(value) {
-         document.getElementById('search').value = value;
-         document.getElementById("result").innerHTML = "";
-     }
+    function matchList(input, data) {
+        var reg = new RegExp(input.split("").join("\\w*").replace(/\W/, ""), "i");
+        var res = [];
+        if (input.trim().length === 0) {
+            return res;
+        }
+        for (var i = 0, len = data.length; i < len; i++) {
+            if (data[i].match(reg)) {
+                res.push(data[i]);
+            }
+        }
+        return res;
+    }
 
+    function changeInputL(val) {
+        var autoCompleteResult = matchList(val, locations);
+        document.getElementById("result-L").innerHTML = "";
+        for (var i = 0, limit = 10, len = autoCompleteResult.length; i < len && i < limit; i++) {
+            document.getElementById("result-L").innerHTML += "<a class='list-group-item list-group-item-action' href='#' onclick='setSearchL(\"" + autoCompleteResult[i] + "\")'>" + autoCompleteResult[i] + "</a>";
+        }
+    }
 
-     //Step Control
-     $(document).ready(function () {
-         $(".form-wrapper .next-button").click(function () {
-             var button = $(this);
-             var currentSection = button.parents(".section");
-             var currentSectionIndex = currentSection.index();
-             var headerSection = $('.steps li').eq(currentSectionIndex);
-             currentSection.removeClass("is-active").next().addClass("is-active");
-             headerSection.removeClass("is-active").next().addClass("is-active");
+    function changeInputM(val) {
+        var autoCompleteResult = matchList(val, majors);
+        document.getElementById("result-M").innerHTML = "";
+        for (var i = 0, limit = 10, len = autoCompleteResult.length; i < len && i < limit; i++) {
+            document.getElementById("result-M").innerHTML += "<a class='list-group-item list-group-item-action' href='#' onclick='setSearchM(\"" + autoCompleteResult[i] + "\")'>" + autoCompleteResult[i] + "</a>";
+        }
+    }
 
-             $(".form-wrapper").submit(function (e) {
-                 e.preventDefault();
-             });
+    function changeInputD(val) {
+        var autoCompleteResult = matchList(val, degrees);
+        document.getElementById("result-D").innerHTML = "";
+        for (var i = 0, limit = 10, len = autoCompleteResult.length; i < len && i < limit; i++) {
+            document.getElementById("result-D").innerHTML += "<a class='list-group-item list-group-item-action' href='#' onclick='setSearchD(\"" + autoCompleteResult[i] + "\")'>" + autoCompleteResult[i] + "</a>";
+        }
+    }
 
-             if (currentSectionIndex === 3) {
-                 $(document).find(".form-wrapper .section").first().addClass("is-active");
-                 $(document).find(".steps li").first().addClass("is-active");
-             }
-         });
-     });
+    function changeInputC(val) {
+        var autoCompleteResult = matchList(val, companies);
+        document.getElementById("result-C").innerHTML = "";
+        for (var i = 0, limit = 10, len = autoCompleteResult.length; i < len && i < limit; i++) {
+            document.getElementById("result-C").innerHTML += "<a class='list-group-item list-group-item-action' href='#' onclick='setSearchC(\"" + autoCompleteResult[i] + "\")'>" + autoCompleteResult[i] + "</a>";
+        }
+    }
 
- */
+    function setSearchL(value) {
+        document.getElementById('search-L').value = value;
+        document.getElementById("result-L").innerHTML = "";
+    }
+
+    function setSearchM(value) {
+        document.getElementById('search-M').value = value;
+        document.getElementById("result-M").innerHTML = "";
+    }
+
+    function setSearchD(value) {
+        document.getElementById('search-D').value = value;
+        document.getElementById("result-D").innerHTML = "";
+    }
+
+    function setSearchC(value) {
+        document.getElementById('search-C').value = value;
+        document.getElementById("result-C").innerHTML = "";
+    }
+
+    //Step Control
+    $(document).ready(function () {
+        $(".form-wrapper .next-button").click(function () {
+            var button = $(this);
+            var currentSection = button.parents(".section");
+            var currentSectionIndex = currentSection.index();
+            var headerSection = $('.steps li').eq(currentSectionIndex);
+            if (currentSectionIndex !== 2) {
+                currentSection.removeClass("is-active").next().addClass("is-active");
+                headerSection.removeClass("is-active").next().addClass("is-active");
+            }
+
+            $(".form-wrapper").submit(function (e) {
+                e.preventDefault();
+            });
+            if (currentSectionIndex === 2) {
+
+                submit();
+                if (SUCCESS) {
+                    currentSection.removeClass("is-active").next().addClass("is-active");
+                    headerSection.removeClass("is-active").next().addClass("is-active");
+                } else {
+                    alert("Oops, something went wrong, please try again!")
+                }
+            }
+            if (currentSectionIndex === 3) {
+                $(document).find(".form-wrapper .section").first().addClass("is-active");
+                $(document).find(".steps li").first().addClass("is-active");
+            }
+        });
+
+        $(".exit-button").click(function () {
+            var button = $(this);
+            var currentSection = button.parents(".section");
+            currentSection.removeClass("is-active").next().addClass("is-active");
+            $(document).find(".form-wrapper .section").first().addClass("is-active");
+            $(document).find(".steps li").first().addClass("is-active");
+        })
+    });
+
+    function submit() {
+        alert('hello');
+        //var he = document.forms["form"]["he"].value;
+        var position = document.getElementById('position').value;
+        var company = document.getElementById('search-C').value;
+        var major = document.getElementById('search-M').value;
+        var degree = document.getElementById('search-D').value;
+        var location = document.getElementById('search-L').value;
+        var S = document.getElementById('S').value;
+        var E = document.getElementById('E').value;
+        var H = document.getElementById('H').value;
+        var EM = document.getElementById('EM').value;
+        var A = document.getElementById('A').value;
+        var AR = document.getElementById('AR').value;
+        var B = document.getElementById('B').value;
+        var M = document.getElementById('M').value;
+        var AC = document.getElementById('AC').value;
+        var PHY = document.getElementById('PHY').value;
+        var COMM = document.getElementById('COMM').value;
+        var C = document.getElementById('C').value;
+        var SC = document.getElementById('SC').value;
+        var MUS = document.getElementById('MUS').value;
+        var BIO = document.getElementById('BIO').value;
+        var BE = document.getElementById('BE').value;
+        var CHEM = document.getElementById('CHEM').value;
+        var ELE = document.getElementById('ELE').value;
+        var BC = document.getElementById('BC').value;
+        var L = document.getElementById('L').value;
+        var description = document.getElementById("_description").value;
+        var resume_required = document.getElementById('resume_required').value;
+        var referral_description = document.getElementById('referral_description').value;
+        //alert(S);
+        $.ajax({
+            url: "/add_referral",
+            data: {
+                //csrfmiddlewaretoken: {% csrf_token %},
+                'position': position,
+                'company': company,
+                'major': major,
+                'degree': degree,
+                'location': location,
+                'S': S,
+                'E': E,
+                'H': H,
+                'EM': EM,
+                'A': A,
+                'AR': AR,
+                'B': B,
+                'M': M,
+                'AC': AC,
+                'PHY': PHY,
+                'COMM': COMM,
+                'C': C,
+                'SC': SC,
+                'BIO': BIO,
+                'BE': BE,
+                'MUS': MUS,
+                'CHEM': CHEM,
+                'ELE': ELE,
+                'BC': BC,
+                'L': L,
+                'description': description,
+                'resume_required': resume_required,
+                'referral_description': referral_description,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.successful) {
+                    SUCCESS = true;
+                }
+            },
+
+        });
+    }
+    
 </script>

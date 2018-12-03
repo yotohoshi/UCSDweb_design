@@ -85,13 +85,25 @@ $(document).ready(function () {
         var currentSection = button.parents(".section");
         var currentSectionIndex = currentSection.index();
         var headerSection = $('.steps li').eq(currentSectionIndex);
-        currentSection.removeClass("is-active").next().addClass("is-active");
-        headerSection.removeClass("is-active").next().addClass("is-active");
+        if(currentSectionIndex !== 2) {
+            currentSection.removeClass("is-active").next().addClass("is-active");
+            headerSection.removeClass("is-active").next().addClass("is-active");
+        }
 
         $(".form-wrapper").submit(function (e) {
             e.preventDefault();
         });
+        if (currentSectionIndex === 2){
 
+            submit();
+            if(SUCCESS){
+                currentSection.removeClass("is-active").next().addClass("is-active");
+                headerSection.removeClass("is-active").next().addClass("is-active");
+            }
+            else{
+                alert("Oops, something went wrong, please try again!")
+            }
+        }
         if (currentSectionIndex === 3) {
             $(document).find(".form-wrapper .section").first().addClass("is-active");
             $(document).find(".steps li").first().addClass("is-active");
@@ -108,8 +120,10 @@ $(document).ready(function () {
 });
 
 function submit(){
-    var position = document.forms["form"]["position"].value;
-    var company = document.forms["form"]["company"].value;
+    alert('hello');
+    //var he = document.forms["form"]["he"].value;
+    var position = document.getElementById('position').value;
+    /*var company = document.forms["form"]["company"].value;
     var major = document.forms["form"]["major"].value;
     var degree = document.forms["form"]["degree"].value;
     var location = document.forms["form"]["location"].value;
@@ -135,15 +149,15 @@ function submit(){
     var L = document.forms["form"]["L"].value;
     var description = document.forms["form"]["description"].value;
     var resume_required = document.forms["form"]["resume_required"].value;
-    var referral_description = document.forms["form"]["referral_description"].value;
-
+    var referral_description = document.forms["form"]["referral_description"].value;*/
+    //alert(S);
     $.ajax({
         url: "/add_referral",
         type: 'POST',
         data:{
-            csrfmiddlewaretoken: '{{ csrf_token }}',
+            csrfmiddlewaretoken: getCSRFTokenValue(),
             'position': position,
-            'company': company,
+            /*'company': company,
             'major': major,
             'degree': degree,
             'location': location,
@@ -169,14 +183,15 @@ function submit(){
             'L': L,
             'description': description,
             'resume_required': resume_required,
-            'referral_description': referral_description,
+            'referral_description': referral_description,*/
         },
         dataType: 'json',
         success: function(data){
             if (data.successful){
                 SUCCESS = true;
             }
-        }
-    })
+        },
+
+    });
 
 }

@@ -11,4 +11,5 @@ urlpatterns = [
     path('job_add_to_favorite', views.add_to_favorite, name='job_add_to_favorite'),
     path('job_get_favorite_status', views.job_get_favorite_status, name='job_get_favorite_status'),
     path('job_fetch_data', views.fetch_data ,name='job_fetch_data'),
+    path('add_referral', views.add_referral, name='add_referral'),
 ]

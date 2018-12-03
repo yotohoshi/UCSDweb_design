@@ -76,6 +76,7 @@ class User(models.Model):
     # favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
     # favorite_job = models.ManyToManyField(Job.models.Job, symmetrical=False, blank=True)
     friend = models.ManyToManyField('User', symmetrical=True, blank=True)
+    #DON'T CHANGE
 
     # Getters
 
@@ -200,6 +201,8 @@ class User(models.Model):
             return False
         else:
             Request.objects.create(from_user=self, to_user=target)
+            if target.is_gary:
+                target.accept_request(self)
             return True
 
     # accept_request
