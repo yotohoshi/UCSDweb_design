@@ -10,7 +10,7 @@ from overrides import overrides
 from .forms import SearchingForm
 from Job.models import Job, Location
 from User.models import Degree, Major
-
+from Company.models import Company
 # Create your views here.
 
 register = template.Library()
@@ -139,7 +139,8 @@ def add_referral(request):
 def fetch_data(request):
     data = {
         'locations': Location.getLocationList(),
-        'degrees': Major.getMajorList(),
-        'majors': Degree.getDegreeList(),
+        'degrees': Degree.getDegreeList(),
+        'majors': Major.getMajorList(),
+        'companies': Company.getCompanyList(),
     }
     return JsonResponse(data)
