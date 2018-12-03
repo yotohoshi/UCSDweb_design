@@ -1,11 +1,11 @@
 $(document).ready(function() {
-  $('#new-friends-content1').load('network_content_Vfinal.html');
-  $('#new-friends-content2').load('network_content_Vfinal.html');
-  $('#new-friends-content3').load('network_content_Vfinal.html');
+  $('#new-friends-content1').load('m1.html');
+  $('#new-friends-content2').load('m2.html');
+  $('#new-friends-content3').load('m3.html');
 
-  $('#new-friends-content4').load('network_content_Vfinal.html');
-  $('#new-friends-content5').load('network_content_Vfinal.html');
-  $('#new-friends-content6').load('network_content_Vfinal.html');
+  $('#new-friends-content4').load('m4.html');
+  $('#new-friends-content5').load('m5.html');
+  $('#new-friends-content6').load('m6.html');
   // $('#new-friends-content7').load('network_content_Vfinal.html');
   // $('#new-friends-content').load('network_content_Vfinal.html');
   $('#sidebarText').load("sidebar.html");
