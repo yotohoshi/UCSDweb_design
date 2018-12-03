@@ -36,6 +36,9 @@ Tool http://js.cytoscape.org/
 ### * Same Tool used locally:  
 https://cytoscape.org/index.html  
 
+## Ajax image transmitting  
+https://cloudinary.com/visualweb/display/IMMC/Image+Upload+Using+Ajax#examples  
+
 ## Infinite Scrolling  
 https://stackoverflow.com/questions/21071164/how-do-i-do-infinite-scrolling-with-just-html-and-javascript  
 * infinite scrolling with Django  
@@ -77,6 +80,9 @@ https://codemyui.com/tag/sidebar/page/2/
 https://freefrontend.com/css-forms/  
 
 htttps://www.codepen.io  
+
+## Tab UI  
+https://freefrontend.com/css-tabs/  
 
 ## Front end (css card)   
 https://freefrontend.com/css-cards/

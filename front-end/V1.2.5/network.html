@@ -19,11 +19,6 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
-  <script type="text/javascript" src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-  <script type="text/javascript">
-    const MDCSnackbar = mdc.snackbar.MDCSnackbar;
-    const MDCSnackbarFoundation = mdc.snackbar.MDCSnackbarFoundation;
-  </script>
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="network.css">
   <title>NetWork</title>
@@ -59,20 +54,86 @@
         </div>
         <!-- Main content: Searching New Friends, Requests -->
         <div class="col col-8">
+          <!-- Searching -->
           <div class="row justify-content-center">
             <div class="col col-8">
-              <div class="row" id="keywordsearch"></div>
+              <div class="row" id="keywordsearch" style="padding-bottom: 15px;"></div>
             </div>
-            <div class="row" id="new-friends-content"></div>
+            <div class="card col col-10 scroll">
+              <div class="card-body row justify-content-center">
+                <div id="new-friends-content1"></div>
+                <div id="new-friends-content2"></div>
+                <div id="new-friends-content3"></div>
+
+                <div id="new-friends-content4"></div>
+                <div id="new-friends-content5"></div>
+
+                <div id="new-friends-content6"></div>
+              </div>
+            </div>
+            <!-- recommandations -->
+            <div class="card col col-10" id="racommanding" style="margin-top: 20px;">
+              <div class="card-body row justify-content-center">
+                <div class="container-fluid">
+                  <h2>You may also know:</h2>
+                  <div class="row flex-row flex-nowrap">
+                    <div class="col-3">
+                      <div class="card card-block"> Prof. Gary</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block" id="new-friends-content7">Chen Xu</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Shaoyuan Xu</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Yunshu Gao</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Jingsong Chen</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Hank Zhan</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Maria Deng</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Lu Yu</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Liu Liu</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Yunhang Jiang</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Cong Li</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Jiarong Liu</div>
+                    </div>
+
+                    <!-- <div class="col-3">
+                      <div class="card card-block">Card</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Card</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Card</div>
+                    </div>
+                    <div class="col-3">
+                      <div class="card card-block">Card</div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-
-
-
-
-
-
         </div>
+
         <!-- Tags of Friends and Requests -->
         <div class="col col-2">
           <!-- Requests Number -->
@@ -85,138 +146,29 @@
                   </div>
                 </div>
                 <!-- <div class="card-body">
-                  <h6>Requests: 100</h6>
-                </div> -->
+                <h6>Requests: 100</h6>
+              </div> -->
               </div>
             </div>
           </div>
-          <!-- <div class="row">
-            <ul class="mdc-list">
-              <li class="mdc-list-item" tabindex="0">
-                <span class="mdc-list-item__text">Single-line item</span>
-              </li>
-              <li class="mdc-list-item">
-                <span class="mdc-list-item__text">Single-line item</span>
-              </li>
-              <li class="mdc-list-item">
-                <span class="mdc-list-item__text">Single-line item</span>
-              </li>
-            </ul>
-          </div> -->
-          <div class="row">
-            <div class="mdc-list-group">
-              <h3 class="mdc-list-group__subheader">Requests</h3>
-              <ul class="mdc-list" aria-orientation="vertical">
-                <li class="mdc-list-item">
-                  <span class="mdc-list-item__text">
-                    <div class="row">
-                      <div class="col">
-                        Avatar
-                      </div>
-                      <div class="col">
-                        Name
-                      </div>
-                      <div class="col">
-                        onLine
-                      </div>
-                    </div>
-                  </span>
-                </li>
-                <li class="mdc-list-item">
-                  <span class="mdc-list-item__text">
-                    <div class="row">
-                      <div class="col">
-                        Avatar
-                      </div>
-                      <div class="col">
-                        Name
-                      </div>
-                      <div class="col">
-                        onLine
-                      </div>
-                    </div>
-                  </span>
-                </li>
-                <li class="mdc-list-item">
-                  <span class="mdc-list-item__text">
-                    <div class="row">
-                      <div class="col">
-                        Avatar
-                      </div>
-                      <div class="col">
-                        Name
-                      </div>
-                      <div class="col">
-                        onLine
-                      </div>
-                    </div>
-                  </span>
-                </li>
-              </ul>
-              <h3 class="mdc-list-group__subheader">Friends</h3>
-              <ul class="mdc-list" aria-orientation="vertical">
-                <li class="mdc-list-item">
-                  <span class="mdc-list-item__text">
-                    <div class="row">
-                      <div class="col">
-                        Avatar
-                      </div>
-                      <div class="col">
-                        Name
-                      </div>
-                      <div class="col">
-                        onLine
-                      </div>
-                    </div>
-                  </span>
-                </li>
-                <li class="mdc-list-item">
-                  <span class="mdc-list-item__text">
-                    <div class="row">
-                      <div class="col">
-                        Avatar
-                      </div>
-                      <div class="col">
-                        Name
-                      </div>
-                      <div class="col">
-                        onLine
-                      </div>
-                    </div>
-                  </span>
-                </li>
-                <li class="mdc-list-item">
-                  <span class="mdc-list-item__text">
-                    <div class="row">
-                      <div class="col">
-                        Avatar
-                      </div>
-                      <div class="col">
-                        Name
-                      </div>
-                      <div class="col">
-                        onLine
-                      </div>
-                    </div>
-                  </span>
-                </li>
-              </ul>
-            </div>
+          <!-- Friends and Requests tab -->
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="friend-tab" data-toggle="tab" href="#friend" role="tab" aria-controls="friend" aria-selected="true">Friends</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="request-tab" data-toggle="tab" href="#request" role="tab" aria-controls="request" aria-selected="false">Requests</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent" style="height:100px;">
+            <div class="tab-pane fade show active" id="friend" role="tabpanel" aria-labelledby="friend-tab">...</div>
+            <div class="tab-pane fade" id="request" role="tabpanel" aria-labelledby="request-tab">.....</div>
           </div>
-
         </div>
-
-
-
-
-
-
       </div>
-      <!-- End of right side col -->
+      <!-- End of whole page as a row -->
     </div>
-    <!-- End of whole page as a row -->
-  </div>
-  <!-- end of whole display data container -->
+    <!-- end of whole display data container -->
   </div>
   <!-- end of wrapper of whole page -->
 

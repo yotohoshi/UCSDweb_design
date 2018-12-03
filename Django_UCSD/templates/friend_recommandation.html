@@ -29,7 +29,7 @@
                </div>
                <div class="to">
                   <figure class="snip1336">
-                     <img src="{% static 'img/bkgd.png' %}" alt="sample87"/>
+                     <img src="bkgd.png" alt="sample87"/>
                      <div class="x" id="X{{ user.id }}">
                         <div class="line1"></div>
                         <div class="line2"></div>
@@ -52,7 +52,7 @@
                 <script>
                     $('#X{{ user.id }}').on('click', function () {
                         $('#{{ user.id }}').removeClass('expand');
-                        event.stopPropagation();
+                        //event.stopPropagation();
                     });
                 </script>
             {% endfor %}
