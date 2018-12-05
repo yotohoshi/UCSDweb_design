@@ -1,0 +1,50 @@
+{% for referral in referrals %}
+
+    <div class="card shadow p-3 mb-4 {% if not referral.activated %}bg-dark{% else %}bg-white{% endif %}" id = "card{{ referral.id }}">
+        <div class="card-header align-items-center">
+            <div class="row">
+                <h6>
+                    Post Time: {{ referral.referral_job.post_time }}</h6>
+            </div>
+        </div>
+        <div class="card-body">
+            <p href="event http">
+            <h4 class="card-title">{{ referral.referral_job.job_position }}</h4>
+            </p>
+            <p class="card-text">{{ referral.referral_job.company }}<br>{{ referral.referral_job.short_description }}
+            </p>
+            <div id="B{{ referral.id }}">
+                {% if referral.activated %}
+                <button class='btn btn-dark btn-sm float-right' id='DA{{ referral.id }}' onclick='clik{{ referral.id }}()'>No Longer Available</button>
+                {% else %}
+                <button class='btn btn-light btn-sm float-right' id='DA{{ referral.id }}' onclick='clik{{ referral.id }}()'>Available Again</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script>
+        var deactivate_btn{{ referral.id }} = "<button class='btn btn-dark btn-sm float-right' id='DA{{ referral.id }}' onclick='clik{{ referral.id }}()'>No Longer Available</button>";
+        var reactivate_btn{{ referral.id }} = "<button class='btn btn-light btn-sm float-right' id='DA{{ referral.id }}' onclick='clik{{ referral.id }}()'>Available Again</button>";
+
+
+         function clik{{ referral.id }} () {
+            $.ajax({
+                url: "{% url 'toggle_referral_activate'%}",
+                data: {
+                    'ref_id':{{referral.id }},
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.status) {
+                        document.getElementById('B{{ referral.id }}').innerHTML = deactivate_btn{{ referral.id }};
+                        $('#card{{ referral.id }}').removeClass('bg-dark').addClass('bg-white');
+                    } else {
+                        document.getElementById('B{{ referral.id }}').innerHTML = reactivate_btn{{ referral.id }};
+                        $('#card{{ referral.id }}').removeClass('bg-white').addClass('bg-dark');
+                    }
+                }
+            });
+        }
+
+    </script>
+{% endfor %}

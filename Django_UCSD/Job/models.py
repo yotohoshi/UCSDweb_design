@@ -18,8 +18,8 @@ import time
 
 
 WORKAUTHS = (
-    ('U.S. Citizens', 'U.S. Citizens Or U.S. Permanent Residents Only'),
-    ('Other', 'All Legal Citizens'),
+    ('U.S. Citizens Or U.S. Permanent Residents Only', 'U.S. Citizens Or U.S. Permanent Residents Only'),
+    ('All Legal Status', 'All Legal Status'),
 )
 
 JOBTYPES = (
@@ -144,7 +144,7 @@ class Job(models.Model):
 
     @staticmethod
     def general_Search(keywords, work_auth, degs, location, pay, tp):
-        result = []
+        result = Job.objects.none()
         # parameter keywords is a string. detect implied categories in the keywords and filter by category
         if keywords is not None:
             # keywords pre-processing:
@@ -178,7 +178,7 @@ class Job(models.Model):
 
         # parameter type is an array of strings
         if tp is not None:
-            result = result.filter(type__in=type)
+            result = result.filter(type__in=tp)
 
         # perform keyword search
         if isinstance(keywords, (list,)):
@@ -201,17 +201,26 @@ class Job(models.Model):
                 result = set(result)
                 if matched < threshold:
                     result.discard(job)
-
         return list(result)
 
-        # # job type parameter
-        # if type is not None:
-        #     for job in list(result):
-        #         for job_type in type:
-        #             if job.type != job_type:
-        #                 result.remove(job)
+        ''' # job type parameter
+            if work_auth is not None:
+                for job in list(result):
+                    for job_auth in work_auth:
+                        if job.job_Work_Auth != job_auth:
+                            result.remove(job)
 
-        # # degree parameter is a string
+            # job type parameter
+            if tp is not None:
+                for job in list(result):
+                    for job_type in tp:
+                        if job.type != job_type:
+                             result.remove(job)'''
+
+
+
+
+        # degree parameter is a string
         # if degs is not None:
         #     relevant_Jobs = []
         #     for job in result:
@@ -459,9 +468,10 @@ class Job(models.Model):
 
 class Referral(models.Model):
     ref_provider = models.ForeignKey(User, on_delete=models.PROTECT)
-    referral_job = models.ForeignKey(Job, on_delete=models.PROTECT)
+    referral_job = models.ForeignKey(Job, on_delete=models.CASCADE)
     referral_description = models.CharField(max_length=300)
     resume_require = models.BooleanField
+    activated = models.BooleanField(default=True)
 
     # getter
 
@@ -484,34 +494,46 @@ class Referral(models.Model):
 
     # save_referral
     @staticmethod
-    def save_referral(position, description, majors, degrees, type, work_auth, company, url,
+    def save_referral(position, description, major, degree, type, work_auth, company, url,
                       categories, location, paid, provider, referral_description, resume_required):
 
         # generate short description
 
-        short_description = description[:600]+'...'
-
-        company_obj = Company.models.Company.objects.filter(company_name=company)
-        location_obj = Location.objects.filter(place=location)
+        short_description = description[:300] + '...'
+        company_obj = list(Company.models.Company.objects.filter(company_name=company))[0]
+        location_obj = list(Location.objects.filter(place=location))[0]
         job = Job.objects.create(job_position=position, description=description, short_description=short_description,
-                                 type=type, job_Work_Auth=work_auth, company=company_obj, job_URL=url,
+                                 type='Full-time', job_Work_Auth='All Legal Citizens', company=company_obj,
+                                 job_URL='www.google.com',
                                  location=location_obj, paid=paid)
 
-        for major in majors:
-            major_obj = Major.objects.filter(major=major)
-            job.major_required.add(major_obj)
+        major_obj = list(Major.objects.filter(major=major))[0]
+        job.major_required.add(major_obj)
 
-        for degree in degrees:
-            degree_obj = Degree.objects.filter(degree=degree)
-            job.degree_required.add(degree_obj)
+        degree_obj = list(Degree.objects.filter(degree__iexact=degree))[0]
+        job.degree_required.add(degree_obj)
 
         for category in categories:
-            category_obj = Category.objects.filter(category_name=category)
+            category_obj = list(Category.objects.filter(category_name=category))[0]
             job.category.add(category_obj)
 
         job.save()
 
-        referral = Referral.objects.create(ref_provider=provider, referral_job=job, referral_description=referral_description,
-                                           resume_required=resume_required)
+        referral = Referral.objects.create(ref_provider=provider, referral_job=job,
+                                           referral_description=referral_description)
+        referral.resume_require = resume_required
         referral.save()
+
+        # update provider's referral ability
+        provider.referral_ability = True
+
         return True
+
+    # activation toggle
+    def deactivate_reactivate(self):
+        if self.activated:
+            self.activated = False
+            self.save()
+        else:
+            self.activated = True
+            self.save()

@@ -41,6 +41,7 @@ class Account(AbstractBaseUser):
         unique=True,
     )
     last_searched_keyword = models.CharField(max_length=1000, default=None, null=True, blank=True)
+    last_searched_location = models.CharField(max_length=1000, default=None, null=True, blank=True)
     #user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     # password = models.CharField(max_length=30, validators=[validators.MinLengthValidator(8, message='Password must be at least 8 characters!')])
     is_new_user = models.BooleanField(default=True)
@@ -85,6 +86,18 @@ class Account(AbstractBaseUser):
 
     def get_keyword(self):
         return self.last_searched_keyword
+
+    def save_location(self, location):
+        self.last_searched_location = location
+        self.save()
+
+    def erase_location(self):
+        self.last_searched_location = None
+        self.save()
+
+    def get_location(self):
+        return self.last_searched_location
+
 
 
 class Anonymous(AbstractBaseUser):

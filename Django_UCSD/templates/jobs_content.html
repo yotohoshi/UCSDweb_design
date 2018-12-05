@@ -47,7 +47,7 @@
                                     </a>
                                     <p class="card-text">{{ job.company.company_name }}</p>
                                     <p class="card-text">{{ job.short_description }}</p>
-                                    <a href="#" class="btn btn-primary btn-sm float-right">Apply / Sign / Go</a>
+                                    <a href="#" class="btn btn-dark btn-sm float-right">Apply / Sign / Go</a>
                                     {% if user.is_authenticated and user.user.major not in job.Major_Require.all %}
                                         <p style="color:indianred">Your major is not compatible with this job offer</p>
                                     {% endif %}

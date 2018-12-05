@@ -8,6 +8,7 @@ DEGS = ['BS', 'BA', 'MS', 'MA', 'PHD', 'MBA', 'NO LIMITED']
 
 class SearchingForm(forms.Form):
     keyword = forms.CharField(max_length=500)
+    location = forms.CharField(max_length=500, required=False)
 
 
 class FilterForm(forms.Form):

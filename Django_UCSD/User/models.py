@@ -71,8 +71,8 @@ class User(models.Model):
     description = models.CharField(max_length=1500, validators=[django.core.validators.MinLengthValidator
                                                                 (50,
                                                                  message='Description must be at least 50 characters!')])
-    referral_ability = models.BooleanField
-    company = models.ManyToManyField(Company.models.Company, symmetrical=False, blank=True)
+    referral_ability = models.BooleanField(default=False)
+    company =models.ForeignKey(Company.models.Company, on_delete=models.PROTECT, null=True, blank=True)
     # favorite_event = models.ManyToManyField(Event.models.Event, symmetrical=False, blank=True)
     # favorite_job = models.ManyToManyField(Job.models.Job, symmetrical=False, blank=True)
     friend = models.ManyToManyField('User', symmetrical=True, blank=True)
@@ -241,7 +241,7 @@ class User(models.Model):
             return True
 
     # update_user_info
-    def update_user_info(self, major, degree, contact_email, description, year_graduation):
+    def update_user_info(self, major, degree, contact_email, description, year_graduation, company):
         if major:
             major_obj = list(Major.objects.filter(major=major))[0]
             self.major = major_obj
@@ -254,6 +254,9 @@ class User(models.Model):
             self.description = description
         if year_graduation:
             self.yr_graduation = year_graduation
+        if company:
+            company_obj = list(Company.models.Company.objects.filter(company_name=company))[0]
+            self.company = company_obj
         self.save()
         return True
 
