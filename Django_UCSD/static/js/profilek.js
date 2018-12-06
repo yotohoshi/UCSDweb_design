@@ -27,7 +27,7 @@ $(document).ready(function() {
     $('#referral_list').load('/referral_list');
     //$('#personal').load('/templates/profile_right_lower.html');
     //$('#event').load('/templates/profile_right_lower_events.html');
-
+    $('#logout-successful-div').load('/templates/logout_successful.html');
     $('.leftmenutrigger').on('click', function(e) {
       $('.side-nav').toggleClass("open");
       e.preventDefault();

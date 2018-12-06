@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import SetPasswordForm, PasswordResetForm
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import auth_logout
+from django.http import JsonResponse
 from django.template.response import TemplateResponse
 from django.utils.encoding import force_text
 from django.utils.http import urlsafe_base64_decode
@@ -42,26 +43,42 @@ def UserSignup(request):
 def UserLogin(request):
     # if request.user.is_authenticated:
         # return redirect('index')
+
     form = LoginForm(request.POST)
     if request.method == 'POST':
-        if form.login(request):
-            if request.POST.get('next'):
-                return redirect(request.POST.get('next'))
-            else:
-                return render(request, 'REGHTML/successful.html')
+        usr = form.login(request)
+        if usr is not None:
+            data = {
+                'successful': True,
+                'account_id': usr.account_id,
+                'name': usr.user.__str__(),
+            }
+            return JsonResponse(data)
         else:
-            return render(request, 'redirect_sign_in.html', {'form': form})
+            dne_err = form.non_field_errors()
+            password_err = form['password'].errors
+            data = {
+                'successful': False,
+                'dne_err': dne_err,
+                'password_err': password_err,
+            }
+            return JsonResponse(data)
     else:
         form = LoginForm
         return render(request, 'redirect_sign_in.html', {'form': form})
 
 
 def UserLogout(request):
-    if not request.user.is_authenticated:
-        return redirect('userlogin')
+    is_profile = request.GET.getlist('is_profile')[0]
     request.user.erase_keyword()
     logout(request)
-    return render(request, 'REGHTML/successful.html')
+    data = {
+        'successful': True
+    }
+    if is_profile == 'False':
+        return JsonResponse(data)
+    else:
+        return redirect('index')
 
 
 def PasswordRetrievalEmail(request):
