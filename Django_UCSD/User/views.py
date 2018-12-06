@@ -55,7 +55,10 @@ class Profile(ListView):
     template_name = 'profile_right_lower.html'
 
     def get_queryset(self):
-        return list(self.request.user.user.event_set.all())
+        if not self.request.user.is_authenticated:
+            return render(self.request, 'REGHTML/not_authorized.html')
+        else:
+            return list(self.request.user.user.event_set.all())
 
     def get_majors(self):
         return list(Major.objects.all())
@@ -65,6 +68,16 @@ class Profile(ListView):
 
     def get_favjobs(self):
         return list(self.request.user.user.job_set.all())
+
+    def get_referrals(self):
+        return list(self.request.user.user.referral_set.all())
+
+    '''def get(self, request, account_id):
+        if not request.user.is_authenticated:
+            return render(request, 'REGHTML/not_authorized.html')
+        else:
+            return render(request, 'profile_right_lower.html', {'account_id': account_id}, {'majors': Major.objects.all()})'''
+
 
 
 def edit_profile(request):
@@ -99,9 +112,14 @@ def edit_profile(request):
                 description = request.POST.getlist('description')[0]
             else:
                 description = None
-            print(contact_email, description, degree, yr_graduation, major)
 
-            user.update_user_info(major, degree, contact_email, description, yr_graduation)
+            if request.POST.getlist('company'):
+                company = request.POST.getlist('company')[0]
+            else:
+                company = None
+            print(contact_email, description, degree, yr_graduation, major, company)
+
+            user.update_user_info(major, degree, contact_email, description, yr_graduation, company)
     except:
         data = {'successful': False}
 

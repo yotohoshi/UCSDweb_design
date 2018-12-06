@@ -86,6 +86,7 @@
                                     <label>Company</label>
                                 </div>
                                 <div class="col-md-6" id="company">
+                                    <p>{{ user.user.company.company_name }}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -140,6 +141,10 @@
                             " {% endfor %}\n" +
                         "      </select>";
                     const toRenderDes = "<textarea class=\"form-control\"rows='6' name='description' id='description'>{{ user.user.description }}</textarea>";
+                    const toRenderCompany = "<input class='form-control' type=\"text\" name=\"company\" id=\"search-Com\"\n" +
+                        "                                               onkeyup=\"changeInputCom(this.value)\"\n" +
+                        "                                               placeholder=\"Your Company\">\n" +
+                        "                                        <div id=\"result-Com\" class=\"list-group\" style='flex-direction:column;!important'></div>";
 
                     function Render() {
                         //Change button appearance
@@ -154,6 +159,7 @@
                         document.getElementById('contact_email').innerHTML = toRenderEmail;
                         document.getElementById('description').innerHTML = toRenderDes;
                         document.getElementById('degree').innerHTML = toRenderDegree;
+                        document.getElementById('company').innerHTML = toRenderCompany;
                     }
 
                     function Cancel() {
@@ -166,6 +172,7 @@
                         var yr_graduation = document.forms["form"]["yr_graduation"].value;
                         var description = document.forms["form"]["description"].value;
                         var contact_email = document.forms["form"]["contact_email"].value;
+                        var company = document.forms["form"]["company"].value;
 
                         var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
                         var email_error = false, description_error = false, yr_error = false;
@@ -173,8 +180,7 @@
                         if (description.length < 50) {
                             document.getElementById('description_error').innerText = "Description should be at least 50 characters";
                             description_error = true;
-                        }
-                        else if (description.length > 1500) {
+                        } else if (description.length > 1500) {
                             document.getElementById('description_error').innerText = "Description should be at most 140 characters";
                             description_error = true;
                         }
@@ -187,7 +193,7 @@
                             yr_error = true;
                         }
 
-                        if(email_error || description_error || yr_error){
+                        if (email_error || description_error || yr_error) {
                             return;
                         }
 
@@ -201,19 +207,33 @@
                                 'degree': degree,
                                 'yr_graduation': yr_graduation,
                                 'description': description,
+                                'company': company,
                             },
                             dataType: 'json',
                             success: function (data) {
                                 if (data.successful) {
                                     alert("success!");
                                     window.location.reload();
-                                }
-                                else {
+                                } else {
                                     alert("failed!");
                                     window.location.reload(true);
                                 }
                             }
                         });
+                    }
+
+
+                    function changeInputCom(val) {
+                        var autoCompleteResult = matchList(val, companies);
+                        document.getElementById("result-Com").innerHTML = "";
+                        for (var i = 0, limit = 10, len = autoCompleteResult.length; i < len && i < limit; i++) {
+                            document.getElementById("result-Com").innerHTML += "<a class='list-group-item list-group-item-action' href='#' onclick='setSearchCom(\"" + autoCompleteResult[i] + "\")'>" + autoCompleteResult[i] + "</a>";
+                        }
+                    }
+
+                    function setSearchCom(value) {
+                        document.getElementById('search-Com').value = value;
+                        document.getElementById("result-Com").innerHTML = "";
                     }
                 </script>
             </div>
@@ -270,7 +290,7 @@
                                 </div>
 
                                 <div>
-                                    <link rel="stylesheet" href="{% static 'css/event_aboute.css' %}">
+                                    <link rel="stylesheet" href="{% static 'css/event_about.css' %}">
                                     <div class="modal fade bd-example-modal-lg" id="about{{ event.id }}" tabindex="-1"
                                          role="dialog"
                                          aria-labelledby="myModalLabel" aria-hidden="true">
@@ -320,12 +340,10 @@
                                                     //alert("success!");
                                                     if (data.go_status) {
                                                         document.getElementById('go-button{{ event.id }}').innerHTML = not_go_button{{ event.id }};
-                                                    }
-                                                    else {
+                                                    } else {
                                                         document.getElementById('go-button{{ event.id }}').innerHTML = go_button{{ event.id }};
                                                     }
-                                                }
-                                                else {
+                                                } else {
                                                     alert("failed");
                                                 }
                                             }
@@ -343,8 +361,7 @@
                                             success: function (data) {
                                                 if (data.successful) {
                                                     alert("remove success!");
-                                                }
-                                                else {
+                                                } else {
                                                     alert("failed");
                                                 }
                                             }
@@ -362,8 +379,7 @@
                                             success: function (data) {
                                                 if (data.event_status) {
                                                     document.getElementById('go-button{{ event.id }}').innerHTML = not_go_button{{ event.id }};
-                                                }
-                                                else {
+                                                } else {
                                                     document.getElementById('go-button{{ event.id }}').innerHTML = go_button{{ event.id }};
                                                 }
 
@@ -396,24 +412,29 @@
                             {% for job in view.get_favjobs %}
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingOne">
-                                        <!-- Event Description -->
-                                        <div class="card shadow p-3 mb-4 bg-white" id="job_card{{ job.id }}">
-                                            <div class="card-header align-items-center">
-                                                <div class="row">
-                                                    <h6>Post Date: {{ job.post_time }}</h6>
-                                                    <div class="x" id="{{ job.id }}">
-                                                        <div class="line1"></div>
-                                                        <div class="line2"></div>
+                                        <div class='row'>
+                                            <div class="col-12">
+                                                <!-- Event Description -->
+                                                <div class="card shadow p-3 mb-4 bg-white" id="job_card{{ job.id }}">
+                                                    <div class="card-header align-items-center">
+                                                        <div class="row">
+                                                            <h6>Post Date: {{ job.post_time }}</h6>
+                                                            <div class="x" id="{{ job.id }}">
+                                                                <div class="line1"></div>
+                                                                <div class="line2"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+
+                                                        <h4 class="card-title">{{ job.job_position }}</h4>
+
+                                                        <p class="card-text">{{ job.company.company_name }}<br>{{ job.description }}
+                                                        </p>
+                                                        <a href="{{ job.job_URL }}"
+                                                           class="btn btn-dark btn-sm float-right">Apply</a>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="card-body">
-
-                                                <h4 class="card-title">{{ job.job_position }}</h4>
-
-                                                <p class="card-text">{{ job.company.company_name }}<br>{{ job.description }}
-                                                </p>
-                                                <a href="{{ job.job_URL }}" class="btn btn-dark btn-sm float-right">Apply</a>
                                             </div>
                                         </div>
                                     </div>
@@ -430,8 +451,7 @@
                                             success: function (data) {
                                                 if (data.successful) {
                                                     alert("remove success!");
-                                                }
-                                                else {
+                                                } else {
                                                     alert("failed");
                                                 }
                                                 $('#job_card{{ job.id }}').remove();
@@ -453,54 +473,33 @@
             <!--My referrals section-->
             <div class="tab-pane fade" id="referral" role="tabpanel" aria-labelledby="referral-tab">
                 <!-- Added Fav Events in Profile Page -->
+                <div class="float-button" data-toggle="modal" data-target="#add-referral" id="add_referral_btn">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </div>
                 <div class="container profile-tab event-tab job_tab referral_tab">
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
                         <!-- Events -->
                         {% if not view.get_referrals %}
                             <div class="panel panel-default" id="test">
                                 <h6>Have job to offer? Everyone's expecting you!</h6>
                             </div>
                         {% else %}
-                            {% for referral in view.get_referrals %}
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingOne">
-                                        <!-- Event Description -->
-                                        <div class="row justify-content-center">
-                                            <div class="col-12">
-                                                <div class="card shadow p-3 mb-4 bg-white">
-                                                    <div class="card-header align-items-center">
-                                                        <div class="row">
-                                                            <h6>Location: {{ event.location }} /
-                                                                Date: {{ event.date }}</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <a href="event http">
-                                                            <h4 class="card-title">{{ event.event_name }}</h4>
-                                                        </a>
-                                                        <p class="card-text">{{ event.company }}<br>{{ event.description }}
-                                                        </p>
-                                                        <a href="#" class="btn btn-primary btn-sm float-right">Apply /
-                                                            Sign /
-                                                            Go</a>
-                                                        <a href="#" class="btn btn-danger btn-sm float-right">delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <div class='row'>
+                                        <div class="col-12" id='referral_list' style="top:60px">
+
                                         </div>
                                     </div>
                                 </div>
-                            {% endfor %}
+                            </div>
                         {% endif %}
-                        <div class="float-button"  data-toggle="modal" data-target="#add-referral">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </div>
-                        <div id="add_referral"></div>
                     </div>
                 </div>
             </div>
             <!--End of my referralt-->
+            <!--Add referral popup-->
+            <div id="add_referral"></div>
 
 
         </div>

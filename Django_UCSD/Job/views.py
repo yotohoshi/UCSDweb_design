@@ -9,13 +9,13 @@ from django import template
 from overrides import overrides
 from .forms import SearchingForm
 from Job.models import Job, Location
-from User.models import Degree, Major
+from User.models import Degree, Major, User
 from Company.models import Company
 
 # Create your views here.
 
 register = template.Library()
-AUTH = ['U.S Citizen', 'Permanent Resident', 'F-1', 'H1-B', 'OPT', 'CPT', 'Otherwise Authorized to Work']
+AUTH = ['U.S. Citizens Or U.S. Permanent Residents Only', 'All Legal Status']
 JOBTYPE = ['Full-time', 'Part-time', 'Contract', 'Temporary', 'Commission', 'Internship', 'Not Available']
 DEGS = ['BS', 'BA', 'MS', 'MA', 'PHD', 'MBA', 'NO LIMITED']
 
@@ -52,8 +52,14 @@ class JobSearch(ListView):
                 keyword = form.cleaned_data['keyword']
             else:
                 keyword = None
+
+            if form.cleaned_data['location']:
+                location = form.cleaned_data['location']
+            else:
+                location = None
         else:
             keyword = None
+            location = None
 
         if self.request.GET.getlist('degree'):
             degs = self.request.GET.getlist('degree')
@@ -75,7 +81,7 @@ class JobSearch(ListView):
         else:
             types = None
 
-        print(keyword, auths, degs, paid, types)
+        print(keyword, auths, degs, paid, types, location)
 
         # store last-searched keyword to account
         if self.request.user.is_authenticated:
@@ -92,8 +98,21 @@ class JobSearch(ListView):
                 if self.request.user.is_authenticated:
                     self.request.user.save_keyword(keyword)
 
-        print(keyword, auths, degs, paid, types)
-        return Job.general_Search(keyword, auths, degs, None, paid, types)
+            if not location:
+                if auths or degs or paid or types:
+                    location = self.request.user.get_location()
+                else:
+                    if self.request.GET.getlist('page') and self.request.GET.getlist('page') != 1:
+                        location = self.request.user.get_location()
+                    else:
+                        location = None
+                        self.request.user.save_location(location)
+            else:
+                if self.request.user.is_authenticated:
+                    self.request.user.save_location(location)
+
+        print(keyword, auths, degs, paid, types, location)
+        return Job.general_Search(keyword, auths, degs, location, paid, types)
 
     def degrees(self):
         return Degree.objects.all()
@@ -135,7 +154,7 @@ def search(request):
 def add_referral(request):
 
     data = {
-        'successful': False
+        'successful': 'false'
     }
     if request.method == 'GET':
 
@@ -143,7 +162,7 @@ def add_referral(request):
 
         if request.GET['position']:
             position = request.GET['position']
-            print(position)
+            # print(position)
         else:
             position = None
 
@@ -154,11 +173,13 @@ def add_referral(request):
 
         if request.GET.getlist('major'):
             major = request.GET.getlist('major')[0]
+            # print(major)
         else:
             major = None
 
         if request.GET.getlist('degree'):
             degree = request.GET.getlist('degree')[0]
+            print(degree)
         else:
             degree = None
 
@@ -314,10 +335,11 @@ def add_referral(request):
 
         if request.GET.getlist('resume_required'):
             resume_required = request.GET.getlist('resume_required')[0]
-            if resume_required == 'on':
-                resume_required =True
+            if resume_required == 'true':
+                resume_required = True
             else:
                 resume_required = False
+            # print(resume_required)
         else:
             resume_required = None
 
@@ -329,13 +351,14 @@ def add_referral(request):
         provider = request.user.user
 
         # save the referral with parameters defined above
-        success = Referral.save_referral(position, description, major, description, None, None, company, None, category, location,
+        success = Referral.save_referral(position, description, major, degree, None, None, company, None, category, location,
                                True, provider, referral_description, resume_required)
 
         if success:
             data = {
-                'successful': True
+                'successful': 'true'
             }
+        print(success)
         return JsonResponse(data)
     else:
         return
@@ -347,5 +370,26 @@ def fetch_data(request):
         'degrees': Degree.getDegreeList(),
         'majors': Major.getMajorList(),
         'companies': Company.getCompanyList(),
+    }
+    return JsonResponse(data)
+
+
+class Referrals(ListView):
+
+    context_object_name = 'referrals'
+    template_name = 'referral_list.html'
+
+    def get_queryset(self):
+        # user_id = self.request.GET.getlist('user_id')[0]
+        # user_obj = User.objects.filter(id=user_id)
+        return list(Referral.objects.filter(ref_provider=self.request.user.user))
+
+
+def toggle_activate_referral(request):
+    ref_id = request.GET['ref_id']
+    ref_obj = list(Referral.objects.filter(id=ref_id))[0]
+    ref_obj.deactivate_reactivate()
+    data = {
+        'status': ref_obj.activated
     }
     return JsonResponse(data)

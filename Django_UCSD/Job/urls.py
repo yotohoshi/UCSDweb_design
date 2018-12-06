@@ -12,4 +12,6 @@ urlpatterns = [
     path('job_get_favorite_status', views.job_get_favorite_status, name='job_get_favorite_status'),
     path('job_fetch_data', views.fetch_data ,name='job_fetch_data'),
     path('add_referral', views.add_referral, name='add_referral'),
+    path('referral_list', views.Referrals.as_view(), name='referral_list'),
+    path('toggle_referral_activate', views.toggle_activate_referral, name='toggle_referral_activate'),
 ]
