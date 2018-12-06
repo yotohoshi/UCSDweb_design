@@ -9,11 +9,11 @@
 
 <body>
   <!-- One result of search results -->
-  <div class="col-6" id="outpart">
-    <div class="card-body row" id="innerout">
+  <div class="col col-10 card-body shadow-lg bg-white" id="outpart">
+    <div class="row container-fluid">
       <!-- avatar -->
       <div class="col-3">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg" alt="profile-sample4" class="profile"/>
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg" alt="profile-sample4" class="profile" />
       </div>
       <!-- discription -->
       <div class="col-6">
@@ -23,7 +23,7 @@
         </div>
       </div>
       <!-- add friend -->
-      <div class="col-3">
+      <div class="col-3 col-middle">
         <button type="button" name="button">Add Friend</button>
       </div>
     </div>
@@ -33,9 +33,7 @@
 
 
   <!-- Button trigger modal -->
-  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Launch demo modal
-  </button> -->
+
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -65,9 +63,9 @@
 
 
 <script type="text/javascript">
-  var c = ($(window).width()<$(window).height())?$(window).width():$(window).height();
-  $('img').css('height', c*0.15);
-  $('img').css('width', c*0.15);
+  var c = ($(window).width() < $(window).height()) ? $(window).width() : $(window).height();
+  $('img').css('height', c * 0.15);
+  $('img').css('width', c * 0.15);
 </script>
 
 

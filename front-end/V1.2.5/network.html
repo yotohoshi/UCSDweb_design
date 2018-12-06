@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="network.css">
   <title>NetWork</title>
+
 </head>
 
 <body>
@@ -57,16 +58,11 @@
           <!-- Searching -->
           <div class="row justify-content-center">
             <div class="col col-8">
-              <div class="row" id="keywordsearch" style="padding-bottom: 15px;"></div>
+              <div class="row" id="keywordsearch"></div>
+              <!-- style="padding-bottom: 15px;" -->
+              <div class="card-body row" id="new-friend-content"></div>
             </div>
-            <div class="card col col-10 scroll" style="background-color: #fff !important;">
-              <!-- load one result -->
-              <div class="card-body row justify-content-center" id="new-friend-content">
 
-
-
-              </div>
-            </div>
             <!-- recommandations -->
             <div class="card col col-10" id="racommanding" style="margin-top: 20px;">
               <div class="card-body row justify-content-center">
@@ -87,10 +83,10 @@
           <!-- Requests Number -->
           <div class="row">
             <div class="container-fluid">
-              <div class="card">
-                <div class="card-header align-items-center">
+              <div class="card" id="referr_border">
+                <div class="card-header align-items-center" id="referral_num_box">
                   <div class="container-fluid content-justify-center">
-                    <button type="button" name="button" class="btn" data-toggle="modal" data-target="#myModal" id="referralbtn">Referrals: 100</button>
+                    <a type="text" name="button" class="" data-toggle="modal" data-target="#myModal" id="referralbtn">Referrals: 100</a>
                     <!-- <h6 >Referrals: 100</h6> -->
                   </div>
                 </div>
@@ -144,15 +140,94 @@
             </div>
           </div>
         </div>
+        <!-- End of col-2 of the right side when view is not referral-->
+
+        <!-- start view referral -->
+        <div class="col col-2" id="friend-referrals">
+          <div class="card">
+            <div class="card-header align-items-center" id="referral_num_box">
+              <div class="container-fluid content-justify-center">
+                <a type="text" name="" class="" data-toggle="modal" data-target="#myModal" id="referralbtn"><h5>Referrals:100</h5></a>
+                <!-- <h6 >Referrals: 100</h6> -->
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <h6>Friends</h6>
+              </div>
+              <div class="card-body">
+                <ul>
+                  <li>Vince Xu</li>
+                  <li>Johnny Xu</li>
+                  <li>Lu Yu</li>
+                  <li>Yuhang Jiang</li>
+                  <li>Jiarong Liu</li>
+                  <li>Maria Deng</li>
+                  <li>Liu Liu</li>
+                  <li>Hank Huang</li>
+                  <li>Jiangsong Chen</li>
+                  <li>David Gao</li>
+                  <li>Charlie Li</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
       </div>
       <!-- End of whole page as a row -->
     </div>
     <!-- end of whole display data container -->
   </div>
   <!-- end of wrapper of whole page -->
+
+  <!-- Referrals content -->
   <div class="" id="reff">
 
   </div>
 </body>
+<script type="text/javascript">
+
+</script>
+<!-- <style> -->
+.nav-tabs>li>a:hover {
+background-color: #303136 !important;
+border: medium none;
+border-radius: 0;
+color: #fff;
+}
+</style>
+
+<style media="screen">
+  /* #myTabContent{
+    text-shadow: 0 .05rem .1rem rgba(255,255, 255, .5);
+    box-shadow: inset 0 0 5rem rgba(255, 255, 255, .5);
+  }
+  #referral_num_box{
+    text-shadow: 0 .05rem .1rem rgba(255,255, 255, .5);
+    box-shadow: inset 0 0 5rem rgba(255, 255, 255, .5);
+  }
+  .nav-tabs{
+    text-shadow: 0 .05rem .1rem rgba(255,255, 255, .5);
+    box-shadow: inset 0 0 5rem rgba(255, 255, 255, .5);
+  }
+  .tab-content{
+    text-shadow: 0 .05rem .1rem rgba(255,255, 255, .5);
+    box-shadow: inset 0 0 5rem rgba(255, 255, 255, .5);
+  }
+  #friend-tab{
+    text-shadow: 0 .05rem .1rem rgba(255,255, 255, .5);
+    box-shadow: inset 0 0 5rem rgba(255, 255, 255, .5);
+  }
+  #request-tab{
+    text-shadow: 0 .05rem .1rem rgba(255,255, 255, .5);
+    box-shadow: inset 0 0 5rem rgba(255, 255, 255, .5);
+  } */
+</style>
 
 </html>

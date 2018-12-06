@@ -9,8 +9,12 @@ p{
 }
 
 #outpart{
-  padding-left: 2px;
-  padding-right: 2px;
+  /* padding-left: 2px;
+  padding-right: 2px; */
+  /* border: solid gray; */
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 30px;
 }
 
 #innerout{
