@@ -31,6 +31,9 @@ https://overiq.com/django-1-10/django-rendering-fields-manually/
 ### Simple Django Communication  
 https://www.geeksforgeeks.org/handling-ajax-request-in-django/  
 
+### Prevent Django from rendering whole page  
+https://stackoverflow.com/questions/42239922/django-return-httpresponse-before-sending-email  
+
 ## Front end Graph and Relation / Scientific Display:  
 Tool http://js.cytoscape.org/  
 ### * Same Tool used locally:  

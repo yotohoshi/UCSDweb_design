@@ -3,7 +3,10 @@
 
 <head>
   <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="new_index3.css">
+
   <title></title>
 </head>
 
@@ -12,11 +15,11 @@
 
   </div>
   <label>
-    <input type='checkbox'>
+    <input type='checkbox' id="rightcorner">
     <span class='menu'>
       <span class='hamburger'></span>
     </span>
-    <ul>
+    <ul id="buttons">
       <li>
         <button class="button type1">
           <div class="">
@@ -70,4 +73,18 @@
 
 </body>
 
+<script>
+$(document).ready(function myFunction() {
+    var x = document.getElementById("buttons");
+    if (x.opacity == 1) {
+        // x.style.display = "block";
+        console.log('not shown');
+        x.css({"pointer-events": "none"});
+    } else {
+      console.log('show');
+        x.style.display = "block";
+
+    }
+});
+</script>
 </html>

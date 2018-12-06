@@ -1,0 +1,26 @@
+img{
+  border: solid black;
+  border-radius: 50px;
+
+}
+
+p{
+  word-wrap: break-word;
+}
+
+#outpart{
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+#innerout{
+  padding-left: 2px;
+  padding-right: 2px;
+  border: 0 solid gray;
+}
+
+button{
+  border: none;
+  color:blue;
+  /* background-color: ; */
+}
