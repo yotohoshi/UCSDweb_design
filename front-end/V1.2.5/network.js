@@ -12,6 +12,7 @@ $(document).ready(function() {
   $('#paddingrow').css('height', $(window).height() * 0.1);
   $('.card').addClass('shadow');
   $('#racommanding').css('height', $(window).height() * 0.15);
+  $('#friend-referrals').hide();
 
   $('.leftmenutrigger').on('click', function(e) {
     $('.side-nav').toggleClass("open");
@@ -30,7 +31,7 @@ $(document).ready(function() {
 
 
   // Stuff to do as soon as the DOM is ready
-  $('#friend-referrals').hide();
+
 
   $('#referralbtn').on('click', function() {
     $('#keywordsearch').hide();
