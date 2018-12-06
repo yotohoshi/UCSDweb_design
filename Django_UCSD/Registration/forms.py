@@ -16,14 +16,15 @@ class LoginForm(forms.Form):
             raw_password = self.cleaned_data['password']
             if not Account.objects.filter(email=email):
                 self.add_error(None, "Please Register an Account.")
+                return None
             user = authenticate(email=email, password=raw_password)
             if user is not None:
                 login(request, user)
-                return True
+                return user
             else:
                 if Account.objects.filter(email=email):
                     self.add_error('password', "Invalid Password.")
-                    return False
+                    return None
 
 
 class SignupForm(forms.Form):

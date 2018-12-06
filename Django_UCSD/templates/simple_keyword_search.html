@@ -21,6 +21,10 @@
         background-color: #141414;
     }
 
+    .search{
+        border-radius:20px;!important;
+    }
+
 </style>
 <body>
 <form action="{% url "jobsearch" %}" method="GET">
@@ -28,18 +32,18 @@
         <div class="input-group">
 
             <div class="col col-7">
-                <input type="text" class="form-control" name="keyword"
+                <input type="text" class="form-control search" name="keyword"
                        placeholder="{% if not user.get_keyword or user.get_keyword == ' ' %} Title {% else %}{{ user.get_keyword }}{% endif %}">
             <div id="result-L" class="list-group"></div>
             </div>
             <div class="col col-3">
-                    <input type="text" class="form-control" name="location" id="search-L"
+                    <input type="text" class="form-control search" name="location" id="search-L"
                            onkeyup="changeInputL(this.value)"
                            placeholder="{% if not user.get_location or user.get_location == ' ' %} Location {% else %}{{ user.get_location }}{% endif %}">
             </div>
             <span class="input-group-btn">
                 <div class="col col-2">
-                    <button class="btn btn-dark" type="submit" id="search_button">Search</button>
+                    <button class="btn btn-dark search-label-icon" type="submit" id="search_button">Search</button>
                 </div>
              </span>
         </div><!-- end of row -->

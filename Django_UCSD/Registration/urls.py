@@ -8,7 +8,7 @@ urlpatterns = [
     # path('accounts/', include('django.contrib.auth.urls')),
 
     url(r'^account/signin$', views.UserLogin, name='userlogin'),
-    url(r'^account/logout/$', views.UserLogout, name='userlogout'),
+    url(r'^account/logout$', views.UserLogout, name='userlogout'),
     url(r'^account/signup/$', views.UserSignup, name='usersignup'),
     url(r'^account/changepassword/$', views.ChangePassword, name='changepassword'),
     url(r'^account/password_reset/$', views.password_reset, name='password_reset'),

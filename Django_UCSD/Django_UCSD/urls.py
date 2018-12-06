@@ -59,4 +59,7 @@ urlpatterns = [
     path('templates/simple_keyword_search1.html', TemplateView.as_view(template_name='simple_keyword_search1.html')),
     path('templates/referrals.html', TemplateView.as_view(template_name='referrals.html')),
     path('view_referral', TemplateView.as_view(template_name='view_referral.html'), name = 'view_referral'),
+    path('templates/signin_integrated.html', TemplateView.as_view(template_name='signin_integrated.html')),
+    path('templates/logout_successful.html', TemplateView.as_view(template_name='logout_successful.html')),
+    path('templates/signin_successful.html', TemplateView.as_view(template_name='signin_successful.html')),
 ]

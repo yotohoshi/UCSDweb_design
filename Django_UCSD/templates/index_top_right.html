@@ -1,63 +1,142 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
+{% load static %}
 <head>
-  <meta charset="utf-8">
-  <title></title>
+    <meta charset="utf-8">
+    <style>
+        /*
+        * Header
+        */
+        .masthead {
+            margin-bottom: 2rem;
+        }
+
+        .masthead-brand {
+            margin-bottom: 0;
+        }
+
+        .nav-masthead .nav-link {
+            padding: .25rem 0;
+            color: rgba(255, 255, 255, .5);
+            background-color: transparent;
+            border-bottom: .25rem solid transparent;
+        }
+
+        .nav-masthead .nav-link:hover,
+        .nav-masthead .nav-link:focus {
+            border-bottom-color: #ffffff;
+        }
+
+        .nav-masthead .nav-link + .nav-link {
+            margin-left: 3rem;
+
+        }
+
+        #usrname-top {
+            margin-right: 3rem;
+        }
+
+        .nav-masthead .active {
+            color: #fff;
+            border-bottom-color: #141414;
+
+        }
+
+        @media (min-width: 48em) {
+            .masthead-brand {
+                float: left;
+            }
+
+            .nav-masthead {
+                float: right;
+            }
+        }
+
+
+    </style>
 </head>
 
 <body>
 
 
+{% if user.is_authenticated %}
+    {% if user.is_new_user %}
+        <script>
+            // alert('hello');
+            alert('Please finish sign up');
+            window.location.replace('{% url 'new_user' %}');
+            //alert('Please finish sign up');
+        </script>
+    {% else %}
+        <div id="usrname-top">
+            <a class="nav-link usrname"
+               href="{% url 'profile' account_id=user.account_id %}">Hello, {{ user }}</a>
+        </div>
+    {% endif %}
+{% else %}
+    <div id="usrname-top">
+        <a class="nav-link usrname" href="#">{{ user }}, Please sign in</a>
+    </div>
+{% endif %}
+{% if user.is_authenticated %}
+    <div id="signin-out">
+        <a class="nav-link active" id="logout" onclick="logout()">Logout</a>
+    </div>
+{% else %}
+    <div id="signin-out">
+        <a class="nav-link active" data-toggle="modal" data-target="#signin-integrated">Sign
+            in
+        </a>
+    </div>
+{% endif %}
+<script>
+    /*$(document).ready(function () {
+        $('#logout-successful-div').load('/templates/logout_successful.html');
+        $('#signin-popup').load('/templates/signin_integrated.html');
+    });*/
+    var is_profile = document.getElementById('calendar');
+    var is_job = document.getElementById('adfilter');
+    if(is_profile == null){
+        is_profile = 'False';
+    }
+    else{
+        is_profile = 'True';
+    }
+    if(is_job== null){
+        is_job = 'False';
+    }
+    else{
+        is_job= 'True';
+    }
+    var anonymous = "<a class='nav-link usrname' href='#'>AnonymousUser, Please sign in</a>";
+    var signin = "<a class='nav-link active' data-toggle='modal' data-target='#signin-integrated'>Sign in</a>";
 
-  <li class="nav-item">
-              <!-- TODO -->
-              <div class="col">
-              {% if user.is_authenticated %}
-              <a class="nav-link" href="{% url 'profile' account_id=user.account_id %}">Hello, {{ user }}</a>
-              {% else %}
-              <a class="nav-link" href="#">{{ user }}, Please sign in</a>
-              {% endif %}
-              </div>
-            </li>
-            <li class="nav-item">
-              <!-- TODO -->
-              <div class="col">
-              <a class="btn btn-outline-light" href="#">Referral
-                <span class="sr-only">(current)</span>
-              </a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <!-- TODO -->
-              <div class="col">
-              {% if user.is_authenticated %}
-              <a class="btn btn-outline-light" href="{% url 'userlogout' %}">Logout</a>
-              {% else %}
-                  <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#myModal">Sign in </button>
-              {% endif %}
-              </div>
-            </li>
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-              <!-- TODO -->
-              <div class="col">
-              <a class="btn btn-outline-light" href="{% url 'changepassword' %}">Change Password</a>
-              </div>
-            </li>
-            {% endif %}
-            {% if not user.is_authenticated %}
-            <li class="nav-item">
-              <!-- TODO -->
-              <div class="col">
-              <a class="btn btn-outline-light" href="{% url 'usersignup' %}">SignUp</a>
-              </div>
-            </li>
-            {% endif %}
+    function toggleModal() {
+        //$('#logout-successful').show();
+    }
 
+    function logout () {
+        $.ajax({
+            url: '{% url 'userlogout' %}',
+            data: {
+                'is_profile': is_profile,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if(data.successful){
+                    document.getElementById('usrname-top').innerHTML =anonymous;
+                    document.getElementById('signin-out').innerHTML =signin;
+                    if(is_job){
+                        window.location.reload();
+                    }
+                    $('#logout-successful').modal();
+                    loggedout();
+                }
+            }
+        })
+    }
 
-
-
+</script>
 </body>
 
 </html>
