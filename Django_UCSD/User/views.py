@@ -44,8 +44,8 @@ def users(request):
 
 
 def profile(request, account_id):
-    if request.user.account_id != account_id:
-        return Http404
+    if request.user.account_id != account_id or not request.user.is_authenticated:
+        return redirect('index')
     return render(request, 'profile.html')
 
 
@@ -67,10 +67,17 @@ class Profile(ListView):
         return list(Degree.objects.all())
 
     def get_favjobs(self):
-        return list(self.request.user.user.job_set.all())
+        if self.request.user.is_authenticated:
+            return list(self.request.user.user.job_set.all())
+        else:
+            return redirect('index')
 
     def get_referrals(self):
-        return list(self.request.user.user.referral_set.all())
+        if self.request.user.is_authenticated:
+            return list(self.request.user.user.referral_set.all())
+        else:
+            return redirect('index')
+
 
     '''def get(self, request, account_id):
         if not request.user.is_authenticated:

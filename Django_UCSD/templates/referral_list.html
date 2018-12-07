@@ -1,3 +1,4 @@
+{% if user.is_authenticated %}
 {% for referral in referrals %}
 
     <div class="card shadow p-3 mb-4 {% if not referral.activated %}bg-dark{% else %}bg-white{% endif %}" id = "card{{ referral.id }}">
@@ -48,3 +49,4 @@
 
     </script>
 {% endfor %}
+{% endif %}

@@ -94,19 +94,16 @@
         $('#logout-successful-div').load('/templates/logout_successful.html');
         $('#signin-popup').load('/templates/signin_integrated.html');
     });*/
-    var is_profile = document.getElementById('calendar');
     var is_job = document.getElementById('adfilter');
-    if(is_profile == null){
-        is_profile = 'False';
-    }
-    else{
-        is_profile = 'True';
-    }
     if(is_job== null){
         is_job = 'False';
     }
     else{
         is_job= 'True';
+    }
+    if(document.getElementById('calendar') != null){
+        var logout_p = "<a href = '{% url 'profile_logout' %}' class=\"nav-link active\" id=\"logout\">Logout</a>";
+        document.getElementById('signin-out').innerHTML = logout_p;
     }
     var anonymous = "<a class='nav-link usrname' href='#'>AnonymousUser, Please sign in</a>";
     var signin = "<a class='nav-link active' data-toggle='modal' data-target='#signin-integrated'>Sign in</a>";
@@ -118,19 +115,15 @@
     function logout () {
         $.ajax({
             url: '{% url 'userlogout' %}',
-            data: {
-                'is_profile': is_profile,
-            },
             dataType: 'json',
             success: function (data) {
                 if(data.successful){
                     document.getElementById('usrname-top').innerHTML =anonymous;
                     document.getElementById('signin-out').innerHTML =signin;
-                    if(is_job){
-                        window.location.reload();
-                    }
-                    $('#logout-successful').modal();
-                    loggedout();
+                    $('#logout-successful').modal({
+                        //prevent modal from unwanted dismiss
+                        backdrop: 'static', keyboard: false}
+                    );
                 }
             }
         })

@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from Job.models import Job, Referral
 from django.views.generic import (TemplateView, ListView,
                                   DetailView, CreateView,
@@ -382,7 +382,10 @@ class Referrals(ListView):
     def get_queryset(self):
         # user_id = self.request.GET.getlist('user_id')[0]
         # user_obj = User.objects.filter(id=user_id)
-        return list(Referral.objects.filter(ref_provider=self.request.user.user))
+        if self.request.user.is_authenticated:
+            return list(Referral.objects.filter(ref_provider=self.request.user.user))
+        else:
+            return redirect('index')
 
 
 def toggle_activate_referral(request):

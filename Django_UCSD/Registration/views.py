@@ -30,14 +30,23 @@ def UserSignup(request):
     form = SignupForm(request.POST)
     if request.method == 'POST':
         if form.signup(request):
-            form.save()
-            # redirect('userlogin')
-            return redirect('userlogin')
+            usr = form.save()
+            login(request, usr)
+            data = {
+                'successful': True,
+            }
+            return JsonResponse(data)
         else:
-            return render(request, 'signup.html', {'form': form})
+            data = {
+                'successful': False,
+                'email_err': form['email'].errors,
+                'password_err': form['password'].errors,
+                'cpassword_err': form['confirmed_password'].errors,
+            }
+            return JsonResponse(data)
     else:
-        form = SignupForm
-        return render(request, 'signup.html', {'form': form})
+        # form = SignupForm
+        return render(request, '404.html')
 
 
 def UserLogin(request):
@@ -69,16 +78,19 @@ def UserLogin(request):
 
 
 def UserLogout(request):
-    is_profile = request.GET.getlist('is_profile')[0]
     request.user.erase_keyword()
     logout(request)
     data = {
         'successful': True
     }
-    if is_profile == 'False':
-        return JsonResponse(data)
-    else:
-        return redirect('index')
+
+    return JsonResponse(data)
+
+
+def LogoutFromProfile(request):
+    request.user.erase_keyword()
+    logout(request)
+    return render(request, 'REGHTML/successful.html')
 
 
 def PasswordRetrievalEmail(request):

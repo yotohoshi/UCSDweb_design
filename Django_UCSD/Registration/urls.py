@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^account/password_reset/$', views.password_reset, name='password_reset'),
     url(r'^account/reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)$', views.password_reset_confirm, name='password_reset_confirm'),
     url(r'^account/password_reset_done/$', views.password_reset_done, name='password_reset_done'),
-    url(r'^account/password_reset_confirm/$', views.password_reset_complete, name='password_reset_complete'),
+    url(r'^account/logout_from_profile/$', views.LogoutFromProfile, name='profile_logout'),
     # url(r'^account/successful/$', views.Successful, name='Successful'),
 
 ]

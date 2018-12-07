@@ -62,4 +62,6 @@ urlpatterns = [
     path('templates/signin_integrated.html', TemplateView.as_view(template_name='signin_integrated.html')),
     path('templates/logout_successful.html', TemplateView.as_view(template_name='logout_successful.html')),
     path('templates/signin_successful.html', TemplateView.as_view(template_name='signin_successful.html')),
+    path('templates/signup_successful.html', TemplateView.as_view(template_name='signup_successful.html')),
+    path('404', TemplateView.as_view(template_name='404.html')),
 ]

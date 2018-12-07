@@ -1,6 +1,8 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/signin_integrated.css' %}">
+<link rel="stylesheet" href="{% static 'css/sign_integrated1.css' %}">
 <script src="{% static 'js/sign_integrated1.js' %}"></script>
+
+<!-- Signin/Up modal-->
 <div class="modal fade d-example-modal-lg" id="signin-integrated" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -46,15 +48,18 @@
                         <form>
                             <div class="form-group">
                                 <label for="email">Email Address</label>
-                                <input type="email" id="email-U" name="email" required="required"/>
+                                <input type="email" id="email-U" name="email-U" required="required" placeholder="Your email"/>
+                                <div id="emailU-err" style="color: #d7433f"></div>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" id="password-U" name="password" required="required"/>
+                                <input type="password" id="password-U" name="password-U" required="required" placeholder="Password"/>
+                                <div id="passwordU-err" style="color: #d7433f"></div>
                             </div>
                             <div class="form-group">
                                 <label for="cpassword">Confirm Password</label>
-                                <input type="password" id="cpassword" name="cpassword" required="required"/>
+                                <input type="password" id="password-UC" name="password-UC" required="required" placeholder="Confirm password"/>
+                                <div id="passwordUC-err" style="color: #d7433f"></div>
                             </div>
                             <div class="form-group">
                                 <button id="signup-btn" type="button">Register</button>
@@ -66,11 +71,22 @@
         </div>
     </div>
 </div>
+<!--End Signin/Up Modal-->
+
+
+
+<!--TODO User Creation Modal -->
+
+<!--End User Creation Modal-->
+
+
 
 <script>
     function reload(){
         window.location.reload();
     }
+
+    //Log in button click function
     $("#login-btn").on('click', function () {
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
@@ -103,5 +119,39 @@
         })
     });
 
+    //Sign up button click function
+    $('#signup-btn').on('click', function () {
+        var email_U = document.getElementById('email-U').value;
+        var password_U = document.getElementById('password-U').value;
+        var password_UC = document.getElementById('password-UC').value;
+        $.ajax({
+            type: 'post',
+            url: "{% url 'usersignup' %}",
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                'email': email_U,
+                'password': password_U,
+                'confirmed_password': password_UC
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.successful) {
+                    alert('success!');
+                    $('#login-form').load('/templates/signup_successful.html');
+                    //TODO call popup user creation modal function
+                }
+                else{
+                    document.getElementById('emailU-err').innerHTML = data.email_err;
+                    document.getElementById('passwordU-err').innerHTML = data.password_err;
+                    document.getElementById('passwordUC-err').innerHTML = data.cpassword_err;
+                }
+            }
+        })
+    });
+
+    //TODO popup user creation modal function
+    function userCreationPopup() {
+        //TODO Ajax
+    }
 
 </script>
