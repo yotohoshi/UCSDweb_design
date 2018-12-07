@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <!-- JQuery Bootstrap and relevant CDN -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!-- Used for Google Login -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- <script src="index.js"></script> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <!-- Style and loinin related CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'css/user_creation.css' %}">
+
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+    <script>
+    /*
+        function makeChoices(id, data){
+            var node = document.createElement("Option");                 // Create a <li> node
+            var textnode = document.createTextNode("Water");
+            for (var i = 0, len = data.length; i<len; i ++){
+                document.getElementById(id).appendChild(a+data[i]+b);
+            }
+        }
+
+        $(document).ready(function () {
+            var major=['k'], degree=['k'];
+            $.ajax({
+                url: '{% url 'job_fetch_data' %}',
+                dataType: 'json',
+                success: function (data) {
+                    console.log('Got major/degree list!');
+                    major = data.majors;
+                    degree = data.degrees;
+                    console.log(major.length);
+                }
+            });
+            makeChoices('major', major);
+            makeChoices('degree', degree);
+        });
+      */
+        $(document).ready(function () {
+            var majors = [];
+            var degrees = [];
+            $.ajax({
+                url: '{% url 'job_fetch_data' %}',
+                dataType: 'json',
+                success: function (data) {
+                    console.log('Got major/degree list!');
+                    majors = data.majors;
+                    degrees = data.degrees;
+                    console.log(majors);
+
+                    makeMajorUL(majors);
+                    makeDegreeUL(degrees);
+                }
+            });
+        });
+
+
+        function makeMajorUL(majors1){
+            var majorSelect = document.getElementById('major');
+            for (var i = 0; i < majors1.length; i++) {
+
+                var option = document.createElement('option');
+                option.text = majors1[i];
+                majorSelect.add(option);
+                {#console.log('appending major');#}
+                {#major_list.appendChild(majors1[i]);#}
+            }
+
+            //return major_list;
+        }
+
+
+
+        function makeDegreeUL(degrees1){
+            //var degree_list = document.createElement('option');
+            var degreeSelect = document.getElementById('degree');
+            for (var i = 0; i < degrees1.length; i++) {
+                var option = document.createElement('option');
+                option.text = degrees1[i];
+                degreeSelect.add(option);
+                //document.getElementById('degree').appendChild(degrees1[i]);
+            }
+
+            //return degree_list;
+        }
+
+        //document.getElementById('major').appendChild(makeMajorUL(majors));
+        //document.getElementById('degree').appendChild(makeDegreeUL(degrees));
+
+    </script>
+
+
+<body>
+  <div class="container-fluid col">
+    <form class="form-horizontal" role="form" action = "{% url 'new_user' %}">
+      <h2>Registration</h2>
+      <div class="form-group row">
+        <label for="firstName" class="col-sm-3 control-label">First Name</label>
+        <div class="col-sm-9">
+          <input type="text" id="firstName" placeholder="First Name" class="form-control" name="F_name" autofocus>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+        <div class="col-sm-9">
+          <input type="text" id="lastName" placeholder="Last Name" class="form-control" name="L_name" autofocus>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="email" class="col-sm-3 control-label">Email* </label>
+        <div class="col-sm-9">
+          <input type="email" id="email" placeholder="Email" class="form-control" name="contact_email">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label for="exampleFormControlSelect1" class="col-sm-3 control-label">Select Major:</label>
+          <label for="major"></label>
+          <select class="form-control col-sm-9" id="major" name="major">
+
+          </select>
+      </div>
+      <div class="form-group row">
+        <label for="exampleFormControlSelect1" class="col-sm-3 control-label">Select Degree:</label>
+          <label for="degree"></label><select class="form-control col-sm-9" id="degree" name="degree">
+
+        </select>
+      </div>
+       <!-- /.form-group -->
+      <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+          <span class="help-block">*Required fields</span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Register</button>
+    </form> <!-- /form -->
+  </div> <!-- ./container -->
+</body>
+
+</html>

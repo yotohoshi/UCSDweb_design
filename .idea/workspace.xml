@@ -2,152 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="705b2695-c2c0-43d9-92cc-9df0aadc27d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Artifact/.UCSD_Sample_Screen.pptx.icloud" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/.ipynb_checkpoints/Normalizer-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/Crawler.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/HR jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/Jobs Data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/Normalizer.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/accounting jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/banker jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/construction jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/data jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/driver jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/economist jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/government jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/hardware jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/healthcare jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/libarian jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/marketing jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/pharmacist jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/security jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/software jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data Collecting/tutoring jobs.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/Job/jobs.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/Job/migrations/0002_auto_20181125_0153.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/Network/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/Network/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/Network/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/Network/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/Registration/templates/REGHTML/successful.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/migrationreset.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/problematic files/profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/problematic files/profile_right_lower.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/problematic files/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/static/css/registration.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/static/js/job.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/static/js/profiles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/templates/filter.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/templates/friend_info_popup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/templates/jobs_content.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/templates/profile_right_lower.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/templates/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Django_UCSD/templates/user_info_popup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/V1.2.5/.htaccess" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/V1.2.5/bubble.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/V1.2.5/bubble.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/V1.2.5/bubble.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/V1.2.5/iscroll.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/V1.2.5/network.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/V1.2.5/network.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/V1.2.5/network.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/V1.2.5/network_content.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/V1.2.5/network_content.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/V1.2.5/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/V1.5/.main.jpeg.icloud" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/css/decoration.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/images/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/images/10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/images/11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/images/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/images/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/images/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/images/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/images/6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/images/7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/images/8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/images/9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/js/modernizr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front-end/referral animation/js/slidedown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Artifact/UCSD_Sample_Screen.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Jobs Data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django_UCSD/.idea/Django_UCSD.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/.idea/Django_UCSD.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Django_UCSD/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Django_UCSD/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Django_UCSD/Company/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Company/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Django_UCSD/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Django_UCSD/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Django_UCSD/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Django_UCSD/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Django_UCSD/Event/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Event/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Event/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Event/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Event/templates/event.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Event/templates/event.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Event/templates/event2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Event/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Event/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Event/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Event/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Job/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Job/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Django_UCSD/Job/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Job/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Job/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Job/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Job/templates/jobs.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Job/templates/jobs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Job/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Job/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Job/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Job/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Referral/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Network/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Referral/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Referral/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Referral/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Referral/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Network/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Referral/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Referral/templates/Profile_referral.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Referral/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Network/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Referral/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Registration/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Registration/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Django_UCSD/Registration/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Registration/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Registration/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Registration/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Registration/templates/REGHTML/logged_out.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Registration/templates/REGHTML/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Registration/templates/REGHTML/password_reset_complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Registration/templates/change_password.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Registration/templates/change_password.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Registration/templates/redirect_sign_in.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Registration/templates/redirect_sign_in.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Registration/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Registration/templates/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Registration/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Registration/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/Registration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/Registration/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/User/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/User/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Django_UCSD/User/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/User/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/User/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/User/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/User/migrations/0002_auto_20181120_2041.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/User/migrations/0003_auto_20181120_2043.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/User/migrations/0004_auto_20181120_2044.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/User/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/User/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/User/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/User/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/User/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/User/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Django_UCSD/User/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/User/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Django_UCSD/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/generate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/static/css/jobs.css" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/static/css/jobs.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/static/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/static/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/static/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/static/img/main.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/static/js/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/static/js/event.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/static/js/jobs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/static/js/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/problematic files/profile.jsn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/templates/index_top_right.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/templates/index_top_right.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/templates/registration/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/templates/registration/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Django_UCSD/templates/simple_keyword_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/templates/simple_keyword_search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.2.5 edition1/index.png" beforeDir="false" afterPath="$PROJECT_DIR$/Django_UCSD/static/img/favicon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.2.5/1.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/V1.2.5/1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.2.5/jobs.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/V1.2.5/jobs.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.2.5/jobs.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/V1.2.5/jobs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.2.5/jobs_content.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/V1.2.5/jobs_content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.2.5/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/V1.2.5/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.2.5/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/V1.2.5/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.4/main.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.4/network.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/V1.4/network.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.4/network.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/V1.4/network.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.4/network.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/V1.4/network.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.4/networks.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/V1.4/networks.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.4/networks.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/V1.4/networks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/V1.5/main.jpeg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -268,78 +132,33 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1053116656">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/V1.4/networks.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
-              <folding>
-                <element signature="n#style#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/V1.4/circle.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/V1.4/network.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="3" column="64" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/V1.4/tree.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/V1.4.2/data.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5961" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/V1.4.1/index.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/V1.4.1/graph.html">
+        <entry file="file://$PROJECT_DIR$/Django_UCSD/static/js/user_creation.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/front-end/V1.4.2/index.html">
+        <entry file="file://$PROJECT_DIR$/Django_UCSD/User/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+            <state relative-caret-position="180">
+              <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/V1.4/pulse.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/V1.4/index.js">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -366,11 +185,15 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1" />
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/Django_UCSD/node_modules/boostrap/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="724" />
+    <option name="width" value="1440" />
+    <option name="height" value="811" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -378,87 +201,43 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="CSE110-UCSD-Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE110-UCSD-Frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="ucsd-fall-2018-cse110-ravioli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ucsd-fall-2018-cse110-ravioli" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="CSE110-UCSD-Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE110-UCSD-Frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="ucsd-fall-2018-cse110-ravioli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ucsd-fall-2018-cse110-ravioli" type="462c0819:PsiDirectoryNode" />
               <item name="Django_UCSD" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="CSE110-UCSD-Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE110-UCSD-Frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="ucsd-fall-2018-cse110-ravioli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ucsd-fall-2018-cse110-ravioli" type="462c0819:PsiDirectoryNode" />
               <item name="Django_UCSD" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="CSE110-UCSD-Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE110-UCSD-Frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="ucsd-fall-2018-cse110-ravioli" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ucsd-fall-2018-cse110-ravioli" type="462c0819:PsiDirectoryNode" />
               <item name="Django_UCSD" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE110-UCSD-Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE110-UCSD-Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="Django_UCSD" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE110-UCSD-Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE110-UCSD-Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="Django_UCSD" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="registration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE110-UCSD-Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE110-UCSD-Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="front-end" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE110-UCSD-Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE110-UCSD-Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="V1.2.5" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE110-UCSD-Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE110-UCSD-Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="V1.4" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE110-UCSD-Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE110-UCSD-Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="V1.4.1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CSE110-UCSD-Frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CSE110-UCSD-Frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="V1.4.2" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542848771530" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Django_UCSD" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -503,10 +282,9 @@
     <option name="totallyTimeSpent" value="11739000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="724" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="811" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28513733" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28898427" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -523,7 +301,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49919224" visible="true" weight="0.3306962" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49919224" visible="true" weight="0.32962447" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="11" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
@@ -549,19 +327,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/front-end/V1.2/new_friends.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/V1.2/events.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/V1.2/profile_right_upper.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/front-end/V1.2/jobs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -717,13 +482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/V1.4/pulse.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front-end/V1.4/pulse.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -733,19 +491,6 @@
           <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/V1.4/networks.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/V1.4/circle.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/front-end/V1.2.5/jobs.html">
       <provider selected="true" editor-type-id="text-editor" />
@@ -764,9 +509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/V1.4.1/graph.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/front-end/V1.4/network_backup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
@@ -777,19 +519,6 @@
     <entry file="file://$PROJECT_DIR$/front-end/V1.4/network.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/V1.4.1/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/V1.4/network.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="3" column="64" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/V1.4/tree.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/front-end/V1.4/test2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -797,15 +526,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/V1.4.2/data.json">
+    <entry file="file://$PROJECT_DIR$/front-end/V1.4/networks.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5961" />
+        <state relative-caret-position="330">
+          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/V1.4/circle.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/V1.4/network.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="64" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/V1.4/tree.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/V1.4.2/data.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/V1.4.1/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/V1.4.1/graph.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/front-end/V1.4.2/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/V1.4/pulse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/V1.4/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Django_UCSD/static/js/user_creation.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Django_UCSD/User/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

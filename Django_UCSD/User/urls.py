@@ -12,4 +12,5 @@ urlpatterns = [
     # url(r'^user/create/$', 'User.views.create_user'),
     path('profile/u=<uuid:account_id>/', views.Profile.as_view(), name='profile'),
     path('profile/edit', views.edit_profile, name='edit_profile'),
+    path('send_all', views.request_all, name='send_all'),
 ]

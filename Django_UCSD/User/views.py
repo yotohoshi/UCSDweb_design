@@ -8,6 +8,8 @@ from User.forms import NewUserForm
 from django.views.generic import ListView
 from User.models import User, search_By_Keywords, Major, Degree
 from Event.models import Event
+
+
 # from django.utils import simplejson
 
 
@@ -38,9 +40,19 @@ def users(request):
             return redirect('profile', account_id=usr.acc.account_id)
         else:
             print('ERROR FORM INVALID')
-            return render(request, '../templates/registration/user.html', {'form': form})
+            return render(request, '../templates/user_creation.html', {'form': form})
     else:
-        return render(request, '../templates/registration/user.html', {'form': form})
+        return render(request, '../templates/user_creation.html', {'form': form})
+
+
+def request_all(request):
+    data = {
+        'majorList': Major.getMajorList(),
+        'degreeList': Degree.getDegreeList(),
+    }
+    return JsonResponse(data)
+
+
 
 
 def profile(request, account_id):
@@ -78,13 +90,11 @@ class Profile(ListView):
         else:
             return redirect('index')
 
-
     '''def get(self, request, account_id):
         if not request.user.is_authenticated:
             return render(request, 'REGHTML/not_authorized.html')
         else:
             return render(request, 'profile_right_lower.html', {'account_id': account_id}, {'majors': Major.objects.all()})'''
-
 
 
 def edit_profile(request):
