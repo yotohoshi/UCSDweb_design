@@ -65,3 +65,5 @@ Django_UCSD/db\.sqlite3
 # database file
 *.sqlite3
 
+# initial python file
+0001_initial.py
