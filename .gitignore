@@ -61,3 +61,7 @@ node_modules/
 0001_initial.py
 
 Django_UCSD/db\.sqlite3
+
+# database file
+*.sqlite3
+
