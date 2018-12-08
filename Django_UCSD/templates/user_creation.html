@@ -68,41 +68,29 @@
         function makeMajorUL(majors1){
             var majorSelect = document.getElementById('major');
             for (var i = 0; i < majors1.length; i++) {
-
                 var option = document.createElement('option');
                 option.text = majors1[i];
                 majorSelect.add(option);
-                {#console.log('appending major');#}
-                {#major_list.appendChild(majors1[i]);#}
             }
-
-            //return major_list;
         }
 
 
 
         function makeDegreeUL(degrees1){
-            //var degree_list = document.createElement('option');
             var degreeSelect = document.getElementById('degree');
             for (var i = 0; i < degrees1.length; i++) {
                 var option = document.createElement('option');
                 option.text = degrees1[i];
                 degreeSelect.add(option);
-                //document.getElementById('degree').appendChild(degrees1[i]);
             }
-
-            //return degree_list;
         }
-
-        //document.getElementById('major').appendChild(makeMajorUL(majors));
-        //document.getElementById('degree').appendChild(makeDegreeUL(degrees));
-
     </script>
 
 
 <body>
   <div class="container-fluid col">
-    <form class="form-horizontal" role="form" action = "{% url 'new_user' %}">
+    <form class="form-horizontal" role="form" action = '{% url 'new_user' %}' method="post">
+        {% csrf_token %}
       <h2>Registration</h2>
       <div class="form-group row">
         <label for="firstName" class="col-sm-3 control-label">First Name</label>
@@ -134,7 +122,6 @@
       <div class="form-group row">
         <label for="exampleFormControlSelect1" class="col-sm-3 control-label">Select Degree:</label>
           <label for="degree"></label><select class="form-control col-sm-9" id="degree" name="degree">
-
         </select>
       </div>
        <!-- /.form-group -->

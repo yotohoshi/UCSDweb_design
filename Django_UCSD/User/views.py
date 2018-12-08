@@ -23,6 +23,7 @@ def newuser_page(request):
 
 
 def users(request):
+   # print("OK wor")
     if not request.user.is_authenticated:
         return Http404
 
@@ -33,7 +34,7 @@ def users(request):
         print("OK wor")
 
         if form.is_valid():
-            usr = form.save(commit=False)
+            usr = form.save()
             usr.acc = request.user
             usr.acc.set_new_user()
             usr.save()
