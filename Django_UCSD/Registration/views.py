@@ -106,7 +106,7 @@ def ChangePassword(request):
     if request.method == 'POST':
         if form.changepassword(request):
             logout(request)
-            return redirect('userlogin')
+            return redirect('index')
         else:
             return render(request, 'change_password.html', {'form': form})
     else:

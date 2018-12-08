@@ -94,13 +94,6 @@
         $('#logout-successful-div').load('/templates/logout_successful.html');
         $('#signin-popup').load('/templates/signin_integrated.html');
     });*/
-    var is_job = document.getElementById('adfilter');
-    if(is_job== null){
-        is_job = 'False';
-    }
-    else{
-        is_job= 'True';
-    }
     if(document.getElementById('calendar') != null){
         var logout_p = "<a href = '{% url 'profile_logout' %}' class=\"nav-link active\" id=\"logout\">Logout</a>";
         document.getElementById('signin-out').innerHTML = logout_p;

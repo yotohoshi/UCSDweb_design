@@ -6,4 +6,5 @@ $(document).ready(function() {
     //$('#signin-popup').load('/templates/login.html');
     $('#signin-popup').load('/templates/signin_integrated.html');
     $('#logout-successful-div').load('/templates/logout_successful.html');
+    //$('#user_creation_div').load('/templates/user_creation.html');
   });

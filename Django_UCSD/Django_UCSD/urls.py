@@ -64,4 +64,5 @@ urlpatterns = [
     path('templates/signin_successful.html', TemplateView.as_view(template_name='signin_successful.html')),
     path('templates/signup_successful.html', TemplateView.as_view(template_name='signup_successful.html')),
     path('404', TemplateView.as_view(template_name='404.html')),
+    path('templates/user_creation.html', TemplateView.as_view(template_name='user_creation.html')),
 ]

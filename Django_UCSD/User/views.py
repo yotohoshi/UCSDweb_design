@@ -25,25 +25,44 @@ def newuser_page(request):
 def users(request):
    # print("OK wor")
     if not request.user.is_authenticated:
-        return Http404
-
-    form = NewUserForm()
-
+        return render(request, '404.html')
+    form = NewUserForm(request.POST)
     if request.method == "POST":
-        form = NewUserForm(request.POST)
-        print("OK wor")
-
         if form.is_valid():
-            usr = form.save()
-            usr.acc = request.user
-            usr.acc.set_new_user()
-            usr.save()
-            return redirect('profile', account_id=usr.acc.account_id)
+            usr = form.create(request)
+            if usr is not None:
+                data = {
+                    'successful': True,
+                    'acc_id': usr.acc.account_id
+                }
+                usr.acc.set_new_user()
+                # TODO Gary Send Request
+                return JsonResponse(data)
+            else:
+                data = {
+                    'successful': False,
+                    'f_name_err': form['f_name'].errors,
+                    'l_name_err': form['l_name'].errors,
+                    'yr_grad_err': form['yr_graduation'].errors,
+                    'major_err': form['major'].errors,
+                    'degree_err':form['degree'].errors,
+                    'contact_email_err': form['contact_email'].errors,
+                    'alert_err': form.non_field_errors(),
+                }
+                return JsonResponse(data)
         else:
-            print('ERROR FORM INVALID')
-            return render(request, '../templates/user_creation.html', {'form': form})
+            data = {
+                'successful': False,
+                'f_name_err': form['f_name'].errors,
+                'l_name_err': form['l_name'].errors,
+                'yr_grad_err': form['yr_graduation'].errors,
+                'major_err': form['major'].errors,
+                'degree_err': form['degree'].errors,
+                'contact_email_err': form['contact_email'].errors,
+            }
+            return JsonResponse(data)
     else:
-        return render(request, '../templates/user_creation.html', {'form': form})
+        return render(request, 'user_creation.html', {'form': form})
 
 
 def request_all(request):

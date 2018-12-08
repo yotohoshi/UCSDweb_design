@@ -2,15 +2,15 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="db" uuid="1baee81b-cbf4-4102-a711-d17c59dff693">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="SQLITE" exact-version="0.0" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0.0" />
       <auth-required>false</auth-required>
     </data-source>
     <data-source name="Django sql" uuid="69442413-d0da-4f51-a7c7-b08da6ce0673">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0.0" />
       <user-name>GaryGillespie</user-name>
     </data-source>
     <data-source name="Django default" uuid="ab1b277b-a441-4fa6-8ba5-84097fc9e064">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="SQLITE" exact-version="0.0" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0.0" />
       <auth-required>false</auth-required>
     </data-source>
   </component>

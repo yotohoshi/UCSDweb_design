@@ -6,6 +6,11 @@
     </div>
     <div class="row justify-content-center">
         <!--TODO Change onclick behavior -->
-        <button class="btn btn-lg btn-outline-light" data-dismiss="modal"  onclick="reload()" style="width: 100px;">Next</button>
+        <button class="btn btn-lg btn-outline-light" data-dismiss="modal" onclick="user_creation_redirect()" style="width: 100px;">Next</button>
     </div>
 </div>
+<script>
+    function user_creation_redirect() {
+        window.location.replace('{% url 'new_user' %}');
+    }
+</script>

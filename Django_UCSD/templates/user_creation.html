@@ -3,136 +3,189 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <!-- JQuery Bootstrap and relevant CDN -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  <!-- Used for Google Login -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- <script src="index.js"></script> -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <!-- Style and loinin related CSS CDN -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{% static 'css/user_creation.css' %}">
-
-  <meta charset="utf-8">
-  <title></title>
+    <!-- JQuery Bootstrap and relevant CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <!-- Used for Google Login -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Style and loinin related CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/cover.css' %}">
+    <link rel="stylesheet" href="{% static 'css/neo_index1.css' %}">
+    <script src="{% static 'js/new_index.js' %}"></script>
+    <meta charset="utf-8">
+    <title></title>
 </head>
 
-    <script>
-    /*
-        function makeChoices(id, data){
-            var node = document.createElement("Option");                 // Create a <li> node
-            var textnode = document.createTextNode("Water");
-            for (var i = 0, len = data.length; i<len; i ++){
-                document.getElementById(id).appendChild(a+data[i]+b);
-            }
-        }
+<script>
+    //Before Execution
 
-        $(document).ready(function () {
-            var major=['k'], degree=['k'];
-            $.ajax({
-                url: '{% url 'job_fetch_data' %}',
-                dataType: 'json',
-                success: function (data) {
-                    console.log('Got major/degree list!');
-                    major = data.majors;
-                    degree = data.degrees;
-                    console.log(major.length);
-                }
-            });
-            makeChoices('major', major);
-            makeChoices('degree', degree);
+    $(document).ready(function () {
+        var majors = [];
+        var degrees = [];
+        $.ajax({
+            url: '{% url 'job_fetch_data' %}',
+            dataType: 'json',
+            success: function (data) {
+                console.log('Got major/degree list!');
+                majors = data.majors;
+                degrees = data.degrees;
+                console.log(majors);
+
+                makeMajorUL(majors);
+                makeDegreeUL(degrees);
+            }
         });
-      */
-        $(document).ready(function () {
-            var majors = [];
-            var degrees = [];
-            $.ajax({
-                url: '{% url 'job_fetch_data' %}',
-                dataType: 'json',
-                success: function (data) {
-                    console.log('Got major/degree list!');
-                    majors = data.majors;
-                    degrees = data.degrees;
-                    console.log(majors);
+    });
 
-                    makeMajorUL(majors);
-                    makeDegreeUL(degrees);
+
+    function makeMajorUL(majors1) {
+        var majorSelect = document.getElementById('major');
+        for (var i = 0; i < majors1.length; i++) {
+            var option = document.createElement('option');
+            option.text = majors1[i];
+            majorSelect.add(option);
+        }
+    }
+
+
+    function makeDegreeUL(degrees1) {
+        var degreeSelect = document.getElementById('degree');
+        for (var i = 0; i < degrees1.length; i++) {
+            var option = document.createElement('option');
+            option.text = degrees1[i];
+            degreeSelect.add(option);
+        }
+    }
+
+    function user_creation_click() {
+        var f_name = document.getElementById('f_name').value;
+        var l_name = document.getElementById('l_name').value;
+        var contact_email = document.getElementById('contact_email').value;
+        var yr_graduation = document.getElementById('yr_graduation').value;
+        var major = document.getElementById('major').value;
+        var degree = document.getElementById('degree').value;
+        $.ajax({
+            type: 'post',
+            url: "{% url 'new_user' %}",
+            data: {
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                'f_name': f_name,
+                'l_name': l_name,
+                'contact_email': contact_email,
+                'yr_graduation': yr_graduation,
+                'major': major,
+                'degree': degree,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (!data.successful) {
+                    var f_name_err = data.f_name_err;
+                    var l_name_err = data.l_name_err;
+                    var yr_grad_err = data.yr_grad_err;
+                    var major_err = data.major_err;
+                    var degree_err = data.degree_err;
+                    var contact_email_err = data.contact_email_err;
+                    var alert_err = data.alert_err;
+
+                    document.getElementById('f_name-err').innerHTML = f_name_err;
+                    document.getElementById('l_name-err').innerHTML = l_name_err;
+                    document.getElementById('yr-err').innerHTML = yr_grad_err;
+                    document.getElementById('major-err').innerHTML = major_err;
+                    document.getElementById('degree-err').innerHTML = degree_err;
+                    document.getElementById('email-err').innerHTML = contact_email_err;
+                    if(alert_err != ''){
+                        alert(alert_err);
+                    }
                 }
-            });
-        });
-
-
-        function makeMajorUL(majors1){
-            var majorSelect = document.getElementById('major');
-            for (var i = 0; i < majors1.length; i++) {
-                var option = document.createElement('option');
-                option.text = majors1[i];
-                majorSelect.add(option);
+                else{
+                    window.location.replace('/usr/profile/u='+data.acc_id);
+                }
             }
-        }
-
-
-
-        function makeDegreeUL(degrees1){
-            var degreeSelect = document.getElementById('degree');
-            for (var i = 0; i < degrees1.length; i++) {
-                var option = document.createElement('option');
-                option.text = degrees1[i];
-                degreeSelect.add(option);
-            }
-        }
-    </script>
+        })
+    }
+</script>
 
 
 <body>
-  <div class="container-fluid col">
-    <form class="form-horizontal" role="form" action = '{% url 'new_user' %}' method="post">
+<!--Modal Header Tags Ends-->
+<div class="container-fluid col">
+    <form class="form-horizontal" role="form" action='{% url 'new_user' %}'>
         {% csrf_token %}
-      <h2>Registration</h2>
-      <div class="form-group row">
-        <label for="firstName" class="col-sm-3 control-label">First Name</label>
-        <div class="col-sm-9">
-          <input type="text" id="firstName" placeholder="First Name" class="form-control" name="F_name" autofocus>
+        <h2>Registration</h2>
+        <div class="form-group row">
+            <label for="firstName" class="col-sm-3 control-label">First Name</label>
+            <div class="col-sm-9">
+                <input type="text" id="f_name" placeholder="First name" class="form-control" name="f_name"
+                       autofocus>
+            </div>
+            <div id="f_name-err" style="color: indianred">
+            </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="lastName" class="col-sm-3 control-label">Last Name</label>
-        <div class="col-sm-9">
-          <input type="text" id="lastName" placeholder="Last Name" class="form-control" name="L_name" autofocus>
+        <div class="form-group row">
+            <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+            <div class="col-sm-9">
+                <input type="text" id="l_name" placeholder="Last name" class="form-control" name="l_name"
+                       autofocus>
+            </div>
+            <div id="l_name-err" style="color: indianred">
+            </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="email" class="col-sm-3 control-label">Email* </label>
-        <div class="col-sm-9">
-          <input type="email" id="email" placeholder="Email" class="form-control" name="contact_email">
+        <div class="form-group row">
+            <label for="email" class="col-sm-3 control-label">Email* </label>
+            <div class="col-sm-9">
+                <input type="email" id="contact_email" placeholder="Email" class="form-control"
+                       name="contact_email">
+            </div>
+            <div id="email-err" style="color: indianred">
+            </div>
         </div>
-      </div>
-
-
-      <div class="form-group row">
-        <label for="exampleFormControlSelect1" class="col-sm-3 control-label">Select Major:</label>
-          <label for="major"></label>
-          <select class="form-control col-sm-9" id="major" name="major">
-
-          </select>
-      </div>
-      <div class="form-group row">
-        <label for="exampleFormControlSelect1" class="col-sm-3 control-label">Select Degree:</label>
-          <label for="degree"></label><select class="form-control col-sm-9" id="degree" name="degree">
-        </select>
-      </div>
-       <!-- /.form-group -->
-      <div class="form-group">
-        <div class="col-sm-9 col-sm-offset-3">
-          <span class="help-block">*Required fields</span>
+        <div class="form-group row">
+            <label for="exampleFormControlSelect1" class="col-sm-3 control-label">Select Major:</label>
+            <label for="major"></label>
+            <select class="form-control col-sm-9" id="major" name="major">
+            </select>
+            <div id="major-err" style="color: indianred">
+            </div>
         </div>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Register</button>
+        <div class="form-group row">
+            <label for="exampleFormControlSelect1" class="col-sm-3 control-label">Select Degree:</label>
+            <label for="degree"></label>
+            <select class="form-control col-sm-9" id="degree" name="degree">
+            </select>
+            <div id="degree-err" style="color: indianred">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="yr_graduation" class="col-sm-3 control-label">Year Of Graduartion* </label>
+            <div class="col-sm-9">
+                <input type="text" id="yr_graduation" placeholder="Year of graduation" class="form-control"
+                       name="yr_graduation">
+            </div>
+            <div id="yr-err" style="color: indianred">
+            </div>
+        </div>
+        <!-- /.form-group -->
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <span class="help-block">*Required fields</span>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" id="submit_creation"
+                onclick="user_creation_click()">Register
+        </button>
     </form> <!-- /form -->
-  </div> <!-- ./container -->
+</div> <!-- ./container -->
+
 </body>
+
 
 </html>
