@@ -28,6 +28,8 @@
 <script>
     //Before Execution
 
+
+
     $(document).ready(function () {
         var majors = [];
         var degrees = [];
@@ -118,7 +120,7 @@
 <body>
 <!--Modal Header Tags Ends-->
 <div class="container-fluid col">
-    <form class="form-horizontal" role="form" action='{% url 'new_user' %}'>
+    <form class="form-horizontal" role="form">
         {% csrf_token %}
         <h2>Registration</h2>
         <div class="form-group row">
