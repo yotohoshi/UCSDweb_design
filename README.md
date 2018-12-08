@@ -52,3 +52,21 @@ https://docs.google.com/document/d/1qaYsHiyyciDOIVTPWjbdKJRgYPviDX4PbPk7vc9fulM/
 # UCSD Java Validation API  
 https://developer.ucsd.edu/develop/data-layer/jpa/java-validation-api.html  
 
+
+## Initiate Django  
+! important !  
+For people who does not code. pull carefully! try not to push! Because pull will merge the file in your folder to master branch.  
+
+Instruction:  
+! important ! if your default python is python3. Run all regarding python commands using keyword "python3". Otherwise, using "python".  
+* 1. get the current version of our website file  
+* 2. change directory into Django_UCSD folder  
+* 3. if this is your first run: run either ```initiation.sh``` or ```initiation(python3_as_default).sh```  
+As you can see, one is for python the other is for python3. This will depend on your default python version.  
+If for some reason your initialization is failed. Please check in the script.  
+Along initialization, you might be asked to input "yes". Please type all three characters.  
+* 4. after those, run ```python manage.py runserver```  
+For this step, you may create a super user before run server. To create a super user, run ```python manage.py createsuperuser``` then follow the instruction.  
+Remember if your default python is python3, using ```python3 manage.py createsuperuser``` and ```python3 manage.py runserver```.  
+* 5. click into the link showing on the screen.  
+
