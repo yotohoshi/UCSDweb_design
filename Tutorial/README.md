@@ -34,6 +34,12 @@ https://www.geeksforgeeks.org/handling-ajax-request-in-django/
 ### Prevent Django from rendering whole page  
 https://stackoverflow.com/questions/42239922/django-return-httpresponse-before-sending-email  
 
+### CSRF Toke Renew  
+https://stackoverflow.com/questions/28149913/refreshing-csrf-tokens  
+
+### Django Redirect 302 Issue  
+https://stackoverflow.com/questions/21566228/302-status-code-when-trying-to-retrieve-token-from-rest-framework  
+
 ## Front end Graph and Relation / Scientific Display:  
 Tool http://js.cytoscape.org/  
 ### * Same Tool used locally:  
