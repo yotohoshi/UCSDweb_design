@@ -1,1 +1,2 @@
-Link to Screen Sequence Diagram: https://docs.google.com/presentation/d/1yQ6wT7xhz8TwXl9X6JKF5IfdBssj-AZSrMk4FzZmDDk/edit?usp=sharing 
+Link to Screen Sequence Diagram: https://docs.google.com/presentation/d/1yQ6wT7xhz8TwXl9X6JKF5IfdBssj-AZSrMk4FzZmDDk/edit?usp=sharing
+Sample Screens: https://docs.google.com/document/d/1xPp6AaC0j3EIxnI2TC_UBlRWjVEInbXfKN3fPbWN40s/edit
