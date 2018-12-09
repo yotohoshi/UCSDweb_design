@@ -278,7 +278,7 @@
                                                            data-target="#about{{ event.id }}" class="event_name">
                                                             <h4 class="card-title">{{ event.event_name }}</h4>
                                                         </a>
-                                                        <p class="card-text">{{ event.company.company_name | upper}}<br>{{ event.description|truncatewords:"25"  }}
+                                                        <p class="card-text">{{ event.company.company_name | upper }}<br>{{ event.description|truncatewords:"25" }}
                                                         </p>
                                                         <div class="row justify-content-right">
                                                             <div class="col-11"></div>
@@ -451,7 +451,10 @@
                                                     </div>
                                                     <div class="card-body">
 
-                                                        <h4 class="card-title">{{ job.job_position }}</h4>
+                                                        <a data-toggle="modal"
+                                                           data-target="#about{{ job.id }}" class="job_name">
+                                                            <h4 class="card-title">{{ job.job_position }}</h4>
+                                                        </a>
 
                                                         <p class="card-text">{{ job.company.company_name | upper }}<br>{{ job.description|truncatewords:"25" }}
                                                         </p>
@@ -462,6 +465,61 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div>
+                                    <link rel="stylesheet" href="{% static 'css/event_aboute.css' %}">
+                                    <style>
+                                        .modal{
+                                            overflow-y: scroll;!important;
+                                        }
+                                    </style>
+                                    <div class="modal fade bd-example-modal-lg" id="about{{ job.id }}" tabindex="-1"
+                                         role="dialog"
+                                         aria-labelledby="myModalLabel" aria-hidden="true"
+                                         style="width:auto;!important;height: 100%;!important;">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content"
+                                                 style="width:auto;!important;height: 100%;!important;">
+                                                <header style="height:40vh">
+                                                    <div class="header-content">
+                                                        <h3 class='header-title animate-pop-in'>{{ job.job_position }}</h3>
+                                                        <h4 class='header-subtitle animate-pop-in'> Post
+                                                            Date: {{ job.post_time }}</h4>
+                                                        <p></p>
+                                                    </div>
+                                                </header>
+
+                                                <div class="lower">
+                                                    <div class="row" style="height: 60px;">
+                                                        <pre class="event-large">Company: {{ job.company.company_name|upper }}</pre>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p class="event-md">Description:</p>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <p>{{ job.description }}</p>
+                                                    </div>
+
+                                                    <br>
+                                                </div>
+                                                <div class="footer" style="position:absolute; right:5%; top:90%">
+                                                    <div>
+                                                        <!--button goes here-->
+                                                        <a href="{{ job.job_URL }}">
+                                                            <button class="btn btn-sm float-right job-apply btn-dark">
+                                                                Apply
+                                                            </button>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
 
                                 <script>

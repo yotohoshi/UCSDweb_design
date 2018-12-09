@@ -1,0 +1,120 @@
+{% load static %}
+<ul>
+    {% for request in view.get_received_requests %}
+        <li>
+            <!--Displayed Row State 1-->
+            <div class="request row state1">
+                <div class="col-4">
+                    <img src="data:image/png;base64,{{ request.from_user.picdata }}" alt="avatar">
+                </div>
+                <div class="col-8">
+                    <p class="friend-name state1">{{ request.from_user }}</p>
+                </div>
+                <div class="row" style="margin-top:10px; padding-left:15px;">
+                    <div class="col-6">
+                        <button id="accept{{ request.id }}">Accept</button>
+                    </div>
+                    <div class="col-6">
+                        <button id="reject{{ request.id }}">Reject</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+
+        <!-- Controller -->
+        <script>
+            //Reload request tab
+
+            $('#accept{{ request.id }}').on('click', function () {
+                var id = {{ request.id }};
+                $.ajax({
+                    url: '{% url 'accept_request' %}',
+                    data: {
+                        'request_id': id,
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.successful) {
+                            setTimeout(function load() {
+                                $('#request').load("/network/request");
+                                $('#friend').load("/network/friends")
+                            }, 500);
+                        } else {
+                            document.getElementById('error-p').innerHTML = '<p>Unable to process this request at this time, please try again</p>';
+                            $('#err_popup').modal();
+                        }
+                    }
+                })
+            });
+
+            $('#reject{{ request.id }}').on('click', function () {
+                var id = {{ request.id }};
+                $.ajax({
+                    url: '{% url 'deny_request' %}',
+                    data: {
+                        'request_id': id,
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.successful) {
+                            setTimeout(function load() {
+                                $('#request').load("/network/request");
+                                $('#friend').load("/network/friends")
+                            }, 500);
+                        } else {
+                            document.getElementById('error-p').innerHTML = '<p>Unable to process this request at this time, please try again</p>';
+                            $('#err_popup').modal();
+                        }
+                    }
+                })
+            });
+        </script>
+    {% endfor %}
+
+    {% for request in sent_requests %}
+        <li>
+            <!--Displayed Row State 1-->
+            <div class="request row state1">
+                <div class="col-4">
+                    <img src="data:image/png;base64,{{ request.to_user.picdata }}" alt="avatar">
+                </div>
+                <div class="col-8">
+                    <p class="friend-name state1">{{ request.to_user }}</p>
+                </div>
+                <div class="row" style="margin-top:10px; padding-left:15px;">
+                    <div class="col-6">
+                        <button id="undo{{ request.id }}">Undo</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+
+        <!-- Controller -->
+        <script>
+            $('#undo{{ request.id }}').on('click', function () {
+                var id = {{ request.id }};
+                $.ajax({
+                    url: '{% url 'undo_request' %}',
+                    data: {
+                        'request_id': id,
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.successful) {
+                            setTimeout(function load() {
+                                $('#request').load("/network/request");
+                                $('#friend').load("/network/friends")
+                            }, 0);
+                        } else {
+                            document.getElementById('error-p').innerHTML = '<p>Unable to process this request at this time, please try again</p>';
+                            $('#err_popup').modal();
+                        }
+                    }
+                })
+            });
+        </script>
+    {% endfor %}
+
+</ul>

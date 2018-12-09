@@ -3,6 +3,16 @@
 
 <head>
   <meta charset="utf-8">
+  <style>
+    #searching_text_bar{
+      border-radius: 5px;
+      border: 2px solid #141414;
+    }
+
+    .btn.btn-primary{
+      border-radius: 50px;
+    }
+  </style>
   <title></title>
 </head>
 
@@ -10,14 +20,37 @@
 
 
   <div class="input-group">
-    <input type="text" class="form-control" placeholder="Title of your job...">
+    <input  id="searching_text_bar" type="text" class="form-control" placeholder="Gary Gillespie">
 
     <span class="input-group-btn">
-      <button class="btn btn-primary" type="button" style="background-color: #000;">Search</button>
+      <button class="btn btn-dark" type="button" style="background-color: #000; border-radius: 25px;" id="search-friends" onclick="search_friends()">Search</button>
     </span>
   </div><!-- input-group -->
-
-
 </body>
+
+<!-- Controller -->
+<script>
+    function search_friends () {
+        var name = document.getElementById('searching_text_bar').value;
+        $.ajax({
+            url: '{% url 'search_friend' %}',
+            data: {
+                'name':name,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if(data.successful){
+                   setTimeout(function loading(){$('#newfriend_search_result').load("/network/search_result")}, 0);
+                   $('#confirmR-{{ result.id }}').hide();
+                }
+                else{
+                    document.getElementById('error-p').innerHTML = '<p>Looks like this search is invalid, please try again</p>';
+                    $('#err_popup').modal();
+                }
+            }
+
+        })
+    }
+</script>
 
 </html>

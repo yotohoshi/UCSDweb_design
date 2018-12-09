@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        .card-body.col-11.shadow {
+            margin-bottom: 20px;
+            /* background-color:#fff !important; */
+        }
+    </style>
+</head>
+
+<body>
+<table>
+    <tr><h4>You may also know:</h4></tr>
+
+    {% for usr in recommendations %}
+        <tr>
+            <div class="card-body bg-white col-11 shadow recommendation">
+                <div class="col">
+                    <div class="row justify-content-center" data-toggle="modal" data-target="#pR-{{ usr.id }}">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample4.jpg"
+                             alt="profile-sample4" class="profile rec-avatar" id="rec-avatar"/>
+                    </div>
+                    <div class="row justify-content-center description">
+                        <p>{{ usr }}</p>
+                    </div>
+                    <div class="row justify-content-center">
+                        <button type="button" name="button" id="send-R{{ usr.id }}" onclick="Rsend_request{{ usr.id }}()">
+                            <small>Send Request</small>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Popup -->
+            <div class="modal fade d-example-modal" id="pR-{{ usr.id }}" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal">
+                    <div class="modal-content friend-popup">
+                        <figure class="snip1336">
+                            <img src="{% static 'img/bkgd.png' %}" alt="UCSD"/>
+                            <div class="x" id="X{{ usr.id }}" data-dismiss="modal">
+                                <div class="line1"></div>
+                                <div class="line2"></div>
+                            </div>
+                            <figcaption>
+                                <img src="data:image/png;base64,{{ usr.picdata }}"
+                                     alt="avatar"
+                                     class="profile"/>
+                                <h3>{{ usr.F_Name }} {{ usr.L_Name }}<span>{{ usr.major.major }}&nbsp&nbsp&nbsp&nbsp{{ usr.degree.degree }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspClass of {{ usr.yr_graduation }}</span>
+                                </h3>
+                                <h3><span>{% if user.company %}Working At&nbsp&nbsp&nbsp&nbsp
+                                    {{ usr.company.company_name }}{% else %}Currently Unemployed{% endif %}</span>
+                                </h3>
+                                <p class="description">{{ usr.description }}</p>
+                                <div class="buttons">
+                                    <a class="send-request" id="Rsend-{{ usr.id }}" onclick="Rsend_request{{ usr.id }}()">Send Request</a>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </tr>
+
+        <script type="text/javascript">
+
+            function Rsend_request{{ usr.id }}() {
+                $.ajax({
+                    url: '{% url 'send_request' %}',
+                    data: {
+                        'user_id': {{ usr.id }},
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.successful) {
+                            $('#request').load('/network/request')
+                        }
+                    }
+                })
+            }
+
+        </script>
+    {% endfor %}
+
+</table>
+</body>
+</html>

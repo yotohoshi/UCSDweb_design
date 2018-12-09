@@ -1,75 +1,4 @@
-.me {
-    background-image: url(http://i1.hdslb.com/bfs/archive/9a80896d06a9a0fd1c11b7de68d5d499cb5fa292.jpg);
-    background-size: cover;
-}
-
-.email {
-    background: #353535;
-    border-radius: 0px;
-    height: 170px;
-    overflow: hidden;
-    position: relative;
-    margin-right: 0;
-    width: 300px;
-    -webkit-tap-highlight-color: transparent;
-    transition: width 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    height 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    box-shadow 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    border-radius 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-.email:not(.expand) {
-    cursor: pointer;
-}
-
-.email:not(.expand):hover {
-    background: #484848;
-}
-
-.from {
-    height: 170px;
-    width: 300px;
-    position: absolute;
-    transition: opacity 200ms 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
-}
-
-.from-contents {
-    display: flex;
-    flex-direction: row;
-    transform-origin: 0 0;
-    transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-.to {
-    opacity: 0;
-    position: absolute;
-    transition: opacity 100ms cubic-bezier(0.4, 0.0, 1, 1);
-}
-
-.to-contents {
-    transform: scale(.55);
-    transform-origin: 0 0;
-    transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-.avatar {
-    border-radius: 40px;
-    height: 80px;
-    left: 16px;
-
-    position: relative;
-    margin-top: 12px;
-    width: 80px;
-}
-
-.name {
-    color: #ffffff;
-    font-size: 18px;
-    line-height: 30px;
-    margin-left: 30px;
-    margin-top: 30px;
-}
-
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600);
 .x {
     background: #DEDBDF;
     border-radius: 10px;
@@ -100,61 +29,11 @@
     width: 2px;
 }
 
-.bottom {
-    background: #FFF;
-    color: #444247;
-    font-size: 14px;
-    height: 430px;
-    padding-top: 5px;
-    width: 400px;
-}
-
-.email.expand {
-    border-radius: 0px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.10), 0 6px 6px rgba(0, 0, 0, 0.16);
-    height: 600px;
-    width: 400px;
-}
-
-.expand .from {
-    opacity: 0;
-    transition: opacity 100ms cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-.expand .from-contents {
-    transform: scale(1.91);
-}
-
-.expand .to {
-    opacity: 1;
-    transition: opacity 300ms 200ms cubic-bezier(0.4, 0.0, 1, 1);
-}
-
-.expand .to-contents {
-    transform: scale(1);
-}
-
-.common_friends {
-    font-size: 13px;
-    margin-bottom: 15px;
-    margin-left: 13px;
-    color: #FFFFFF;
-}
-
-hr {
-    height: 1px;
-    color: #d3d3d3;
-    background-color: #d3d3d3;
-    border: none;
-    width: 90%;
-}
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600);
 .snip1336 {
     font-family: 'Roboto', Arial, sans-serif;
     position: relative;
     overflow: hidden;
-    //margin: 10 px;
+    margin: 0;
     min-width: 230px;
     max-width: 400px;
     height: 600px;
@@ -166,9 +45,10 @@ hr {
 }
 
 .snip1336 img {
-    max-width: 100%;
-    vertical-align: top;
-    opacity: 0.85;
+    max-width: 100%;!important;
+    vertical-align: top;!important;
+    opacity: 0.85;!important;
+    border-radius: 0;!important;
 }
 
 .snip1336 figcaption {
@@ -221,13 +101,13 @@ hr {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-.snip1336 .follow {
+.snip1336 .remove-friend {
     margin-right: 4%;
-    border-color: #2980b9;
-    color: #2980b9;
+    border-color: #b13532;
+    color: #b13532;
 }
 
-.snip1336 h2 {
+.snip1336 h2, h3 {
     margin: 0 0 5px;
     font-weight: 300;
 }
@@ -235,6 +115,13 @@ hr {
 .snip1336 h2 span {
     display: block;
     font-size: 0.5em;
+    color: #2a8dd0;
+    margin-top: 10px;
+}
+
+.snip1336 h3 span {
+    display: block;
+    font-size: 15px;
     color: #2a8dd0;
     margin-top: 10px;
 }
@@ -251,8 +138,20 @@ hr {
     float: bottom;
 }
 
-.description {
+.snip1336 .description {
     display: block;
     width: 350px;
     height: 125px;
+}
+
+.friend-popup{
+    max-width: 400px;
+    max-height: 600px;
+    padding: 0;!important;
+}
+
+.snip1336 .send-request{
+    margin-right: 4%;
+    border-color: #1796e8;
+    color: #1796e8;
 }

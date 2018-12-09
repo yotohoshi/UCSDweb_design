@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <!-- JQuery CSS CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <!-- <script src="profile.js"></script> -->
+    <script src="{% static 'js/networks.js' %}"></script>
+    <script src="https://production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/network.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tabs.css' %}">
+    <link rel="stylesheet" href="{% static 'css/friend_rec_pop.css' %}">
+    <link rel="stylesheet" href="{% static 'css/newfriend_search_result1.css' %}">
+    <title>NetWork</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+<!-- Wrap all content in to a wrapper -->
+<div id="wrapper" class="animate">
+    <!-- Top navigation bar -->
+    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark">
+        <!-- Hamburger icon -->
+        <span class="navbar-toggler-icon leftmenutrigger"></span>
+
+        <!-- LOGO -->
+        <a class="navbar-brand" href="#">UCSD</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav animate side-nav" id="sidebarText"></ul>
+            <ul class="navbar-nav ml-md-auto d-md-flex" id="Topright"></ul>
+        </div>
+    </nav>
+    <!-- End of navbar and side nav slide -->
+
+    <!-- First phase of screen white background with search bar and recommandations -->
+    <div class="container-fluid" id="wholepage">
+        <!-- Whole page in one row -->
+        <div class="row">
+            <!-- FRONT PAGE ITEM -->
+            <!-- Main content: Searching New Friends and its results -->
+            <div class="col col-6" id="page1-section1">
+                <!-- Searching -->
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <!-- search bar -->
+                        <div class="row" id="keywordsearch"></div>
+                        <div class="" id="newfriend_search_result">
+                            <!-- ajax search result -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- recommandations -->
+            <div class="col col-4" id="page1-section2">
+                <div class="row">
+
+                    <div class="" id="recommandation-results"></div>
+
+                </div>
+            </div>
+            <!-- BACK PAGE ITEMS -->
+
+
+            <!-- BACK PAGE ITEMS -->
+            <!-- Main content: Searching New Friends and its results -->
+            <div class="col col-6" id="page2-section1">
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <!-- search bar -->
+                        <div class="card-body row" id="referral_people_content"></div>
+                        <!-- ajax search result -->
+                    </div>
+                </div>
+            </div>
+            <!-- </div> -->
+            <!-- recommandations -->
+            <div class="col col-4" id="page2-section2">
+                <div class="row">
+
+                    <div class="" id="referral_list"></div>
+
+                </div>
+            </div>
+            <!-- END OF BACK PAGE -->
+
+            <!--
+            <div class="card col col-10" id="recommanding">
+              <div class="card-body row justify-content-cente" id="recommandation-whole-card">
+                <div class="container-fluid row justify-content-center">
+                  <h4>You may also know:</h4>
+
+                </div>
+              </div>
+            </div> -->
+
+
+            <!-- Tags of Friends and Requests -->
+            <!-- <div class="" id="friends and requests"></div> -->
+            <div class="col col-2">
+                <!-- Requests Number -->
+                <div class="row">
+                    <div class="container-fluid">
+                        <div class="card" id="referr_border">
+                            <div class="card-header align-items-center" id="referral_num_box">
+                                <div class="container-fluid row content-justify-center">
+                                    <div class="col-5" style="padding: 0px;">
+                                        <div class="row">
+
+                                            <label class="switch">
+                                                <input type="checkbox" value="true">
+                                                <span class="slider round switch"></span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-7 col-centered" style="padding: 0px;">
+                                        <div class="row">
+                                            Referrals: 100
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of request number -->
+
+                <!-- Friends and Requests tab -->
+                <div class="" id="friend_request_tabs">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="friend-tab" data-toggle="tab" href="#friend" role="tab"
+                               aria-controls="friend" aria-selected="true">Friends</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="request-tab" data-toggle="tab" href="#request" role="tab"
+                               aria-controls="request" aria-selected="false">Requests</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent" style="height:100px;">
+                        <div class="tab-pane fade show active" id="friend" role="tabpanel" aria-labelledby="friend-tab">
+                            <!--Friends Tab-->
+                        </div>
+                        <div class="tab-pane fade" id="request" role="tabpanel" aria-labelledby="request-tab">
+                            <!--Request Tab-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End of col-2 of the right side when view is not referral-->
+            </div>
+            <!-- End of whole page as a row -->
+        </div>
+        <!-- end of whole display data container -->
+    </div>
+    <!-- end of wrapper of whole page -->
+</div>
+
+<!-- Error MSG popup -->
+<div id="error_msg"></div>
+
+</body>
+
+
+<script type="text/javascript">
+    // $(document).ready(function(){
+    // var window_height = $(window).height();
+    // var window_width = $(window).width();
+    // var c = (window_width < window_height) ? window_width : window_height;
+    // $("#recommandation-friends > img").css('height', c * 0.01);
+    // $('#recommandation-friends > img').css('width', c * 0.01);
+    // $('#recommanding').css('height', window_height * 0.8);
+    // $('#recommandation-friends').css('height', window_height * 0.15);
+    // $('#recommandation-friends').css('width', window_height * 0.18);
+    // });
+    $(document).ready(function () {
+                 setInterval(function(){$('#request').load("/network/request");}, 10000);
+            });
+</script>
+<style>
+    /* .nav-tabs>li>a:hover {
+  background-color: #303136 !important;
+  border: medium none;
+  border-radius: 0;
+  color: #fff;
+  } */
+</style>
+
+
+</html>

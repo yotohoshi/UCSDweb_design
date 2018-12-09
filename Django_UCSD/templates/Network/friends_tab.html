@@ -1,0 +1,161 @@
+{% load static %}
+<ul id="friend_front">
+    {% for friend in friends %}
+        <li>
+            <!--Displayed Row State 1-->
+            <div class="friend row state1" data-toggle="modal" data-target="#p-{{ friend.id }}">
+                <div class="col-4">
+                    <img src="data:image/png;base64,{{ friend.picdata }}" alt="avatar">
+                </div>
+                <div class="col-8">
+                    <p class="friend-name state1">{{ friend }}</p>
+                </div>
+            </div>
+            <!-- Friend Profile Popup-->
+            <div class="modal fade d-example-modal" id="p-{{ friend.id }}" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal">
+                    <div class="modal-content friend-popup">
+                        <figure class="snip1336">
+                            <img src="{% static 'img/bkgd.png' %}" alt="UCSD"/>
+                            <div class="x" id="X{{ friend.id }}" data-dismiss="modal">
+                                <div class="line1"></div>
+                                <div class="line2"></div>
+                            </div>
+                            <figcaption>
+                                <img src="data:image/png;base64,{{ friend.picdata }}"
+                                     alt="avatar"
+                                     class="profile"/>
+                                <h3>{{ friend.F_Name }} {{ friend.L_Name }}<span>{{ friend.major.major }}&nbsp&nbsp&nbsp&nbsp{{ friend.degree.degree }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspClass of {{ friend.yr_graduation }}</span>
+                                </h3>
+                                <h3><span>{% if friend.company %}Working At&nbsp&nbsp&nbsp&nbsp
+                                    {{ friend.company.company_name }}{% else %}Currently Unemployed{% endif %}</span>
+                                </h3>
+                                <p class="description">{{ friend.description }}</p>
+                                <div class="buttons">
+                                    <a class="remove-friend" id="remove-{{ friend.id }}">Remove</a>
+                                    <a class="remove-friend" id="confirmR-{{ friend.id }}">Confirm</a>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- Controller -->
+        <script>
+
+            $(document).ready(function () {
+                $('#confirmR-{{ friend.id }}').hide();
+            });
+
+            $('#remove-{{ friend.id }}').on('click', function () {
+                $('#confirmR-{{ friend.id }}').show();
+                $('#remove-{{ friend.id }}').hide();
+            });
+
+            $('#confirmR-{{ friend.id }}').on('click', function () {
+                var id = {{ friend.id }};
+                $.ajax({
+                    url: '{% url 'remove_friend' %}',
+                    data: {
+                        'user_id': id,
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if(data.successful){
+                            $('#p-{{ friend.id }}').modal('hide');
+                            setTimeout(function load(){$('#friend').load("/network/friends")}, 500);
+                        }
+                        else{
+                            document.getElementById('error-p').innerHTML = '<p>Unable to remove at this time, please try again</p>';
+                            $('#err_popup').modal();
+                        }
+                    }
+                })
+            })
+        </script>
+
+    {% endfor %}
+</ul>
+
+
+<ul id="friend_back">
+    {% for friend in friends %}
+        <li>
+            <!--Displayed Row State 1-->
+            <div class="friend row state1" data-toggle="modal" data-target="#p-{{ friend.id }}">
+                <div class="col-4">
+                    <img src="data:image/png;base64,{{ friend.picdata }}" alt="avatar">
+                </div>
+                <div class="col-8">
+                    <p class="friend-name state1">{{ friend }}</p>
+                </div>
+            </div>
+            <!-- Friend Profile Popup-->
+            <div class="modal fade d-example-modal" id="p-{{ friend.id }}" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal">
+                    <div class="modal-content friend-popup">
+                        <figure class="snip1336">
+                            <img src="{% static 'img/bkgd.png' %}" alt="UCSD"/>
+                            <div class="x" id="X{{ friend.id }}" data-dismiss="modal">
+                                <div class="line1"></div>
+                                <div class="line2"></div>
+                            </div>
+                            <figcaption>
+                                <img src="data:image/png;base64,{{ friend.picdata }}"
+                                     alt="avatar"
+                                     class="profile"/>
+                                <h3>{{ friend.F_Name }} {{ friend.L_Name }}<span>{{ friend.major.major }}&nbsp&nbsp&nbsp&nbsp{{ friend.degree.degree }}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspClass of {{ friend.yr_graduation }}</span>
+                                </h3>
+                                <h3><span>{% if friend.company %}Working At&nbsp&nbsp&nbsp&nbsp
+                                    {{ friend.company.company_name }}{% else %}Currently Unemployed{% endif %}</span>
+                                </h3>
+                                <p class="description">{{ friend.description }}</p>
+                                <div class="buttons">
+                                    <a class="remove-friend" id="remove-{{ friend.id }}">Remove</a>
+                                    <a class="remove-friend" id="confirmR-{{ friend.id }}">Confirm</a>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!-- Controller -->
+        <script>
+
+            $(document).ready(function () {
+                $('#confirmR-{{ friend.id }}').hide();
+            });
+
+            $('#remove-{{ friend.id }}').on('click', function () {
+                $('#confirmR-{{ friend.id }}').show();
+                $('#remove-{{ friend.id }}').hide();
+            });
+
+            $('#confirmR-{{ friend.id }}').on('click', function () {
+                var id = {{ friend.id }};
+                $.ajax({
+                    url: '{% url 'remove_friend' %}',
+                    data: {
+                        'user_id': id,
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        if(data.successful){
+                            $('#p-{{ friend.id }}').modal('hide');
+                            setTimeout(function load(){$('#friend').load("/network/friends")}, 500);
+                        }
+                        else{
+                            document.getElementById('error-p').innerHTML = '<p>Unable to remove at this time, please try again</p>';
+                            $('#err_popup').modal();
+                        }
+                    }
+                })
+            })
+        </script>
+
+    {% endfor %}
+</ul>

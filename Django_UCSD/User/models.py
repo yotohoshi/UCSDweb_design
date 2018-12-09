@@ -61,8 +61,9 @@ class User(models.Model):
     referral_ability = models.BooleanField(default=False)
     company = models.ForeignKey(Company.models.Company, on_delete=models.PROTECT, null=True, blank=True)
     friend = models.ManyToManyField('User', symmetrical=True, blank=True)
-    recommended_users = models.ManyToManyField('User', symmetrical=False, blank=True)
+    recommended_users = models.ManyToManyField('User', symmetrical=False, blank=True, related_name='recommended')
     picdata = models.CharField(max_length=256000)
+    search_result = models.ManyToManyField('User', symmetrical=False, blank=True, related_name='result')
 
 
     ################################################################## Getters
@@ -150,18 +151,19 @@ class User(models.Model):
         if type(user) != User:
             return False
 
-        for pal in user.friend.all():
-            if len(set(user.friend.all()).intersection(set(pal.friend.all()))) != 0:
-                user.recommended_users.add(pal)
+        for guy in User.objects.all():
+            if len(set(user.friend.all()).intersection(set(guy.friend.all()))) != 0:
+                if guy not in user.friend.all() and guy != user:
+                    user.recommended_users.add(guy)
 
         num_of_users = User.objects.all().count()
         # if the total number user is smaller than 5, add all users to his recommended list
-        if num_of_users < 5:
+        if num_of_users < 6:
             for pal in User.objects.all():
                 if pal != user:
                     user.recommended_users.add(pal)
         else:
-            while len(user.recommended_users.all()) < 5:
+            while len(user.recommended_users.all()) < 6:
                 index = randint(0, num_of_users - 1)
                 user.recommended_users.add(User.objects.all()[index])
         return True
@@ -248,9 +250,9 @@ class User(models.Model):
             if not Request.objects.filter(from_user=self).filter(to_user=target):
                 request = Request(from_user=self, to_user=target)
                 request.save()
-                print('dd')
-                if target == User.get_gary():
-                    target.accept_request(request)
+                if User.get_gary() is not None:
+                    if target == User.get_gary():
+                        target.accept_request(request)
                 return True
             else:
                 return False
@@ -260,9 +262,12 @@ class User(models.Model):
         if type(request) != Request:
             return False
         else:
-            self.friend.add(request.from_user)
-            request.delete()
-            return True
+            if request.to_user == self:
+                self.friend.add(request.from_user)
+                request.delete()
+                return True
+            else:
+                return False
 
     # deny_request
     def deny_request(self, request):
@@ -314,19 +319,31 @@ class User(models.Model):
     def get_go_events_today(self):
         return self.go.filter(date=date.today()).order_by('time')
 
+    # clear_search_results
+    def clear_search_results(self):
+        self.search_result.clear()
+        return
+
     # This function is for demonstration purposes
     # get_gary
     @staticmethod
     def get_gary():
-        return list(User.objects.filter(id=GARYID))[0]
+        try:
+            User.objects.get(id=GARYID)
+            return User.objects.get(id=GARYID)
+        except:
+            return None
 
     # gary_send_request
     @staticmethod
     def gary_send_request(user):
         print('db')
         gary = User.get_gary()
-        if gary.send_request(user):
-            return True
+        if gary is not None:
+            if gary.send_request(user):
+                return True
+            else:
+                return False
         else:
             return False
 
