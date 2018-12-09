@@ -37,6 +37,7 @@ def users(request):
                 }
                 usr.acc.set_new_user()
                 # TODO Gary Send Request
+                User.gary_send_request(usr)
                 return JsonResponse(data)
             else:
                 data = {
@@ -47,10 +48,12 @@ def users(request):
                     'major_err': form['major'].errors,
                     'degree_err':form['degree'].errors,
                     'contact_email_err': form['contact_email'].errors,
-                    'alert_err': form.non_field_errors(),
+                    'description_err': form['description'].errors,
+                    'alert_err': form['picdata'].errors,
                 }
                 return JsonResponse(data)
         else:
+            print('hh')
             data = {
                 'successful': False,
                 'f_name_err': form['f_name'].errors,
@@ -59,10 +62,12 @@ def users(request):
                 'major_err': form['major'].errors,
                 'degree_err': form['degree'].errors,
                 'contact_email_err': form['contact_email'].errors,
+                'description_err': form['description'].errors,
+                'alert_err': form['picdata'].errors,
             }
             return JsonResponse(data)
     else:
-        return render(request, 'user_creation.html', {'form': form})
+        return render(request, 'new_user_creation.html', {'form': form})
 
 
 def request_all(request):
@@ -71,14 +76,6 @@ def request_all(request):
         'degreeList': Degree.getDegreeList(),
     }
     return JsonResponse(data)
-
-
-
-
-def profile(request, account_id):
-    if request.user.account_id != account_id or not request.user.is_authenticated:
-        return redirect('index')
-    return render(request, 'profile.html')
 
 
 class Profile(ListView):

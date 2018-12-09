@@ -104,7 +104,8 @@
                         </form>
                         <div class="row" style="margin-top: 15px">
                             <div class="col-4">
-                                <a href="{% url 'changepassword' %}" class="btn btn-dark btn-sm float-right" style="position: absolute; left: 15%">Change Password</a>
+                                <a href="{% url 'changepassword' %}" class="btn btn-dark btn-sm float-right"
+                                   style="position: absolute; left: 15%">Change Password</a>
                             </div>
                             <div class="col-5"></div>
                             <div class="col-1" id="cancel-button">
@@ -277,7 +278,7 @@
                                                            data-target="#about{{ event.id }}" class="event_name">
                                                             <h4 class="card-title">{{ event.event_name }}</h4>
                                                         </a>
-                                                        <p class="card-text">{{ event.company.company_name }}<br>{{ event.description }}
+                                                        <p class="card-text">{{ event.company.company_name | upper}}<br>{{ event.description|truncatewords:"25"  }}
                                                         </p>
                                                         <div class="row justify-content-right">
                                                             <div class="col-11"></div>
@@ -293,31 +294,47 @@
                                 </div>
 
                                 <div>
-                                    <link rel="stylesheet" href="{% static 'css/event_about.css' %}">
+                                    <link rel="stylesheet" href="{% static 'css/event_aboute.css' %}">
                                     <div class="modal fade bd-example-modal-lg" id="about{{ event.id }}" tabindex="-1"
                                          role="dialog"
-                                         aria-labelledby="myModalLabel" aria-hidden="true">
+                                         aria-labelledby="myModalLabel" aria-hidden="true"
+                                         style="width:auto;!important;height: 100%;!important;">
                                         <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
+                                            <div class="modal-content"
+                                                 style="width:auto;!important;height: 100%;!important; overflow: scroll;">
 
-                                                <header>
-                                                    <div class="header-content">
+                                                <header style="height: 50vh;">
+                                                    <div class="header-content" style="height: 50vh;">
                                                         <h3 class='header-title animate-pop-in'>{{ event.event_name }}</h3>
-                                                        <h3 class='header-subtitle animate-pop-in'>Best Website Designer
-                                                            &amp; Developer Club</h3>
-                                                        <h3 class='header-info animate-pop-in'> Meeting at Room:
-                                                            200 </h3>
+                                                        <h4 class='header-subtitle animate-pop-in'>
+                                                            Date: {{ event.date }}@{{ event.time }}</h4>
+                                                        <h4 class='header-info animate-pop-in'>
+                                                            Location: {{ event.location }} </h4>
                                                         <p></p>
                                                     </div>
                                                 </header>
 
-                                                <div>
-                                                    <p>
-                                                        {{ event.description }}
-                                                    </p>
+                                                <div class="lower">
+                                                    <div class="row" style="height: 60px;">
+                                                        <pre class="event-large">Held By {{ event.company.company_name|upper }}</pre>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p class="event-md">Description:</p>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <p>{{ event.description }}</p>
+                                                    </div>
+
                                                     <br>
                                                 </div>
+                                                <div class="footer" style="position:absolute; right:5%; top:90%">
+                                                    <div id="go-button{{ event.id }}-a">
+                                                        <!--button goes here-->
+                                                    </div>
+                                                </div>
                                                 <hr>
+
                                             </div>
                                         </div>
                                     </div>
@@ -343,8 +360,10 @@
                                                     //alert("success!");
                                                     if (data.go_status) {
                                                         document.getElementById('go-button{{ event.id }}').innerHTML = not_go_button{{ event.id }};
+                                                        document.getElementById('go-button{{ event.id }}-a').innerHTML = not_go_button{{ event.id }};
                                                     } else {
                                                         document.getElementById('go-button{{ event.id }}').innerHTML = go_button{{ event.id }};
+                                                        document.getElementById('go-button{{ event.id }}-a').innerHTML = go_button{{ event.id }};
                                                     }
                                                 } else {
                                                     alert("failed");
@@ -382,8 +401,10 @@
                                             success: function (data) {
                                                 if (data.event_status) {
                                                     document.getElementById('go-button{{ event.id }}').innerHTML = not_go_button{{ event.id }};
+                                                    document.getElementById('go-button{{ event.id }}-a').innerHTML = not_go_button{{ event.id }};
                                                 } else {
                                                     document.getElementById('go-button{{ event.id }}').innerHTML = go_button{{ event.id }};
+                                                    document.getElementById('go-button{{ event.id }}-a').innerHTML = go_button{{ event.id }};
                                                 }
 
                                             }
@@ -432,7 +453,7 @@
 
                                                         <h4 class="card-title">{{ job.job_position }}</h4>
 
-                                                        <p class="card-text">{{ job.company.company_name }}<br>{{ job.description }}
+                                                        <p class="card-text">{{ job.company.company_name | upper }}<br>{{ job.description|truncatewords:"25" }}
                                                         </p>
                                                         <a href="{{ job.job_URL }}"
                                                            class="btn btn-dark btn-sm float-right">Apply</a>
@@ -483,7 +504,7 @@
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <!-- Events -->
                         {% if not view.get_referrals %}
-                            <div class="panel panel-default" id="referral_list" style="top:60px">
+                            <div class="panel panel-default" id="referral_list" style="margin-top: 60px;">
                                 <h6>Have job to offer? Everyone's expecting you!</h6>
                             </div>
                         {% else %}

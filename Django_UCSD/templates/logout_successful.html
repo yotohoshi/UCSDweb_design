@@ -18,12 +18,13 @@
     function logout_confirm() {
         var is_job = document.getElementById('adfilter');
         if (is_job == null) {
+            console.log('dd');
             is_job = 'False';
         } else {
             is_job = 'True';
         }
         if (is_job) {
-            window.location.reload();
+            window.location.replace('{% url 'job' %}');
         }
     }
 </script>

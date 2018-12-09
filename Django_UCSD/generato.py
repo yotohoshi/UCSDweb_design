@@ -420,11 +420,12 @@ event31=Event.objects.create(
     date = "2018-11-28",
     time = "17:00",
     company = company21,
-    location = "Join us for the Rady Finance Master Class with MFin Faculty, Professor Michael Melvin to discuss the lessons learned from the financial crisis and the future of global investing! Meet with faculty and current students in the Master of Finance program to find out how the program, curriculum, and network prepares students to make a significant impact on the financial sector.",
+    location = "Rady School of Management Otterson Hall, 3rd Floor (Room 3E107)",
     type = 0,
-    description = "Rady School of Management Otterson Hall, 3rd Floor (Room 3E107) 9500 Gilman Drive #0553 La Jolla, CA 92093",
+    description = "Join us for the Rady Finance Master Class with MFin Faculty, Professor Michael Melvin to discuss the lessons learned from the financial crisis and the future of global investing! Meet with faculty and current students in the Master of Finance program to find out how the program, curriculum, and network prepares students to make a significant impact on the financial sector.",
     num_views = 3487,
     num_favorites=2913)
+
 event31.save()
 
 event32=Event.objects.create(
@@ -535,9 +536,10 @@ event40 =Event.objects.create(
     company = company21,
     location = "https://register.gotowebinar.com/register/1472916060966832641",
     type = 1,
-    description = 'Interested our Rady Master of Finance Program, but have not had an opportunity to stop by the Rady School of Management for an in person visit?Join us for a virtual information session program overview,  Q&A with the MFIN admissions advisor, and hear from MFIN Faculty, Professor Michael Melvin on how this program prepares graduates to tackle significant challenges facing the financial sector.',
+    description = "Interested in our Rady Master of Finance Program, but have not had an opportunity to stop by the Rady School of Management for an in person visit?Join us for a virtual information session program overview,  Q&A with the MFIN admissions advisor, and hear from MFIN Faculty, Professor Michael Melvin on how this program prepares graduates to tackle significant challenges facing the financial sector.",
     num_views = 3562,
-    num_favorites=2761)
+    num_favorites=2761
+)
 event40.save()
 
 event61=Event.objects.create(

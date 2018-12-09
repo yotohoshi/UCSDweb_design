@@ -37,7 +37,7 @@
                                            data-target="#about{{ event.id }}" class="event_name">
                                             <h4 class="card-title">{{ event.event_name }}</h4>
                                         </a>
-                                        <p class="card-text">{{ event.description }}</p>
+                                        <p class="card-text">{{ event.description|truncatewords:"55" }}</p>
                                         <div id="go-button{{ event.id }}">
                                             <!--button goes here-->
                                         </div>
@@ -76,15 +76,19 @@
                                             //alert("success!");
                                             if (data.go_status) {
                                                 document.getElementById('go-button{{ event.id }}').innerHTML = not_go_button{{ event.id }};
+                                                document.getElementById('go-button{{ event.id }}-a').innerHTML = not_go_button{{ event.id }};
                                                 if (data.favorite_status) {
                                                     $('#{{ event.id }}').removeClass("fa-star-o").addClass("fa-star");
+                                                    $('#{{ event.id }}-a').removeClass("fa-star-o").addClass("fa-star");
                                                 }
                                                 else {
                                                     $('#{{ event.id }}').removeClass("fa-star").addClass("fa-star-o");
+                                                    $('#{{ event.id }}-a').removeClass("fa-star-o").addClass("fa-star");
                                                 }
                                             }
                                             else {
                                                 document.getElementById('go-button{{ event.id }}').innerHTML = go_button{{ event.id }};
+                                                document.getElementById('go-button{{ event.id }}-a').innerHTML = go_button{{ event.id }};
                                             }
                                         }
                                         else {
@@ -110,9 +114,11 @@
                                                 //$('#go{{ event.id }}').innerHTML = "Not Going";
                                                 if (data.event_status) {
                                                     $('#{{ event.id }}').removeClass("fa-star-o").addClass("fa-star");
+                                                    //$('#{{ event.id }}-a').removeClass("fa-star-o").addClass("fa-star");
                                                 }
                                                 else {
                                                     $('#{{ event.id }}').removeClass("fa-star").addClass("fa-star-o");
+                                                    //$('#{{ event.id }}-a').removeClass("fa-star-o").addClass("fa-star");
                                                 }
                                             }
                                         }
@@ -127,9 +133,11 @@
                                         success: function (data) {
                                             if (data.event_status) {
                                                 document.getElementById('go-button{{ event.id }}').innerHTML = not_go_button{{ event.id }};
+                                                document.getElementById('go-button{{ event.id }}-a').innerHTML = not_go_button{{ event.id }};
                                             }
                                             else {
                                                 document.getElementById('go-button{{ event.id }}').innerHTML = go_button{{ event.id }};
+                                                document.getElementById('go-button{{ event.id }}-a').innerHTML = go_button{{ event.id }};
                                             }
 
                                         }
@@ -140,6 +148,7 @@
                                 $('#icon{{ event.id }}').on('click', function () {
                                     //alert("lll");
                                     $(this).find('#{{ event.id }}').toggleClass("fa-star fa-star-o");
+                                    //$(this).find('#{{ event.id }}-a').toggleClass("fa-star fa-star-o");
                                     $.ajax({
                                         url: "{% url 'event_add_to_favorite'%}",
                                         data: {

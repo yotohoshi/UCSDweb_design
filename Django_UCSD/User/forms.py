@@ -13,12 +13,16 @@ class NewUserForm(forms.Form):
     major = forms.CharField(max_length=100, required=True)
     degree = forms.CharField(max_length=100, required=True)
     contact_email = forms.EmailField()
+    description = forms.CharField(max_length=1500, required=True)
+    picdata = forms.CharField(max_length=256000)
 
     def create(self, request):
+
         yr_graduation_val = True
         major_val = True
         degree_val = True
         email_val = True
+        des_val = True
         # validate info
         f_name = self.cleaned_data['f_name']
 
@@ -36,31 +40,50 @@ class NewUserForm(forms.Form):
 
         # Check major
         major = self.cleaned_data['major']
-        major_obj = Major.objects.get(major=major)
-        if major_obj is None:
+        major_obj = None
+        try:
+            major_obj = list(Major.objects.filter(major=major))[0]
+        except:
             self.add_error('major', 'Please choose from valid majors')
             major_val = False
 
         # Check Degree
         degree = self.cleaned_data['degree']
-        degree_obj = Degree.objects.get(degree=degree)
-        if degree_obj is None:
+
+        # degree_obj = None
+        try:
+            degree_obj = list(Degree.objects.filter(degree=degree))[0]
+
+        except:
             self.add_error('degree', 'Please choose from valid degrees')
             degree_val = False
-
         # Check email
         contact_email = self.cleaned_data['contact_email']
         try:
             validators.validate_email(contact_email)
-            email_val = True
 
         except ValidationError:
                 self.add_error('contact_email', 'Please use a valid contact email')
                 email_val = False
 
-        if yr_graduation_val and major_val and degree_val and email_val:
+        # Check description
+        description = self.cleaned_data['description']
+        if len(description) < 50:
+            self.add_error('description', 'Description must be greater than 50 characters')
+            des_val = False
+
+        elif len(description) > 1500:
+            self.add_error('description', 'Description must be less than 1500 characters')
+            des_val = False
+
+        print(yr_graduation_val, major_val, degree_val, email_val, des_val)
+        if yr_graduation_val and major_val and degree_val and email_val and des_val:
+            picdata = None
             # if invalid info
             account = request.user
+            if self.cleaned_data['picdata'] is not None:
+                picdata = self.cleaned_data['picdata']
+
             try:
                 usr = User.objects.create(F_Name=f_name,
                                         L_Name=l_name,
@@ -68,7 +91,10 @@ class NewUserForm(forms.Form):
                                         major=major_obj,
                                         degree=degree_obj,
                                         contact_email=contact_email,
-                                        acc=account)
+                                        description=description,
+                                        acc=account,
+                                        picdata=picdata)
+
                 if usr is not None:
                     usr.save()
                     return usr

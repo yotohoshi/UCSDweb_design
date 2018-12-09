@@ -1,24 +1,39 @@
-
-    <link rel="stylesheet" href="{% static 'css/event_about.css' %}">
+{% extends 'profile_right_lower.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/event_aboute.css' %}">
     <div class="modal fade bd-example-modal-lg" id="about{{ event.id }}" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
+         aria-labelledby="myModalLabel" aria-hidden="true" style="width:auto;!important;height: 100%;!important;">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+            <div class="modal-content" style="width:auto;!important;height: 100%;!important;">
 
                     <header>
                         <div class="header-content">
                             <h3 class='header-title animate-pop-in'>{{ event.event_name }}</h3>
-                            <h3 class='header-subtitle animate-pop-in'>Best Website Designer &amp; Developer Club</h3>
-                            <h3 class='header-info animate-pop-in'> Meeting at Room: 200 </h3>
+                            <h4 class='header-subtitle animate-pop-in'>Date: {{ event.date }}@{{ event.time }}</h4>
+                            <h4 class='header-info animate-pop-in'>Location: {{ event.location}} </h4>
                             <p></p>
                         </div>
                     </header>
 
-                    <div>
-                        <p>
-                            {{ event.description }}
-                        </p>
+                    <div class="lower">
+                        <div class="row" style="height: 60px;">
+                        <pre class="event-large">Held By {{ event.company.company_name|upper }}</pre>
+                        </div>
+                        <div class="row">
+                           <p class="event-md">Description:</p>
+                        </div>
+
+                        <div class="row">
+                        <p>{{ event.description}}</p>
+                        </div>
+
                         <br>
+                    </div>
+                    <div class="footer" style="position:absolute; right:5%; top:90%">
+                        <div id="go-button{{ event.id }}-a">
+                            <!--button goes here-->
+                        </div>
                     </div>
                 <hr>
 
@@ -26,6 +41,7 @@
         </div>
     </div>
 
+{% endblock %}
 
 
 

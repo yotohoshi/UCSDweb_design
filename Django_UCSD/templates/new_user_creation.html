@@ -1,308 +1,313 @@
+{% extends 'base.html' %}
 {% load static %}
-<script src="{% static 'js/add_referral.js' %}"></script>
-<link rel="stylesheet" href="{% static 'css/add_referral.css' %}">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
-      rel='stylesheet' type='text/css'>
-<div class="modal fade bd-example-modal-lg" id="add-referral" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-body referral">
-                <div class="row justify-content-center">
-                    <h1>Personal Information</h1>
-                </div>
-                <!-- show steps-->
-                <ul class="steps">
-                    <li class="is-active"><h5>Step 1</h5></li>
-                    <li><h5>Step 2</h5></li>
-                </ul>
-                <!-- container -->
-                <div class="container_ref">
-                    <form class="form-wrapper" name="form" id="add_ref_form">
-                        <div class="section is-active">
+{% block content %}
 
-                            <!--Name-->
-                            <div class="row ">
-                                <div class="col-6">
-                                    <div class="row">
-                                        <input type="text" name="f_name" id="f_name"
-                                               placeholder="First Name">
-                                        <label for="f_name">Graduation Year</label>
-                                    </div>
-                                    <div class="row">
-                                        <p id="err-F" style="color: indianred;"></p>
-                                    </div>
+    <script src="https://www.xarg.org/download/pnglib.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/identicon.js/2.3.3/identicon.js"></script>
+    <link rel="stylesheet" href="{% static 'css/add_referral.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <style>
+        .row {
+            max-width: 800px;
+            align-self: center;
+        }
+    </style>
+    <div class="card bg-white shadow container justify-content-center" style="padding-top: 50px; max-width: 960px;">
+        <div class="referral">
+            <div class="row justify-content-center" style="max-width: 2000px;!important;">
+                <h1>Personal Information</h1>
+            </div>
+            <!-- show steps-->
+            <ul class="steps">
+                <li class="is-active"><h5>Step 1</h5></li>
+                <li><h5>Step 2</h5></li>
+            </ul>
+            <!-- container -->
+            <div class="container_ref">
+                <form class="form-wrapper" name="form" id="add_ref_form">
+                    <div class="section is-active">
+
+                        <!--Name-->
+                        <div class="row ">
+                            <div class="col-6">
+                                <div class="row">
+                                    <input type="text" name="f_name" id="f_name"
+                                           placeholder="First Name">
+                                    <label for="f_name">First Name</label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="row">
-                                        <input type="text" name="l_name" id="l_name"
-                                               placeholder="Last Name">
-                                        <label for="l_name">Contact Email</label>
-                                    </div>
-                                    <div class="row">
-                                        <p id="err-L" style="color: indianred;"></p>
-                                    </div>
+                                <div class="row">
+                                    <p id="err-F" style="color: indianred;"></p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <input type="text" name="l_name" id="l_name"
+                                           placeholder="Last Name">
+                                    <label for="l_name">Last Name</label>
+                                </div>
+                                <div class="row">
+                                    <p id="err-L" style="color: indianred;"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Year of Graduation and Contact Email-->
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+                                    <input type="text" name="yr_graduation" id="yr_graduation"
+                                           placeholder="Year of Graduation">
+                                    <label for="yr_graduation">Graduation Year</label>
+                                </div>
+                                <div class="row">
+                                    <p id="err-Y" style="color: indianred;"></p>
                                 </div>
                             </div>
 
-                            <!--Year of Graduation and Contact Email-->
-                            <div class="row ">
-                                <div class="col-6">
-                                    <div class="row">
-                                        <input type="text" name="yr_graduation" id="yr_graduation"
-                                               placeholder="Year of Graduation">
-                                        <label for="yr_graduation">Graduation Year</label>
-                                    </div>
-                                    <div class="row">
-                                        <p id="err-Y" style="color: indianred;"></p>
-                                    </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <input type="text" name="contact_email" id="contact_email"
+                                           placeholder="Can be different from your registration email">
+                                    <label for="contact_email">Contact Email</label>
                                 </div>
-                                <div class="col-6">
-                                    <div class="row">
-                                        <input type="text" name="contact_email" id="contact_email"
-                                               placeholder="Can be different from your registration email">
-                                        <label for="contact_email">Contact Email</label>
-                                    </div>
-                                    <div class="row">
-                                        <p id="err-E" style="color: indianred;"></p>
-                                    </div>
+                                <div class="row">
+                                    <p id="err-E" style="color: indianred;"></p>
                                 </div>
                             </div>
+                        </div>
 
-                            <!--Major and Degree-->
-                            <div class="row ">
-                                <div class="col-6">
-                                    <div class="row">
-                                        <input type="text" name="major" id="search-M" onkeyup="changeInputM(this.value)"
-                                               placeholder="Major requirement">
-                                        <label for="search-M">Major</label>
-                                        <div id="result-M" class="list-group"></div>
-                                    </div>
-                                    <div class="row">
-                                        <p id="err-M" style="color: indianred;"></p>
-                                    </div>
+
+                        <!--Major and Degree-->
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+                                    <input type="text" name="major" id="search-M" onkeyup="changeInputM(this.value)"
+                                           placeholder="Major requirement">
+                                    <label for="search-M">Major</label>
+                                    <div id="result-M" class="list-group"></div>
                                 </div>
-
-                                <div class="col-6">
-                                    <div class="row">
-                                        <input type="text" name="degree" id="search-D"
-                                               onkeyup="changeInputD(this.value)"
-                                               placeholder="Degree requirement">
-                                        <label for="search-D">Degree</label>
-                                        <div id="result-D" class="list-group"></div>
-                                    </div>
-                                    <div class="row">
-                                        <p id="err-D" style="color: indianred;"></p>
-                                    </div>
+                                <div class="row">
+                                    <p id="err-M" style="color: indianred;"></p>
                                 </div>
                             </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <input type="text" name="degree" id="search-D"
+                                           onkeyup="changeInputD(this.value)"
+                                           placeholder="Degree requirement">
+                                    <label for="search-D">Degree</label>
+                                    <div id="result-D" class="list-group"></div>
+                                </div>
+                                <div class="row">
+                                    <p id="err-D" style="color: indianred;"></p>
+                                </div>
+                            </div>
+                        </div>
 
-
-                            <!--Description-->
-                            <div class="row justify-content-center">
-                                <textarea name="description" id="_description"
+                        <!--Description-->
+                        <div class="row justify-content-center">
+                                <textarea name="description" id="description"
                                           placeholder="Tell us more about you"></textarea>
-                                <label for="_description">Your Description</label>
-                            </div>
-                            <div class="row">
-                                <p id="err-Des" style="color: indianred;"></p>
-                            </div>
-
-                            <div class="row justify-content-right">
-                                <button class="next-button" type="submit" tabindex="0" style="margin-left: auto;">
-                                    Submit
-                                </button>
-                            </div>
+                            <label for="description">Your Description</label>
+                        </div>
+                        <div class="row">
+                            <p id="err-Des" style="color: indianred;"></p>
                         </div>
 
-                        <!--Success-->
-                        <div class="section">
-                            <div class="row justify-content-center">
-                                <h3>
-                                    Congratulations
-                                </h3>
-                            </div>
-                            <div class="row justify-content-center">
-                                <h4>
-                                    You are all set and good to go!
-                                </h4>
-                            </div>
-                            <div class="row blank"><br></div>
-                            <div class="row justify-content-center">
-                                <button class="exit-button" tabindex="0" data-dismiss="modal">Explore My Profile</button>
-                            </div>
+                        <div class="row justify-content-right">
+                            <button class="next-button" type="button" tabindex="0" style="margin-left: auto;">
+                                Submit
+                            </button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+
+                    <!--Success-->
+                    <div class="section">
+                        <div class="row justify-content-center">
+                            <h3>
+                                Congratulations
+                            </h3>
+                        </div>
+                        <div class="row justify-content-center">
+                            <h4>
+                                You are all set and good to go!
+                            </h4>
+                        </div>
+                        <div class="row blank"><br></div>
+                        <div class="row justify-content-center">
+                            <button class="exit-button" tabindex="0" data-dismiss="modal"
+                                    onclick="window.location.replace('/usr/profile/u='+ID);">Explore My Profile
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
 
-<script>
+    <script>
 
-    //Global Variables
-     var SUCCESS = true;
-
-
-    //Before Execution
-
-    //Fetch Data
-     $(document).ready(function () {
+        //Global Variables
+        var SUCCESS = false;
+        var ID;
         var majors = [];
         var degrees = [];
-        $.ajax({
-            url: '{% url 'job_fetch_data' %}',
-            dataType: 'json',
-            success: function (data) {
-                console.log('Got major/degree list!');
-                majors = data.majors;
-                degrees = data.degrees;
-                console.log(majors);
 
-                makeMajorUL(majors);
-                makeDegreeUL(degrees);
+        //Before Execution
+
+        //Fetch Data
+        $(document).ready(function () {
+            //var majors = [];
+            //var degrees = [];
+            $.ajax({
+                url: '{% url 'job_fetch_data' %}',
+                dataType: 'json',
+                success: function (data) {
+                    console.log('Got major/degree list!');
+                    majors = data.majors;
+                    degrees = data.degrees;
+                }
+            });
+
+            $(".form-wrapper .next-button").click(function () {
+                var button = $(this);
+                var currentSection = button.parents(".section");
+                var currentSectionIndex = currentSection.index();
+                var headerSection = $('.steps li').eq(currentSectionIndex);
+
+                //have to pass validation in order to pass to server side
+
+                //submit form
+                if (currentSectionIndex === 0) {
+                    var f_name = document.getElementById('f_name').value;
+                    var l_name = document.getElementById('l_name').value;
+                    var contact_email = document.getElementById('contact_email').value;
+                    var yr_graduation = document.getElementById('yr_graduation').value;
+                    var major = document.getElementById('search-M').value;
+                    var degree = document.getElementById('search-D').value;
+                    var description = document.getElementById('description').value;
+                    var UID ="{{ user.account_id }}";
+                    var validID =UID.replace(/-/g, "");
+                    let picdata = new Identicon(validID, 420).toString();
+                    $.ajax({
+                        type: 'post',
+                        url: "{% url 'new_user' %}",
+                        data: {
+                            csrfmiddlewaretoken: '{{ csrf_token }}',
+                            'f_name': f_name,
+                            'l_name': l_name,
+                            'contact_email': contact_email,
+                            'yr_graduation': yr_graduation,
+                            'major': major,
+                            'degree': degree,
+                            'description': description,
+                            'picdata': picdata,
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            if (!data.successful) {
+                                var f_name_err = data.f_name_err;
+                                var l_name_err = data.l_name_err;
+                                var yr_grad_err = data.yr_grad_err;
+                                var major_err = data.major_err;
+                                var degree_err = data.degree_err;
+                                var contact_email_err = data.contact_email_err;
+                                var alert_err = data.alert_err;
+                                var description_err = data.description_err;
+
+
+                                document.getElementById('err-F').innerHTML = f_name_err;
+                                document.getElementById('err-L').innerHTML = l_name_err;
+                                document.getElementById('err-Y').innerHTML = yr_grad_err;
+                                document.getElementById('err-M').innerHTML = major_err;
+                                document.getElementById('err-D').innerHTML = degree_err;
+                                document.getElementById('err-E').innerHTML = contact_email_err;
+                                document.getElementById('err-Des').innerHTML = description_err;
+                                if (alert_err != '' || alert_err != undefined || alert_err != 'undefined') {
+                                    alert(alert_err);
+                                }
+                                SUCCESS = false;
+                            } else {
+                                ID = data.acc_id;
+                                SUCCESS = true;
+                                console.log(SUCCESS+'T1');
+                            }
+                        }
+                    });
+                    console.log(SUCCESS+'T3');
+                    setTimeout(function() {
+                        if (SUCCESS) {
+                            currentSection.removeClass("is-active").next().addClass("is-active");
+                            headerSection.removeClass("is-active").next().addClass("is-active");
+                        } else {
+                            alert("Oops, something went wrong, please try again!")
+                        }
+                    }, 1500);
+                }
+
+            });
+            $(".form-wrapper").submit(function (e) {
+                e.preventDefault();
+            });
+
+            /*$(".exit-button").click(function () {
+               alert('jj');
+                window.location.replace('/usr/profile/u='+ID);
+            })*/
+        })
+
+
+        //During Execution
+
+        //Search in Dataset
+        function matchList(input, data) {
+            var reg = new RegExp(input.split("").join("\\w*").replace(/\W/, ""), "i");
+            var res = [];
+            if (input.trim().length === 0) {
+                return res;
             }
-        });
-    });
-
-
-    //During Execution
-
-    //Search in Dataset
-    function matchList(input, data) {
-        var reg = new RegExp(input.split("").join("\\w*").replace(/\W/, ""), "i");
-        var res = [];
-        if (input.trim().length === 0) {
+            for (var i = 0, len = data.length; i < len; i++) {
+                if (data[i].match(reg)) {
+                    res.push(data[i]);
+                }
+            }
             return res;
         }
-        for (var i = 0, len = data.length; i < len; i++) {
-            if (data[i].match(reg)) {
-                res.push(data[i]);
+
+        //Controller of major search
+        function changeInputM(val) {
+            var autoCompleteResult = matchList(val, majors);
+            document.getElementById("result-M").innerHTML = "";
+            for (var i = 0, limit = 10, len = autoCompleteResult.length; i < len && i < limit; i++) {
+                document.getElementById("result-M").innerHTML += "<a class='list-group-item list-group-item-action' href='#' onclick='setSearchM(\"" + autoCompleteResult[i] + "\")'>" + autoCompleteResult[i] + "</a>";
             }
         }
-        return res;
-    }
 
-    //Controller of major search
-    function changeInputM(val) {
-        var autoCompleteResult = matchList(val, majors);
-        document.getElementById("result-M").innerHTML = "";
-        for (var i = 0, limit = 10, len = autoCompleteResult.length; i < len && i < limit; i++) {
-            document.getElementById("result-M").innerHTML += "<a class='list-group-item list-group-item-action' href='#' onclick='setSearchM(\"" + autoCompleteResult[i] + "\")'>" + autoCompleteResult[i] + "</a>";
+        function setSearchM(value) {
+            document.getElementById('search-M').value = value;
+            document.getElementById("result-M").innerHTML = "";
         }
-    }
 
-     function setSearchM(value) {
-        document.getElementById('search-M').value = value;
-        document.getElementById("result-M").innerHTML = "";
-    }
-
-    //Controller of degree search
-    function changeInputD(val) {
-        var autoCompleteResult = matchList(val, degrees);
-        document.getElementById("result-D").innerHTML = "";
-        for (var i = 0, limit = 10, len = autoCompleteResult.length; i < len && i < limit; i++) {
-            document.getElementById("result-D").innerHTML += "<a class='list-group-item list-group-item-action' href='#' onclick='setSearchD(\"" + autoCompleteResult[i] + "\")'>" + autoCompleteResult[i] + "</a>";
+        //Controller of degree search
+        function changeInputD(val) {
+            var autoCompleteResult = matchList(val, degrees);
+            document.getElementById("result-D").innerHTML = "";
+            for (var i = 0, limit = 10, len = autoCompleteResult.length; i < len && i < limit; i++) {
+                document.getElementById("result-D").innerHTML += "<a class='list-group-item list-group-item-action' href='#' onclick='setSearchD(\"" + autoCompleteResult[i] + "\")'>" + autoCompleteResult[i] + "</a>";
+            }
         }
-    }
 
-    function setSearchD(value) {
-        document.getElementById('search-D').value = value;
-        document.getElementById("result-D").innerHTML = "";
-    }
-
-    //Step Control
-    $(document).ready(function () {
-        $(".form-wrapper .next-button").click(function () {
-            var button = $(this);
-            var currentSection = button.parents(".section");
-            var currentSectionIndex = currentSection.index();
-            var headerSection = $('.steps li').eq(currentSectionIndex);
-
-            //have to pass validation in order to pass to server side
-
-            //submit form
-            if (currentSectionIndex === 0) {
-                    if (SUCCESS) {
-                        currentSection.removeClass("is-active").next().addClass("is-active");
-                        headerSection.removeClass("is-active").next().addClass("is-active");
-                    } else {
-                        alert("Oops, something went wrong, please try again!")
-                    }
-            }
-            if (currentSectionIndex === 1) {
-
-                    currentSection.removeClass("is-active").next().addClass("is-active");
-                    $(document).find(".form-wrapper .section").first().addClass("is-active");
-                    $(document).find(".steps li").first().addClass("is-active");
+        function setSearchD(value) {
+            document.getElementById('search-D').value = value;
+            document.getElementById("result-D").innerHTML = "";
+        }
 
 
-            }
-        });
+        //After Execution
 
-        $(".exit-button").click(function () {
-            var button = $(this);
-            var currentSection = button.parents(".section");
-            currentSection.removeClass("is-active").next().addClass("is-active");
-            $(document).find(".form-wrapper .section").first().addClass("is-active");
-            $(document).find(".steps li").first().addClass("is-active");
-            reload();
-        })
-    });
+        function user_creation_click() {
 
-
-    //After Execution
-
-    function user_creation_click() {
-        var f_name = document.getElementById('f_name').value;
-        var l_name = document.getElementById('l_name').value;
-        var contact_email = document.getElementById('contact_email').value;
-        var yr_graduation = document.getElementById('yr_graduation').value;
-        var major = document.getElementById('search-M').value;
-        var degree = document.getElementById('search-D').value;
-        var description = document.getElementById('description').value;
-        $.ajax({
-            type: 'post',
-            url: "{% url 'new_user' %}",
-            data: {
-                csrfmiddlewaretoken: '{{ csrf_token }}',
-                'f_name': f_name,
-                'l_name': l_name,
-                'contact_email': contact_email,
-                'yr_graduation': yr_graduation,
-                'major': major,
-                'degree': degree,
-                'description': description,
-            },
-            dataType: 'json',
-            success: function (data) {
-                if (!data.successful) {
-                    var f_name_err = data.f_name_err;
-                    var l_name_err = data.l_name_err;
-                    var yr_grad_err = data.yr_grad_err;
-                    var major_err = data.major_err;
-                    var degree_err = data.degree_err;
-                    var contact_email_err = data.contact_email_err;
-                    var alert_err = data.alert_err;
-                    var description_err = data.description_err;
-
-                    document.getElementById('err-F').innerHTML = f_name_err;
-                    document.getElementById('err-L').innerHTML = l_name_err;
-                    document.getElementById('err-Y').innerHTML = yr_grad_err;
-                    document.getElementById('err-M').innerHTML = major_err;
-                    document.getElementById('err-D').innerHTML = degree_err;
-                    document.getElementById('err-E').innerHTML = contact_email_err;
-                    document.getElementById('err-Des').innerHTML = description_err;
-                    if(alert_err != ''){
-                        alert(alert_err);
-                    }
-                }
-                else{
-                    SUCCESS = true;
-                }
-            }
-        })
-    }
-</script>
+        }
+    </script>
+{% endblock %}

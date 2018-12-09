@@ -14,7 +14,7 @@ from django.utils.http import urlsafe_base64_decode
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
-
+from User.models import User
 from .forms import LoginForm, SignupForm, ChangePasswordForm
 from django import forms
 from django.shortcuts import render, redirect, resolve_url
@@ -57,12 +57,20 @@ def UserLogin(request):
     if request.method == 'POST':
         usr = form.login(request)
         if usr is not None:
-            data = {
-                'successful': True,
-                'account_id': usr.account_id,
-                'name': usr.user.__str__(),
-            }
-            return JsonResponse(data)
+            if request.user.is_new_user:
+                data = {
+                    'successful': True,
+                    'new_user': True,
+                }
+                return
+            else:
+                data = {
+                    'successful': True,
+                    'account_id': usr.account_id,
+                    'name': usr.user.__str__(),
+                    'new_user': False,
+                }
+                return JsonResponse(data)
         else:
             dne_err = form.non_field_errors()
             password_err = form['password'].errors
@@ -70,11 +78,11 @@ def UserLogin(request):
                 'successful': False,
                 'dne_err': dne_err,
                 'password_err': password_err,
+                'new_user': False,
             }
             return JsonResponse(data)
     else:
-        form = LoginForm
-        return render(request, 'redirect_sign_in.html', {'form': form})
+        return render(request, '404.html')
 
 
 def UserLogout(request):
@@ -100,13 +108,12 @@ def PasswordRetrievalEmail(request):
 
 def ChangePassword(request):
     if not request.user.is_authenticated:
-        logout(request)
-        return redirect('userlogin')
+        return render(request, '404.html')
     form = ChangePasswordForm(request.POST)
     if request.method == 'POST':
         if form.changepassword(request):
             logout(request)
-            return redirect('index')
+            return render(request, 'REGHTML/password_change_complete.html')
         else:
             return render(request, 'change_password.html', {'form': form})
     else:

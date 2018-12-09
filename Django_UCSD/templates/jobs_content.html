@@ -29,28 +29,29 @@
                                 <div class="card-header align-items-center">
                                     <div class="row">
                                         <div class="col">
-                                            <h6>Post Time: {{ job.post_time }}</h6>
+                                            <h6>{{ job.location }} / {{ job.post_time }}</h6>
                                         </div>
                                         <div class="col">
-                                            <form class="foat-right" action="index.html" method="post">
-                                                <button type="button" class="btn btn-default float-right"
-                                                        id="icon{{ job.id }}">
-                                                    <i id="{{ job.id }}" class="fa fa-star-o" aria-hidden="false"></i>
-                                                </button>
-                                            </form>
+                                            <button type="button" class="btn btn-default float-right"
+                                                    id="icon{{ job.id }}">
+                                                <i id="{{ job.id }}" class="fa fa-star-o" aria-hidden="false"></i>
+                                            </button>
+                                            <div id="about-popup">
+                                                {% block content %}
+                                                {% endblock %}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <a href="event http">
+                                    <a data-toggle="modal"
+                                       data-target="#about{{ job.id }}" class="job_name">
                                         <h4 class="card-title">{{ job.job_position }}</h4>
                                     </a>
-                                    <p class="card-text">{{ job.company.company_name }}</p>
-                                    <p class="card-text">{{ job.short_description }}</p>
-                                    <a href="#" class="btn btn-dark btn-sm float-right job-apply">Apply</a>
-                                    {% if user.is_authenticated and user.user.major not in job.Major_Require.all %}
-                                        <p style="color:indianred">Your major is not compatible with this job offer</p>
-                                    {% endif %}
+                                    <p class="card-text">{{ job.short_description|truncatewords:"55" }}</p>
+                                    <div>
+                                        <a href="{{ job.job_URL }}"><button class="btn btn-sm float-right job-apply btn-dark">Apply</button></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

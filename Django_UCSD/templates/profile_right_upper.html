@@ -24,12 +24,8 @@
             </div>
             {# Profile Image #}
             <div class="col col-5">
-                <div class="profile-img">
-                    <img style="max-width: 100%; max-height: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                    <div class="file btn btn-lg btn-primary" id="change_button">
-                        Change Photo
-                        <input type="file" name="file"/>
-                    </div>
+                <div class="profile-img" id="profilePic">
+                    <!--<img style="max-width: 100%; max-height: 100%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>-->
                 </div>
             </div>
         </div>
@@ -57,5 +53,13 @@
 
 
 </body>
+<script>
+    //Get pic data
+    var a = '<img width=100 height=100 src="data:image/png;base64,';
+    var b = '">';
+    var c = a + "{{ user.user.picdata }}" + b;
+    document.getElementById('profilePic').innerHTML = c;
+
+</script>
 
 </html>

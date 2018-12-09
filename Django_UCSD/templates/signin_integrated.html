@@ -1,5 +1,5 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/sign_integrated.css' %}">
+<link rel="stylesheet" href="{% static 'css/signin_integrated.css' %}">
 <script src="{% static 'js/sign_integrated1.js' %}"></script>
 
 <!-- Signin/Up modal-->
@@ -101,6 +101,11 @@
             dataType: 'json',
             success: function (data) {
                 if (data.successful) {
+
+                    if(data.new_user){
+                        window.location.replace('{% url 'new_user' %}');
+                    }
+
                     //alert('success!');
                     var usr_a = "<a class=\"nav-link usrname\"\n" +
                         "               href=\"usr/profile/u=";

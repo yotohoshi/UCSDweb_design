@@ -63,8 +63,9 @@ class ChangePasswordForm(forms.Form):
             old_password = self.cleaned_data['old_password']
             new_password = self.cleaned_data['new_password']
             confirmed_password = self.cleaned_data['confirmed_password']
-            email = request.user
+            email = request.user.email
             user = authenticate(email=email, password=old_password)
+            print(email, old_password)
             if user is not None:
                 if new_password == confirmed_password:
                     user.set_password(new_password)
@@ -74,6 +75,6 @@ class ChangePasswordForm(forms.Form):
                     self.add_error('confirmed_password', "confirm password is not the same")
                     return False
             else:
-                self.add_error('Old_password', "Incorrect password")
+                self.add_error('old_password', "Incorrect password")
                 return False
 

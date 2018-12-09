@@ -22,7 +22,7 @@ DEGS = ['BS', 'BA', 'MS', 'MA', 'PHD', 'MBA', 'NO LIMITED']
 
 class JobDefault(ListView):
     context_object_name = 'jobs'
-    template_name = 'jobs_content.html'
+    template_name = 'jobs_about.html'
     paginate_by = 5
 
     @overrides
@@ -41,7 +41,7 @@ class JobDefault(ListView):
 
 class JobSearch(ListView):
     context_object_name = 'jobs'
-    template_name = 'jobs_search-result.html'
+    template_name = 'jobs_about_result.html'
     paginate_by = 5
 
     @overrides
